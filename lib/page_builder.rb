@@ -87,7 +87,7 @@ class PageBuilder
     if file = Dir.glob("#{root.join(file_name)}*").first
       Pathname(file).realpath
     else
-      Pathname(error_page).realpath
+      Pathname(four_o_four).realpath
     end
   rescue Errno::ENOENT => ex
     app.logger.warn ex
@@ -95,7 +95,7 @@ class PageBuilder
   end
 
   def page_exists?
-    real_path != error_page
+    real_path != four_o_four
   end
 
   def content_type
@@ -122,8 +122,8 @@ class PageBuilder
     page_path
   end
 
-  def error_page
-    root.join(app.error_page)
+  def four_o_four
+    root.join(app.four_o_four)
   end
   
   def extract_asset_sources_for(assets)

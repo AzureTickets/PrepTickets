@@ -15,7 +15,7 @@ class Application
 
   APP_DIR = "apps"
   APP_PAGE = "index.html"
-  ERROR_PAGE = "error.html.erb"
+  ERROR_404_PAGE = "404.html.erb"
   BUILD_DIR = "build"
   ROOT_ASSETS = %w( app.css app.js )
   ASSET_DIRS = %w( js css lib )
@@ -47,8 +47,8 @@ class Application
     def root_page
       APP_PAGE
     end
-    def error_page
-      ERROR_PAGE
+    def four_o_four
+      ERROR_404_PAGE
     end
   end # of class methods
   
@@ -58,7 +58,7 @@ class Application
                  :build_root, 
                  :logger, 
                  :root_page, 
-                 :error_page
+                 :four_o_four
 
   def root_assets
     self.class::ROOT_ASSETS
