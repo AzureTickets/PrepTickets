@@ -43,7 +43,7 @@ class PageBuilder
 
   def render_to_string
     file = File.read(page_path)
-    file = ERB.new(file).result(binding) if engines.include?("erb") || is_404_error? 
+    file = process_erb(file) if engines.include?("erb") || is_404_error? 
     file
   end
 
@@ -142,6 +142,10 @@ class PageBuilder
 
   def four_o_four
     root.join(app.four_o_four)
+  end
+
+  def process_erb(file)
+    ERB.new(file, nil, "-").result(binding)
   end
   
   def extract_asset_sources_for(assets)
