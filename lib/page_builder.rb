@@ -7,8 +7,9 @@ class PageBuilder
   DEBUG_VARS = %w(root status page_exists? file_name extension engines )
 
   attr_reader :app, :root, :env
-  def initialize(app)
+  def initialize(app, target_page=nil)
     @app = app
+    @target_page = target_page
   end
 
   def root
@@ -92,7 +93,11 @@ class PageBuilder
   end
 
   def file_name
-    @file_name ||= (env["REQUEST_PATH"] == "/" ? app.root_page : env["REQUEST_PATH"]).to_s.gsub(/^\//, '')
+    if env
+      @file_name ||= (env["REQUEST_PATH"] == "/" ? app.root_page : env["REQUEST_PATH"]).to_s.gsub(/^\//, '')
+    else
+      @target_page.relative_path_from(app.root).to_s
+    end
   end
 
   def find_file(file_name)

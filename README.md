@@ -74,7 +74,7 @@ To get live-reload running, just start running guard (in the `root` directory):
 bundle exec guard
 ```
 
-Once guard is running, you will see that any time you save a file in the `/apps` directory, it will report a change and your browser (in the background) will reload.
+Once guard is running, you will see that any time you save a file in the `/app` directory, it will report a change and your browser (in the background) will reload.
 
 To exit guard, just type `exit` in the guard terminal window
 

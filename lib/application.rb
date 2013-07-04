@@ -13,7 +13,7 @@ Bundler.require
 class Application
   extend Forwardable
 
-  APP_DIR = "apps"
+  APP_DIR = "app"
   APP_PAGE = "index.html"
   ERROR_404_PAGE = "404.html.erb"
   BUILD_DIR = "build"
