@@ -22,7 +22,7 @@ class PageBuilder
     extract_asset_sources_for assets
   end
 
-  def stylesheet_link_tag name='app.css', options={}
+  def stylesheet_link_tag name, options={}
     sources = assets_sources(name)
     links = sources.map do |s| 
       s = "#{s}?body=1" if app.development?
@@ -31,7 +31,7 @@ class PageBuilder
     links.join("\n")
   end
 
-  def javascript_link_tag name='app.js', options={}
+  def javascript_link_tag name, options={}
     sources = assets_sources(name)
     links = sources.map do |s| 
       s = "#{s}?body=1" if app.development?
