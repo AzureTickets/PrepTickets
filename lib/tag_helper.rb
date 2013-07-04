@@ -63,7 +63,6 @@ module TagHelper
       ERB::Util.html_escape(string).gsub('\n', "<br/>").gsub("  ", "&nbsp;")
     end
 
-
     #######
     private
     #######
