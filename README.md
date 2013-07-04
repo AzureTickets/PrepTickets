@@ -121,7 +121,7 @@ info.
 It's very simple to build the application for production, simple run the fullying command (in the root directory)
 
 ```
-bundle exec rake render
+bundle exec rake build
 ```
 
 This will take a few moments to compile the project and write it to the `/build` directory (in the root directory)

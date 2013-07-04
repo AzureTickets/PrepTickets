@@ -1,6 +1,6 @@
 require './lib/application'
 
-namespace :render do
+namespace :build do
   desc "[internal] Setup application"
   task :setup do
     @app = Application.new(:production)
@@ -65,4 +65,6 @@ namespace :render do
 end # of namespace
 
 desc "Render all files for production"
-task :render => ["render:clear_build", "render:assets", "render:html", "render:move_rest"]
+task :build => ["build:clear_build", "build:assets", "build:html", "build:move_rest"]
+
+task :default => :build
