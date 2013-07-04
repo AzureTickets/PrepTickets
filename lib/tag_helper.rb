@@ -47,16 +47,20 @@ module TagHelper
 
     def debug item
       result = case item.class.to_s
-      when "String"
-        item
-      when "Hash"
-        item.map { |key,value| 
-          "#{key} = #{value}"
-        }.join('<br/>')
-      else
-        "#{item.inspect}"
-      end
-      content_tag(:pre, result)
+                 when "String"
+                   item
+                 when "Hash"
+                   item.map { |key,value| 
+                     "#{key} = #{value.inspect}"
+                   }.join('\n')
+                 else
+                   "#{item.inspect}"
+               end
+      content_tag(:pre, escape_html(result))
+    end
+
+    def escape_html(string)
+      ERB::Util.html_escape(string).gsub('\n', "<br/>").gsub("  ", "&nbsp;")
     end
 
     #######

@@ -4,6 +4,8 @@ require 'tag_helper'
 class PageBuilder
   include TagHelper
 
+  DEBUG_VARS = %w(root status page_exists? file_name extension engines )
+
   attr_reader :app, :root, :env
   def initialize(app)
     @app = app
@@ -40,7 +42,7 @@ class PageBuilder
 
   def render_to_string
     file = File.read(page_path)
-    file = ERB.new(file).result(binding) if engines.include?("erb")
+    file = ERB.new(file).result(binding) if engines.include?("erb") || is_404_error? 
     file
   end
 
@@ -56,6 +58,17 @@ class PageBuilder
     ]
   end
 
+  def to_s    
+    result = []
+    DEBUG_VARS.each do |attr| 
+      result << "#{attr.upcase} = #{eval(attr)}"
+    end
+    result.join("\n")
+  end
+  def inspect
+    to_s
+  end
+
   #######
   private
   #######
@@ -63,6 +76,7 @@ class PageBuilder
   def new_request! env
     @env = env
     @real_path = nil
+    @file_name = nil
   end
 
   def status
@@ -78,16 +92,16 @@ class PageBuilder
   end
 
   def file_name
-    env["REQUEST_PATH"] == "/" ? app.root_page : env["REQUEST_PATH"]
+    @file_name ||= (env["REQUEST_PATH"] == "/" ? app.root_page : env["REQUEST_PATH"]).to_s.gsub(/^\//, '')
   end
 
   def find_file(file_name)
-    app.logger.debug "Looking for #{file_name}"
-    file_name = file_name.to_s.gsub(/^\//, '') #remove leading slash if present
     if file = Dir.glob("#{root.join(file_name)}*").first
-      Pathname(file).realpath
+      Pathname(file).realpath.tap do |file|
+        @file_name = file.basename
+      end
     else
-      Pathname(error_page).realpath
+      Pathname(four_o_four).realpath
     end
   rescue Errno::ENOENT => ex
     app.logger.warn ex
@@ -95,7 +109,10 @@ class PageBuilder
   end
 
   def page_exists?
-    real_path != error_page
+    real_path != four_o_four
+  end
+  def is_404_error?
+    !page_exists?
   end
 
   def content_type
@@ -112,18 +129,14 @@ class PageBuilder
   end
 
   def engines
-    split_file_name[2, split_file_name.length]
+    split_file_name[2, split_file_name.length] || []
   end
   def split_file_name
-    page_path.basename.to_s.split(".")
+    file_name.to_s.split(".")
   end
 
-  def page_name
-    page_path
-  end
-
-  def error_page
-    root.join(app.error_page)
+  def four_o_four
+    root.join(app.four_o_four)
   end
   
   def extract_asset_sources_for(assets)
