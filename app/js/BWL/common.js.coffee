@@ -5,5 +5,7 @@ BWL.Common =
   getHost: (url) ->    
     a = document.createElement("a")
     a.href = url
-    port = if (a.port in ["", "0", "80", "433"]) then "" else ":#{a.port}"
-    "#{a.protocol}//#{a.hostname}#{port}"
+    if (a.port in ["", "0", "80", "433"])
+      "#{a.protocol}//#{a.hostname}"
+    else
+      "#{a.protocol}//#{a.hostname}:#{a.port}"
