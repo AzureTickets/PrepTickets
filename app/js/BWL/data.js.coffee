@@ -1,9 +1,7 @@
 #= require BWL/data_access
-#= require BWL/data_processor
 
 throw "Can't use BWL.Data without BWL module loaded" unless BWL?
-throw "Can't use BWL.Data without BWL.DataAccess module loaded" unless BWL.DataProcessor?
-throw "Can't use BWL.Data without BWL.DataProcessor module loaded" unless BWL.DataProcessor?
+throw "Can't use BWL.Data without BWL.DataAccess module loaded" unless BWL.DataAccess?
 
 @BWL.Data = 
   xhdList: []
@@ -21,7 +19,7 @@ throw "Can't use BWL.Data without BWL.DataProcessor module loaded" unless BWL.Da
       # if this is a JS object, convert to JSON, else just pass the data as form data
       if typeof (data) == 'object' 
         contentType = "application/json";
-        data        = BWL.Plugins.json2.stringify(data);
+        data        = BWL.DataAccess.Obj2JSON(data);
       else
         contentType = "application/x-www-form-urlencoded"
       
@@ -50,7 +48,7 @@ throw "Can't use BWL.Data without BWL.DataProcessor module loaded" unless BWL.Da
         modelObj = BWL.DataAccess.JSON2Obj(rpcdata.data)
         if modelObj.Message == BWL.t("DataAccess.ServerMessage.OK")
           # the request worked, return the object
-          successCallback?(BWL.DataProcessor.process(modelObj.Object), modelObj)
+          successCallback?(BWL.DataAccess.JSON2Obj(modelObj.Object), modelObj)
         else 
           # there was a server error, alert the message
           BWL.Loading.Stop();

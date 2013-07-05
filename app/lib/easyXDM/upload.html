@@ -161,7 +161,7 @@
                         });
                     },
                     FileUploaded: function (up, file, info) {
-                        var resp = BWL.Plugins.json2.parse(info.response);
+                        var resp = JSON.parse(info.response);
 
                         if (resp.Message != "OK") {
                             caller.uploadError('Server Error: ' + resp.Message);
