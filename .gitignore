@@ -2,3 +2,4 @@ logs/*
 !.gitkeep
 .bundle/
 build/
+libpeerconnection.log

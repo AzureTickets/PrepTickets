@@ -1,6 +1,7 @@
 #= require md5
-#= require json2
 #= require easyXDM
 #= require jquery
-#= require jquery.validate
-#= require ui/jquery-ui
+#= require_self
+
+throw "Can't use jQuery plugin without BWL module loaded" unless BWL?
+BWL.$ = BWL.jQuery = window.jQuery = jQuery.noConflict(true);

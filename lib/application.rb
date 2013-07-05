@@ -17,7 +17,7 @@ class Application
   APP_PAGE = "index.html"
   ERROR_404_PAGE = "404.html.erb"
   BUILD_DIR = "build"
-  ROOT_ASSETS = %w( app.css app.js )
+  ROOT_ASSETS = %w( app.css main.js )
   ASSET_DIRS = %w( js css lib )
   TEMPLATE_DIR = "#{APP_DIR}/templates"
 
