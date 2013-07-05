@@ -6,6 +6,7 @@ files = [
   'app/lib/angular/angular.js',
   'test/lib/angular/angular-mocks.js',
   'app/js/BWL/base.js.coffee',
+  'app/lib/jquery/jquery.js',
   'app/lib/i18next/release/i18next-1.6.3.js',
   'app/js/BWL/data_access.js.coffee',
   'app/js/**/*.js.coffee',
