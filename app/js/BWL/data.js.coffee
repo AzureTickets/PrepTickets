@@ -1,19 +1,14 @@
 #= require BWL/data_access
 
-throw "Can't use BWL.Data without BWL module loaded" unless BWL?
-throw "Can't use BWL.Data without BWL.DataAccess module loaded" unless BWL.DataAccess?
+console?.warn "Can't use BWL.Data without BWL module loaded" unless BWL?
+console?.warn "Can't use BWL.Data without BWL.DataAccess module loaded" unless BWL.DataAccess?
+console?.warn "Can't use BWL.Data without BWL.URL module loaded" unless BWL.URL?
 
-@BWL.Data = 
-  xhdList: []
+class @BWL.Data
+  @xhdList: []
 
-  InvokeService: (method, url, data, successCallback, errorCallback=BWL.Data.ServiceFailedCallback) ->
+  @InvokeService: (method, url, data, successCallback, errorCallback=BWL.Data.ServiceFailedCallback) ->
     method = method.toUpperCase()
-
-    # the default config is a simple request
-    requestConfig = {
-      url
-      method
-    }
 
     if method == "POST" || method == "PUT"
       # if this is a JS object, convert to JSON, else just pass the data as form data
@@ -23,49 +18,37 @@ throw "Can't use BWL.Data without BWL.DataAccess module loaded" unless BWL.DataA
       else
         contentType = "application/x-www-form-urlencoded"
       
-      # setup for posting data
-      requestConfig.headers = 
-        "Content-Type": contentType
-        "Content-Length": data.length
-      requestConfig.data = data;
 
-    host = BWL.Common.getHost(url)
-    xhd = this.xhdList[host]
+    host = BWL.URL.getHost(url)
 
-    unless (xhd)
-      xhd = new BWL.Plugins.easyXDM.Rpc(
-        {remote: host + "/embed/plugins/easyXDM/cors.html"},
-        remote:
-          request: {}
-        )
-      this.xhdList[host] = xhd;
+    internalErrorCallback = (resp) =>
+      BWL.Loading.Stop()
 
-    # send the request
-    xhd.request(
-      requestConfig
-      # success
-      (rpcdata) ->
-        modelObj = BWL.DataAccess.JSON2Obj(rpcdata.data)
-        if modelObj.Message == BWL.t("DataAccess.ServerMessage.OK")
+      return if resp.Message.substr(0, resp.Message.length) == "Object reference not set to an instance of an object."
+
+      if (error.message == BWL.t('DataAccess.ServerMessage.401'))
+        BWL.UI.Alert BWL.t("DataAccess.401")
+        BWL.Common.eraseCookie(BWL.TokenName);
+        window.location.href = BWL.URL.getRootURL();
+      
+      errorCallback?(BWL.t('DataAccess.Error', msg: resp.Message), resp);
+
+    
+    xhd = new BWL.$.ajax(
+      url: url
+      method: method
+      type:'json'
+      data: data if data?
+      crossOrigin: true
+      success: (resp) =>
+        if resp.Message == BWL.t("DataAccess.ServerMessage.OK")
           # the request worked, return the object
-          successCallback?(BWL.DataAccess.JSON2Obj(modelObj.Object), modelObj)
+          successCallback?(BWL.DataAccess.JSON2Obj(resp.Object), resp)
         else 
-          # there was a server error, alert the message
-          BWL.Loading.Stop();
-          return if modelObj.Message.substr(0, modelObj.Message.length) == "Object reference not set to an instance of an object."
-          errorCallback?(BWL.t('DataAccess.Error', msg: modelObj.Message), modelObj);
-        
-      # error
-      (error) ->
-        BWL.Loading.Stop()
+          internalErrorCallback(resp)
+      error: (resp) =>
+        internalErrorCallback(resp)
 
-        if (error.message == BWL.t('DataAccess.ServerMessage.401'))
-          BWL.UI.Alert BWL.t("DataAccess.401"), ->
-            BWL.Common.eraseCookie(BWL.TokenName);
-            #goto root
-            window.location.href = BWL.Common.getRootURL();
-        else
-          errorCallback?(BWL.t("DataAccess.Error", msg: error.message))
     )
-  ServiceFailedCallback: (msg, response) ->
-    console.warn "FAILURE: #{msg}" if console?
+  @ServiceFailedCallback: (msg, response) ->
+    BWL.UI.Alert "Service FAILURE: #{msg}"
