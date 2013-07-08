@@ -1,6 +1,7 @@
 #= require BWL/base
 #= require BWL/prerequisite
 
+#= require BWL/cookie
 #= require BWL/URL
 #= require BWL/core_extensions
 #= require BWL/UI
