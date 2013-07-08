@@ -3,3 +3,4 @@ logs/*
 .bundle/
 build/
 libpeerconnection.log
+doc/
