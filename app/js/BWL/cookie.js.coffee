@@ -1,7 +1,6 @@
-unless BWL?
-  console?.warn "Can't use BWL.Cookie without BWL module loaded" 
+console?.warn "Can't use BWL.Cookie without BWL module loaded" unless BWL?
 
-class BWL.Cookie
+class @BWL.Cookie
   # Write to cookie a value
   #
   # @example write cookie value

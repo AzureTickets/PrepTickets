@@ -4,8 +4,8 @@ console?.warn "Can't use BWL.Data without BWL module loaded" unless BWL?
 console?.warn "Can't use BWL.Data without BWL.DataAccess module loaded" unless BWL.DataAccess?
 console?.warn "Can't use BWL.Data without BWL.URL module loaded" unless BWL.URL?
 
-@BWL.Data = 
-  xhdList: []
+class @BWL.Data
+  @xhdList: []
 
   InvokeService: (method, url, data, successCallback, errorCallback=BWL.Data.ServiceFailedCallback) ->
     method = method.toUpperCase()

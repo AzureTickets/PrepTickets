@@ -1,7 +1,7 @@
 console?.warn "Can't use BWL.URL without BWL module loaded" unless BWL?
 
-BWL.URL =
-  getHost: (url) ->    
+class @BWL.URL
+  @getHost: (url) ->    
     a = document.createElement("a")
     a.href = url
     if (a.port in ["", "0", "80", "433"])
@@ -9,8 +9,8 @@ BWL.URL =
     else
       "#{a.protocol}//#{a.hostname}:#{a.port}"
 
-  getRootURL: ->
+  @getRootURL: ->
     @getHost(@getWindowLocation())
 
-  getWindowLocation: ->
+  @getWindowLocation: ->
     window.location.toString()
