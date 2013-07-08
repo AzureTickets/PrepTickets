@@ -1,8 +1,8 @@
 /*!
   * =============================================================
   * Ender: open module JavaScript framework (https://ender.no.de)
-  * Build: ender build reqwest
-  * Packages: ender-js@0.4.5 reqwest@0.8.2
+  * Build: ender build reqwest jar
+  * Packages: ender-js@0.4.5 reqwest@0.8.2 es5-basic@0.2.1 jar@0.3.4
   * =============================================================
   */
 
@@ -721,5 +721,377 @@
       , serializeArray: sa
     }, true)
   }(ender);
+
+}());
+
+(function () {
+
+  var module = { exports: {} }, exports = module.exports;
+
+  var __hasProp = Object.prototype.hasOwnProperty;
+
+  if (!Function.prototype.bind) {
+    Function.prototype.bind = function(that) {
+      var Bound, args, target;
+      target = this;
+      if (typeof target.apply !== "function" || typeof target.call !== "function") {
+        return new TypeError();
+      }
+      args = Array.prototype.slice.call(arguments);
+      Bound = (function() {
+
+        function Bound() {
+          var Type, self;
+          if (this instanceof Bound) {
+            self = new (Type = (function() {
+
+              function Type() {}
+
+              Type.prototype = target.prototype;
+
+              return Type;
+
+            })());
+            target.apply(self, args.concat(Array.prototype.slice.call(arguments)));
+            return self;
+          } else {
+            return target.call.apply(target, args.concat(Array.prototype.slice.call(arguments)));
+          }
+        }
+
+        Bound.prototype.length = (typeof target === "function" ? Math.max(target.length - args.length, 0) : 0);
+
+        return Bound;
+
+      })();
+      return Bound;
+    };
+  }
+
+  if (!Array.isArray) {
+    Array.isArray = function(obj) {
+      return Object.prototype.toString.call(obj) === "[object Array]";
+    };
+  }
+
+  if (!Array.prototype.forEach) {
+    Array.prototype.forEach = function(fn, that) {
+      var i, val, _len;
+      for (i = 0, _len = this.length; i < _len; i++) {
+        val = this[i];
+        if (i in this) fn.call(that, val, i, this);
+      }
+    };
+  }
+
+  if (!Array.prototype.map) {
+    Array.prototype.map = function(fn, that) {
+      var i, val, _len, _results;
+      _results = [];
+      for (i = 0, _len = this.length; i < _len; i++) {
+        val = this[i];
+        if (i in this) _results.push(fn.call(that, val, i, this));
+      }
+      return _results;
+    };
+  }
+
+  if (!Array.prototype.filter) {
+    Array.prototype.filter = function(fn, that) {
+      var i, val, _len, _results;
+      _results = [];
+      for (i = 0, _len = this.length; i < _len; i++) {
+        val = this[i];
+        if (i in this && fn.call(that, val, i, this)) _results.push(val);
+      }
+      return _results;
+    };
+  }
+
+  if (!Array.prototype.some) {
+    Array.prototype.some = function(fn, that) {
+      var i, val, _len;
+      for (i = 0, _len = this.length; i < _len; i++) {
+        val = this[i];
+        if (i in this) if (fn.call(that, val, i, this)) return true;
+      }
+      return false;
+    };
+  }
+
+  if (!Array.prototype.every) {
+    Array.prototype.every = function(fn, that) {
+      var i, val, _len;
+      for (i = 0, _len = this.length; i < _len; i++) {
+        val = this[i];
+        if (i in this) if (!fn.call(that, val, i, this)) return false;
+      }
+      return true;
+    };
+  }
+
+  if (!Array.prototype.reduce) {
+    Array.prototype.reduce = function(fn) {
+      var i, result;
+      i = 0;
+      if (arguments.length > 1) {
+        result = arguments[1];
+      } else if (this.length) {
+        result = this[i++];
+      } else {
+        throw new TypeError('Reduce of empty array with no initial value');
+      }
+      while (i < this.length) {
+        if (i in this) result = fn.call(null, result, this[i], i, this);
+        i++;
+      }
+      return result;
+    };
+  }
+
+  if (!Array.prototype.reduceRight) {
+    Array.prototype.reduceRight = function(fn) {
+      var i, result;
+      i = this.length - 1;
+      if (arguments.length > 1) {
+        result = arguments[1];
+      } else if (this.length) {
+        result = this[i--];
+      } else {
+        throw new TypeError('Reduce of empty array with no initial value');
+      }
+      while (i >= 0) {
+        if (i in this) result = fn.call(null, result, this[i], i, this);
+        i--;
+      }
+      return result;
+    };
+  }
+
+  if (!Array.prototype.indexOf) {
+    Array.prototype.indexOf = function(value) {
+      var i, _ref;
+      i = (_ref = arguments[1]) != null ? _ref : 0;
+      if (i < 0) i += length;
+      i = Math.max(i, 0);
+      while (i < this.length) {
+        if (i in this) if (this[i] === value) return i;
+        i++;
+      }
+      return -1;
+    };
+  }
+
+  if (!Array.prototype.lastIndexOf) {
+    Array.prototype.lastIndexOf = function(value) {
+      var i;
+      i = arguments[1] || this.length;
+      if (i < 0) i += length;
+      i = Math.min(i, this.length - 1);
+      while (i >= 0) {
+        if (i in this) if (this[i] === value) return i;
+        i--;
+      }
+      return -1;
+    };
+  }
+
+  if (!Object.keys) {
+    Object.keys = function(obj) {
+      var key, _results;
+      _results = [];
+      for (key in obj) {
+        if (!__hasProp.call(obj, key)) continue;
+        _results.push(key);
+      }
+      return _results;
+    };
+  }
+
+  if (!Date.now) {
+    Date.now = function() {
+      return new Date().getTime();
+    };
+  }
+
+  if (!Date.prototype.toISOString) {
+    Date.prototype.toISOString = function() {
+      return ("" + (this.getUTCFullYear()) + "-" + (this.getUTCMonth() + 1) + "-" + (this.getUTCDate()) + "T") + ("" + (this.getUTCHours()) + ":" + (this.getUTCMinutes()) + ":" + (this.getUTCSeconds()) + "Z");
+    };
+  }
+
+  if (!Date.prototype.toJSON) {
+    Date.prototype.toJSON = function() {
+      return this.toISOString();
+    };
+  }
+
+  if (!String.prototype.trim) {
+    String.prototype.trim = function() {
+      return String(this).replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+    };
+  }
+
+  if (typeof provide == "function") provide("es5-basic", module.exports);
+  $.ender(module.exports);
+}());
+
+(function () {
+
+  var module = { exports: {} }, exports = module.exports;
+
+  // Generated by CoffeeScript 1.3.3
+  var jar;
+
+  jar = typeof exports !== "undefined" && exports !== null ? exports : (this['jar'] = {});
+
+  jar.Cookie = (function() {
+
+    function Cookie(name, value, options) {
+      var date, _base;
+      this.name = name;
+      this.value = value;
+      this.options = options;
+      if (this.value === null) {
+        this.value = '';
+        this.options.expires = -(60 * 60 * 24);
+      }
+      if (this.options.expires) {
+        if (typeof this.options.expires === 'number') {
+          date = new Date();
+          date.setTime(date.getTime() + (this.options.expires * 1000));
+          this.options.expires = date;
+        }
+        if (this.options.expires instanceof Date) {
+          this.options.expires = this.options.expires.toUTCString();
+        }
+      }
+      (_base = this.options).path || (_base.path = '/');
+    }
+
+    Cookie.prototype.toString = function() {
+      var domain, expires, path, secure;
+      path = "; path=" + this.options.path;
+      expires = (this.options.expires ? "; expires=" + this.options.expires : '');
+      domain = (this.options.domain ? "; domain=" + this.options.domain : '');
+      secure = (this.options.secure ? '; secure' : '');
+      return [this.name, '=', this.value, expires, path, domain, secure].join('');
+    };
+
+    return Cookie;
+
+  })();
+
+  jar.Jar = (function() {
+
+    function Jar() {}
+
+    Jar.prototype.parse = function() {
+      var cookie, m, _i, _len, _ref;
+      this.cookies = {};
+      _ref = this._getCookies().split(/;\s/g);
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        cookie = _ref[_i];
+        m = cookie.match(/([^=]+)=(.*)/);
+        if (Array.isArray(m)) {
+          this.cookies[m[1]] = m[2];
+        }
+      }
+    };
+
+    Jar.prototype.encode = function(value) {
+      return encodeURIComponent(JSON.stringify(value));
+    };
+
+    Jar.prototype.decode = function(value) {
+      return JSON.parse(decodeURIComponent(value));
+    };
+
+    Jar.prototype.get = function(name, options) {
+      var value;
+      if (options == null) {
+        options = {};
+      }
+      value = this.cookies[name];
+      if (!('raw' in options) || !options.raw) {
+        try {
+          value = this.decode(value);
+        } catch (e) {
+          return;
+        }
+      }
+      return value;
+    };
+
+    Jar.prototype.set = function(name, value, options) {
+      var cookie;
+      if (options == null) {
+        options = {};
+      }
+      if (!('raw' in options) || !options.raw) {
+        value = this.encode(value);
+      }
+      cookie = new jar.Cookie(name, value, options);
+      this._setCookie(cookie);
+      this.cookies[name] = value;
+    };
+
+    return Jar;
+
+  })();
+
+  if (typeof process !== "undefined" && process !== null ? process.pid : void 0) {
+    require('./node');
+  }
+
+  if (typeof provide == "function") provide("jar", module.exports);
+
+  // Generated by CoffeeScript 1.3.3
+  var __hasProp = {}.hasOwnProperty,
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+
+  (function($) {
+    var jar;
+    jar = require('jar');
+    jar.Jar = (function(_super) {
+
+      __extends(Jar, _super);
+
+      function Jar() {
+        return Jar.__super__.constructor.apply(this, arguments);
+      }
+
+      Jar.prototype._getCookies = function() {
+        return document.cookie;
+      };
+
+      Jar.prototype._setCookie = function(cookie) {
+        document.cookie = cookie.toString();
+      };
+
+      Jar.prototype.get = function() {
+        this.parse();
+        return Jar.__super__.get.apply(this, arguments);
+      };
+
+      Jar.prototype.set = function() {
+        this.parse();
+        return Jar.__super__.set.apply(this, arguments);
+      };
+
+      return Jar;
+
+    })(jar.Jar);
+    return $.ender({
+      jar: new jar.Jar,
+      cookie: function(name, value, options) {
+        if (value != null) {
+          return $.jar.set(name, value, options);
+        } else {
+          return $.jar.get(name);
+        }
+      }
+    });
+  })(ender);
 
 }());
