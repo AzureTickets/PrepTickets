@@ -5,9 +5,83 @@
   <title>Prep Tickets</title>
   <%= stylesheet_link_tag "app.css" %>
 </head>
-<body ng-cloak>
-  <div ng-view></div>
+<body>
+  <header>
+    <div class="container">
+      <div class="row">
+        <div class="span4">
+          <img src="/img/PrepTicketsLogo.png" alt="Prep Tickets" style="width:50%;"/>
+        </div>
+      </div>
+      <div class="navbar">
+        <div class="navbar-inner">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <ul class="nav nav-collapse collapse">
+            <li class="active"><a href="#">Home</a></li>
+            <li class="divider-vertical"></li>
+            <li><a href="#">My Cart</a></li>
+            <li class="divider-vertical"></li>
+          </ul>
+          <ul class="nav nav-collapse collapse pull-right">
+            <li class="divider-vertical"></li>
+            <li><a href="#">Sign On</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
   
+  <div id="main" class="container">
+    <!-- Content should all load within here -->
+  </div>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="span4">
+          <h4>About us</h4>
+          <p>
+            PrepTickets has a genuine enthusiasm for high school events of all kinds. Our vision is to preserve the pleasures and dreams our young people have of participating in school sports and other activities
+          </p>
+        </div>
+        <div class="span4">
+          <div class="row">
+            <h4 class="span4">Get our FREE PrepTickets <br/><small>Mobile App</small></h4>
+            <div class="span1"><img src="/img/footer_phones.png" alt="phones" /></div>
+            <div class="span3">
+              <a href="#">Android</a> |
+              <a href="#">iPhone</a> |
+              <a href="#">Windows Phone</a>
+            </div>
+          </div>
+        </div>
+        <div class="span4">
+          <h4>Contact us</h4>
+          <p>
+            PrepTickets, LLC <br/>
+            1949 Willamette Falls Drive Suite D <br/>
+            West Linn, Oregon 97068 <br/>
+            Phone: 888-691-8313 <br/>
+            Email Us: contact@preptickets.com
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="copyright text-center">&copy; <%= Date.today.year %> PrepTickets.com</div>
+        <div class="links text-center">
+          <a href="#">Home</a> |
+          <a href="#">About Us</a> |
+          <a href="#">Contact Us</a> |
+          <a href="#">Privacy Policy</a> |
+          <a href="#">Terms</a> |
+          <a href="#">Refund Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
   <%= javascript_link_tag 'main.js' %>
 </body>
 </html>

@@ -125,6 +125,8 @@ class PageBuilder
     case extension
     when "json"
       "application/json"
+    when "png", "gif", "jpg"
+      "image/#{extension}"
     else 
       "text/html"
     end
