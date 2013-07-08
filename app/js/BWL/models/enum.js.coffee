@@ -1,4 +1,4 @@
-throw "Can't use BWL.Models Enum without BWL and BWL.Models modules loaded" unless BWL? && BWL.Models?
+console?.warn "Can't use BWL.Models Enum without BWL and BWL.Models modules loaded" unless BWL? && BWL.Models?
 
 BWL.Models.AccessRequestResponseEnum = 
   Pending: 0

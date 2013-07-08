@@ -1,4 +1,4 @@
-throw "Can't use BWL.Models.Meta without BWL and BWL.Models modules loaded" unless BWL? && BWL.Models?
+console?.warn "Can't use BWL.Models.Meta without BWL and BWL.Models modules loaded" unless BWL? && BWL.Models?
 
 BWL.Models.AccessRequest?.Meta = 
   __cache: 0

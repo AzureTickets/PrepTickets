@@ -1,4 +1,4 @@
-throw "Can't use BWL.Models without BWL module loaded" unless BWL?
+console?.warn "Can't use BWL.Models without BWL module loaded" unless BWL?
 
 BWL.Models = {} unless BWL.Models?
 

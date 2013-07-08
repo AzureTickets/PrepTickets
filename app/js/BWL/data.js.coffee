@@ -1,7 +1,8 @@
 #= require BWL/data_access
 
-throw "Can't use BWL.Data without BWL module loaded" unless BWL?
-throw "Can't use BWL.Data without BWL.DataAccess module loaded" unless BWL.DataAccess?
+console?.warn "Can't use BWL.Data without BWL module loaded" unless BWL?
+console?.warn "Can't use BWL.Data without BWL.DataAccess module loaded" unless BWL.DataAccess?
+console?.warn "Can't use BWL.Data without BWL.URL module loaded" unless BWL.URL?
 
 @BWL.Data = 
   xhdList: []

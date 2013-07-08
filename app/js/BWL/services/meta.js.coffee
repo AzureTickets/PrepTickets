@@ -1,4 +1,4 @@
-throw "Can't use BWL.Services Meta without BWL and BWL.services module loaded" unless BWL? && BWL.Services?
+console?.warn "Can't use BWL.Services Meta without BWL and BWL.services module loaded" unless BWL? && BWL.Services?
 
 # BWL.Services.SearchIndexService
 BWL.Services.SearchIndex?.Search?.Meta = 

@@ -1,4 +1,4 @@
-throw "Can't use BWL.DataAccess without BWL module loaded" unless BWL?
+console?.warn "Can't use BWL.DataAccess without BWL module loaded" unless BWL?
 
 BWL.DataAccess = 
   # Function to parse JSON to DOM Object

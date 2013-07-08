@@ -1,4 +1,4 @@
-throw "Can't use BWL.Loading without BWL module loaded" unless BWL?
+console?.warn "Can't use BWL.Loading without BWL module loaded" unless BWL?
 
 #FIX: THIS IS JUST BAD! NEEDS TO BE RE-WRITTEN to be expandable
 BWL.Loading =
