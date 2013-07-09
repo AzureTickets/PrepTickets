@@ -5,6 +5,7 @@ GEM
       Platform (>= 0.4.0)
       open4
     Platform (0.4.0)
+    actionpack (1.4.0)
     active_support (3.0.0)
       activesupport (= 3.0.0)
     activesupport (3.0.0)
@@ -90,6 +91,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  actionpack
   active_support
   better_errors
   binding_of_caller
@@ -100,5 +102,6 @@ DEPENDENCIES
   rake
   sass
   sprockets
+  tilt
   uglifier
   yui-compressor

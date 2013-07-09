@@ -9,7 +9,9 @@ gem 'yui-compressor'    # CSS compressor
 gem 'uglifier'          # JS compressor
 
 gem 'rack'              # basic web server responder
-gem 'rake'              # Similar to 'make' on linux but for ruby
+gem 'tilt'              # rendering engine
+gem 'actionpack'        # part of rails (Mainly interested in helpers)
+gem 'rake'              # similar to 'make' on linux but for ruby
 
 gem 'active_support'    # Adds a bunch of helpers to Ruby (comes from rails)
 
