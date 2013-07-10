@@ -5,8 +5,9 @@ require "better_errors"
 app = Application.new(:development)
 
 use Rack::Reloader, 0
-use Rack::LiveReload
 use BetterErrors::Middleware
+use Rack::LiveReload
+
 
 BetterErrors.application_root = app.project_root.to_s
 
