@@ -1,12 +1,15 @@
-require 'erb'
-require 'tag_helper'
+require 'lib/view_context'
 
 class PageBuilder
-  include TagHelper
-
+  
   DEBUG_VARS = %w(root status page_exists? file_name extension engines )
 
   attr_reader :app, :root, :env
+
+  def view_context_class
+    @view_context_class ||= ViewContext.new(self)
+  end
+
   def initialize(app, target_page=nil)
     @app = app
     @target_page = target_page
@@ -16,34 +19,11 @@ class PageBuilder
     app.root
   end
 
-  def assets_sources name, options={}
-    assets = app.sprockets.find_asset(name)
-    return [] if assets.blank?
-    extract_asset_sources_for assets
-  end
-
-  def stylesheet_link_tag name, options={}
-    sources = assets_sources(name)
-    links = sources.map do |s| 
-      s = "#{s}?body=1" if app.development?
-      stylesheet_tag(s, options)
-    end
-    links.join("\n")
-  end
-
-  def javascript_link_tag name, options={}
-    sources = assets_sources(name)
-    links = sources.map do |s| 
-      s = "#{s}?body=1" if app.development?
-      javascript_tag(s, options)
-    end
-    links.join("\n")
-  end
 
 
   def render_to_string
     file = File.read(page_path)
-    file = process_erb(file) if engines.include?("erb") || is_404_error? 
+    file = process_template(page_path.to_s) if engines.include?("erb") || is_404_error? 
     file
   end
 
@@ -109,7 +89,7 @@ class PageBuilder
       Pathname(four_o_four).realpath
     end
   rescue Errno::ENOENT => ex
-    app.logger.warn ex
+    app.logger.warn "EXCPETION: #{ex}"
     raise ex
   end
 
@@ -146,32 +126,8 @@ class PageBuilder
     root.join(app.four_o_four)
   end
 
-  def process_erb(file)
-    ERB.new(file, nil, "-").result(binding)
-  end
-  
-  def extract_asset_sources_for(assets)
-    assets_source_list = []
-    if app.development?
-      assets.to_a.each do |asset|
-        if (asset.to_a.size > 1)
-          assets_source_list + extract_asset_sources(asset)
-        else
-          assets_source_list << get_asset_source(asset)
-        end
-      end
-    else
-      assets_source_list << get_asset_source(assets)
-    end
-    assets_source_list
-  end
-
-  def get_asset_source(asset)
-    return "" if asset.blank?
-    asset_attr = app.sprockets.attributes_for(asset.pathname.realpath)
-    name = asset_attr.logical_path.to_s
-    path = asset.pathname.relative_path_from(root).to_s.gsub(/#{name}(.*)/, "")
-    "/#{path}#{name}"
+  def process_template(file_name)
+    Tilt.new(file_name).render(view_context_class)
   end
 
 end
