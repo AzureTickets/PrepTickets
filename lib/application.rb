@@ -4,11 +4,9 @@ $LOAD_PATH << './lib'
 require 'sprockets_builder'
 require 'page_builder'
 require 'logger'
-require 'active_support/core_ext/object'
 require 'forwardable'
+
 Bundler.require
-
-
 
 class Application
   extend Forwardable
@@ -28,7 +26,9 @@ class Application
   end
   
   %w(development production).each do |env_name|
-    define_method("#{env_name}?") {self.env.to_s.downcase == env_name}
+    define_method("#{env_name}?") do 
+      self.env.to_s.downcase == env_name
+    end
   end
   
   class << self #Class methods
