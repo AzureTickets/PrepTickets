@@ -50,6 +50,14 @@ class PageBuilder
     to_s
   end
 
+  def file_name
+    if env
+      @file_name ||= (env["REQUEST_PATH"] == "/" ? app.root_page : env["REQUEST_PATH"]).to_s.gsub(/^\//, '')
+    else
+      @target_page.relative_path_from(app.root).to_s
+    end
+  end
+  
   #######
   private
   #######
@@ -72,13 +80,7 @@ class PageBuilder
     @real_path ||= find_file(file_name)
   end
 
-  def file_name
-    if env
-      @file_name ||= (env["REQUEST_PATH"] == "/" ? app.root_page : env["REQUEST_PATH"]).to_s.gsub(/^\//, '')
-    else
-      @target_page.relative_path_from(app.root).to_s
-    end
-  end
+  
 
   def find_file(file_name)
     if file = Dir.glob("#{root.join(file_name)}*").first
