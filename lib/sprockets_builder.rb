@@ -10,7 +10,7 @@ class SprocketsBuilder
     end
 
     unless app.development?
-      sprockets.css_compressor = :yui
+      # sprockets.css_compressor = :yui
       sprockets.js_compressor = :uglifier
     end
 

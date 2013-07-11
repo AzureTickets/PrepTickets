@@ -5,7 +5,7 @@ gem 'sprockets'                  # Asset packaging
 gem 'sass'                       # Scss
 gem 'coffee-script'              # CoffeScript
 
-gem 'yui-compressor'             # CSS compressor
+# gem 'yui-compressor'             # CSS compressor
 gem 'uglifier'                   # JS compressor
 
 gem 'rack'                       # basic web server responder
