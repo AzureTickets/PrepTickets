@@ -26,7 +26,7 @@ class @BWL.Data
 
       return if resp.Message.substr(0, resp.Message.length) == "Object reference not set to an instance of an object."
 
-      if (error.message == BWL.t('DataAccess.ServerMessage.401'))
+      if (resp.Message == BWL.t('DataAccess.ServerMessage.401'))
         BWL.UI.Alert BWL.t("DataAccess.401")
         BWL.Common.eraseCookie(BWL.TokenName);
         window.location.href = BWL.URL.getRootURL();
