@@ -41,7 +41,7 @@ class @BWL.Data
       data: data if data?
       crossOrigin: true
       success: (resp) =>
-        if resp.Message == BWL.t("DataAccess.ServerMessage.OK")
+        if resp.Message == BWL.t("DataAccess.ServerMessage.OK", defaultValue:"OK")
           # the request worked, return the object
           successCallback?(BWL.DataAccess.JSON2Obj(resp.Object), resp)
         else 
