@@ -1,13 +1,20 @@
 <div class="stores">
   <h2 class="text-center huge">School Lookup</h2>
-  <form action="" class="form-horizontal row">
+  <form action="" class="form-horizontal row" ng-submit="search()">
     <div class="offset2 span8">
       <div class="row well">
         <div class="span6">
-          <input type="text" class="span6 huge">
+          <input type="text" class="span6 huge" ng-model='query'>
         </div>
-        <%= link_to_btn "Search", "#", type: :primary, size: :huge, icon: "search", class: 'span1' %>
+        <a href="#" class="btn btn-primary btn-huge span1" ng-click="search()"><i class="icon-search"></i> Search</a>
       </div>
     </div>
   </form>
+  <div id="schoolList" ng-repeat="store in stores"> 
+    <div class="store well" id="{{store.StoreKey}}">
+      <a href="/#/store{{store.URI}}">
+        {{store.SearchText}}
+      </a>
+    </div>
+  </div>
 </div>

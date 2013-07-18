@@ -66,6 +66,7 @@ class PageBuilder
     @env = env
     @real_path = nil
     @file_name = nil
+    @real_path = nil
   end
 
   def status
@@ -83,7 +84,8 @@ class PageBuilder
   
 
   def find_file(file_name)
-    if file = Dir.glob("#{root.join(file_name)}*").first
+    file = Dir.glob("#{root.join(file_name)}*").first
+    if file
       Pathname(file).realpath.tap do |file|
         @file_name = file.basename
       end

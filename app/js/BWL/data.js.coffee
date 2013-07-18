@@ -26,7 +26,7 @@ class @BWL.Data
 
       return if resp.Message.substr(0, resp.Message.length) == "Object reference not set to an instance of an object."
 
-      if (error.message == BWL.t('DataAccess.ServerMessage.401'))
+      if (resp.Message == BWL.t('DataAccess.ServerMessage.401'))
         BWL.UI.Alert BWL.t("DataAccess.401")
         BWL.Common.eraseCookie(BWL.TokenName);
         window.location.href = BWL.URL.getRootURL();
@@ -41,7 +41,7 @@ class @BWL.Data
       data: data if data?
       crossOrigin: true
       success: (resp) =>
-        if resp.Message == BWL.t("DataAccess.ServerMessage.OK")
+        if resp.Message == BWL.t("DataAccess.ServerMessage.OK", defaultValue:"OK")
           # the request worked, return the object
           successCallback?(BWL.DataAccess.JSON2Obj(resp.Object), resp)
         else 
