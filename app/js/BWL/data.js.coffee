@@ -23,15 +23,16 @@ class @BWL.Data
 
     internalErrorCallback = (resp) =>
       BWL.Loading.Stop()
+      console.warn "internalError", resp if console?
+      msg = if resp.Message? then resp.Message else "Unkown Error"
+      return if msg.substr(0, msg.length) == "Object reference not set to an instance of an object."
 
-      return if resp.Message.substr(0, resp.Message.length) == "Object reference not set to an instance of an object."
-
-      if (resp.Message == BWL.t('DataAccess.ServerMessage.401'))
+      if (msg == BWL.t('DataAccess.ServerMessage.401'))
         BWL.UI.Alert BWL.t("DataAccess.401")
         BWL.Common.eraseCookie(BWL.TokenName);
         window.location.href = BWL.URL.getRootURL();
       
-      errorCallback?(BWL.t('DataAccess.Error', msg: resp.Message), resp);
+      errorCallback?(BWL.t('DataAccess.Error', msg: msg), resp);
 
     
     xhd = new BWL.$.ajax(
