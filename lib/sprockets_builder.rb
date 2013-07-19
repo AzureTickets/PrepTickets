@@ -11,7 +11,7 @@ class SprocketsBuilder
 
     unless app.development?
       # sprockets.css_compressor = :yui
-      sprockets.js_compressor = :uglifier
+      sprockets.js_compressor = Uglifier.new(mangle: false)
     end
 
     sprockets.append_path(root.join('js'))
