@@ -32,8 +32,8 @@ appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, configSe
 
           # $rootScope.init();
         (err) ->
-          $rootScope.loginErr = err;
-        )
+          $rootScope.loginErr = err
+      )
     else
       # login by account
       $rootScope.auth.signin(
