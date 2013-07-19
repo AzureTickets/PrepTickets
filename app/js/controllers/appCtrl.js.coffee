@@ -4,6 +4,7 @@ appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, configSe
   $rootScope.auth = authService
   $rootScope.cookie = $cookieStore
   $rootScope.config = configService
+  $rootScope.error = errorService
 
   $rootScope.$on 'flash:message', (_, messages, done) ->
     $rootScope.messages = messages
