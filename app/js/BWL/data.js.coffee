@@ -10,16 +10,40 @@ class @BWL.Data
   @InvokeService: (method, url, data, successCallback, errorCallback=BWL.Data.ServiceFailedCallback) ->
     method = method.toUpperCase()
 
-    if method == "POST" || method == "PUT"
-      # if this is a JS object, convert to JSON, else just pass the data as form data
-      if typeof (data) == 'object' 
+    requestConfig = 
+      url : url
+      method : method
+
+    if (method == "POST" || method == "PUT")
+      contentType = "";
+
+      # // if this is a JS object, convert to JSON, else just pass the data as
+      # // form data
+      if typeof data == 'object'
         contentType = "application/json";
-        data        = BWL.DataAccess.Obj2JSON(data);
+        data = JSON.stringify(data);
       else
-        contentType = "application/x-www-form-urlencoded"
+        contentType = "application/x-www-form-urlencoded";
       
 
+      # // setup for posting data
+      requestConfig.headers =
+        "Content-Type" : contentType
+        "Content-Length" : data.length
+      
+      requestConfig.data = data
+
     host = BWL.URL.getHost(url)
+    xhd = @xhdList[host]
+
+    unless xhd?
+      xhd = new BWL.Plugins.easyXDM.Rpc({
+          remote : host + "/embed/Plugins/easyXDM/cors.html",
+        }, {
+          remote : 
+            request : {}
+        })
+      @xhdList[host] = xhd
 
     internalErrorCallback = (resp) =>
       BWL.Loading.Stop()
@@ -34,22 +58,18 @@ class @BWL.Data
       
       errorCallback?(BWL.t('DataAccess.Error', msg: msg), resp);
 
-    
-    xhd = new BWL.$.ajax(
-      url: url
-      method: method
-      type:'json'
-      data: data if data?
-      crossOrigin: true
-      success: (resp) =>
-        if resp.Message == BWL.t("DataAccess.ServerMessage.OK", defaultValue:"OK")
-          # the request worked, return the object
-          successCallback?(BWL.DataAccess.JSON2Obj(resp.Object), resp)
-        else 
-          internalErrorCallback(resp)
-      error: (resp) =>
-        internalErrorCallback(resp)
-
+    # // send the request
+    xhd.request(requestConfig,
+      (resp) ->
+        modelObj = JSON.parse(resp.data)
+        
+        if modelObj.Message == BWL.t("DataAccess.ServerMessage.OK", defaultValue:"OK")
+          successCallback(BWL.DataAccess.JSON2Obj(modelObj.Object), modelObj)
+        else
+          internalErrorCallback(modelObj)
+      (error) ->
+        internalErrorCallback(modelObj)
     )
+    
   @ServiceFailedCallback: (msg, response) ->
     BWL.UI.Alert "Service FAILURE: #{msg}"
