@@ -5,5 +5,6 @@
     done()
   
   $rootScope.$on "$routeChangeError", (event, current, previous, rejection) ->
+    console.warn rejection if console?
     errorService.log "Route Change Error: #{rejection}"
 ])
