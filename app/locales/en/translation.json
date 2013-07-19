@@ -10,6 +10,12 @@
       "401" : "UNAUTHORIZED 401 SECURITY ERROR"
     }
   },
+  "Signin":{
+    "Title": "Signin"
+  },
+  "Signup":{
+    "Title": "Signup"
+  },
   "Common": {
     "Loading": "Please Wait..."
   }

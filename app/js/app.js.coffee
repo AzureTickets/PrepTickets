@@ -6,6 +6,9 @@
     .when '/',
       templateUrl: 'views/stores/index.html'
       controller: 'storeCtrl'
+    .when '/signin',
+      templateUrl: 'views/auth/signin.html'
+      controller: 'authCtrl'
     .otherwise
       redirectTo: '/'
 ])

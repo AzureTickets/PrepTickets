@@ -1,6 +1,6 @@
 # authentication service
-@prepTickets.factory 'authService', ['configService', '$q', '$rootScope', 'modelService', '$cookieStore',
-  (configService, $q, $rootScope, modelService, $cookieStore) ->
+@prepTickets.factory 'authService', ['configService', '$q', '$rootScope', 'modelService', '$cookieStore', "$window",
+  (configService, $q, $rootScope, modelService, $cookieStore, $window) ->
     _clientKey = _domainProfile = null
 
     # 
@@ -76,12 +76,12 @@
     loadProfile : (clientKey) ->
       def = $q.defer()
 
-      BWL.ClientKey = clientKey
-      _clientKey = clientKey
+      # BWL.ClientKey = clientKey
+      # _clientKey = clientKey
 
-      BWL.Auth.LoadProfile(
-        ->
-          $rootScope.$apply(def.resolve)
+      BWL.Services.Account.GetProfile(
+        (profile)->
+          $rootScope.$apply(def.resolve(profile))
         (err) ->
           $rootScope.$apply(->
             def.reject(err)
@@ -90,21 +90,26 @@
 
       def.promise
     
-    logonByProvider : (provider) ->
+    signinByProvider : (provider) ->
       def = $q.defer()
 
-      BWL.Auth.ClientKey = _clientKey
-      BWL.Auth.PopupHeight = configService.popupAuthHeight
-      BWL.Auth.PopupWidth = configService.popupAuthWidth
+      # BWL.Auth.ClientKey = _clientKey
+      # BWL.Auth.PopupHeight = configService.popupAuthHeight
+      # BWL.Auth.PopupWidth = configService.popupAuthWidth
+      
 
       BWL.Services.Account.GetProfile(
         (profile) ->
           if (profile.DomainProfileId != 0)
             $rootScope.$apply(def.resolve)
           else
-            BWL.Auth.Logon(provider, 
-              ->
-                $rootScope.$apply(def.resolve)
+            BWL.Services.Auth.BeginAuth(
+              provider,
+              configService.clientKey,
+              'HTML',
+              encodeURIComponent($window.location.href),
+              (profile) ->
+                $window.location.href = profile.AuthURL
               (err) ->
                 $rootScope.$apply(->
                   def.reject(err)
@@ -134,7 +139,7 @@
 
       def.promise
     
-    logon : (account) ->
+    signon : (account) ->
       def = $q.defer()
 
       BWL.Services.Account.Logon(account, 
@@ -149,7 +154,7 @@
       def.promise
 
     
-    logoff : ->
+    signoff : ->
       def = $q.defer()
 
       BWL.Services.Account.Logoff(->
@@ -202,4 +207,4 @@
     isLogged : ->
       $cookieStore.get(configService.cookies.loggedStatus)?
 
-  ]
+]

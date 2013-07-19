@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="span5 offset1" ng-init="loadAuthProviders()">
+    <h3>{{'Signin.Title' | t:'Signin'}}</h3>
+    <ul class="socialicons color">
+      <li ng-repeat="provider in authProviders">
+        <a href="" ng-class="provider | lowercase" ng-click="signin(provider)">{{provider}}</a>
+      </li>
+    </ul>
+  </div>
+  <div class="span5">
+    <h3>{{'Signup.Title' | t:"Signup"}}</h3>
+  </div>
+</div>
+
