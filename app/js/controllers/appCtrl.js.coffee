@@ -1,5 +1,6 @@
 appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, configService, errorService, flash, authService) ->
   $rootScope.errors = []
+  $rootScope.AccountProfile = {}
   $rootScope.auth = authService
   $rootScope.cookie = $cookieStore
   $rootScope.config = configService
@@ -35,14 +36,15 @@ appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, configSe
         )
     else
       # login by account
-      $rootScope.auth.logonAsync(
+      $rootScope.auth.signin(
         Email : $rootScope.AccountProfile.Email,
         PasswordHash : BWL.Plugins.MD5($rootScope.AccountProfile.Password)
       ).then(
-        () ->
+        (result) ->
+          flash 'Successfully signed in'
           $rootScope.auth.authenticate($rootScope)
         (err) ->
-          $rootScope.loginErr = err
+          flash 'danger', err
       )
 )
 

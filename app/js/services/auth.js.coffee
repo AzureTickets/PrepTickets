@@ -139,15 +139,15 @@
 
       def.promise
     
-    signon : (account) ->
+    signin : (account) ->
       def = $q.defer()
 
       BWL.Services.Account.Logon(account, 
         ->
           $rootScope.$apply(def.resolve)
-        (err) ->
+        (err, resp) ->
           $rootScope.$apply(->
-            def.reject(err)
+            def.reject(resp.Message)
           )
       )
 

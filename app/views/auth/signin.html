@@ -1,6 +1,15 @@
 <div class="row">
   <div class="span5 offset1" ng-init="loadAuthProviders()">
     <h3>{{'Signin.Title' | t:'Signin'}}</h3>
+    <form ng-submit="signin()">
+      <div>
+        <input type="text" placeholder="email" ng-model="AccountProfile.Email">      
+      </div>
+      <div>
+        <input type="password" placeholder="password" ng-model="AccountProfile.Password">        
+      </div>
+      <button class="btn btn-primary">Signin</button>
+    </form>
     <ul class="socialicons color">
       <li ng-repeat="provider in authProviders">
         <a href="" ng-class="provider | lowercase" ng-click="signin(provider)">{{provider}}</a>
