@@ -1,4 +1,4 @@
-@prepTickets.factory 'flash', ($rootScope, $timeout) ->
+flash = @prepTickets.factory 'flash', ($rootScope, $timeout) ->
   messages = []
   reset = null
 
@@ -20,3 +20,5 @@
     level: level, text: text 
 
   return (level, text) -> emit(messages.push(asMessage(level, text)))
+
+flash.$inject = ["$rootScope", "$timeout"]
