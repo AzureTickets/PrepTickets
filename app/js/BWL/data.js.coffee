@@ -68,7 +68,7 @@ class @BWL.Data
         else
           internalErrorCallback(modelObj)
       (error) ->
-        internalErrorCallback(modelObj)
+        internalErrorCallback(error)
     )
     
   @ServiceFailedCallback: (msg, response) ->
