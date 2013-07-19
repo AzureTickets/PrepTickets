@@ -10,9 +10,9 @@
       </div>
     </div>
   </form>
-  <div id="schoolList" ng-repeat="store in stores"> 
+  <div id="schoolList" ng-repeat="store in store.getStores()"> 
     <div class="store well" id="{{store.StoreKey}}">
-      <a href="/#/store{{store.URI}}">
+      <a href="" ng-click="goToStore({URI:store.URI})">
         {{store.SearchText}}
       </a>
     </div>
