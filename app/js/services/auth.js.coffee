@@ -13,7 +13,7 @@
       _this = this
       def = $q.defer()
 
-      if (@isDomainProfileReady())
+      unless @isDomainProfileReady()
         @loadProfile(configService.clientKey).then(
           =>
             $scope.DomainProfile = @getDomainProfile()
@@ -24,7 +24,7 @@
               def.reject(err)
             )
         )
-      else if @isDomainProfileReady()
+      else
         def.resolve()
 
       def.promise
