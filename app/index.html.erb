@@ -6,17 +6,15 @@
   <meta name="viewport" content="width=device-width">
   <title>Prep Tickets</title>
   <%= stylesheet_link_tag "app.css" %>
-</head>
-<body ng-app="prepTickets">
-  <!--[if lt IE 7]>
-    <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-  <![endif]-->
-
   <!--[if lt IE 9]>
     <script src="app/lib/es5-shim/es5-shim.js"></script>
     <script src="app/lib/json3/lib/json3.min.js"></script>
   <![endif]-->
-
+</head>
+<body ng-app="prepTickets" ng-controller="appCtrl">
+  <!--[if lt IE 7]>
+    <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+  <![endif]-->
   <header>
     <div class="container">
       <div class="row">
@@ -47,6 +45,7 @@
   </header>
   
   <div id="main" class="container">
+    <flashmessages></flashmessages>
     <div ng-view="">
       <!-- Content should all load within here -->
     </div>

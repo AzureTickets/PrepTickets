@@ -11,7 +11,6 @@
     $scope.search = (q)->
       storeService.searchStores($scope.query).then(
         (stores) ->
-          console.log "Stores are: ", stores
           $scope.stores = stores
         (err) ->
           console.log err
