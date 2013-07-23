@@ -29,7 +29,7 @@ class @BWL.Data
       # // setup for posting data
       requestConfig.headers =
         "Content-Type" : contentType
-        "Content-Length" : data.length
+        # "Content-Length" : data.length
       
       requestConfig.data = data
 
