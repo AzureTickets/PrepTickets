@@ -190,6 +190,91 @@ class @BWL.Services.Download
     uri = "#{BWL.API_URL}/download.svc/{0}/qrcode/{1}/{2}".format(storeKey, inventoryType, inventoryKey)
     BWL.InvokeService("GET", uri, null, successCallback, errorCallback); 
 
+class @BWL.Services.Geo
+  @ReadContinent: (continentKey, successCallback, errorCallback) ->
+    uri = 'http://geo.azuretickets.com/geo.svc/continent/{0}'.format(continentKey)
+    BWL.InvokeService('GET', uri, null, successCallback, errorCallback)
+
+  @ListContinents: (successCallback, errorCallback) ->
+    BWL.InvokeService('GET',
+            'http://geo.azuretickets.com/geo.svc/continents', null,
+            successCallback, errorCallback)
+  
+  @ReadCountry: (countryKey, successCallback, errorCallback) ->
+    uri = 'http://geo.azuretickets.com/geo.svc/country/{0}'.format(countryKey)
+    BWL.InvokeService('GET', uri, null, successCallback, errorCallback)
+
+  @FindCountryByISO: (countryISO, successCallback, errorCallback) ->
+    uri = 'http://geo.azuretickets.com/geo.svc/country/iso/{0}'.format(countryISO)
+    BWL.InvokeService('GET', uri, null, successCallback, errorCallback)
+
+  @ListCountries: (successCallback, errorCallback) ->
+    BWL.InvokeService('GET',
+            'http://geo.azuretickets.com/geo.svc/countries', null,
+            successCallback, errorCallback)
+  
+  @ListCountriesByContinent: (continentISO, successCallback, errorCallback) ->
+    uri = 'http://geo.azuretickets.com/geo.svc/countries/{0}'.format(continentISO)
+    BWL.InvokeService('GET', uri, null, successCallback, errorCallback)
+
+  @ReadCurrency: (currencyKey, successCallback, errorCallback) ->
+    uri = 'http://geo.azuretickets.com/geo.svc/currency/{0}'.format(currencyKey)
+    BWL.InvokeService('GET', uri, null, successCallback, errorCallback)
+
+  @ListCurrencies: (successCallback, errorCallback) ->
+    BWL.InvokeService('GET',
+            'http://geo.azuretickets.com/geo.svc/currencies', null,
+            successCallback, errorCallback)
+  
+  @ReadRegion: (regionKey, successCallback, errorCallback) ->
+    uri = 'http://geo.azuretickets.com/geo.svc/region/{0}'.format(regionKey)
+    BWL.InvokeService('GET', uri, null, successCallback, errorCallback)
+  
+  @FindRegionByISO: (countryISO, regionISO, successCallback, errorCallback) ->
+    uri = 'http://geo.azuretickets.com/geo.svc/region/iso/{0}/{1}'.format(countryISO, regionISO)
+    BWL.InvokeService('GET', uri, null, successCallback, errorCallback)
+  
+  @ListRegionsByCountry: (countryISO, successCallback, errorCallback) ->
+    uri = 'http://geo.azuretickets.com/geo.svc/regions/{0}'.format(countryISO)
+    BWL.InvokeService('GET', uri, null, successCallback, errorCallback)
+  
+  @ReadCity: (cityKey, successCallback, errorCallback) ->
+    uri = 'http://geo.azuretickets.com/geo.svc/city/{0}'.format(cityKey)
+    BWL.InvokeService('GET', uri, null, successCallback, errorCallback)
+  
+  @ListCitiesByRegion: (countryISO, regionISO, successCallback, errorCallback) ->
+    uri = 'http://geo.azuretickets.com/geo.svc/cities/{0}/{1}'.format(countryISO, regionISO)
+    BWL.InvokeService('GET', uri, null, successCallback, errorCallback)
+  
+  @FindCity: (name, countryISO, regionISO, successCallback, errorCallback) ->
+    uri = 'http://geo.azuretickets.com/geo.svc/city/search/{1}/{2}?name={0}'.format(name, countryISO, regionISO)
+    BWL.InvokeService('GET', uri, null, successCallback, errorCallback)
+  
+  @FindCities: (name, countryISO, regionISO, successCallback, errorCallback) ->
+    uri = 'http://geo.azuretickets.com/geo.svc/cities/search/{1}/{2}?name={0}'.format(name, countryISO, regionISO)
+    BWL.InvokeService('GET', uri, null, successCallback, errorCallback)
+  
+  @ReadPostal: (postalKey, successCallback, errorCallback) ->
+    uri = 'http://geo.azuretickets.com/geo.svc/postal/{0}'.format(postalKey)
+    BWL.InvokeService('GET', uri, null, successCallback, errorCallback)
+  
+  @FindPostalCode: (countryISO, code, successCallback, errorCallback) ->
+    uri = 'http://geo.azuretickets.com/geo.svc/postal/{0}/{1}'.format(countryISO, code)
+    BWL.InvokeService('GET', uri, null, successCallback, errorCallback)
+
+  @ReadTimezone: (timezoneKey, successCallback, errorCallback) ->
+    uri = 'http://geo.azuretickets.com/geo.svc/timezone/{0}'.format(timezoneKey)
+    BWL.InvokeService('GET', uri, null, successCallback, errorCallback)
+
+  @ListTimezones: (successCallback, errorCallback) ->
+    BWL.InvokeService('GET',
+            'http://geo.azuretickets.com/geo.svc/timezones', null,
+            successCallback, errorCallback)
+  
+  @ListTimezonesByCountryISO: (countryISO, successCallback, errorCallback) ->
+    uri = 'http://geo.azuretickets.com/geo.svc/timezones/{0}'.format(countryISO)
+    BWL.InvokeService('GET', uri, null, successCallback, errorCallback)
+
 class @BWL.Services.Inventory 
   @AddInventoryItems: (storeKey, type, key, quantity, successCallback, errorCallback) ->
     uri = "#{BWL.API_URL}/inventory.svc/{0}/{1}/{2}/{3}".format(storeKey, type, key, quantity)
