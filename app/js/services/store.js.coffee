@@ -5,7 +5,8 @@
       '$rootScope',
       'modelService',
       'configService',
-      ($q, $rootScope, modelService, configService) ->
+      '$cookieStore'
+      ($q, $rootScope, modelService, configService, $cookieStore) ->
         _stores = []
         _lastAvailableURI = null
 
@@ -14,7 +15,6 @@
 
           BWL.Services.SearchIndex.SearchType("Store", query, "", "", 
             (stores) ->
-              console.log stores
               _stores = if angular.isArray(stores) then stores else []
 
               $rootScope.$apply(->
@@ -27,6 +27,16 @@
           )
 
           def.promise
+
+        cacheTheKey: (key) ->
+          $cookieStore.put($rootScope.config.cookies.storeKey, key)
+          key
+        isSameAsCachedKey: (key) ->
+          key? && @getCachedKey() == key
+        clearTheKey: () ->
+          $cookieStore.remove($rootScope.config.cookies.storeKey)
+        getCachedKey: () ->
+          $cookieStore.get($rootScope.config.cookies.storeKey)
 
         listStores : (levels) ->
           def = $q.defer()
@@ -54,6 +64,9 @@
         
         getStore : ->
           modelService.getInstanceOf('Store')
+
+        getBlankStore : ->
+          modelService.getInstanceOf('Store')
         
         # 
         # Find for existent URIs.
@@ -63,7 +76,6 @@
         # 
         getStoreKeyByURI : (uri) ->
           def = $q.defer()
-
           BWL.Services.Store.FindStoreKeyFromCustomURI(
             uri
             (storeKey) ->
@@ -145,7 +157,7 @@
                     )
               
 
-              unless angular.isArray(store.PaymentProviders) || store.PaymentProviders.length == 0
+              unless angular.isArray(store.PaymentProviders) && store.PaymentProviders.length == 0
                 _finishes()
               else 
                 # we handle only one PaymentProvider per Store

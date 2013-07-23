@@ -6,7 +6,7 @@
     .when '/',
       templateUrl: 'views/stores/index.html'
       controller: 'storeCtrl'
-    .when '/school/:storeUrl',
+    .when '/school/:storeURI',
       templateUrl: 'views/stores/show.html'
       controller: 'storeCtrl'
     .when '/signin',

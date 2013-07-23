@@ -1,10 +1,13 @@
-appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, configService, errorService, flash, authService) ->
+appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, configService, errorService, flash, authService, storeService) ->
   $rootScope.errors = []
-  $rootScope.AccountProfile = {}
+  $rootScope.StoreObj = storeService.getBlankStore()
+  
   $rootScope.auth = authService
   $rootScope.cookie = $cookieStore
   $rootScope.config = configService
   $rootScope.error = errorService
+  $rootScope.DomainProfile = $rootScope.auth.getDomainProfile()
+  $rootScope.AccountProfile = $rootScope.auth.getAccountProfile()
 
   $rootScope.$on 'flash:message', (_, messages, done) ->
     $rootScope.messages = messages
@@ -17,7 +20,9 @@ appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, configSe
   $rootScope.getProfile = ->
     $rootScope.auth.loadProfile().then(
       (profile) -> 
-        console.log profile
+        console.log "Login profile: ", profile
+        $rootScope.DomainProfile = profile
+        $rootScope.auth.setDomainProfile(profile)
       (err) ->
         errorService.log(err)
     )
@@ -27,9 +32,9 @@ appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, configSe
       # login by provider
       $rootScope.auth.signinByProvider(provider).then(
         (result) ->
-          console.log result
-          $rootScope.DomainProfile = $rootScope.auth.getDomainProfile();
-          $cookieStore.put($rootScope.config.cookies.loggedStatus, true);
+          $rootScope.getProfile
+          # $rootScope.DomainProfile = $rootScope.auth.getDomainProfile();
+          # $cookieStore.put($rootScope.config.cookies.loggedStatus, true);
 
           # $rootScope.init();
         (err) ->
@@ -43,10 +48,11 @@ appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, configSe
       ).then(
         (result) ->
           flash 'Successfully signed in'
+          $rootScope.getProfile()
           $rootScope.auth.authenticate($rootScope)
         (err) ->
           flash 'danger', err
       )
 )
 
-appCtrl.$inject = ["$rootScope", "$cookieStore", "configService", "errorService", "flash", "authService"]
+appCtrl.$inject = ["$rootScope", "$cookieStore", "configService", "errorService", "flash", "authService", "storeService"]
