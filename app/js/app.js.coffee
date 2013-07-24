@@ -12,6 +12,9 @@
     .when '/school/:storeURI/event/:eventURI',
       templateUrl: 'views/events/show.html'
       controller: 'eventCtrl'
+    .when '/cart',
+      templateUrl: 'views/cart/index.html'
+      controller: 'cartCtrl'
     .when '/signin',
       templateUrl: 'views/auth/signin.html'
       controller: 'authCtrl'

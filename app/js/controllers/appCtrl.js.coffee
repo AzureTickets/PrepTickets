@@ -1,4 +1,4 @@
-appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, configService, errorService, flash, authService, storeService, CartService) ->
+appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, configService, errorService, flash, authService, storeService, CartService, $location) ->
   $rootScope.errors = []
   
   $rootScope.auth = authService
@@ -20,6 +20,10 @@ appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, configSe
       rejection = rejection.message if rejection.message?
       rejection = rejection.Message if rejection.Message?
     errorService.log "Route Change Error: #{rejection}"
+
+  $rootScope.goToCart = ->
+    console.log 'redirect to /cart'
+    $location.path("cart")
 
   $rootScope.getProfile = ->
     $rootScope.auth.loadProfile().then(
@@ -59,4 +63,4 @@ appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, configSe
       )
 )
 
-appCtrl.$inject = ["$rootScope", "$cookieStore", "configService", "errorService", "flash", "authService", "storeService", "CartService"]
+appCtrl.$inject = ["$rootScope", "$cookieStore", "configService", "errorService", "flash", "authService", "storeService", "CartService", "$location"]

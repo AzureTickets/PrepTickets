@@ -1,25 +1,31 @@
 <div id="event" ng-init="loadEvent()" ng-show="EventObj">
   {{StoreObj.Name}}: {{EventObj.Name}}
   <div class="eventDetails">
-    
-
+    <p>{{EventObj.Description}}</p>
     <h3>Tickets</h3>
-    <table class="table">
-      <tr>
-        <th class="span8">Ticket Name</th>
-        <th class="span2">Cost</th>
-        <th class="span2">Quantity</th>
-      </tr>
-      <tr class="tickets" ng-repeat="ticket in EventObj.Items">
-        <td>{{ticket.Name}}</td>
-        <td>{{ticket.Price.Display}}</td>
-        <td class="">
-          <input type="number" min='0' max="99" ng-model="ticket.quantity" class="span1"/>
-          <a href="" class="btn" title="Add/Update cart" 
-            ng-click="addToCart({StoreKey: StoreObj.Key, Key:ticket.Key, Type:ticket.Type, Quantity:ticket.quantity})"><i class="icon-plus-sign"></i>{{quantity}}</a>
-        </td>
-      </tr>
-    </table>
+    <form action="" ng-submit="saveCart()">
+      <table class="table">
+        <tr>
+          <th class="span8">Ticket Name</th>
+          <th class="span2">Cost</th>
+          <th class="span2">Quantity</th>
+        </tr>
+        <tr class="items" ng-repeat="item in EventObj.Items">
+          <td>{{item.Name}}</td>
+          <td>{{item.Price.Display}}</td>
+          <td class="">
+            <input type="number" min='0' max="99" ng-model="CurrentCart.Items[item.Key].Quantity" class="span1"/>
+          </td>
+        </tr>
+      </table>
+      <div class="row">
+        <div class="offset10 span2">
+          <a href="" class="btn btn-success btn-large" ng-click="saveCart()">
+            <i class="icon-shopping-cart"></i> Add to Cart
+          </a>
+        </div>
+      </div>
+    </form>
   </div>
   <a href="" class="btn" ng-click="goBackToStore()"><i class="icon-arrow-left"></i> Back to {{StoreObj.Name}}</a>
 </div>

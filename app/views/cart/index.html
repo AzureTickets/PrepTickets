@@ -1,0 +1,36 @@
+<div id="cart" ng-init="setupCart()">
+  <h2>Your cart</h2>
+  <div ng-repeat="cart in CartObj">
+    <h3>Cart for {{cart.StoreName}}</h3>
+    <table class="table">
+      <tr>
+        <th>
+          Event Name
+        </th>
+        <th>
+          Price
+        </th>
+        <th>Quantity</th>
+        <th>Total</th>
+      </tr>
+      <tr ng-repeat="item in cart.Items">
+        <td class="span9">
+          {{cart.EventName}} - {{item.Name}}
+        </td>
+        <td class="span1">
+          {{item.Price | currency}}
+        </td>
+        <td class="span1">
+          <input type="number" ng-model="item.Quantity" min="0" class="input-mini">
+        </td>
+        <td class="span1">
+          {{item.Total() | currency}}
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="row">
+    <a href="" class="btn btn-primary btn-large offset10" ng-click="checkout()" ng-show="CartObj"><i class="icon-shopping-cart"></i> Checkout</a>
+    
+  </div>
+</div>
