@@ -1,6 +1,5 @@
 appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, configService, errorService, flash, authService, storeService) ->
   $rootScope.errors = []
-  $rootScope.StoreObj = storeService.getBlankStore()
   
   $rootScope.auth = authService
   $rootScope.cookie = $cookieStore
