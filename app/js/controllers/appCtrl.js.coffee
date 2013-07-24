@@ -14,6 +14,10 @@ appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, configSe
   
   $rootScope.$on "$routeChangeError", (event, current, previous, rejection) ->
     console.warn rejection if console?
+    if typeof rejection is 'object'
+      rejection = "Page you were looking for is not found" if rejection.status? && rejection.status == 404
+      rejection = rejection.message if rejection.message?
+      rejection = rejection.Message if rejection.Message?
     errorService.log "Route Change Error: #{rejection}"
 
   $rootScope.getProfile = ->
