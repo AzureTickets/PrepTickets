@@ -8,6 +8,7 @@
       '$cookieStore'
       ($q, $rootScope, modelService, configService, $cookieStore) ->
         _stores = []
+        _currentStore = modelService.getInstanceOf('Store')
         _lastAvailableURI = null
 
         searchStores: (query) ->
@@ -62,8 +63,17 @@
         getStores : ->
           _stores
         
-        getStore : ->
-          modelService.getInstanceOf('Store')
+        getStore : (storeKey) ->
+          def = $q.defer()
+          storeKey = @getCachedKey() unless storeKey?
+          def.resolve(_currentStore) if _currentStore?.storeKey == storeKey
+          @initStore(storeKey).then(
+            (store) -> 
+              _currentStore = store
+              def.resolve(store)
+            (err) -> def.reject(err)
+          )
+          def.promise
 
         getBlankStore : ->
           modelService.getInstanceOf('Store')
@@ -91,46 +101,6 @@
 
           def.promise
         
-        getURISuggestion : (suggestion, count, def) ->
-          def ?= $q.defer()
-          # // check URI availability and regenerate if exists
-          count ?= 0
-          maxCount = 20
-          suggestion = if count > 0 then suggestion + String.valueOf(count) else suggestion
-
-          @getStoreKeyByURI(suggestion).then(
-            (storeKey) =>
-              if (storeKey? != '')
-                # existing URI, generate extra string
-                return @getURISuggestion(suggestion, count++, def) unless (maxCount > count)
-                def.reject(BWL.t('System.Error', msg: 'maximum iteration achieved'))
-               else
-                # URI not found, proceed to creation
-                def.resolve(h)
-              
-           (err) ->
-             def.reject(err)
-          )
-
-          def.promise
-        
-        createStore : (store) ->
-          def = $q.defer()
-
-          BWL.Services.Model.Create(
-            configService.container.store, @getStore().Type,
-            store, (storeKey) ->
-              $rootScope.$apply(->
-                def.resolve(storeKey)
-              )
-            (err) ->
-              $rootScope.$apply(->
-                def.reject(err)
-              )
-            )
-
-          def.promise
-        
         initStore: (storeKey) ->
           def = $q.defer()
 
@@ -138,10 +108,11 @@
             configService.container.store
             "Store"
             storeKey
-            configService.defaultDepth
+            4
             (store) ->
               store.Address = modelService.getInstanceOf('Address') unless store.Address?
               store.URI = store.StoreURIs?[0]?.URI
+              _currentStore = store
 
               _finishes = ->
                 BWL.Services.Geo.ReadCurrency(
@@ -183,6 +154,50 @@
           )
 
           def.promise
+
+
+        ##TODO: everything below this comment is not being used by Andrew and should be reviewed
+        getURISuggestion : (suggestion, count, def) ->
+          def ?= $q.defer()
+          # // check URI availability and regenerate if exists
+          count ?= 0
+          maxCount = 20
+          suggestion = if count > 0 then suggestion + String.valueOf(count) else suggestion
+
+          @getStoreKeyByURI(suggestion).then(
+            (storeKey) =>
+              if (storeKey? != '')
+                # existing URI, generate extra string
+                return @getURISuggestion(suggestion, count++, def) unless (maxCount > count)
+                def.reject(BWL.t('System.Error', msg: 'maximum iteration achieved'))
+               else
+                # URI not found, proceed to creation
+                def.resolve(h)
+              
+           (err) ->
+             def.reject(err)
+          )
+
+          def.promise
+        
+        createStore : (store) ->
+          def = $q.defer()
+
+          BWL.Services.Model.Create(
+            configService.container.store, @getStore().Type,
+            store, (storeKey) ->
+              $rootScope.$apply(->
+                def.resolve(storeKey)
+              )
+            (err) ->
+              $rootScope.$apply(->
+                def.reject(err)
+              )
+            )
+
+          def.promise
+        
+        
         
         addStoreURI: (storeKey, uri) ->
           def = $q.defer()

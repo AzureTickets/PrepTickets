@@ -45,17 +45,13 @@
         )
 
     $scope.initStore = (storeKey) ->
-      if storeKey?
-        $scope.store.initStore(storeKey).then(
-          (store, currency) ->
-            if storeService.isSameAsCachedKey(store.Key)
-              console.log store, currency
-              $scope.StoreObj = store
-            else
-              storeService.clearTheKey()
-              $scope.loadStore()
-          (err) ->
-            $scope.error.log(err)
-        )
+      console.log "init store #{storeKey}"
+      $scope.store.getStore(storeKey).then(
+        (store) ->
+          $scope.StoreObj = store    
+        (err) ->
+          $scope.error.log err
+      )
+      
     
 ])
