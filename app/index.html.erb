@@ -30,9 +30,9 @@
             <span class="icon-bar"></span>
           </a>
           <ul class="nav nav-collapse collapse">
-            <li class="active"><a href="#">Home</a></li>
+            <li class=""><a href="#">Home</a></li>
             <li class="divider-vertical"></li>
-            <li><a href="#">My Cart</a></li>
+            <li><a href="#" ng-click="goToCart()">My Cart ({{cart.count()}})</a></li>
             <li class="divider-vertical"></li>
           </ul>
           <ul class="nav nav-collapse collapse pull-right" ng-init="getProfile()">
