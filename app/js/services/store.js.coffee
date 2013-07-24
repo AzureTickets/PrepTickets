@@ -100,6 +100,24 @@
           )
 
           def.promise
+
+        getStoreByURI: (uri) ->
+          def = $q.defer()
+          if _currentStore.URI == uri
+            def.resolve(_currentStore) 
+          else
+            BWL.Services.Store.FindStoreKeyFromCustomURI(
+              uri
+              (storeKey) =>
+                _lastAvailableURI = uri if storeKey?.trim() == ''
+                def.resolve(@getStore(storeKey))
+              (err) ->
+                $rootScope.$apply(->
+                  def.reject(err)
+                )
+            )
+
+          def.promise
         
         initStore: (storeKey) ->
           def = $q.defer()

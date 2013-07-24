@@ -29,13 +29,15 @@
       storeService.cacheTheKey(obj.key)
       $location.path("school#{obj.URI}")
 
+    $scope.goToEvent = (routeObj) ->
+      $location.path("school/#{$routeParams.storeURI}/event/#{routeObj.URI}")      
+
     $scope.loadStore = ->
       if (storeKey = storeService.getCachedKey())?
         $scope.$emit('initStore', storeKey)
       else
         $scope.store.getStoreKeyByURI("#{$routeParams.storeURI}").then(
           (storeKey) ->
-            $scope.storeURI = $routeParams.storeURI
             storeService.cacheTheKey(storeKey)
             $scope.$emit('initStore', storeKey)
           (err) ->

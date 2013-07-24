@@ -1,0 +1,19 @@
+<div id="event" ng-init="loadEvent()" ng-show="EventObj">
+  {{StoreObj.Name}}: {{EventObj.Name}}
+  <div class="eventDetails">
+    
+
+    <h3>Tickets</h3>
+    <table class="table">
+      <tr>
+        <th class="span10">Ticket Name</th>
+        <th class="span2">Cost</th>
+      </tr>
+      <tr class="tickets" ng-repeat="ticket in EventObj.Items">
+        <td>{{ticket.Name}}</td>
+        <td>{{ticket.Price.Display}}</td>
+      </tr>
+    </table>
+  </div>
+  <a href="" class="btn" ng-click="goBackToStore()"><i class="icon-arrow-left"></i> Back to {{StoreObj.Name}}</a>
+</div>
