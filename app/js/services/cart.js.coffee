@@ -1,30 +1,32 @@
 CartService = @prepTickets.factory('CartService', ($cookieStore, storeService) ->
-  _cart = []
+  _cart = {}
 
   getCartObj: ->
     _cart
 
   addCart: (cart) ->
-    @deleteCartForStore(cart.StoreKey)
-    _cart.push(cart)
+    @dropQuantityZeroItems(cart)
+    return _cart = cart if _cart.StoreKey != cart.StoreKey
+    @updateItems(cart)
+    _cart
 
-  deleteCartForStore: (key) ->
-    idx = @findCartIndexForStore(key)
-    _cart.splice(idx, 1) if idx > 1
+  updateItems: (newCart) ->
+    console.log "updating cart", _cart, newCart
+    for key, item of newCart.Items
+      if _cart.Items[key]?
+        _cart.Items[key].Quantity += item.Quantity
+      else
+        _cart.Items[key] = item
 
-  findCartForStore: (key) ->
-    _cart[@findCartIndexForStore(key)]
-
-  findCartIndexForStore: (key) ->
-    for cart, idx in _cart
-      return idx if cart.StoreKey == key
-    return -1
+  dropQuantityZeroItems: (cart) ->
+    for key, item of cart.Items
+      delete cart.Items[key] if item.Quantity == 0
+    cart
 
   count: ->
     sum = 0
-    for cart in _cart
-      for key, item of cart.Items
-        sum += item.Quantity
+    for key, item of _cart.Items
+      sum += item.Quantity
     sum
 
 )
