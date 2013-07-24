@@ -1,10 +1,11 @@
-appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, configService, errorService, flash, authService, storeService) ->
+appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, configService, errorService, flash, authService, storeService, CartService) ->
   $rootScope.errors = []
   
   $rootScope.auth = authService
   $rootScope.cookie = $cookieStore
   $rootScope.config = configService
   $rootScope.error = errorService
+  $rootScope.cart = CartService
   $rootScope.DomainProfile = $rootScope.auth.getDomainProfile()
   $rootScope.AccountProfile = $rootScope.auth.getAccountProfile()
 
@@ -58,4 +59,4 @@ appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, configSe
       )
 )
 
-appCtrl.$inject = ["$rootScope", "$cookieStore", "configService", "errorService", "flash", "authService", "storeService"]
+appCtrl.$inject = ["$rootScope", "$cookieStore", "configService", "errorService", "flash", "authService", "storeService", "CartService"]

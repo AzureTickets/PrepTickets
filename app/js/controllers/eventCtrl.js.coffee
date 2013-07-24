@@ -11,6 +11,11 @@ eventCtrl = @prepTickets.controller("eventCtrl", ($scope, $filter, $location, $r
       )
   $scope.goBackToStore = ->
     $location.path("school/#{$scope.StoreObj.URI}")
+  $scope.addToCart = (obj) ->
+    console.log obj
+    $scope.cart.addItem(obj.StoreKey, obj.Key, obj.Type, obj.Quantity)
+  $scope.quantityFor = (obj) ->
+    $scope.cart.quantityFor(obj.StoreKey, obj.Key, obj.Type)
 )
 
 eventCtrl.$inject = ["$scope", "$filter", "$location", "$routeParams", "storeService"]

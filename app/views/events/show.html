@@ -6,12 +6,18 @@
     <h3>Tickets</h3>
     <table class="table">
       <tr>
-        <th class="span10">Ticket Name</th>
+        <th class="span8">Ticket Name</th>
         <th class="span2">Cost</th>
+        <th class="span2">Quantity</th>
       </tr>
       <tr class="tickets" ng-repeat="ticket in EventObj.Items">
         <td>{{ticket.Name}}</td>
         <td>{{ticket.Price.Display}}</td>
+        <td class="">
+          <input type="number" min='0' max="99" ng-model="ticket.quantity" class="span1"/>
+          <a href="" class="btn" title="Add/Update cart" 
+            ng-click="addToCart({StoreKey: StoreObj.Key, Key:ticket.Key, Type:ticket.Type, Quantity:ticket.quantity})"><i class="icon-plus-sign"></i>{{quantity}}</a>
+        </td>
       </tr>
     </table>
   </div>

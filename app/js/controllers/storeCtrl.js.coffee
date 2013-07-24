@@ -45,7 +45,6 @@
         )
 
     $scope.initStore = (storeKey) ->
-      console.log "init store #{storeKey}"
       $scope.store.getStore(storeKey).then(
         (store) ->
           $scope.StoreObj = store    

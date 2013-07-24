@@ -77,7 +77,8 @@
 
         getBlankStore : ->
           modelService.getInstanceOf('Store')
-        
+        getCurrentStoreKey: ->
+          _currentStore?.Key
         # 
         # Find for existent URIs.
         # 
