@@ -11,7 +11,7 @@
         <p class="description">{{event.Description}}</p>
       </div>
       <div class="text-right" style="margin-top:10px">
-        <a href="" class="btn btn-success">Learn More</a>
+        <a href="" class="btn btn-success" ng-click="goToEvent({Key:event.Key, URI: event.CustomURI.URI})">Learn More</a>
       </div>
     </li>
   </ul>
