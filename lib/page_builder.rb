@@ -23,7 +23,7 @@ class PageBuilder
 
   def render_to_string
     file = File.read(page_path)
-    file = process_template(page_path.to_s) if engines.include?("erb") || is_404_error? 
+    file = process_template(page_path.to_s) if process?
     file
   end
 
@@ -83,9 +83,9 @@ class PageBuilder
   
 
   def find_file(file_name)
-    file = Dir.glob("#{root.join(file_name)}*").first
-    if file
-      Pathname(file).realpath.tap do |file|
+    found_file = Dir.glob("#{root.join(file_name)}*").first
+    if found_file
+      Pathname(found_file).realpath.tap do |file|
         @file_name = file.basename
       end
     else
@@ -127,6 +127,10 @@ class PageBuilder
 
   def four_o_four
     root.join(app.four_o_four)
+  end
+
+  def process?
+    engines.include?("erb") || is_404_error? 
   end
 
   def process_template(file_name)

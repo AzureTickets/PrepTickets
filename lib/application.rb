@@ -3,6 +3,7 @@ $LOAD_PATH << './lib'
 
 require 'sprockets_builder'
 require 'page_builder'
+require 'api_fetcher'
 require 'logger'
 require 'forwardable'
 
@@ -69,5 +70,8 @@ class Application
   end
   def page_builder
     @page ||= PageBuilder.new(self)
+  end
+  def api_fetch
+    @api ||= ApiFetcher.new(self)
   end
 end

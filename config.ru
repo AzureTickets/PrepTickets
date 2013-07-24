@@ -16,6 +16,10 @@ Application::ASSET_DIRS.each do |dir|
     run app.sprockets
   end
 end
+
+map "/api" do
+  run app.api_fetch
+end
  
 map "/" do
   run app.page_builder
