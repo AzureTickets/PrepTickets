@@ -1,11 +1,9 @@
 @prepTickets.controller("storeCtrl", [
   "$scope", 
-  "$cookieStore", 
   "$location", 
-  "$timeout", 
   "$routeParams", 
   "storeService",
-  ($scope, $cookieStore, $location, $timeout, $routeParams, storeService) ->  
+  ($scope, $location, $routeParams, storeService) ->  
     $scope.greeting = 'Hola!'
     $scope.store = storeService
     $scope.$on('initStore', 
