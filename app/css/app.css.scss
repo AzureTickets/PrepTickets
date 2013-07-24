@@ -1,6 +1,11 @@
-@import "twitter-bootstrap/bootstrap.scss";
-@import "font-awesome/font-awesome.scss";
-@import "twitter-bootstrap/responsive.scss";
+//= require twitter-bootstrap/bootstrap
+//= require font-awesome/font-awesome
+//= require twitter-bootstrap/responsive
+//= require flat-ui
+
+// @import "twitter-bootstrap/bootstrap.scss";
+// @import "font-awesome/font-awesome.scss";
+// @import "twitter-bootstrap/responsive.scss";
 
 @import "_common.css.scss";
 @import "layout.css.scss";
