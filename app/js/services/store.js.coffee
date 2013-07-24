@@ -122,54 +122,57 @@
         initStore: (storeKey) ->
           def = $q.defer()
 
-          BWL.Services.Model.Read(
-            configService.container.store
-            "Store"
-            storeKey
-            4
-            (store) ->
-              store.Address = modelService.getInstanceOf('Address') unless store.Address?
-              store.URI = store.StoreURIs?[0]?.URI
-              _currentStore = store
+          if _currentStore.Key == storeKey
+            def.resolve(_currentStore)
+          else
+            BWL.Services.Model.Read(
+              configService.container.store
+              "Store"
+              storeKey
+              4
+              (store) ->
+                store.Address = modelService.getInstanceOf('Address') unless store.Address?
+                store.URI = store.StoreURIs?[0]?.URI
+                _currentStore = store
 
-              _finishes = ->
-                BWL.Services.Geo.ReadCurrency(
-                    store.Currency, 
-                    (currency) ->
-                      $rootScope.$apply(->
-                        def.resolve(store, currency)
-                      )
-                    (err) ->
-                      $rootScope.$apply(->
-                        def.reject(err)
-                      )
-                    )
-              
-
-              unless angular.isArray(store.PaymentProviders) && store.PaymentProviders.length == 0
-                _finishes()
-              else 
-                # we handle only one PaymentProvider per Store
-                BWL.Services.Model
-                    .Read(
-                      store.Key,
-                      'PaymentProvider',
-                      store.PaymentProviders[0].Key,
-                      1,
-                      (paymentProvider) ->
-                        store.PaymentProviders[0] = paymentProvider
-                        _finishes()
+                _finishes = ->
+                  BWL.Services.Geo.ReadCurrency(
+                      store.Currency, 
+                      (currency) ->
+                        $rootScope.$apply(->
+                          def.resolve(store, currency)
+                        )
                       (err) ->
                         $rootScope.$apply(->
                           def.reject(err)
                         )
-                    )
-              
-            (err) ->
-              $rootScope.$apply(->
-                def.reject(err)
-              )
-          )
+                      )
+                
+
+                unless angular.isArray(store.PaymentProviders) && store.PaymentProviders.length == 0
+                  _finishes()
+                else 
+                  # we handle only one PaymentProvider per Store
+                  BWL.Services.Model
+                      .Read(
+                        store.Key,
+                        'PaymentProvider',
+                        store.PaymentProviders[0].Key,
+                        1,
+                        (paymentProvider) ->
+                          store.PaymentProviders[0] = paymentProvider
+                          _finishes()
+                        (err) ->
+                          $rootScope.$apply(->
+                            def.reject(err)
+                          )
+                      )
+                
+              (err) ->
+                $rootScope.$apply(->
+                  def.reject(err)
+                )
+            )
 
           def.promise
 
