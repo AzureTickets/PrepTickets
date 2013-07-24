@@ -12,7 +12,7 @@
   </form>
   <div id="schoolList" ng-repeat="store in store.getStores()"> 
     <div class="store well" id="{{store.StoreKey}}">
-      <a href="" ng-click="goToStore({URI:store.URI, key:store.Key})">
+      <a href="" ng-click="goToStore({URI:store.URI, key:store.StoreKey})">
         {{store.SearchText}}
       </a>
     </div>
