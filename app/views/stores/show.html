@@ -5,7 +5,7 @@
   <ul class="events thumbnails">
     <li class="event span4" ng-repeat="event in StoreObj.Events">
       <div class="thumbnail">
-        <a href="" ng-click="goToEvent({Key:event.Key, URI: event.CustomURI.URI})">
+        <a href="" ng-href="#/school/{{StoreObj.URI}}/event/{{event.CustomURI.URI}}">
           <h4 class="text-center">{{event.Name}}</h4>
         </a>
         <p class="description">{{event.Description}}</p>
