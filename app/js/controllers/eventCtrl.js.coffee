@@ -34,9 +34,7 @@ eventCtrl = @prepTickets.controller("eventCtrl", ($scope, $filter, $location, $r
           @Price * @Quantity
 
     $scope.CurrentCart
-        
-  $scope.goBackToStore = ->
-    $location.path("school/#{$scope.StoreObj.URI}")
+    
   $scope.saveCart = ->
     $scope.cart.replaceCart($scope.CurrentCart)
     $location.path("cart")
