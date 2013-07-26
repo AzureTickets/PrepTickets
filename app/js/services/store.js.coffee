@@ -50,11 +50,11 @@ storeService = @prepTickets.factory('storeService', ($q, $rootScope, modelServic
 
     def.promise
   
-  hasStore : ->
-    _stores?[0]?.Key?
-  
   getStores : ->
     _stores
+
+  clearSearch: ->
+    _stores = []
   
   getStore : (storeKey) ->
     def = $q.defer()
@@ -67,6 +67,10 @@ storeService = @prepTickets.factory('storeService', ($q, $rootScope, modelServic
       (err) -> def.reject(err)
     )
     def.promise
+
+  clearStore: ->
+    @clearTheKey()
+    _currentStore = null
 
   getBlankStore : ->
     modelService.getInstanceOf('Store')

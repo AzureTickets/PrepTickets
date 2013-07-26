@@ -6,7 +6,7 @@ CartService = @prepTickets.factory('CartService', (storeService, $cookieStore, c
     _cart
 
   addCart: (cart) ->
-    if _cart.StoreKey != cart.StoreKey
+    if _cart.StoreKey isnt cart.StoreKey
       @replaceCart(cart)
     else
       @dropQuantityZeroItems(cart)
@@ -20,8 +20,11 @@ CartService = @prepTickets.factory('CartService', (storeService, $cookieStore, c
     @save()
     _cart
 
+  clearCart: ->
+    @remove()
+    _cart = {}
+
   updateItems: (newCart) ->
-    console.log "updating cart", _cart, newCart
     for key, item of newCart.Items
       if _cart.Items[key]?
         _cart.Items[key].Quantity += item.Quantity
@@ -41,16 +44,18 @@ CartService = @prepTickets.factory('CartService', (storeService, $cookieStore, c
     sum
 
   save: ->
-    console.log "Saving cart #{_cart?.StoreKey}", _cart
     return false unless _cart?.StoreKey
     $cookieStore.put("#{configService.cookies.cart}:#{_cart.StoreKey}", JSON.stringify(_cart))
   load: (storeKey)->
     return _cart = {} unless storeKey?
-    return _cart if _cart?.StoreKey? is storeKey
-    console.log _cart.StoreKey, storeKey
-    console.log "Loading cart for store: #{storeKey}"
-    _cart = JSON.parse($cookieStore.get("#{configService.cookies.cart}:#{storeKey}"))
-    console.log _cart
+    return _cart if _cart?.StoreKey is storeKey
+    cartString = $cookieStore.get("#{configService.cookies.cart}:#{storeKey}")
+    _cart = JSON.parse(cartString) if cartString
+    _cart
+  remove: ->
+    return false unless _cart.StoreKey 
+    $cookieStore.remove("#{configService.cookies.cart}:#{_cart.StoreKey}")
+    true
   pushToServer: ->
     
 )

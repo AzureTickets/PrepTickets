@@ -14,6 +14,7 @@ eventCtrl = @prepTickets.controller("eventCtrl", ($scope, $filter, $location, $r
       $scope.EventObj = $filter('findByEventURI')($scope.StoreObj.Events, $routeParams.eventURI)
       $scope.buildCart()
 
+  #TODO: This might need to be inside the cart service
   $scope.buildCart = ->
     return $scope.CurrentCart if $scope.CurrentCart?
     $scope.CurrentCart = 
@@ -36,8 +37,8 @@ eventCtrl = @prepTickets.controller("eventCtrl", ($scope, $filter, $location, $r
     $scope.CurrentCart
     
   $scope.saveCart = ->
-    $scope.cart.replaceCart($scope.CurrentCart)
-    $location.path("cart")
+    $scope.cart.addCart($scope.CurrentCart)
+    $location.path("cart/#{$scope.StoreObj.Key}")
     
   $scope.quantityFor = (obj) ->
     $scope.cart.quantityFor(obj.StoreKey, obj.Key, obj.Type)
