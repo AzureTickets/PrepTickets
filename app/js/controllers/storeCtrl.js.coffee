@@ -6,7 +6,7 @@
   ($scope, $location, $routeParams, storeService) ->  
     $scope.greeting = 'Hola!'
     $scope.store = storeService
-    $scope.$on('initStore', 
+    $scope.$on 'initStore', 
       (ev, key) ->
         unless key?
           delete $scope.StoreObj
@@ -15,7 +15,7 @@
           $scope.initStore(key)
         
         ev?.stopPropagation?()
-    )
+    
 
     $scope.search = (q)->
       storeService.searchStores($scope.query).then(
