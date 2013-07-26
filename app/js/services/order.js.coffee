@@ -2,10 +2,9 @@ OrderService = @prepTickets.factory('OrderService', ($q, $rootScope, configServi
   _orders = []
   _currentOrder = {}
 
-  getOrderHistory: ->
+  getAll: ->
     def = $q.defer()
 
-    
     BWL.Services.Order.FindAllOrderHistory(
       (orders) ->
         _orders = orders
@@ -16,7 +15,7 @@ OrderService = @prepTickets.factory('OrderService', ($q, $rootScope, configServi
     
     def.promise
 
-  getOrder: (storeKey, orderKey) ->
+  get: (storeKey, orderKey) ->
     def = $q.defer()
 
     if _currentOrder.Key is orderKey
@@ -37,13 +36,13 @@ OrderService = @prepTickets.factory('OrderService', ($q, $rootScope, configServi
 
     def.promise
 
-  getLatestOrder: ->
+  getLatest: ->
     def = $q.defer()
 
-    @getOrderHistory().then(
+    @getAll().then(
       (orders) => 
         if (order = orders[0])
-          @getOrder(order.StoreKey, order.Key).then(
+          @get(order.StoreKey, order.Key).then(
             (order) ->
               def.resolve(order)
             (err) ->

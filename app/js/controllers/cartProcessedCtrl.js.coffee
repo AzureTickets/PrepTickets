@@ -1,7 +1,7 @@
 cartProcessedCtrl = @prepTickets.controller "cartProcessedCtrl", ($scope, $routeParams, ServerCartService, OrderService) ->
   $scope.storeKey = $routeParams.storeKey
   $scope.loadOrder = ->
-    OrderService.getLatestOrder().then(
+    OrderService.getLatest().then(
       (order) ->
         ServerCartService.clearCart(order.StoreKey)
         $scope.OrderObj = order

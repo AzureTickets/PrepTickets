@@ -1,0 +1,55 @@
+<div class="row loading" ng-hide="Order">
+  <div class="span4 offset3 alert"><i class="icon-spinner icon-spin icon-large"></i> Please wait while fetch your orders</div>
+</div>
+<div id="order" ng-init="loadOrder()" ng-show="Order" style="display:none;">
+  <h4>Order Details</h4>
+  <div class="row">
+    <div class="span6">
+      <div class="row">
+        <div class="span3"><b>OrderId</b></div>
+        <div class="span3">{{Order.OrderId}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span6">
+      <div class="row">
+        <div class="span3"><b>Date of Order</b></div>
+        <div class="span3">{{Order.Placed}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span6">
+      <div class="row">
+        <div class="span3"><b>Number of items</b></div>
+        <div class="span3">{{Order.InventoryItems.length}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span6">
+      <div class="row">
+        <div class="span3"><b>Total</b></div>
+        <div class="span3">{{Order.Total.ItemPrice | currency}}</div>
+      </div>
+    </div>
+  </div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tr ng-repeat="ticket in Order.InventoryItems">
+      <td class="span8">
+        {{ticket.EventName}} - {{ticket.ItemInfoName}}
+      </td>
+      <td class="span4">
+        <a href="" class="btn btn-info" ng-click=''><i class="icon-eye-open"></i> View</a>
+      </td>
+    </tr>
+  </table>
+  <a href="" class="btn" ng-href="#/orders"><i class="icon-arrow-left"></i> Back to orders</a>
+</div>

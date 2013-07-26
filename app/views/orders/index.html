@@ -1,0 +1,8 @@
+<div class="row loading" ng-hide="Orders">
+  <div class="span4 offset3 alert"><i class="icon-spinner icon-spin icon-large"></i> Please wait while fetch your orders</div>
+</div>
+<div id="orders" ng-init="loadOrders()" ng-show="Orders" style="display:none;">
+  <div class="order well" ng-repeat="order in Orders">
+    <a href="" ng-href="#/orders/{{order.StoreKey}}/{{order.Key}}">{{order.OrderId}}</a>
+  </div>
+</div>

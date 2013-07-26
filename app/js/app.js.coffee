@@ -21,6 +21,12 @@
     .when '/cart/:storeKey/processed',
       templateUrl: 'views/cart/processed.html'
       controller: 'cartProcessedCtrl'
+    .when '/orders',
+      templateUrl: 'views/orders/index.html'
+      controller: 'orderCtrl'
+    .when '/orders/:storeKey/:orderKey',
+      templateUrl: 'views/orders/show.html'
+      controller: 'orderCtrl'
     .when '/signin',
       templateUrl: 'views/auth/signin.html'
       controller: 'authCtrl'
