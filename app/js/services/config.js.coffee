@@ -11,6 +11,7 @@
   typeahead : 
     minLength : 3
   cookies : 
+    cart: "cart"
     lastPath : 'authLastPath',
     loggedStatus : 'auth',
     storeKey : 'storeKey',

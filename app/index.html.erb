@@ -31,7 +31,7 @@
           </a>
           <ul class="nav nav-collapse collapse">
             <li class=""><a href="#">Home</a></li>
-            <li><a href="#" ng-href="#/cart">My Cart ({{cart.count()}})</a></li>
+            <li ng-show="store.getCurrentStoreKey()" style="display:none;"><a href="#" ng-href="#/cart/{{store.getCurrentStoreKey()}}">My Cart ({{cart.count(store.getCurrentStoreKey())}})</a></li>
           </ul>
           <ul class="nav nav-collapse collapse pull-right" ng-init="getProfile()">
             <li><a href="#/signin">Sign On</a></li>

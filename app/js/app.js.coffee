@@ -12,7 +12,7 @@
     .when '/school/:storeURI/event/:eventURI',
       templateUrl: 'views/events/show.html'
       controller: 'eventCtrl'
-    .when '/cart',
+    .when '/cart/:storeKey',
       templateUrl: 'views/cart/index.html'
       controller: 'cartCtrl'
     .when '/signin',

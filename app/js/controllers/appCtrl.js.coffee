@@ -6,6 +6,7 @@ appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, configSe
   $rootScope.config = configService
   $rootScope.error = errorService
   $rootScope.cart = CartService
+  $rootScope.store = storeService
   $rootScope.DomainProfile = $rootScope.auth.getDomainProfile()
   $rootScope.AccountProfile = $rootScope.auth.getAccountProfile()
 
