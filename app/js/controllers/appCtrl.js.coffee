@@ -24,7 +24,6 @@ appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, configSe
   $rootScope.getProfile = ->
     $rootScope.auth.loadProfile().then(
       (profile) -> 
-        console.log "Login profile: ", profile
         $rootScope.DomainProfile = profile
         $rootScope.auth.setDomainProfile(profile)
       (err) ->
@@ -43,11 +42,7 @@ appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, configSe
       # login by provider
       $rootScope.auth.signinByProvider(provider).then(
         (result) ->
-          $rootScope.getProfile
-          # $rootScope.DomainProfile = $rootScope.auth.getDomainProfile();
-          # $cookieStore.put($rootScope.config.cookies.loggedStatus, true);
-
-          # $rootScope.init();
+          $rootScope.getProfile()
         (err) ->
           $rootScope.loginErr = err
       )
