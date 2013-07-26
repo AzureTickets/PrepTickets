@@ -21,10 +21,6 @@ appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, configSe
       rejection = rejection.Message if rejection.Message?
     errorService.log "Route Change Error: #{rejection}"
 
-  $rootScope.goToCart = ->
-    console.log 'redirect to /cart'
-    $location.path("cart")
-
   $rootScope.getProfile = ->
     $rootScope.auth.loadProfile().then(
       (profile) -> 
