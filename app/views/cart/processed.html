@@ -1,0 +1,29 @@
+<div ng-init="loadServerCart()" ng-show="ServerCart">
+  <div id="done" ng-show="DoneState">
+    <h2>Thank you for your order!</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, quisquam, deserunt officia eum fugiat eaque cum dolorem consectetur odit molestias cupiditate reiciendis tempora dignissimos ad eos aperiam harum laudantium repellendus!</p>
+  </div>
+  <div id="error" ng-show="ErrorState">
+    <h2>There seems to be an error with your payment processing</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis, sit et animi corporis est minima quibusdam odit ut veritatis. Deleniti repellendus iste tempora soluta tempore sapiente porro autem incidunt recusandae.</p>
+  </div>
+  <div id="canceled" ng-show="CanceledState">
+    <h2>Your order has been canceled</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis, sit et animi corporis est minima quibusdam odit ut veritatis. Deleniti repellendus iste tempora soluta tempore sapiente porro autem incidunt recusandae.</p>
+  </div>
+
+  <div id="open" ng-show="OpenState">
+    <h2>Looks like your order <b>did not</b> finish successfully</h2>
+    <p>Please feel free to <a href="" ng-href="#/cart/{{storeKey}}/confirm">try again</a></p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis, sit et animi corporis est minima quibusdam odit ut veritatis. Deleniti repellendus iste tempora soluta tempore sapiente porro autem incidunt recusandae.</p>
+  </div>
+
+  <div id="unprocessed" ng-show="UnprocessedState">
+    <h2>I'm not sure how you got here because you don't have an order to process</h2>
+    <p>
+      Please feel free to go back to the <a href="" ng-href="#/">homepage</a>
+    </p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis, sit et animi corporis est minima quibusdam odit ut veritatis. Deleniti repellendus iste tempora soluta tempore sapiente porro autem incidunt recusandae.</p>
+  </div>
+  
+</div>

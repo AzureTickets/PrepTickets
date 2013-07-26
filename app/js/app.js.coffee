@@ -18,6 +18,9 @@
     .when '/cart/:storeKey/confirm',
       templateUrl: 'views/cart/confirm.html'
       controller: 'cartCtrl'
+    .when '/cart/:storeKey/processed',
+      templateUrl: 'views/cart/processed.html'
+      controller: 'cartProcessedCtrl'
     .when '/signin',
       templateUrl: 'views/auth/signin.html'
       controller: 'authCtrl'

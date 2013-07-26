@@ -1,7 +1,8 @@
-ServerCartService = @prepTickets.factory('ServerCartService', ($q, $rootScope, $cookieStore) ->
+ServerCartService = @prepTickets.factory('ServerCartService', ($q, $rootScope, $cookieStore, $window) ->
   _cart = {}
   _clientCart = {}
   _storeKey = null
+  _paymentType = null
   _uploadItems = 0
   initCart: (storeKey) ->
     def = $q.defer()
@@ -25,8 +26,22 @@ ServerCartService = @prepTickets.factory('ServerCartService', ($q, $rootScope, $
         $rootScope.$apply(def.reject(err))
     def.promise
 
+  process: (storeKey, paymentType) ->
+    def = $q.defer()
+    return def.reject("Unable to process transaction due to unkown payment type") unless paymentType?
+    BWL.Services.Payment.BeginPayment(storeKey, paymentType, "HTML", encodeURIComponent($window.location.href.replace("confirm", "processed")), 
+      (result) ->
+        $rootScope.$apply(def.resolve(result))
+      (err) ->
+        $rootScope.$apply(def.reject(err))
+    )
+
+    def.promise
+
+
   upload: (cart) ->
     _storeKey = cart.StoreKey
+    _paymentType = cart.PaymentType
     _clientCart = cart
     @sendNextItem()
 
@@ -73,4 +88,4 @@ ServerCartService = @prepTickets.factory('ServerCartService', ($q, $rootScope, $
 
 )
 
-ServerCartService.$inject = ["$q", "$rootScope", "$cookieStore"]
+ServerCartService.$inject = ["$q", "$rootScope", "$cookieStore", "$window"]

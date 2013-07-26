@@ -1,4 +1,4 @@
-cartCtrl = @prepTickets.controller "cartCtrl", ($scope, $routeParams, $location, flash, ServerCartService, storeService) ->
+cartCtrl = @prepTickets.controller "cartCtrl", ($scope, $routeParams, $location, $window, flash, ServerCartService, storeService) ->
   $scope.$on "ServerCart:Uploaded", ->
     $location.path("cart/#{$routeParams.storeKey}/confirm")
   $scope.setupCart = ->
@@ -19,7 +19,19 @@ cartCtrl = @prepTickets.controller "cartCtrl", ($scope, $routeParams, $location,
         $scope.error.log err
     )
   $scope.processPayment = ->
-    alert "coming soon"
+    resultAction = (result) ->
+      $window.location.href = result.StartPaymentURL
+
+    storeService.getStore($routeParams.storeKey).then(
+      (store) ->
+        $scope.StoreObj = store
+        ServerCartService.process(store.Key, store.PaymentProviders[0]?.ProviderType).then(
+          resultAction
+          (err) -> $scope.error.log err
+        )
+      (err) ->
+        $scope.error.log err
+    )
   $scope.cancelOrder = ->
     ServerCartService.clearCart($routeParams.storeKey).then(
       (success) ->
@@ -33,4 +45,4 @@ cartCtrl = @prepTickets.controller "cartCtrl", ($scope, $routeParams, $location,
     )
 
 
-cartCtrl.$inject = ["$scope", "$routeParams", "$location", "flash", "ServerCartService", "storeService"]
+cartCtrl.$inject = ["$scope", "$routeParams", "$location", "$window", "flash", "ServerCartService", "storeService"]

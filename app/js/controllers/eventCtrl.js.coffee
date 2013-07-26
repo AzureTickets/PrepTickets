@@ -20,6 +20,7 @@ eventCtrl = @prepTickets.controller("eventCtrl", ($scope, $filter, $location, $r
     $scope.CurrentCart = 
       StoreKey: $scope.StoreObj.Key
       StoreName: $scope.StoreObj.Name
+      PaymentType: $scope.StoreObj.PaymentProviders[0]?.ProviderType
       Items: {}
 
     for item in $scope.EventObj.Items
