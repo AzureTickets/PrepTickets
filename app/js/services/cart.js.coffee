@@ -1,4 +1,4 @@
-CartService = @prepTickets.factory('CartService', (storeService, $cookieStore, configService) ->
+CartService = @prepTickets.factory('CartService', (storeService, $cookieStore, configService, ServerCartService) ->
   _cart = {}
 
   getCartObj: (storeKey)->
@@ -20,8 +20,9 @@ CartService = @prepTickets.factory('CartService', (storeService, $cookieStore, c
     @save()
     _cart
 
-  clearCart: ->
-    @remove()
+  clear: (storeKey)->
+    storeKey = _cart.StoreKey unless storeKey?
+    @remove(storeKey)
     _cart = {}
 
   updateItems: (newCart) ->
@@ -52,12 +53,13 @@ CartService = @prepTickets.factory('CartService', (storeService, $cookieStore, c
     cartString = $cookieStore.get("#{configService.cookies.cart}:#{storeKey}")
     _cart = JSON.parse(cartString) if cartString
     _cart
-  remove: ->
-    return false unless _cart.StoreKey 
-    $cookieStore.remove("#{configService.cookies.cart}:#{_cart.StoreKey}")
+  remove: (storeKey)->
+    return false unless storeKey 
+    $cookieStore.remove("#{configService.cookies.cart}:#{storeKey}")
     true
-  pushToServer: ->
+  sendToServer: ->
+    ServerCartService.upload(_cart)
     
 )
 
-CartService.$inject = ["storeService", "$cookieStore", "configService"]
+CartService.$inject = ["storeService", "$cookieStore", "configService", "ServerCartService"]
