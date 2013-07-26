@@ -6,11 +6,17 @@ CartService = @prepTickets.factory('CartService', (storeService, $cookieStore, c
     _cart
 
   addCart: (cart) ->
-    @dropQuantityZeroItems(cart)
     if _cart.StoreKey != cart.StoreKey
-      _cart = cart 
+      @replaceCart(cart)
     else
+      @dropQuantityZeroItems(cart)
       @updateItems(cart)
+      @save()
+    _cart
+
+  replaceCart: (cart) ->
+    @dropQuantityZeroItems(cart)
+    _cart = cart 
     @save()
     _cart
 
