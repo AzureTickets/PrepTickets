@@ -1,5 +1,13 @@
-cartProcessedCtrl = @prepTickets.controller "cartProcessedCtrl", ($scope, $routeParams, ServerCartService) ->
+cartProcessedCtrl = @prepTickets.controller "cartProcessedCtrl", ($scope, $routeParams, ServerCartService, OrderService) ->
   $scope.storeKey = $routeParams.storeKey
+  $scope.loadOrder = ->
+    OrderService.getLatestOrder().then(
+      (order) ->
+        ServerCartService.clearCart(order.StoreKey)
+        $scope.OrderObj = order
+      (err) ->
+        $scope.error.log err
+    )
   $scope.loadServerCart = ->
     ServerCartService.initCart($routeParams.storeKey).then(
       (cart) ->
@@ -22,4 +30,4 @@ cartProcessedCtrl = @prepTickets.controller "cartProcessedCtrl", ($scope, $route
       $scope.cart.clear($routeParams.storeKey)
 
 
-cartProcessedCtrl.$inject = ["$scope", "$routeParams", "ServerCartService"]
+cartProcessedCtrl.$inject = ["$scope", "$routeParams", "ServerCartService", "OrderService"]

@@ -11,7 +11,8 @@
     }
   },
   "Signin":{
-    "Title": "Signin"
+    "Title": "Signin",
+    "Required" : "You must signin before you can continue"
   },
   "Signup":{
     "Title": "Signup"

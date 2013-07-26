@@ -1,7 +1,60 @@
+<div class="row loading" ng-hide="ServerCart">
+  <div class="span4 offset3 alert"><i class="icon-spinner icon-spin icon-large"></i> Please wait while fetch your order information</div>
+</div>
+
 <div ng-init="loadServerCart()" ng-show="ServerCart">
   <div id="done" ng-show="DoneState">
     <h2>Thank you for your order!</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, quisquam, deserunt officia eum fugiat eaque cum dolorem consectetur odit molestias cupiditate reiciendis tempora dignissimos ad eos aperiam harum laudantium repellendus!</p>
+    <div class="loading" ng-hide="OrderObj">
+      <i class="icon-spinner icon-spin icon-large"></i> Please wait while fetch your order details
+    </div>
+    <div id="order" ng-init="loadOrder()" ng-show="OrderObj" style="display:none;">
+      <h4>Order Details</h4>
+      <div class="row">
+        <div class="span6">
+          <div class="row">
+            <div class="span3"><b>OrderId</b></div>
+            <div class="span3">{{OrderObj.OrderId}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span6">
+          <div class="row">
+            <div class="span3"><b>Date of Order</b></div>
+            <div class="span3">{{OrderObj.Placed}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span6">
+          <div class="row">
+            <div class="span3"><b>Number of items</b></div>
+            <div class="span3">{{OrderObj.InventoryItems.length}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span6">
+          <div class="row">
+            <div class="span3"><b>Total</b></div>
+            <div class="span3">{{OrderObj.Total.ItemPrice | currency}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="row" ng-repeat="ticket in OrderObj.InventoryItems">
+        <div class="span8">
+          {{ticket.EventName}} - {{ticket.ItemInfoName}}
+        </div>
+        <div class="span4">
+          {{ticket.ItemInfoPrice.ItemPrice | currency}}
+        </div>
+      </div>
+      <div class="text-center">
+        <a href="" class="btn btn-primary btn.large" ng-href="#/orders/{{OrderObj.Key}}"><i class="icon-ticket icon-large"></i> Print tickets</a>
+      </div>
+    </div>
   </div>
   <div id="error" ng-show="ErrorState">
     <h2>There seems to be an error with your payment processing</h2>
