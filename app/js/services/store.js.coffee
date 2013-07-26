@@ -77,7 +77,7 @@ storeService = @prepTickets.factory('storeService', ($q, $rootScope, modelServic
 
   getCurrentStoreKey: ->
     return _currentStore.Key if _currentStore
-    return getCachedKey()
+    return @getCachedKey()
 
   # 
   # Find for existent URIs.
@@ -123,7 +123,7 @@ storeService = @prepTickets.factory('storeService', ($q, $rootScope, modelServic
   initStore: (storeKey) ->
     def = $q.defer()
 
-    if _currentStore.Key == storeKey
+    if _currentStore?.Key == storeKey
       def.resolve(_currentStore)
     else
       BWL.Services.Model.Read(
