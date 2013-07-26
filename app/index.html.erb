@@ -34,7 +34,8 @@
             <li ng-show="store.getCurrentStoreKey()" style="display:none;"><a href="#" ng-href="#/cart/{{store.getCurrentStoreKey()}}">My Cart ({{cart.count(store.getCurrentStoreKey())}})</a></li>
           </ul>
           <ul class="nav nav-collapse collapse pull-right" ng-init="getProfile()">
-            <li><a href="#/signin">Sign On</a></li>
+            <li><a href="" ng-hide="auth.isSignedIn()" ng-href="#/signin">Sign In</a></li>
+            <li ng-show="auth.isSignedIn()" style="display:none;"><a href="" ng-click="signout()">Sign Out</a></li>
           </ul>
         </div>
       </div>

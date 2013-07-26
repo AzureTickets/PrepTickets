@@ -7,7 +7,6 @@ appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, configSe
   $rootScope.error = errorService
   $rootScope.cart = CartService
   $rootScope.store = storeService
-  $rootScope.DomainProfile = $rootScope.auth.getDomainProfile()
   $rootScope.AccountProfile = $rootScope.auth.getAccountProfile()
 
   $rootScope.$on 'flash:message', (_, messages, done) ->
@@ -32,6 +31,13 @@ appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, configSe
         errorService.log(err)
     )
 
+  $rootScope.signout = ->
+    $rootScope.auth.signoff().then(
+      () ->
+        flash 'Successfully signed out'
+        $rootScope.getProfile()
+        $location.path("/")
+    )
   $rootScope.signin = (provider) ->
     if provider?
       # login by provider
@@ -53,8 +59,9 @@ appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, configSe
       ).then(
         (result) ->
           flash 'Successfully signed in'
+          $location.path("/")
           $rootScope.getProfile()
-          $rootScope.auth.authenticate($rootScope)
+          # $rootScope.auth.authenticate($rootScope)
         (err) ->
           flash 'danger', err
       )

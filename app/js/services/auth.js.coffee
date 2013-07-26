@@ -1,7 +1,7 @@
 # authentication service
 @prepTickets.factory 'authService', ['configService', '$q', '$rootScope', 'modelService', '$cookieStore', "$window",
   (configService, $q, $rootScope, modelService, $cookieStore, $window) ->
-    _clientKey = _domainProfile = null
+    _domainProfile = {}
 
     # 
     # Authenticate user
@@ -14,11 +14,11 @@
       def = $q.defer()
 
       unless @isDomainProfileReady()
-        @loadProfile(configService.clientKey).then(
-          =>
-            $scope.DomainProfile = @getDomainProfile()
+        @loadProfile().then(
+          (profile) ->
+            $scope.DomainProfile = _domainProfile = profile
             $scope.$apply() unless $scope.$$phase
-            def.resolve()
+            def.resolve(profile)
           (err) ->
             $scope.$apply( ->
               def.reject(err)
@@ -29,35 +29,37 @@
 
       def.promise
     
+    isSignedIn: ->
+      _domainProfile.ProfileRole >= BWL.Models.DomainProfileRoleEnum.Authenticated
     isAuthenticated : ->
-      _domainProfile.ProfileRole == BWL.Models.DomainProfileRoleEnum.Authenticated
+      _domainProfile.ProfileRole is BWL.Models.DomainProfileRoleEnum.Authenticated
     
     isMember : ->
-      _domainProfile.ProfileRole == BWL.Models.DomainProfileRoleEnum.Member
+      _domainProfile.ProfileRole is BWL.Models.DomainProfileRoleEnum.Member
     
     isPublic : ->
-      _domainProfile.ProfileRole == BWL.Models.DomainProfileRoleEnum.Public
+      _domainProfile.ProfileRole is BWL.Models.DomainProfileRoleEnum.Public
     
     isExplicit : ->
-      _domainProfile.ProfileRole == BWL.Models.DomainProfileRoleEnum.Explicit
+      _domainProfile.ProfileRole is BWL.Models.DomainProfileRoleEnum.Explicit
     
     isStoreOwner : ->
-      _domainProfile.ProfileRole == BWL.Models.DomainProfileRoleEnum.StoreOwner
+      _domainProfile.ProfileRole is BWL.Models.DomainProfileRoleEnum.StoreOwner
     
     isEmployee : ->
-      _domainProfile.ProfileRole == BWL.Models.DomainProfileRoleEnum.Employee
+      _domainProfile.ProfileRole is BWL.Models.DomainProfileRoleEnum.Employee
     
     isService : ->
-      _domainProfile.ProfileRole == BWL.Models.DomainProfileRoleEnum.Service
+      _domainProfile.ProfileRole is BWL.Models.DomainProfileRoleEnum.Service
     
     isAdministrator : ->
-      _domainProfile.ProfileRole == BWL.Models.DomainProfileRoleEnum.Administrator
+      _domainProfile.ProfileRole is BWL.Models.DomainProfileRoleEnum.Administrator
     
     isNoAccess : ->
-      _domainProfile.ProfileRole == BWL.Models.DomainProfileRoleEnum.NoAccess
+      _domainProfile.ProfileRole is BWL.Models.DomainProfileRoleEnum.NoAccess
     
     hasStoreAccess : ->
-      @isMember() || @isExplicit() || @isStoreOwner() || @isEmployee() || @isService() || @isAdministrator()
+      @isMember() or @isExplicit() or @isStoreOwner() or @isEmployee() or @isService() or @isAdministrator()
     
     upgradeProfile : ->
       def = $q.defer()
@@ -73,14 +75,12 @@
 
       def.promise
     
-    loadProfile : (clientKey) ->
+    loadProfile : () ->
       def = $q.defer()
-
-      # BWL.ClientKey = clientKey
-      # _clientKey = clientKey
-
+      return def.resolve(_profile) if _profile?.Key
       BWL.Services.Account.GetProfile(
         (profile)->
+          _domainProfile = profile
           $rootScope.$apply(def.resolve(profile))
         (err) ->
           $rootScope.$apply(->
@@ -163,7 +163,7 @@
 
       def.promise
     
-    getDomainProfile : ->
+    getBlankProfile : ->
       _domainProfile = modelService.getInstanceOf('DomainProfile',
           null, 'Profile')
       _domainProfile
