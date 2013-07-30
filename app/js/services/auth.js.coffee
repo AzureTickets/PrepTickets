@@ -1,6 +1,5 @@
 # authentication service
-@prepTickets.factory 'authService', ['configService', '$q', '$rootScope', 'modelService', '$cookieStore', "$window",
-  (configService, $q, $rootScope, modelService, $cookieStore, $window) ->
+authService = @prepTickets.factory 'authService', (configService, $q, $rootScope, modelService, $cookieStore, $window, UrlSaverService) ->
     _domainProfile = {}
 
     # 
@@ -156,7 +155,8 @@
     
     signoff : ->
       def = $q.defer()
-
+      $rootScope.DomainProfile = {}
+      UrlSaverService.clear()
       BWL.Services.Account.Logoff(->
         $rootScope.$apply(def.resolve)
       )
@@ -207,4 +207,4 @@
     isLogged : ->
       $cookieStore.get(configService.cookies.loggedStatus)?
 
-]
+authService.$inject = ['configService', '$q', '$rootScope', 'modelService', '$cookieStore', "$window", "UrlSaverService"]
