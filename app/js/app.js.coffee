@@ -1,6 +1,6 @@
 @prepTickets = angular.module('prepTickets', 
   ['ngCookies', 
-  "ui.bootstrap"])
+  'ui.bootstrap'])
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider
     .when '/',
@@ -17,6 +17,9 @@
       controller: 'cartCtrl'
     .when '/cart/:storeKey/confirm',
       templateUrl: 'views/cart/confirm.html'
+      controller: 'cartCtrl'
+    .when '/cart/:storeKey/instantCheckout',
+      templateUrl: 'views/cart/instantCheckout.html'
       controller: 'cartCtrl'
     .when '/cart/:storeKey/processed',
       templateUrl: 'views/cart/processed.html'

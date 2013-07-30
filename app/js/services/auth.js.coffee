@@ -90,7 +90,7 @@
 
       def.promise
     
-    signinByProvider : (provider) ->
+    signinByProvider : (provider, returnURL = $window.location.href) ->
       def = $q.defer()
 
       # BWL.Auth.ClientKey = _clientKey
@@ -107,7 +107,7 @@
               provider,
               configService.clientKey,
               'HTML',
-              encodeURIComponent($window.location.href),
+              encodeURIComponent(returnURL),
               (profile) ->
                 $window.location.href = profile.AuthURL
               (err) ->

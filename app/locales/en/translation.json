@@ -12,7 +12,7 @@
   },
   "Signin":{
     "Title": "Signin",
-    "Required" : "You must signin before you can continue"
+    "Required" : "You must sign in or sign up before you can continue"
   },
   "Signup":{
     "Title": "Signup"

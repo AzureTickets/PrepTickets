@@ -1,4 +1,4 @@
-cartCtrl = @prepTickets.controller "cartCtrl", ($scope, $routeParams, $location, $window, flash, ServerCartService, storeService) ->
+cartCtrl = @prepTickets.controller "cartCtrl", ($scope, $routeParams, $location, $window, flash, ServerCartService, storeService, UrlSaverService) ->
   $scope.$on "ServerCart:Uploaded", ->
     $location.path("cart/#{$routeParams.storeKey}/confirm")
   $scope.setupCart = ->
@@ -8,9 +8,18 @@ cartCtrl = @prepTickets.controller "cartCtrl", ($scope, $routeParams, $location,
     $location.path("/")
   $scope.checkout = ->
     $scope.cart.replaceCart($scope.CartObj)
-    $scope.cart.sendToServer()
-    # storeService.clearStore()
-    # alert "Feature coming soon..."
+    if $scope.auth.isSignedIn()
+      $scope.cart.sendToServer() #once completed, it will fire ServerCart:Uploaded event
+    else
+      flash(BWL.t("Signin.Required", defaultValue: "You must sign in or sign up before you can continue"))
+      UrlSaverService.save("#/cart/#{$routeParams.storeKey}/instantCheckout")
+      $location.path("signin")
+
+  $scope.instantCheckout = ->
+    $scope.setupCart()
+    $scope.cart.sendToServer() #once completed, it will fire ServerCart:Uploaded event
+
+
   $scope.loadServerCart = ->
     ServerCartService.initCart($routeParams.storeKey).then(
       (cart) ->
@@ -45,4 +54,4 @@ cartCtrl = @prepTickets.controller "cartCtrl", ($scope, $routeParams, $location,
     )
 
 
-cartCtrl.$inject = ["$scope", "$routeParams", "$location", "$window", "flash", "ServerCartService", "storeService"]
+cartCtrl.$inject = ["$scope", "$routeParams", "$location", "$window", "flash", "ServerCartService", "storeService", "UrlSaverService"]
