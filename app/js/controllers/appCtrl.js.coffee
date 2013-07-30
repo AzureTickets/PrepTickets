@@ -1,4 +1,4 @@
-appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, configService, errorService, flash, authService, storeService, CartService, $location) ->
+appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, $window, configService, errorService, flash, authService, storeService, CartService, $location, UrlSaverService) ->
   $rootScope.errors = []
   
   $rootScope.auth = authService
@@ -31,16 +31,16 @@ appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, configSe
     )
 
   $rootScope.signout = ->
+    $rootScope.DomainProfile = {}
     $rootScope.auth.signoff().then(
       () ->
         flash 'Successfully signed out'
         $rootScope.getProfile()
-        $location.path("/")
     )
   $rootScope.signin = (provider) ->
     if provider?
       # login by provider
-      $rootScope.auth.signinByProvider(provider).then(
+      $rootScope.auth.signinByProvider(provider, UrlSaverService.load()).then(
         (result) ->
           $rootScope.getProfile()
         (err) ->
@@ -53,13 +53,17 @@ appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, configSe
         PasswordHash : BWL.Plugins.MD5($rootScope.AccountProfile.Password)
       ).then(
         (result) ->
-          flash 'Successfully signed in'
-          $location.path("/")
-          $rootScope.getProfile()
-          # $rootScope.auth.authenticate($rootScope)
+          $rootScope.getProfile().then(
+            (profile) ->
+              flash 'Successfully signed in'
+
+              $window.location.href = UrlSaverService.load()
+            (err) ->
+              flash 'danger', err
+          )
         (err) ->
           flash 'danger', err
       )
 )
 
-appCtrl.$inject = ["$rootScope", "$cookieStore", "configService", "errorService", "flash", "authService", "storeService", "CartService", "$location"]
+appCtrl.$inject = ["$rootScope", "$cookieStore", "$window", "configService", "errorService", "flash", "authService", "storeService", "CartService", "$location", "UrlSaverService"]
