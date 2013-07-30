@@ -9,7 +9,6 @@ orderCtrl = @prepTickets.controller('orderCtrl', ($scope, $location, $routeParam
   $scope.loadOrder = ->
     OrderService.get($routeParams.storeKey, $routeParams.orderKey).then(
       (order) ->
-        console.log order
         $scope.Order = order
       (err) ->
         $scope.error.log err

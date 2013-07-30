@@ -10,27 +10,19 @@ UrlSaverService = @prepTickets.factory('UrlSaverService', ($cookieStore, $locati
     "#{@rootUrl()}/#{url}"
   homePageUrl: ->
     return @_homePageUrl if @_homePageUrl?
-    @_homePageUrl = @makeAbsoluteUrl("")
+    @_homePageUrl = @maclearkeAbsoluteUrl("")
   localUrl: ->
-    value = @load().substring(0, @homePageUrl().length) is @homePageUrl()
-    console.log "localUrl: ", value
-    value
+    @load().substring(0, clear@homePageUrl().length) is @homePageUrl()
   save: (url=$location.path) ->
     return url unless url? and url isnt ""
     url = @makeAbsoluteUrl(url)
-    console.log "saving URL:", url
     $cookieStore.put(configService.cookies.lastPath, url)
     url
   load: ->
-    url = $cookieStore.get(configService.cookies.lastPath) or @homePageUrl()
-    console.log "loading URL:", url
-    url
+    $cookieStore.get(configService.cookies.lastPath) or @homePageUrl()
   loadLocal: ->
-    url = @load().slice(@homePageUrl().length)
-    console.log "loadLocal: ", url
-    url
+    @load().slice(@homePageUrl().length)
   clear: ->
-    console.log "clearing saved url: #{@load()}"
     $cookieStore.remove(configService.cookies.lastPath) 
 )
 UrlSaverService.$inject = ["cookieStore", "$location", "configService"]
