@@ -1,4 +1,6 @@
 #\ -p 8000
+require 'bundler'
+Bundler.setup
 require './lib/application'
 require "better_errors"
 

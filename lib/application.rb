@@ -1,6 +1,7 @@
 $LOAD_PATH << '.'
 $LOAD_PATH << './lib'
 
+require "bundler"
 require 'sprockets_builder'
 require 'page_builder'
 require 'api_fetcher'

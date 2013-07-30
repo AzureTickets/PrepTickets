@@ -52,7 +52,7 @@ class PageBuilder
 
   def file_name
     if env
-      @file_name ||= (env["REQUEST_PATH"] == "/" ? app.root_page : env["REQUEST_PATH"]).to_s.gsub(/^\//, '')
+      @file_name ||= ((env["REQUEST_PATH"] == "/" || env["REQUEST_PATH"].nil?) ? app.root_page : env["REQUEST_PATH"]).to_s.gsub(/^\//, '')
     else
       @target_page.relative_path_from(root).to_s
     end
