@@ -9,7 +9,7 @@ flash = @prepTickets.factory 'flash', ($rootScope, $timeout) ->
   emit = ->
     $rootScope.$emit('flash:message', messages, cleanup)
   
-  $rootScope.$on('$routeChangeStart', cleanup)
+  # $rootScope.$on('$routeChangeStart', cleanup)
   $rootScope.$on('$routeChangeSuccess', emit)
 
   asMessage = (level, text) ->
@@ -19,6 +19,11 @@ flash = @prepTickets.factory 'flash', ($rootScope, $timeout) ->
     
     level: level, text: text 
 
-  return (level, text) -> emit(messages.push(asMessage(level, text)))
+  flash = (level, text) -> 
+    messages.push(asMessage(level, text))
+    return flash
+  flash.now = -> emit()
+
+  return flash
 
 flash.$inject = ["$rootScope", "$timeout"]

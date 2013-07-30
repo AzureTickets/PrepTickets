@@ -8,5 +8,5 @@
 
   log : (message, display=true) ->
     $rootScope.errors.push(message)
-    flash('danger', message) if display
+    flash('danger', message).now() if display
 ]

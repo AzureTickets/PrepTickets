@@ -31,10 +31,9 @@ appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, $window,
     )
 
   $rootScope.signout = ->
-    $rootScope.DomainProfile = {}
     $rootScope.auth.signoff().then(
       () ->
-        flash 'Successfully signed out'
+        flash('Successfully signed out').now()
         $rootScope.getProfile()
     )
   $rootScope.signin = (provider) ->
@@ -55,14 +54,18 @@ appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, $window,
         (result) ->
           $rootScope.getProfile().then(
             (profile) ->
-              flash 'Successfully signed in'
-
-              $window.location.href = UrlSaverService.load()
+              flash('Successfully signed in')
+              if UrlSaverService.localUrl()
+                $location.path(UrlSaverService.loadLocal())
+              else
+                flash.now()
+                #TODO: might want to add a timeout for redirect so user sees flashMsg
+                $window.location.href = UrlSaverService.load()
             (err) ->
-              flash 'danger', err
+              flash('danger', err).now()
           )
         (err) ->
-          flash 'danger', err
+          flash('danger', err).now()
       )
 )
 

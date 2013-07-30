@@ -12,7 +12,7 @@ cartCtrl = @prepTickets.controller "cartCtrl", ($scope, $routeParams, $location,
       $scope.cart.sendToServer() #once completed, it will fire ServerCart:Uploaded event
     else
       flash(BWL.t("Signin.Required", defaultValue: "You must sign in or sign up before you can continue"))
-      UrlSaverService.save("#/cart/#{$routeParams.storeKey}/instantCheckout")
+      UrlSaverService.save("cart/#{$routeParams.storeKey}/instantCheckout")
       $location.path("signin")
 
   $scope.instantCheckout = ->
