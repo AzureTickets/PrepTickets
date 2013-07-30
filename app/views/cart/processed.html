@@ -1,14 +1,14 @@
-<div class="row loading" ng-hide="ServerCart">
-  <div class="span4 offset3 alert"><i class="icon-spinner icon-spin icon-large"></i> Please wait while fetch your order information</div>
-</div>
+<loader hide-on="ServerCart">
+  Please wait while fetch your order information
+</loader>
 
 <div ng-init="loadServerCart()" ng-show="ServerCart">
   <div id="done" ng-show="DoneState">
     <h2>Thank you for your order!</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, quisquam, deserunt officia eum fugiat eaque cum dolorem consectetur odit molestias cupiditate reiciendis tempora dignissimos ad eos aperiam harum laudantium repellendus!</p>
-    <div class="loading" ng-hide="OrderObj">
-      <i class="icon-spinner icon-spin icon-large"></i> Please wait while fetch your order details
-    </div>
+    <loader hide-on="OrderObj">
+      Please wait while fetch your order details
+    </loader>
     <div id="order" ng-init="loadOrder()" ng-show="OrderObj" style="display:none;">
       <h4>Order Details</h4>
       <div class="row">

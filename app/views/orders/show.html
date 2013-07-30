@@ -1,6 +1,4 @@
-<div class="row loading" ng-hide="Order">
-  <div class="span4 offset3 alert"><i class="icon-spinner icon-spin icon-large"></i> Please wait while fetch your orders</div>
-</div>
+<loader hide-on="Order">Loading order details</loader>
 <div id="order" ng-init="loadOrder()" ng-show="Order" style="display:none;">
   <h4>Order Details</h4>
   <div class="row">

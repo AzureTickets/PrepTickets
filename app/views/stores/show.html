@@ -1,6 +1,4 @@
-<div class="row loading" ng-hide="StoreObj.Key">
-  <div class="span4 offset3 alert"><i class="icon-spinner icon-spin icon-large"></i> Please wait while fetch the school information</div>
-</div>
+<loader hide-on="StoreObj.Key">Please wait while fetch the school information</loader>
 <div class="store" ng-init="loadStore()" ng-show="StoreObj.Key" style="display:none;">
   {{StoreObj.Name}}
 

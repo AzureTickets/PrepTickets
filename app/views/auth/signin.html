@@ -11,6 +11,7 @@
       <button class="btn btn-primary">Signin</button>
     </form>
     <ul class="socialicons color">
+      <loader hide-on="authProviders">Loading the sign on list</loader>
       <li ng-repeat="provider in authProviders">
         <a href="" ng-class="provider | lowercase" ng-click="signin(provider)">{{provider}}</a>
       </li>
