@@ -1,0 +1,12 @@
+<loader hide-on="Ticket">Loading your ticket</loader>
+<div id="ticket" ng-init="loadTicket()" ng-show="Ticket">
+  <div class="row">
+    <div class="span3">
+      <qrcode ticket="Ticket" />
+    </div>
+    <div class="span8">
+      <h2>{{Ticket.EventName}} - {{Ticket.ItemInfoName}}</h2>
+    </div>
+  </div>
+</div>
+<ticketnav order="Order" ticket="Ticket" index="TicketIdx"></ticketnav>

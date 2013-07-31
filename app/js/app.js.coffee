@@ -30,6 +30,9 @@
     .when '/orders/:storeKey/:orderKey',
       templateUrl: 'views/orders/show.html'
       controller: 'orderCtrl'
+    .when '/orders/:storeKey/:orderKey/:ticketKey',
+      templateUrl: 'views/orders/ticket.html'
+      controller: 'orderCtrl'
     .when '/signin',
       templateUrl: 'views/auth/signin.html'
       controller: 'authCtrl'
