@@ -6,6 +6,7 @@
     "angular-sanitize": "~1.0.7",
     "angular": "~1.0.7",
     "angular-bootstrap": "~0.4.0",
-    "easyXDM": "~2.4.17"
+    "easyXDM": "~2.4.17",
+    "momentjs": "~2.1.0"
   }
 }
