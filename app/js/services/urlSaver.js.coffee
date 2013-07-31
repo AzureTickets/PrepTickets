@@ -10,9 +10,9 @@ UrlSaverService = @prepTickets.factory('UrlSaverService', ($cookieStore, $locati
     "#{@rootUrl()}/#{url}"
   homePageUrl: ->
     return @_homePageUrl if @_homePageUrl?
-    @_homePageUrl = @maclearkeAbsoluteUrl("")
+    @_homePageUrl = @makeAbsoluteUrl("")
   localUrl: ->
-    @load().substring(0, clear@homePageUrl().length) is @homePageUrl()
+    @load().substring(0, @homePageUrl().length) is @homePageUrl()
   save: (url=$location.path) ->
     return url unless url? and url isnt ""
     url = @makeAbsoluteUrl(url)
