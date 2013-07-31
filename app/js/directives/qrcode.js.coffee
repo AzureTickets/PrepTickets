@@ -4,7 +4,7 @@
   scope: 
     ticket: "="
   template: ' <div class="qrcode">
-                <img src="{{qrcodeUrl()}}" alt="QR Code for {{ticket.EventName}}">
+                <img ng-src="{{qrcodeUrl()}}" alt="QR Code for {{ticket.EventName}}">
               </div>'
   link: (scope) ->
     scope.qrcodeUrl = ->
