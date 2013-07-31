@@ -59,13 +59,15 @@ storeService = @prepTickets.factory('storeService', ($q, $rootScope, modelServic
   getStore : (storeKey) ->
     def = $q.defer()
     storeKey = @getCachedKey() unless storeKey?
-    def.resolve(_currentStore) if _currentStore?.storeKey == storeKey
-    @initStore(storeKey).then(
-      (store) -> 
-        _currentStore = store
-        def.resolve(store)
-      (err) -> def.reject(err)
-    )
+    if _currentStore?.storeKey is storeKey
+      def.resolve(_currentStore) 
+    else
+      @initStore(storeKey).then(
+        (store) -> 
+          _currentStore = store
+          def.resolve(store)
+        (err) -> def.reject(err)
+      )
     def.promise
 
   clearStore: ->
@@ -90,7 +92,7 @@ storeService = @prepTickets.factory('storeService', ($q, $rootScope, modelServic
     BWL.Services.Store.FindStoreKeyFromCustomURI(
       uri
       (storeKey) ->
-        _lastAvailableURI = uri if storeKey?.trim() == ''
+        _lastAvailableURI = uri if storeKey?.trim() is ''
         $rootScope.$apply(->
           def.resolve(storeKey)
         )
