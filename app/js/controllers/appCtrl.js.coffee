@@ -1,5 +1,6 @@
 appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, $window, configService, errorService, flash, authService, storeService, CartService, $location, UrlSaverService) ->
   $rootScope.errors = []
+  $rootScope.navCollapsed = true
   
   $rootScope.auth = authService
   $rootScope.cookie = $cookieStore
