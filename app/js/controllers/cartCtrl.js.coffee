@@ -19,6 +19,8 @@ cartCtrl = @prepTickets.controller "cartCtrl", ($scope, $routeParams, $location,
     $scope.setupCart()
     $scope.cart.sendToServer() #once completed, it will fire ServerCart:Uploaded event
 
+  $scope.removeItem = (key) ->
+    delete $scope.CartObj.Items[key]
 
   $scope.loadServerCart = ->
     ServerCartService.initCart($routeParams.storeKey).then(

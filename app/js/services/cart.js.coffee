@@ -1,9 +1,8 @@
 CartService = @prepTickets.factory('CartService', (storeService, $cookieStore, configService, ServerCartService) ->
   _cart = {}
-
+  
   getCartObj: (storeKey)->
     @load(storeKey)
-    _cart
 
   addCart: (cart) ->
     if _cart.StoreKey isnt cart.StoreKey
@@ -36,6 +35,9 @@ CartService = @prepTickets.factory('CartService', (storeService, $cookieStore, c
     for key, item of cart.Items
       delete cart.Items[key] if item.Quantity == 0
     cart
+
+  removeItem: (key) ->
+    delete _cart.Items[key] if _cart.Items?[key]
 
   count: (storeKey) ->
     @load(storeKey)

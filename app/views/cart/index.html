@@ -1,30 +1,40 @@
 <div id="cart" ng-init="setupCart()">
   <h2>Cart for {{CartObj.StoreName}}</h2>
   <table class="table table-hover">
-    <tr>
-      <th>
-        Event Name
-      </th>
-      <th>
-        Price
-      </th>
-      <th>Quantity</th>
-      <th>Total</th>
-    </tr>
-    <tr ng-repeat="item in CartObj.Items">
-      <td class="span9">
-        {{item.EventName}} - {{item.Name}}
-      </td>
-      <td class="span1">
-        {{item.Price | currency}}
-      </td>
-      <td class="span1">
-        <input type="number" ng-model="item.Quantity" min="0" class="input-mini">
-      </td>
-      <td class="span1">
-        {{item.Total() | currency}}
-      </td>
-    </tr>
+    <thead>
+      <tr>
+        <th>
+          Event Name
+        </th>
+        <th>
+          Price
+        </th>
+        <th>Quantity</th>
+        <th>Total</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in CartObj.Items">
+        <td class="span9">
+          {{item.EventName}} - {{item.Name}}
+        </td>
+        <td class="span1">
+          {{item.Price | currency}}
+        </td>
+        <td class="span1">
+          <input type="number" ng-model="item.Quantity" min="0" class="input-mini">
+        </td>
+        <td class="span1">
+          {{item.Total() | currency}}
+        </td>
+        <td class="span1">
+          <a href="" class="" ng-click="removeItem(item.Key)" tooltip="Remove Item" confirm="Are you sure?">
+            <i class="icon-remove-sign icon-large text-error"></i>
+          </a>
+        </td>
+      </tr>
+  </tbody>
   </table>
   <div class="row">
     <a href="" class="btn btn-large offset7 span2" confirm="Are you sure you want to clear your cart?" ng-click="clearCart()">
