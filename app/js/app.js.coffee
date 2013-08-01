@@ -3,6 +3,7 @@ window.moment = ender.moment
 
 @prepTickets = angular.module('prepTickets', 
   ['ngCookies', 
+  'ui.bootstrap.tpls',
   'ui.bootstrap'])
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider

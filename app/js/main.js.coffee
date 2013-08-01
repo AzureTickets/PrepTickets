@@ -3,7 +3,7 @@
 #= require angular
 #= require angular-cookies
 #= require angular-sanitize
-#= require ui-bootstrap
+#= require ui-bootstrap-tpls
 
 #= require app
 #= require_tree ./filters
