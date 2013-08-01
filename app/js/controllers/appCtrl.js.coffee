@@ -1,4 +1,4 @@
-appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, $window, configService, errorService, flash, authService, storeService, CartService, $location, UrlSaverService) ->
+appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, $window, configService, errorService, flash, authService, storeService, CartService, $location, UrlSaverService, ModalService) ->
   $rootScope.errors = []
   $rootScope.navCollapsed = true
   
@@ -8,6 +8,7 @@ appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, $window,
   $rootScope.error = errorService
   $rootScope.cart = CartService
   $rootScope.store = storeService
+  $rootScope.modal = ModalService
   $rootScope.AccountProfile = $rootScope.auth.getAccountProfile()
 
   $rootScope.$on 'flash:message', (_, messages, done) ->
@@ -70,4 +71,15 @@ appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, $window,
       )
 )
 
-appCtrl.$inject = ["$rootScope", "$cookieStore", "$window", "configService", "errorService", "flash", "authService", "storeService", "CartService", "$location", "UrlSaverService"]
+appCtrl.$inject = ["$rootScope",
+                   "$cookieStore",
+                   "$window",
+                   "configService",
+                   "errorService",
+                   "flash",
+                   "authService",
+                   "storeService",
+                   "CartService",
+                   "$location",
+                   "UrlSaverService",
+                   "ModalService"]
