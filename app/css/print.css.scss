@@ -1,0 +1,14 @@
+@import "twitter-bootstrap/_mixins.scss";
+
+@import "twitter-bootstrap/_variables.scss";
+@import "twitter-bootstrap/_grid.scss";
+
+.dont-print{
+  display:none;
+}
+
+.print-only{
+  display:auto;
+}
+
+@import "_ticket.css.scss";

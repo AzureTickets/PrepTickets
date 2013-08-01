@@ -1,6 +1,6 @@
-orderCtrl = @prepTickets.controller('orderCtrl', ($scope, $location, $routeParams, $q, OrderService) ->
+orderCtrl = @prepTickets.controller('orderCtrl', ($scope, $location, $routeParams, $q, $window, OrderService) ->
   findTicket = (key) ->
-    return [-1, {}] unless $scope.Order?
+    return [-1, {}] unless $scope.Order?.Key
     for ticket, idx in $scope.Order.InventoryItems
       return [idx, ticket] if ticket.Key is key
     [-1, {}]
@@ -13,13 +13,19 @@ orderCtrl = @prepTickets.controller('orderCtrl', ($scope, $location, $routeParam
         $scope.error.log err
     )
   $scope.loadOrder = ->
-    OrderService.get($routeParams.storeKey, $routeParams.orderKey).then(
-      (order) ->
-        console.log order
-        $scope.Order = order
+    $scope.store.getStore($routeParams.storeKey).then(
+      (store) ->
+        $scope.StoreObj = store
+        OrderService.get($routeParams.storeKey, $routeParams.orderKey).then(
+          (order) ->
+            $scope.Order = order if order.Key
+          (err) ->
+            $scope.error.log err
+        )
       (err) ->
         $scope.error.log err
     )
+
   $scope.loadTicket = ->
     def = $q.defer()
 
@@ -32,6 +38,14 @@ orderCtrl = @prepTickets.controller('orderCtrl', ($scope, $location, $routeParam
           console.log result
           $scope.TicketIdx = result[0]
           $scope.Ticket = result[1]
+          console.log "Ticket:", $scope.Ticket
+          $scope.loadEvent($scope.Ticket.StoreKey, $scope.Ticket.EventKey).then(
+            (event) ->
+              console.log event
+              $scope.Event = event
+            (err) ->
+              $scope.error.log err
+          )
         (err) ->
           $scope.error.log err
       )
@@ -39,7 +53,21 @@ orderCtrl = @prepTickets.controller('orderCtrl', ($scope, $location, $routeParam
     def.promise
 
 
+  $scope.loadEvent = (storeKey, eventKey) ->
+    def = $q.defer()
+    $scope.store.getStore(storeKey).then(
+      (store) ->
+        for event in store.Events
+          if event.Key is eventKey
+            def.resolve(event)
+            break
+      (err) ->
+        def.reject(err)
+    )
+    def.promise
 
+  $scope.printTicket = ->
+    $window.print()
 
 )
-orderCtrl.$inject = ["$scope", "$location", "$routeParams", "$q", "OrderService"]
+orderCtrl.$inject = ["$scope", "$location", "$routeParams", "$q", "$window", "OrderService"]

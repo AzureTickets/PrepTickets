@@ -1,3 +1,6 @@
+#bug fix for moment.js
+window.moment = ender.moment
+
 @prepTickets = angular.module('prepTickets', 
   ['ngCookies', 
   'ui.bootstrap'])

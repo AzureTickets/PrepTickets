@@ -1,4 +1,10 @@
 #ticket{
+  @include border-radius(5px);
   border: 1px solid #777;
   padding: 15px;
+  margin-bottom:10px;
+  .qrcode{
+    margin-bottom: 20px;
+    text-align: center;
+  }
 }

@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width">
   <title>Prep Tickets</title>
   <%= stylesheet_link_tag "app.css" %>
+  <%= stylesheet_link_tag "print.css", media: :print %>
   <!--[if lt IE 9]>
     <script src="lib/es5-shim/es5-shim.js"></script>
     <script src="lib/json3/lib/json3.min.js"></script>
@@ -15,7 +16,7 @@
   <!--[if lt IE 7]>
     <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
   <![endif]-->
-  <header>
+  <header class="dont-print">
     <div class="container">
       <div class="row">
         <div class="span4">
@@ -51,7 +52,7 @@
     </div>
   </div>
   
-  <footer>
+  <footer class="dont-print">
     <div class="container">
       <div class="row">
         <div class="span4">

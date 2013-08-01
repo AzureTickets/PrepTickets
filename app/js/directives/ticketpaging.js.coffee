@@ -1,4 +1,4 @@
-@prepTickets.directive('ticketnav', ["$location", ($location) ->
+@prepTickets.directive('ticketpaging', ["$location", ($location) ->
   restrict: 'E' 
   replace: true
   transclude: false
@@ -6,7 +6,7 @@
     order: "="
     ticket: "="
     ticketIdx: "=index"
-  template: '<div class="ticketNav pagination pagination-centered pagination-large" ng-show="ticket">
+  template: '<div class="ticketNav pagination pagination-centered pagination-large dont-print" ng-show="ticket">
               <ul>
                 <li ng-class="{disabled:!hasPrevious()}">
                   <a href="" ng-click="goToPreviousTicket()">&larr; Previous Ticket</a>
@@ -20,20 +20,22 @@
               </ul>
              </div>'
   link: (scope) ->
+    scope.ready = ->
+      scope.ticketIdx? and scope.order?
     scope.hasPrevious = ->
       !!scope.previousTicket()
     scope.hasNext = ->
       !!scope.nextTicket()
     scope.nextTicket = ->
+      return null unless scope.ready()
       scope.order?.InventoryItems[scope.ticketIdx + 1]
     scope.previousTicket = ->
+      return null unless scope.ready()
       scope.order?.InventoryItems[scope.ticketIdx - 1]
     scope.goToNextTicket = ->
-      if ticket = scope.nextTicket()
-        $location.path(scope.getPathFor(ticket))
+      $location.path(scope.getPathFor(ticket)) if ticket = scope.nextTicket()
     scope.goToPreviousTicket = ->
-      if ticket = scope.previousTicket()
-        $location.path(scope.getPathFor(ticket))
+      $location.path(scope.getPathFor(ticket)) if ticket = scope.previousTicket()
     scope.getPathFor = (ticket) ->
       "/orders/#{scope.order?.StoreKey}/#{scope.order?.Key}/#{ticket.Key}"
 

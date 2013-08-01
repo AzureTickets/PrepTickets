@@ -6,7 +6,24 @@
     </div>
     <div class="span8">
       <h2>{{Ticket.EventName}} - {{Ticket.ItemInfoName}}</h2>
+      <div class="eventDetails">
+        <eventdate event="Event"></eventdate>
+        <div class="location">
+          <div class="name">{{Event.Places[0].Name}}</div>
+          <div class="address">{{Event.Places[0].Address | address}}</div>
+          
+        </div>
+      </div>
     </div>
   </div>
 </div>
-<ticketnav order="Order" ticket="Ticket" index="TicketIdx"></ticketnav>
+<div class="ad print-only">
+  <p>This is an ad that isn't visible during viewing</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, beatae, reiciendis, soluta nisi consequuntur cumque explicabo omnis qui velit nobis incidunt a odit magni at dolore quaerat ab totam debitis?</p>
+</div>
+<div class="visible-desktop row dont-print">
+  <a href="" class="btn btn-primary btn-large pull-right" ng-click="printTicket()"><i class="icon-print"></i> Print Ticket</a>
+</div>
+<ticketpaging order="Order" ticket="Ticket" index="TicketIdx"></ticketpaging>
+
+<a href="" ng-href="#/orders/{{Order.StoreKey}}/{{Order.Key}}" class="btn dont-print"><i class="icon-arrow-left"></i> back to your order</a>
