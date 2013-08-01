@@ -23,6 +23,6 @@
     scope.endTime = ->
       moment.utc(scope.event?.EndTime)
     scope.sameDay = ->
-      false #scope.endTime().diff(scope.startTime(), 'days') < 1
+      scope.endTime().diff(scope.startTime(), 'days') < 1
 
 )
