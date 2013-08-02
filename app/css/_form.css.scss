@@ -1,0 +1,7 @@
+input{
+  // &.ng-pristine { border:1px solid Gold; }
+  &.ng-dirty.ng-valid { border:2px solid Green; }
+  &.ng-dirty.ng-invalid { border:2px solid Red; }
+  &.ng-dirty.ng-valid ~ span { color:green; display:inline; }
+  &.ng-dirty.ng-invalid ~ span { color:red; display:inline; }
+}
