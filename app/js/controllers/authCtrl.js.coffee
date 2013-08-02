@@ -12,6 +12,14 @@ authCtrl = @prepTickets.controller("authCtrl", ($scope, $location, UrlSaverServi
         $scope.authProviders = omitAccounts(providers)
       (err) -> $scope.error.log(err);
     )
+  $scope.iconFor = (provider) ->
+    icon = switch provider.toString().toLowerCase()
+      when "facebook", "twitter", "linkedin" then provider.toString().toLowerCase()
+      when "google" then "google-plus"
+      else "user"
+
+    "icon-#{icon}"
+
 
   $scope.signup = ->
     if $scope.signupForm.$valid
