@@ -37,7 +37,14 @@
           <ul collapse="navCollapsed" class="nav nav-collapse collapse pull-right" ng-init="getProfile()">
             <li><a href="" ng-hide="DomainProfile.DomainProfileId > 0" ng-href="#/signin">Sign In</a></li>
             <li ng-show="DomainProfile.DomainProfileId > 0" style="display:none;"><a>Welcome {{DomainProfile.Contact.FirstName}}</a></li>
-            <li ng-show="DomainProfile.DomainProfileId > 0" style="display:none;"><a href="" ng-href="#/orders">My Orders</a></li>
+            <li class="dropdown" ng-show="DomainProfile.DomainProfileId > 0" style="display:none;">
+              <a href="" class="dropdown-toggle">My Account</a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="" ng-href="#/orders">My Orders</a>
+                </li>                
+              </ul>
+            </li>
             <li ng-show="DomainProfile.DomainProfileId > 0" style="display:none;"><a href="" ng-click="signout()">Sign Out</a></li>
           </ul>
         </div>
