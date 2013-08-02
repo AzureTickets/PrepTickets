@@ -11,8 +11,8 @@
         <div class="location">
           <div class="name">{{Event.Places[0].Name}}</div>
           <div class="address">{{Event.Places[0].Address | address}}</div>
-          
         </div>
+        <div class="ticketCount">Ticket: <span class="current">{{TicketIdx + 1}}</span> of <span class="total">{{Order.InventoryItems.length}}</span></div>
       </div>
     </div>
   </div>
