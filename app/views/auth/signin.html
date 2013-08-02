@@ -1,24 +1,49 @@
 <div class="row">
   <div class="span5 offset1" ng-init="loadAuthProviders()">
     <h3>{{'Signin.Title' | t:'Signin'}}</h3>
-    <form ng-submit="signin()">
-      <div>
-        <input type="text" placeholder="email" ng-model="AccountProfile.Email">      
+    <form name="signinForm" ng-submit="signin()">
+      <div class="control-group">
+        <input type="email" required="true" name="email" placeholder="email" ng-model="AccountProfile.Email">      
+        <span class="help-inline" ng-show="signinForm.email.$error.email">{{"Validation.ValidEmail" | t:"Must be a valid email address"}}</span>
+        <span class="help-inline" ng-show="signinForm.email.$error.required">{{"Validation.Required" | t:"*"}}</span>
       </div>
-      <div>
-        <input type="password" placeholder="password" ng-model="AccountProfile.Password">        
+      <div class="control-group">
+        <input type="password" placeholder="password" name="password" required="true" ng-model="AccountProfile.Password">
+        <span class="help-inline" ng-show="signinForm.password.$error.minlength">{{("Validation.MinLength"| t:{length:passwordLength, defaultValue:"Must be at least " + passwordLength +" characters long "})}}</span>
+        <span class="help-inline" ng-show="signinForm.password.$error.required">*</span>
       </div>
-      <button class="btn btn-primary">Signin</button>
+      <button class="btn btn-primary" ng-disabled="signinForm.$invalid" >Signin</button>
     </form>
+    <loader hide-on="authProviders">Loading the social sign in list</loader>
     <ul class="socialicons color">
-      <loader hide-on="authProviders">Loading the sign on list</loader>
       <li ng-repeat="provider in authProviders">
-        <a href="" ng-class="provider | lowercase" ng-click="signin(provider)">{{provider}}</a>
+        <a href="" >{{provider}}</a>
       </li>
     </ul>
   </div>
   <div class="span5">
     <h3>{{'Signup.Title' | t:"Signup"}}</h3>
+    <form name="signupForm" ng-submit="signup()">
+      <div class="control-group">
+        <input type="text" placeholder="first name" name="firstName" ng-model="NewAccount.FirstName" required="true">
+        <span class="help-inline" ng-show="signupForm.firstName.$error.required">*</span>
+      </div>
+      <div class="control-group" >
+        <input type="text" placeholder="last name" name="lastName" ng-model="NewAccount.LastName" required="true">
+        <span class="help-inline" ng-show="signupForm.lastName.$error.required">*</span>
+      </div>
+      <div class="control-group" >
+        <input type="email" name="email" placeholder="email" ng-model="NewAccount.Email" required="true">
+        <span class="help-inline" ng-show="signupForm.email.$error.email">Not a valid email address</span>
+        <span class="help-inline" ng-show="signupForm.email.$error.required">*</span>
+      </div>
+      <div class="control-group" >
+        <input type="password" placeholder="password" name="password" ng-minlength="6" ng-model="NewAccount.Password" required="true">
+        <span class="help-inline" ng-show="signupForm.password.$error.minlength">{{("Validation.MinLength"| t:{length:passwordLength, defaultValue:"Must be at least " + passwordLength +" characters long "})}}</span>
+        <span class="help-inline" ng-show="signupForm.password.$error.required">*</span>
+      </div>
+      <button class="btn btn-primary" ng-disabled="signupForm.$invalid">Signup</button>
+    </form>
   </div>
 </div>
 

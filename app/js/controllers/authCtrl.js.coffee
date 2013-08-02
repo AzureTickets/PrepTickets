@@ -1,5 +1,6 @@
-authCtrl = @prepTickets.controller("authCtrl", ($scope, errorService) ->
+authCtrl = @prepTickets.controller("authCtrl", ($scope, $location, UrlSaverService) ->
   $scope.authProviders = []
+  $scope.passwordLength = BWL.t("Signup.Password.Length", defaultValue:"6")
 
   $scope.loadAuthProviders = ->
     omitAccounts = (providers) ->
@@ -9,8 +10,18 @@ authCtrl = @prepTickets.controller("authCtrl", ($scope, errorService) ->
     $scope.auth.loadAuthProviders().then(
       (providers) -> 
         $scope.authProviders = omitAccounts(providers)
-      (err) -> errorService.log(err);
+      (err) -> $scope.error.log(err);
     )
+
+  $scope.signup = ->
+    if $scope.signupForm.$valid
+      $scope.auth.register($scope.NewAccount).then(
+        (success) ->
+          $scope.flash(BWL.t("Signup.Complete", defaultValue:"Signup Complete, please check your email to verify your account"))
+          $location.path(UrlSaverService.loadLocal())
+        (err) ->
+          $scope.flash("error", err).now()
+      )
 )
 
-authCtrl.$inject = ['$scope', 'errorService']
+authCtrl.$inject = ['$scope', "$location", "UrlSaverService"]

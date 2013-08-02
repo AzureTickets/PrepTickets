@@ -10,12 +10,21 @@
       "401" : "UNAUTHORIZED 401 SECURITY ERROR"
     }
   },
+  "Validation":{
+    "Required": "*",
+    "ValidEmail": "Must be a valid email address",
+    "MinLength": "Must be at least __length__ characters long"
+  },
   "Signin":{
     "Title": "Signin",
     "Required" : "You must sign in or sign up before you can continue"
   },
   "Signup":{
-    "Title": "Signup"
+    "Title": "Signup",
+    "Password":{
+      "MinLength": "6"
+    },
+    "Complete": "Signup Complete, please check your email to verify your account"
   },
   "Common": {
     "Loading": "Please Wait..."
