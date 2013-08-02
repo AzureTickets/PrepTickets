@@ -3,6 +3,16 @@
 </div>
 <div id="orders" ng-init="loadOrders()" ng-show="Orders" style="display:none;">
   <div class="order well" ng-repeat="order in Orders">
-    <a href="" ng-href="#/orders/{{order.StoreKey}}/{{order.Key}}">{{order.OrderId}}</a>
+    <a href="" ng-href="#/orders/{{order.StoreKey}}/{{order.Key}}">
+      <h2>Order #: {{order.OrderId}}</h2>
+    </a>
+    <p>
+      <b>Placed On</b>
+      {{order.Placed | datetime:"short"}}
+    </p>
+    <p>
+      <b>Total:</b>
+      <span class="label">{{order.Total.ItemPrice | currency}}</span>
+    </p>
   </div>
 </div>
