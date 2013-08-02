@@ -36,8 +36,9 @@ eventCtrl = @prepTickets.controller("eventCtrl", ($scope, $filter, $location, $r
     $scope.CurrentCart
     
   $scope.saveCart = ->
-    $scope.cart.addCart($scope.CurrentCart)
-    $location.path("cart/#{$scope.StoreObj.Key}")
+    if $scope.eventForm.$valid
+      $scope.cart.addCart($scope.CurrentCart)
+      $location.path("cart/#{$scope.StoreObj.Key}")
     
   $scope.quantityFor = (obj) ->
     $scope.cart.quantityFor(obj.StoreKey, obj.Key, obj.Type)

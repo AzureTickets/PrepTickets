@@ -3,27 +3,27 @@
   <div class="eventDetails">
     <p>{{EventObj.Description}}</p>
     <h3>Tickets</h3>
-    <form action="" ng-submit="saveCart()">
+    <form action="" name="eventForm" ng-submit="saveCart()">
       <table class="table table-hover">
         <tr>
-          <th class="span8">Ticket Name</th>
-          <th class="span2">Cost</th>
-          <th class="span2">Quantity</th>
+          <th class="span9">Ticket Name</th>
+          <th class="span1">Cost</th>
+          <th class="span1">Quantity</th>
+          <th class="span1">Total</th>
         </tr>
         <tr class="items" ng-repeat="item in EventObj.Items">
           <td>{{item.Name}}</td>
-          <td>{{item.Price.Display}}</td>
+          <td>{{item.Price.ItemPrice | currency}}</td>
           <td class="">
-            <input type="number" min='0' max="99" ng-model="CurrentCart.Items[item.Key].Quantity" class="span1"/>
+            <input type="number" min='1' max="99" required="true" ng-model="CurrentCart.Items[item.Key].Quantity" class="span1"/>
           </td>
+          <td>{{((item.Price.ItemPrice * CurrentCart.Items[item.Key].Quantity) || 0) | currency}}</td>
         </tr>
       </table>
       <div class="row">
-        <div class="offset10 span2">
-          <a href="" class="btn btn-success btn-large" ng-click="saveCart()">
-            <i class="icon-shopping-cart"></i> Add to Cart
-          </a>
-        </div>
+        <a href="" class="offset10 span2 btn btn-success btn-large" ng-click="saveCart()" ng-disabled="eventForm.$invalid">
+          <i class="icon-shopping-cart"></i> Add to Cart
+        </a>
       </div>
     </form>
   </div>
