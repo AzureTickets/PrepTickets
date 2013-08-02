@@ -9,6 +9,7 @@ appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, $window,
   $rootScope.cart = CartService
   $rootScope.store = storeService
   $rootScope.modal = ModalService
+  $rootScope.flash = flash
   $rootScope.AccountProfile = $rootScope.auth.getAccountProfile()
 
   $rootScope.$on 'flash:message', (_, messages, done) ->
@@ -61,13 +62,13 @@ appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, $window,
                 $location.path(UrlSaverService.loadLocal())
               else
                 flash.now()
-                #TODO: might want to add a timeout for redirect so user sees flashMsg
+                #TODO: might want to add a timeout for redirect so user sees flash.now()
                 $window.location.href = UrlSaverService.load()
             (err) ->
-              flash('danger', err).now()
+              flash('error', err).now()
           )
         (err) ->
-          flash('danger', err).now()
+          flash('error', err).now()
       )
 )
 
