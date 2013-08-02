@@ -125,10 +125,12 @@ authService = @prepTickets.factory 'authService', (configService, $q, $rootScope
     register : (account) ->
       def = $q.defer()
 
-      # request level 20 perms, this is for
-      # store owners perms
-      BWL.Services.Account.Register(20, account, 
-        ->
+      account.PasswordHash = BWL.Plugins.MD5(account.Password) unless account.PasswordHash
+
+      # request level 20 perms, this is for member
+      BWL.Services.Account.Register(BWL.Models.DomainProfileRoleEnum.Member, account, 
+        (result) ->
+          console.log result
           $rootScope.$apply(def.resolve)
         (err) ->
           $rootScope.$apply(->
