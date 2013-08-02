@@ -35,10 +35,8 @@ orderCtrl = @prepTickets.controller('orderCtrl', ($scope, $location, $routeParam
       $scope.loadOrder().then(
         (order) ->
           result = findTicket($routeParams.ticketKey)
-          console.log result
           $scope.TicketIdx = result[0]
           $scope.Ticket = result[1]
-          console.log "Ticket:", $scope.Ticket
           $scope.loadEvent($scope.Ticket.StoreKey, $scope.Ticket.EventKey).then(
             (event) ->
               console.log event

@@ -130,7 +130,6 @@ authService = @prepTickets.factory 'authService', (configService, $q, $rootScope
       # request level 20 perms, this is for member
       BWL.Services.Account.Register(BWL.Models.DomainProfileRoleEnum.Member, account, 
         (result) ->
-          console.log result
           $rootScope.$apply(def.resolve)
         (err) ->
           $rootScope.$apply(->
