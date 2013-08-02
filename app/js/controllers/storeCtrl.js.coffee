@@ -13,10 +13,9 @@ storeCtrl = @prepTickets.controller("storeCtrl", ($scope, $location, $routeParam
       ev?.stopPropagation?()
   
 
-  $scope.search = (q)->
+  $scope.search = (q=$scope.query)->
     $scope.Searching = true
-    $scope.Stores = []
-    $scope.store.searchStores($scope.query).then(
+    $scope.store.searchStores(q).then(
       (stores) ->
         $scope.Stores = stores
         $scope.Searching = false
