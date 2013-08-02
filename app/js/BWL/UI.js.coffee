@@ -4,4 +4,4 @@ class @BWL.UI
   @Alert: (msg) ->
     #TODO: Expand this with a better UI
     console.warn(msg) if console?
-    alert(msg)
+    # alert(msg)
