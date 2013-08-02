@@ -1,5 +1,7 @@
 storeCtrl = @prepTickets.controller("storeCtrl", ($scope, $location, $routeParams) ->  
   $scope.greeting = 'Hola!'
+  $scope.Searching = false
+  $scope.Stores = []
   $scope.$on 'initStore', 
     (ev, key) ->
       unless key?
@@ -12,9 +14,12 @@ storeCtrl = @prepTickets.controller("storeCtrl", ($scope, $location, $routeParam
   
 
   $scope.search = (q)->
+    $scope.Searching = true
+    $scope.Stores = []
     $scope.store.searchStores($scope.query).then(
       (stores) ->
-        #Do nothing
+        $scope.Stores = stores
+        $scope.Searching = false
       (err) ->
         $scope.error.log err
     )

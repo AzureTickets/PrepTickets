@@ -10,11 +10,15 @@
       </div>
     </div>
   </form>
-  <div id="schoolList" ng-repeat="store in store.getStores()"> 
-    <div class="store well" id="{{store.StoreKey}}">
-      <a href="" ng-click="goToStore({URI:store.URI, key:store.StoreKey})">
-        {{store.SearchText}}
-      </a>
-    </div>
-  </div>
+  <loader hide-on="!Searching">Loading...</loader>
+  <ul id="schoolList" class="stores list thumbnails">
+    <li class="store span4" ng-repeat="store in Stores">
+      <div class="thumbnail" id="{{store.Key}}">
+        <a href="" ng-click="goToStore({URI:store.URI, key:store.StoreKey})">
+          <img ng-src="" alt="">
+          <h4 class="text-center">{{store.Name}}</h4>
+        </a>
+      </div>
+    </li>
+  </ul>
 </div>
