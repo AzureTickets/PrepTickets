@@ -1,3 +1,16 @@
+@media screen and (max-width: 768px) {
+    h1,h2,h3,h4,h5 {
+        font-size:1.7em;
+    }
+}
+ 
+@media screen and (max-width: 568px) {
+    h1,h2,h3,h4,h5 {
+        font-size:1.6em;
+    }
+}
+
+
 @media (min-width: 768px) {
   input[type="text"].huge{
     font-size:3.2em;
