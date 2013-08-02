@@ -6,5 +6,11 @@
     # @method t
     # @param {string} Value to translate
     # 
-    (t, defaultValue=t) -> BWL.t(t, defaultValue:defaultValue)
+    (target, defaultValueOrOptions=target) ->
+      options = {}
+      if typeof defaultValueOrOptions is "object"
+        options = defaultValueOrOptions
+      else
+        options.defaultValue = defaultValueOrOptions
+      BWL.t(target, options)
 ])
