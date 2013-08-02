@@ -15,9 +15,11 @@ storeCtrl = @prepTickets.controller("storeCtrl", ($scope, $location, $routeParam
 
   $scope.search = (q=$scope.query)->
     $scope.Searching = true
+    $scope.FoundNothing = false
     $scope.store.searchStores(q).then(
       (stores) ->
         $scope.Stores = stores
+        $scope.FoundNothing = true if stores.length == 0
         $scope.Searching = false
       (err) ->
         $scope.error.log err

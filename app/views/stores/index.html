@@ -11,6 +11,7 @@
     </div>
   </form>
   <loader hide-on="!Searching">Loading...</loader>
+  <div class="alert alert-info" ng-show="FoundNothing">No schools found</div>
   <ul id="schoolList" class="stores list thumbnails">
     <li class="store span4" ng-repeat="store in Stores">
       <div class="thumbnail" id="{{store.Key}}">
