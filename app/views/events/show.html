@@ -15,13 +15,13 @@
           <td>{{item.Name}}</td>
           <td>{{item.Price.ItemPrice | currency}}</td>
           <td class="">
-            <input type="number" min='1' max="99" required="true" ng-model="CurrentCart.Items[item.Key].Quantity" class="span1"/>
+            <input type="number" min='0' max="99" required="true" ng-model="CurrentCart.Items[item.Key].Quantity" class="span1"/>
           </td>
           <td>{{((item.Price.ItemPrice * CurrentCart.Items[item.Key].Quantity) || 0) | currency}}</td>
         </tr>
       </table>
       <div class="row">
-        <a href="" class="offset10 span2 btn btn-success btn-large" ng-click="saveCart()" ng-disabled="eventForm.$invalid">
+        <a href="" class="offset9 span2 btn btn-success btn-large" ng-click="saveCart()" ng-disabled="eventForm.$invalid">
           <i class="icon-shopping-cart"></i> Add to Cart
         </a>
       </div>
