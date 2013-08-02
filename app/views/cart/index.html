@@ -37,12 +37,18 @@
   </tbody>
   </table>
   <div class="row">
-    <a href="" class="btn btn-large offset7 span2" confirm="Are you sure you want to clear your cart?" ng-click="clearCart()">
-      <i class="icon-remove"></i> Clear Cart
-    </a>
-    <a href="" class="btn btn-primary btn-large span2" ng-click="checkout()" ng-show="CartObj">
-      <i class="icon-shopping-cart"></i> Checkout
-    </a>
+    <div class="row">
+      <div class="offset4 span1"></div>
+      <a href="" class="btn span2" confirm="Are you sure you want to clear your cart?" ng-click="clearCart()">
+        <i class="icon-remove"></i> Clear Cart
+      </a>
+      <a href="" ng-href="#/school/{{CartObj.StoreKey}}" class="btn btn-info span2">
+        <i class="icon-reply"></i> Continue Shopping
+      </a>
+      <a href="" class="btn btn-primary btn-large span2" ng-click="checkout()" ng-show="CartObj">
+        <i class="icon-shopping-cart icon-large"></i> Checkout
+      </a>
+    </div>
     
   </div>
 </div>
