@@ -9,6 +9,14 @@
         <a href="" ng-href="#/school/{{StoreObj.URI}}/event/{{event.CustomURI.URI}}">
           <h4 class="text-center">{{event.Name}}</h4>
         </a>
+        <p>
+          <b>Time: </b>
+          {{event.StartTime | datetime}}
+        </p>
+        <p>
+          <b>Location: </b>
+          {{event.Places[0].Address | address}}
+        </p>
         <p class="description" ng-bind-html-unsafe="event.Description"></p>
         <div class="text-center">
           <a href="" class="btn btn-primary btn-large" ng-href="#/school/{{StoreObj.URI}}/event/{{event.CustomURI.URI}}">
