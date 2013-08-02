@@ -1,7 +1,6 @@
 storeCtrl = @prepTickets.controller("storeCtrl", ($scope, $location, $routeParams) ->  
   $scope.greeting = 'Hola!'
   $scope.Searching = false
-  $scope.Stores = []
   $scope.$on 'initStore', 
     (ev, key) ->
       unless key?
@@ -13,17 +12,20 @@ storeCtrl = @prepTickets.controller("storeCtrl", ($scope, $location, $routeParam
       ev?.stopPropagation?()
   
 
-  $scope.search = (q=$scope.query)->
-    $scope.Searching = true
-    $scope.FoundNothing = false
-    $scope.store.searchStores(q).then(
-      (stores) ->
-        $scope.Stores = stores
-        $scope.FoundNothing = true if stores.length == 0
-        $scope.Searching = false
-      (err) ->
-        $scope.error.log err
-    )
+  $scope.search = (query=$scope.query)->
+    if(query.length >= 3)
+      $scope.Searching = true
+      $scope.FoundNothing = false
+      $scope.store.searchStores(query).then(
+        (stores) ->
+          $scope.Stores = stores
+          $scope.FoundNothing = true if stores.length == 0
+          $scope.Searching = false
+        (err) ->
+          $scope.error.log err
+      )
+    else
+      $scope.Stores = []
 
   $scope.goToStore = (obj) ->
     $scope.store.cacheTheKey(obj.key)
