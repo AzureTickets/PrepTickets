@@ -32,8 +32,6 @@ eventCtrl = @prepTickets.controller("eventCtrl", ($scope, $filter, $location, $r
         Type: item.Type
         Name: item.Name
         Price: item.Price.ItemPrice
-        Total: ->
-          @Price * @Quantity
 
     $scope.CurrentCart
     

@@ -23,10 +23,10 @@
           {{item.Price | currency}}
         </td>
         <td class="span1">
-          <input type="number" ng-model="item.Quantity" min="0" class="input-mini">
+          <input type="number" ng-model="item.Quantity" min="0" required="true" class="input-mini">
         </td>
         <td class="span1">
-          {{item.Total() | currency}}
+          {{item.Price * item.Quantity | currency}}
         </td>
         <td class="span1">
           <a href="" class="" ng-click="removeItem(item.Key)" tooltip="Remove Item" confirm="Are you sure?">
