@@ -41,7 +41,7 @@ OrderService = @prepTickets.factory('OrderService', ($q, $rootScope, configServi
 
     @getAll().then(
       (orders) => 
-        if (order = orders[0])
+        if (order = orders[orders.length - 1])
           @get(order.StoreKey, order.Key).then(
             (order) ->
               def.resolve(order)
