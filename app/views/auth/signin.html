@@ -17,7 +17,7 @@
     <loader hide-on="authProviders">Loading the social sign in list</loader>
     <ul class="socialicons color">
       <li ng-repeat="provider in authProviders">
-        <a href="" >{{provider}}</a>
+        <a href="" ng-click="signin(provider)" >{{provider}}</a>
       </li>
     </ul>
   </div>
