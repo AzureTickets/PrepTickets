@@ -19,6 +19,7 @@ orderCtrl = @prepTickets.controller('orderCtrl', ($scope, $location, $routeParam
         OrderService.get($routeParams.storeKey, $routeParams.orderKey).then(
           (order) ->
             $scope.Order = order if order.Key
+            $scope.root.title = "Order ##{order.OrderId}"
           (err) ->
             $scope.error.log err
         )
@@ -37,6 +38,7 @@ orderCtrl = @prepTickets.controller('orderCtrl', ($scope, $location, $routeParam
           result = findTicket($routeParams.ticketKey)
           $scope.TicketIdx = result[0]
           $scope.Ticket = result[1]
+          $scope.root.title = "Ticket ##{result[0] + 1} for Order ##{$scope.Order.OrderId}"
           $scope.loadEvent($scope.Ticket.StoreKey, $scope.Ticket.EventKey).then(
             (event) ->
               console.log event

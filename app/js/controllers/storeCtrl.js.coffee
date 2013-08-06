@@ -46,6 +46,7 @@ storeCtrl = @prepTickets.controller("storeCtrl", ($scope, $location, $routeParam
   $scope.initStore = (storeKey) ->
     $scope.store.getStore(storeKey).then(
       (store) ->
+        $scope.root.title = store.Name
         $scope.StoreObj = store    
       (err) ->
         $scope.error.log err

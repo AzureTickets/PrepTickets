@@ -5,14 +5,18 @@ eventCtrl = @prepTickets.controller("eventCtrl", ($scope, $filter, $location, $r
       storeService.getStoreByURI($routeParams.storeURI).then(
         (store) ->
           $scope.StoreObj = store
-          $scope.EventObj = $filter('findByEventURI')(store.Events, $routeParams.eventURI)
-          $scope.buildCart()
+          $scope.setupEventObj()
         (err) ->
           $scope.error.log err
       )
     else
-      $scope.EventObj = $filter('findByEventURI')($scope.StoreObj.Events, $routeParams.eventURI)
-      $scope.buildCart()
+      $scope.setupEventObj()
+      
+
+  $scope.setupEventObj = (eventUri=$routeParams.eventURI) ->
+    $scope.EventObj = $filter('findByEventURI')($scope.StoreObj.Events, eventUri)
+    $scope.root.title = "#{$scope.EventObj.Name} @ #{$scope.StoreObj.Name}"
+    $scope.buildCart()
 
   #TODO: This might need to be inside the cart service
   $scope.buildCart = ->

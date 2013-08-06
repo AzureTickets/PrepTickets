@@ -1,6 +1,7 @@
 appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, $window, configService, errorService, flash, authService, storeService, CartService, $location, UrlSaverService, ModalService) ->
   $rootScope.errors = []
   $rootScope.navCollapsed = true
+  $rootScope.title = ""
   
   $rootScope.auth = authService
   $rootScope.cookie = $cookieStore
@@ -10,6 +11,7 @@ appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, $window,
   $rootScope.store = storeService
   $rootScope.modal = ModalService
   $rootScope.flash = flash
+  $rootScope.root = $rootScope
   $rootScope.AccountProfile = $rootScope.auth.getAccountProfile()
 
   $rootScope.$on 'flash:message', (_, messages, done) ->
