@@ -1,0 +1,27 @@
+<div id="ticket" ng-init="loadEventForTicket(Ticket)">
+  <div class="row">
+    <div class="span3">
+      <qrcode ticket="Ticket" />
+    </div>
+    <div class="span8">
+      <h2>{{Ticket.EventName}} - {{Ticket.ItemInfoName}}</h2>
+      <div class="eventDetails">
+        <eventdate event="EventData[Ticket.EventKey]"></eventdate>
+        <div class="location">
+          <div class="name">{{EventData[Ticket.EventKey].Places[0].Name}}</div>
+          <div class="address">{{EventData[Ticket.EventKey].Places[0].Address | address}}</div>
+        </div>
+        <div class="ticketCount">Ticket: <span class="current">{{TicketIdx + 1}}</span> of <span class="total">{{Order.InventoryItems.length}}</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="visible-desktop dont-print text-center">
+    <a href="" class="btn btn-primary btn-large" ng-click="printTicket()"><i class="icon-print icon-large"></i> Print Ticket</a>
+  </div>
+</div>
+<div class="row print-only">
+  <div class="span12 ticket_msg">
+    <img src="/img/ticket_msg.png" alt="Ticket Message">
+
+  </div>
+</div>

@@ -1,53 +1,56 @@
 <loader hide-on="Order">Loading order details</loader>
 <div id="order" ng-init="loadOrder()" ng-show="Order" style="display:none;">
-  <h4>Order Details</h4>
-  <div class="row">
-    <div class="span6">
-      <div class="row">
-        <div class="span3"><b>OrderId</b></div>
-        <div class="span3">{{Order.OrderId}}</div>
+  <div class="order-details dont-print">
+    <h4>Order Details</h4>
+    <div class="row">
+      <div class="span6">
+        <div class="row">
+          <div class="span3"><b>OrderId</b></div>
+          <div class="span3">{{Order.OrderId}}</div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="span6">
-      <div class="row">
-        <div class="span3"><b>Date of Order</b></div>
-        <div class="span3">{{Order.Placed | datetime}}</div>
+    <div class="row">
+      <div class="span6">
+        <div class="row">
+          <div class="span3"><b>Date of Order</b></div>
+          <div class="span3">{{Order.Placed | datetime}}</div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="span6">
-      <div class="row">
-        <div class="span3"><b>Number of items</b></div>
-        <div class="span3">{{Order.InventoryItems.length}}</div>
+    <div class="row">
+      <div class="span6">
+        <div class="row">
+          <div class="span3"><b>Number of items</b></div>
+          <div class="span3">{{Order.InventoryItems.length}}</div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="span6">
-      <div class="row">
-        <div class="span3"><b>Total</b></div>
-        <div class="span3">{{Order.Total.ItemPrice | currency}}</div>
+    <div class="row">
+      <div class="span6">
+        <div class="row">
+          <div class="span3"><b>Total</b></div>
+          <div class="span3">{{Order.Total.ItemPrice | currency}}</div>
+        </div>
       </div>
     </div>
-  </div>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th></th>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tr ng-repeat="ticket in Order.InventoryItems">
+        <td class="span9">
+          {{ticket.EventName}} - {{ticket.ItemInfoName}}
+        </td>
+        <td class="span3">
+          <a href="" class="btn btn-info" ng-href='#/orders/{{Order.StoreKey}}/{{Order.Key}}/{{ticket.Key}}'><i class="icon-eye-open"></i> View <span class="visible-desktop">&amp; Print</span> Ticket</a>
+        </td>
       </tr>
-    </thead>
-    <tr ng-repeat="ticket in Order.InventoryItems">
-      <td class="span8">
-        {{ticket.EventName}} - {{ticket.ItemInfoName}}
-      </td>
-      <td class="span4">
-        <a href="" class="btn btn-info" ng-href='#/orders/{{Order.StoreKey}}/{{Order.Key}}/{{ticket.Key}}'><i class="icon-eye-open"></i> View <span class="visible-desktop">&amp; Print</span> Ticket</a>
-      </td>
-    </tr>
-  </table>
-  <a href="" class="btn" ng-href="#/orders"><i class="icon-arrow-left"></i> Back to orders</a>
+    </table>
+  </div>
+  <ng-include src="'views/tickets/index.print.html'"></ng-include>
+  <a href="" class="btn dont-print" ng-href="#/orders"><i class="icon-arrow-left"></i> Back to orders</a>
 </div>

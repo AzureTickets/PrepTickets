@@ -5,6 +5,7 @@ orderCtrl = @prepTickets.controller('orderCtrl', ($scope, $location, $routeParam
       return [idx, ticket] if ticket.Key is key
     [-1, {}]
 
+  $scope.EventData = {}
   $scope.loadOrders = ->
     OrderService.getAll().then(
       (orders) ->
@@ -38,13 +39,8 @@ orderCtrl = @prepTickets.controller('orderCtrl', ($scope, $location, $routeParam
           result = findTicket($routeParams.ticketKey)
           $scope.TicketIdx = result[0]
           $scope.Ticket = result[1]
+          $scope.loadEventForTicket($scope.Ticket)
           $scope.root.title = "Ticket ##{result[0] + 1} for Order ##{$scope.Order.OrderId}"
-          $scope.loadEvent($scope.Ticket.StoreKey, $scope.Ticket.EventKey).then(
-            (event) ->
-              $scope.Event = event
-            (err) ->
-              $scope.error.log err
-          )
         (err) ->
           $scope.error.log err
       )
@@ -64,6 +60,12 @@ orderCtrl = @prepTickets.controller('orderCtrl', ($scope, $location, $routeParam
         def.reject(err)
     )
     def.promise
+  $scope.loadEventForTicket = (ticket) ->
+    return null unless ticket?
+    $scope.loadEvent(ticket.StoreKey, ticket.EventKey).then(
+      (event) -> $scope.EventData[event.Key] = event
+      (err) -> $scope.error.log err
+    )
 
   $scope.printTicket = ->
     $window.print()

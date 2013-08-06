@@ -1,28 +1,4 @@
 <loader hide-on="Ticket">Loading your ticket</loader>
-<div id="ticket" ng-init="loadTicket()" ng-show="Ticket">
-  <div class="row">
-    <div class="span3">
-      <qrcode ticket="Ticket" />
-    </div>
-    <div class="span8">
-      <h2>{{Ticket.EventName}} - {{Ticket.ItemInfoName}}</h2>
-      <div class="eventDetails">
-        <eventdate event="Event"></eventdate>
-        <div class="location">
-          <div class="name">{{Event.Places[0].Name}}</div>
-          <div class="address">{{Event.Places[0].Address | address}}</div>
-        </div>
-        <div class="ticketCount">Ticket: <span class="current">{{TicketIdx + 1}}</span> of <span class="total">{{Order.InventoryItems.length}}</span></div>
-      </div>
-    </div>
-  </div>
-  <div class="visible-desktop dont-print text-center">
-    <a href="" class="btn btn-primary btn-large" ng-click="printTicket()"><i class="icon-print icon-large"></i> Print Ticket</a>
-  </div>
-</div>
-<div class="ad print-only text-center">
-  <img src="http://placehold.it/600x400&text=Ad%20here">
-</div>
+<ng-include src="'views/tickets/show.print.html'" ng-init="loadTicket()" ng-show="Ticket"></ng-include>
 <ticketpaging order="Order" ticket="Ticket" index="TicketIdx"></ticketpaging>
-
 <a href="" ng-href="#/orders/{{Order.StoreKey}}/{{Order.Key}}" class="btn dont-print"><i class="icon-arrow-left"></i> back to your order</a>
