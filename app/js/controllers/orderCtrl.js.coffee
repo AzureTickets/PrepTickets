@@ -41,7 +41,6 @@ orderCtrl = @prepTickets.controller('orderCtrl', ($scope, $location, $routeParam
           $scope.root.title = "Ticket ##{result[0] + 1} for Order ##{$scope.Order.OrderId}"
           $scope.loadEvent($scope.Ticket.StoreKey, $scope.Ticket.EventKey).then(
             (event) ->
-              console.log event
               $scope.Event = event
             (err) ->
               $scope.error.log err
