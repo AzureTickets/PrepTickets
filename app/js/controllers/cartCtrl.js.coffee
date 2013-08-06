@@ -1,5 +1,6 @@
 cartCtrl = @prepTickets.controller "cartCtrl", ($scope, $routeParams, $location, $window, flash, ServerCartService, storeService, UrlSaverService) ->
   $scope.$on "ServerCart:Uploaded", ->
+    UrlSaverService.clear() 
     $location.path("cart/#{$routeParams.storeKey}/confirm")
   $scope.setupCart = ->
     $scope.CartObj = $scope.cart.getCartObj($routeParams.storeKey)
