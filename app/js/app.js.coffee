@@ -45,7 +45,7 @@ window.moment = ender.moment
       controller: 'orderCtrl'
     .when '/orders/:storeKey/:orderKey/:ticketKey',
       title: 'Loading Ticket...'
-      templateUrl: 'views/orders/ticket.html'
+      templateUrl: 'views/tickets/show.html'
       controller: 'orderCtrl'
     .when '/signin',
       title: 'Sign in'
