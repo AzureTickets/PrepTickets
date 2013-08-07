@@ -129,7 +129,7 @@ storeService = @prepTickets.factory('storeService', ($q, $rootScope, modelServic
       def.resolve(_currentStore)
     else
       BWL.Services.Model.Read(
-        configService.container.store
+        configService.defaultStoreKey
         "Store"
         storeKey
         10

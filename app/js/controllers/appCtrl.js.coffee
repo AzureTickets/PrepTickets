@@ -12,7 +12,6 @@ appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, $window,
   $rootScope.modal = ModalService
   $rootScope.flash = flash
   $rootScope.root = $rootScope
-  $rootScope.AccountProfile = $rootScope.auth.getAccountProfile()
 
   $rootScope.$on 'flash:message', (_, messages, done) ->
     $rootScope.messages = messages
@@ -30,7 +29,6 @@ appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, $window,
     $rootScope.auth.loadProfile().then(
       (profile) -> 
         $rootScope.DomainProfile = profile
-        $rootScope.auth.setDomainProfile(profile)
       (err) ->
         errorService.log(err)
     )
