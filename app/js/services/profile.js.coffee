@@ -52,12 +52,14 @@ profileService = @prepTickets.factory 'ProfileService', ($rootScope, $q, configS
     passwordHash = BWL.Plugins.MD5(newPassword)
     BWL.Services.Account.ChangePassword(
       passwordHash
-      {email:_profile.Contact.EmailAddress}
+      {
+        Email:_profile.Contact.EmailAddress
+        PasswordHash: passwordHash
+      }
       (result) ->
-        console.log "savePassword: ", result
-        def.resolve(result)
+        $rootScope.$apply def.resolve(result)
       (err) ->
-        def.reject(err)
+        $rootScope.$apply def.reject(err)
     )
 
     def.promise

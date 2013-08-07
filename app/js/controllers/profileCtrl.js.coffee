@@ -1,5 +1,6 @@
 profileCtrl = @prepTickets.controller "profileCtrl", ($scope, $location, ProfileService) ->
   $scope.Contact = {}
+  $scope.processingRequest = false
   $scope.loadProfile = ->
     $scope.auth.loadProfile().then(
       (profile) ->
@@ -9,32 +10,35 @@ profileCtrl = @prepTickets.controller "profileCtrl", ($scope, $location, Profile
         $scope.error.log err
     )
   $scope.saveProfile = ->
-    if $scope.profileForm.$valid
+    if $scope.profileForm.$valid and not $scope.processingRequest
       $scope.flash.clear()
+      $scope.processingRequest = true
       ProfileService.saveContact($scope.Contact).then(
         (result) ->
-          console.log result
+          $scope.processingRequest = false
           $scope.flash("Your profile has been updated")
           $scope.auth.loadProfile(true)
           $location.path("/profile")
         (err) ->
-          console.log err
+          $scope.processingRequest = false
           $scope.error.log err
       )
     else
       $scope.flash("error", "Unable to save, please check the form for any errors and try again").now()
 
   $scope.savePassword = ->
-    if $scope.passwordForm.$valid
+    if $scope.passwordForm.$valid and not $scope.processingRequest
       $scope.flash.clear()
-      alert "Feature coming soon..."
-      # ProfileService.savePassword($scope.Contact.NewPassword).then(
-      #   (success) ->
-      #     console.log success
-      #     flash("You've successfully changed your password")
-      #     $location.path("/profile")
-      #   (err) -> $scope.error.log err
-      # )
+      $scope.processingRequest = true
+      ProfileService.savePassword($scope.Contact.NewPassword).then(
+        (success) ->
+          $scope.processingRequest = false
+          $scope.flash("You've successfully changed your password")
+          $location.path("/profile")
+        (err) -> 
+          $scope.processingRequest = false
+          $scope.error.log err
+      )
     else
       $scope.flash("error", "Unable to save, please check the form for any errors and try again").now()
 
