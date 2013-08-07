@@ -1,4 +1,4 @@
-@prepTickets.directive('qrcode', [() ->
+@prepTickets.directive('qrcode', ["ProfileService", (ProfileService) ->
   restrict: 'E' 
   replace: true
   scope: 
@@ -9,5 +9,7 @@
   link: (scope) ->
     scope.qrcodeUrl = ->
       return "" unless scope.ticket?.DownloadLink
-      scope.ticket.DownloadLink.replace("/ticket/", "/qrcode/")
+      url = scope.ticket.DownloadLink.replace("/ticket/", "/qrcode/")
+      url += "?token=#{token}" if token = ProfileService.accessToken()
+      url
 ])

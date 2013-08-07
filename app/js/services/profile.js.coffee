@@ -24,6 +24,9 @@ profileService = @prepTickets.factory 'ProfileService', ($rootScope, $q, configS
   clear: ->
     _profile = {}
 
+  accessToken: ->
+    _profile.AccessToken?.Key
+
   signedInViaOAuth: ->
     return false unless _profile?
     _profile.AccessToken?.ProviderType isnt "Accounts"
