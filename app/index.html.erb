@@ -7,13 +7,25 @@
   <title ng-bind="title + ' - PrepTickets'">PrepTickets</title>
   <%= stylesheet_link_tag "app.css" %>
   <%= stylesheet_link_tag "print.css", media: :print %>
-  <!--[if lt IE 9]>
+  <!--[if lte IE 8]>
     <script src="lib/es5-shim/es5-shim.js"></script>
     <script src="lib/json3/lib/json3.min.js"></script>
+
+    <script>
+      document.createElement('ng-include');
+      document.createElement('ng-pluralize');
+      document.createElement('ng-view');
+    
+      // Optionally these for CSS
+      document.createElement('ng:include');
+      document.createElement('ng:pluralize');
+      document.createElement('ng:view');
+    </script>
+
   <![endif]-->
 </head>
 <body>
-  <!--[if lt IE 7]>
+  <!--[if lte IE 7]>
     <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
   <![endif]-->
   <header class="dont-print">
