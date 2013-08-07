@@ -27,13 +27,14 @@ profileCtrl = @prepTickets.controller "profileCtrl", ($scope, $location, Profile
   $scope.savePassword = ->
     if $scope.passwordForm.$valid
       $scope.flash.clear()
-      ProfileService.savePassword($scope.Contact.NewPassword).then(
-        (success) ->
-          console.log success
-          flash("You've successfully changed your password")
-          $location.path("/profile")
-        (err) -> $scope.error.log err
-      )
+      alert "Feature coming soon..."
+      # ProfileService.savePassword($scope.Contact.NewPassword).then(
+      #   (success) ->
+      #     console.log success
+      #     flash("You've successfully changed your password")
+      #     $location.path("/profile")
+      #   (err) -> $scope.error.log err
+      # )
     else
       $scope.flash("error", "Unable to save, please check the form for any errors and try again").now()
 
