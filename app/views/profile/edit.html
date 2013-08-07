@@ -1,0 +1,32 @@
+<loader hide-on="DomainProfile">Loading your profile</loader>
+<div id="profile" ng-init="loadProfile()" ng-show="DomainProfile" style="display:none;">
+  <h3>Edit your Profile:</h3>
+  <form action="" name="profileForm" class="form-horizontal">
+    <div class="control-group">
+      <label class="control-label" for="FirstName">First Name</label>
+      <div class="controls">
+        <input type="text" id="FirstName" name="FirstName" placeholder="FirstName" ng-model="Contact.FirstName" required>
+        <span class="help-inline" ng-show="profileForm.FirstName.$error.required">*</span>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="LastName">Last Name</label>
+      <div class="controls">
+        <input type="text" id="LastName" name="LastName" placeholder="LastName" ng-model="Contact.LastName" required>
+        <span class="help-inline" ng-show="profileForm.LastName.$error.required">*</span>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="EmailAddress">Email Address</label>
+      <div class="controls">
+        <input type="email" id="EmailAddress" name="EmailAddress" placeholder="EmailAddress" ng-model="Contact.EmailAddress">
+        <span class="help-inline" ng-show="profileForm.EmailAddress.$error.email">Not a valid email address</span>
+        <span class="help-inline" ng-show="profileForm.EmailAddress.$error.required">*</span>
+      </div>
+    </div>
+    <div class="form-actions">
+      <a href="" class="btn btn-primary" ng-click="saveProfile()" ng-disabled="profileForm.$invalid"><i class="icon-save"></i> Save</a>
+      <a href="" class="btn" ng-href="#/profile"><i class="icon-remove-circle"></i> Cancel</a>
+    </div>
+  </form>
+</div>

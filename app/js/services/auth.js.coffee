@@ -1,25 +1,16 @@
 # authentication service
-authService = @prepTickets.factory 'authService', (configService, $q, $rootScope, modelService, $cookieStore, $window, UrlSaverService) ->
+authService = @prepTickets.factory 'authService', (configService, $q, $rootScope, modelService, $cookieStore, $window, UrlSaverService, ProfileService) ->
     _domainProfile = {}
     
     isSignedIn: ->
       _domainProfile.ProfileRole >= BWL.Models.DomainProfileRoleEnum.Authenticated
     
-    loadProfile : () ->
-      def = $q.defer()
-      return def.resolve(_profile) if _profile?.Key
-      BWL.Services.Account.GetProfile(
+    loadProfile : (force = false) ->
+      ProfileService.get(force).then(
         (profile) ->
-          console.log profile
           _domainProfile = profile
-          $rootScope.$apply(def.resolve(profile))
-        (err) ->
-          $rootScope.$apply(->
-            def.reject(err)
-          )
+        (err) -> $scope.error.log err
       )
-
-      def.promise
     
     signinByProvider : (provider, returnURL = $window.location.href) ->
       def = $q.defer()
@@ -83,7 +74,7 @@ authService = @prepTickets.factory 'authService', (configService, $q, $rootScope
     
     signoff : ->
       def = $q.defer()
-      $rootScope.DomainProfile = {}
+      
       UrlSaverService.clear()
       BWL.Services.Account.Logoff(->
         $rootScope.$apply(def.resolve)
@@ -107,4 +98,4 @@ authService = @prepTickets.factory 'authService', (configService, $q, $rootScope
 
       def.promise
     
-authService.$inject = ['configService', '$q', '$rootScope', 'modelService', '$cookieStore', "$window", "UrlSaverService"]
+authService.$inject = ['configService', '$q', '$rootScope', 'modelService', '$cookieStore', "$window", "UrlSaverService", "ProfileService"]

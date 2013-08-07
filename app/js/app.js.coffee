@@ -51,6 +51,18 @@ window.moment = ender.moment
       title: 'Sign in'
       templateUrl: 'views/auth/signin.html'
       controller: 'authCtrl'
+    .when '/profile',
+      title: 'Your Profile'
+      templateUrl: 'views/profile/show.html'
+      controller: 'profileCtrl'
+    .when '/profile/edit',
+      title: 'Edit Your Profile'
+      templateUrl: 'views/profile/edit.html'
+      controller: 'profileCtrl'
+    .when '/profile/change-password',
+      title: 'Change Your Profile Password'
+      templateUrl: 'views/profile/password.html'
+      controller: 'profileCtrl'
     .otherwise
       redirectTo: '/'
 ])

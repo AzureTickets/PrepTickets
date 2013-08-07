@@ -1,0 +1,28 @@
+<loader hide-on="DomainProfile">Loading your profile</loader>
+<div id="profile" ng-init="loadProfile()" ng-show="DomainProfile" style="display:none;">
+  <h3>This is your profile:</h3>
+  <table class="table table-hover">
+    <tbody>
+      <tr>
+        <td class="span3 text-right">First Name</td>
+        <td class="span9">{{DomainProfile.Contact.FirstName}}</td>
+      </tr>
+      <tr>
+        <td class="text-right">Last Name</td>
+        <td class="">{{DomainProfile.Contact.LastName}}</td>
+      </tr>
+      <tr ng-hide="profile.signedInViaOAuth()">
+        <td class="text-right">Email</td>
+        <td class="">{{DomainProfile.Contact.EmailAddress || "Unknown"}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="alert alert-info alert-block" ng-show="profile.signedInViaOAuth()">
+    <h3>Social Sign On User</h3>
+    <p>You used {{DomainProfile.AccessToken.ProviderType}} to sign on, this means that if you want to change any of your profile details, you must do it using {{DomainProfile.AccessToken.ProviderType}}'s systems</p>
+  </div>
+  <div class="">
+    <a href="" class="btn btn-primary" ng-href="#/profile/edit" ng-hide="profile.signedInViaOAuth()"><i class="icon-pencil"></i> Edit Profile</a>
+    <a href="" class="btn btn-info" ng-href="#/profile/change-password" ng-hide="profile.signedInViaOAuth()"><i class="icon-asterisk"></i> Change Password</a>
+  </div>  
+</div>

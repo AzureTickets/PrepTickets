@@ -1,4 +1,4 @@
-appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, $window, configService, errorService, flash, authService, storeService, CartService, $location, UrlSaverService, ModalService) ->
+appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, $window, configService, errorService, flash, authService, storeService, CartService, $location, UrlSaverService, ModalService, ProfileService) ->
   $rootScope.errors = []
   $rootScope.navCollapsed = true
   $rootScope.title = ""
@@ -11,7 +11,10 @@ appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, $window,
   $rootScope.store = storeService
   $rootScope.modal = ModalService
   $rootScope.flash = flash
+  $rootScope.profile = ProfileService
   $rootScope.root = $rootScope
+
+  $rootScope.AccountProfile = {} #needed for email signin to work
 
   $rootScope.$on 'flash:message', (_, messages, done) ->
     $rootScope.messages = messages
@@ -36,8 +39,10 @@ appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, $window,
   $rootScope.signout = ->
     $rootScope.auth.signoff().then(
       () ->
-        flash('Successfully signed out').now()
-        $rootScope.getProfile()
+        $rootScope.profile.clear()
+        $rootScope.DomainProfile = {}
+        flash('Successfully signed out')
+        $location.path("/")
     )
   $rootScope.signin = (provider) ->
     if provider?
@@ -83,4 +88,5 @@ appCtrl.$inject = ["$rootScope",
                    "CartService",
                    "$location",
                    "UrlSaverService",
-                   "ModalService"]
+                   "ModalService",
+                   "ProfileService"]
