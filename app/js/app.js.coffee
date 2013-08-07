@@ -57,5 +57,6 @@ window.moment = ender.moment
 .run(['$location', '$rootScope', ($location, $rootScope) ->
     $rootScope.$on('$routeChangeSuccess', (event, current, previous) ->
       $rootScope.title = current.$$route.title;
+      $rootScope.selectedCtrl = current.$$route.controller
     )
 ])
