@@ -3,30 +3,32 @@
     "Error": "'There was a system error: \"__msg__\", please refresh your browser and try again'"
   },
   "DataAccess": {
-    "Error": "Server Error: __msg__",
-    "401"  : "System has detected a problem with your session and was forced to reset it.",
-    "ServerMessage":{
-      "OK"  : "OK",
-      "401" : "UNAUTHORIZED 401 SECURITY ERROR"
+    "Error"         : "Server Error: __msg__",
+    "401"           : "System has detected a problem with your session and was forced to reset it.",
+    "NoConnection"  : "No internet connection found, please make sure you are online and try again.",
+    "ServerMessage" : {
+      "NoConnection" : "0 CONNECTION ERROR",
+      "OK"           : "OK",
+      "401"          : "UNAUTHORIZED 401 SECURITY ERROR"
     }
   },
   "Validation":{
-    "Required": "*",
-    "ValidEmail": "Must be a valid email address",
-    "MinLength": "Must be at least __length__ characters long"
+    "Required"   : "*",
+    "ValidEmail" : "Must be a valid email address",
+    "MinLength"  : "Must be at least __length__ characters long"
   },
   "Signin":{
-    "Title": "Signin",
+    "Title"    : "Signin",
     "Required" : "You must sign in or sign up before you can continue"
   },
   "Signup":{
-    "Title": "Signup",
-    "Password":{
+    "Title"    : "Signup",
+    "Password" : {
       "MinLength": "6"
     },
-    "Complete": "Signup Complete, please check your email to verify your account"
+    "Complete" : "Signup Complete, please check your email to verify your account"
   },
   "Common": {
-    "Loading": "Please Wait..."
+    "Loading" : "Please Wait..."
   }
 }

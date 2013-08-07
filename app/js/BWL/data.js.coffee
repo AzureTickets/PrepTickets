@@ -51,12 +51,16 @@ class @BWL.Data
       msg = if resp.Message? then resp.Message else if resp.message? then resp.message else "Unkown Error"
       return if msg.substr(0, msg.length) == "Object reference not set to an instance of an object."
 
-      if (msg == BWL.t('DataAccess.ServerMessage.401'))
+      if (msg is BWL.t('DataAccess.ServerMessage.401'))
         BWL.UI.Alert BWL.t("DataAccess.401")
         BWL.Cookie.write(BWL.TokenName, "");
         window.location.href = BWL.URL.getRootURL();
+
+      if msg is BWL.t('DataAccess.ServerMessage.NoConnection')
+        msg = BWL.t("DataAccess.NoConnection")
+        BWL.UI.Alert msg
       
-      errorCallback?(BWL.t('DataAccess.Error', msg: msg), resp);
+      errorCallback?(BWL.t('DataAccess.Error', msg: msg), resp, msg);
 
     # // send the request
     xhd.request(requestConfig,
