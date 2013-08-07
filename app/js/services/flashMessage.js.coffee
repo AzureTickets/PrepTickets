@@ -23,6 +23,7 @@ flash = @prepTickets.factory 'flash', ($rootScope, $timeout) ->
     messages.push(asMessage(level, text))
     return flash
   flash.now = -> emit()
+  flash.clear = -> cleanup(); emit();
 
   return flash
 
