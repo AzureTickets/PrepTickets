@@ -4,7 +4,6 @@ profileService = @prepTickets.factory 'ProfileService', ($rootScope, $q, configS
     def = $q.defer()
     _profile = {} if force
     if _profile?.DomainProfileId and _profile?.DomainProfileId isnt 0
-      console.log "Loading existing profile", _profile
       def.resolve(_profile)
     else
       BWL.Services.Account.GetProfile(
