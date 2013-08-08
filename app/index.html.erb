@@ -8,16 +8,12 @@
   <%= stylesheet_link_tag "app.css" %>
   <%= stylesheet_link_tag "print.css", media: :print %>
   <!--[if lte IE 8]>
+    <script>
+      window.myCustomTags = [ 'flashmessage', 'loader', 'eventdate', 'qrcode', 'ticketpaging' ];
+    </script>
     <% Application::IE_REQUIRED_FILES.each do |file| %>
     <script src="/<%= file %>"></script>
     <% end %>
-    
-    <script>
-      document.createElement('ng-include');
-      document.createElement('ng-pluralize');
-      document.createElement('ng-view');
-    </script>
-
   <![endif]-->
 </head>
 <body>
