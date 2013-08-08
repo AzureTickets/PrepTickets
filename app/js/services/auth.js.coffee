@@ -3,7 +3,7 @@ authService = @prepTickets.factory 'authService', (configService, $q, $rootScope
     _domainProfile = {}
     
     isSignedIn: ->
-      _domainProfile.ProfileRole >= BWL.Models.DomainProfileRoleEnum.Authenticated
+      ProfileService.isSignedIn()
     
     loadProfile : (force = false) ->
       ProfileService.get(force).then(
