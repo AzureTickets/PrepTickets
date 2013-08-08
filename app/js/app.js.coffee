@@ -33,8 +33,7 @@ routeFilters =
 
         else
           def.resolve(true)
-          
-        
+            
       (err) ->
         def.reject(err)
     )
