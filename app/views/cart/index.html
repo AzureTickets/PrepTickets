@@ -46,7 +46,7 @@
         <i class="icon-reply"></i> Continue Shopping
       </a>
       <a href="" class="btn btn-primary btn-large span2" ng-click="checkout()" ng-disabled="processingRequest" ng-show="CartObj">
-        <i class="icon-shopping-cart icon-large"></i> Checkout
+        <i class="icon-shopping-cart icon-large"></i> <span ng-show="!auth.isSignedIn()">Signin &amp; </span>Checkout
       </a>
     </div>
     
