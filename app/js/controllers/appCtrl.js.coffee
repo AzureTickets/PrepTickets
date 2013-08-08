@@ -38,11 +38,13 @@ appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, $window,
 
   $rootScope.signout = ->
     $rootScope.auth.signoff().then(
-      () ->
+      (result) ->
         $rootScope.profile.clear()
         $rootScope.DomainProfile = {}
         flash('Successfully signed out')
         $location.path("/")
+      (err) ->
+        $rootScope.error.log err
     )
   $rootScope.signin = (provider) ->
     if provider?
