@@ -20,6 +20,7 @@ class Application
   ROOT_ASSETS = %w( app.css print.css main.js)
   ASSET_DIRS = %w( js css lib )
   TEMPLATE_DIR = "#{APP_DIR}/templates"
+  IE_REQUIRED_FILES = ['lib/html5shiv/dist/html5shiv.js', 'lib/es5-shim/es5-shim.js', 'lib/json3/lib/json3.min.js']
 
   attr_accessor :env
 

@@ -51,10 +51,23 @@ namespace :build do
     end
   end
 
+  desc "Copy Special Files for IE"
+  task :special_ie_files => :setup do
+    @app.logger.info "Moving Special IE files..."
+    Application::IE_REQUIRED_FILES.each do |target|
+      file = @app.root.join(target)
+      target_folder = @app.build_root.join(target).dirname
+      FileUtils.mkdir_p(target_folder) unless target_folder.exist?
+      @app.logger.debug "  Copying: #{file.basename}"
+      FileUtils.cp_r(file, target_folder)
+    end
+  end
+
   desc "Copies the rest of the data in the app folder"
   task :move_rest => :setup do
     @app.logger.info "Moving rest of the files to build directory..."
     @app.root.each_child do |i|
+      
       #only move dirs that aren't part of the rendered assets dirs
       unless i.file? || Application::ASSET_DIRS.include?(i.basename.to_s) 
         @app.logger.debug "  Moving #{i.basename}"
@@ -65,6 +78,6 @@ namespace :build do
 end # of namespace
 
 desc "Render all files for production"
-task :build => ["build:clear_build", "build:assets", "build:html", "build:move_rest"]
+task :build => ["build:clear_build", "build:assets", "build:special_ie_files", "build:html", "build:move_rest"]
 
 task :default => :build
