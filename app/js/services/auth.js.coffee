@@ -9,7 +9,7 @@ authService = @prepTickets.factory 'authService', (configService, $q, $rootScope
       ProfileService.get(force).then(
         (profile) ->
           _domainProfile = profile
-        (err) -> $scope.error.log err
+        (err) -> $rootScope.error.log err
       )
     
     signinByProvider : (provider, returnURL = $window.location.href) ->

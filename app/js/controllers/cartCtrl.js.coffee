@@ -1,6 +1,7 @@
 #Cart Controller
 cartCtrl = @prepTickets.controller "cartCtrl", ($scope, $routeParams, $location, $window, ServerCartService, UrlSaverService) ->
-  
+  $scope.processingRequest = false
+
   #Watches for the server to be uploaded and redirects when it fires.
   $scope.$on "ServerCart:Uploaded", ->
     UrlSaverService.clear() 
@@ -19,12 +20,34 @@ cartCtrl = @prepTickets.controller "cartCtrl", ($scope, $routeParams, $location,
 
   #saves and uploads current cart to server.
   $scope.checkout = ->
+    return if $scope.processingRequest
+    $scope.processingRequest = true
     $scope.cart.replaceCart($scope.CartObj)
     if $scope.auth.isSignedIn()
-      $scope.cart.sendToServer() #once completed, it will fire ServerCart:Uploaded event
+      $scope.cart.sendToServer().then( #once completed, it will fire ServerCart:Uploaded event
+        (result) ->
+          #do nothing
+        (err) ->
+          console.log "Hit error: #{err}"
+          if err is BWL.t("DataAccess.Error", msg:"Cart is currently is a Done state.")
+            #TODO: LOG THIS TO THE SERVER, THIS ERROR SHOULD NEVER HAPPEN
+            console.warn "Oh no: #{err}" if console?
+            ServerCartService.clearCart($routeParams.storeKey).then(
+              (success) ->
+                $scope.processingRequest = false
+                $scope.checkout()
+              (errAgain) ->
+                $scope.processingRequest = false
+                $scope.error.log errAgain
+            )
+          else
+            $scope.processingRequest = false
+            $scope.error.log err
+      )
     else
       $scope.flash(BWL.t("Signin.Required", defaultValue: "You must sign in or sign up before you can continue"))
       UrlSaverService.save("cart/#{$routeParams.storeKey}/instantCheckout")
+      $scope.processingRequest = false
       $location.path("signin")
 
   #Does the same as setupCart and Checkout.
@@ -52,6 +75,8 @@ cartCtrl = @prepTickets.controller "cartCtrl", ($scope, $routeParams, $location,
 
   #Setups up URL for user to process payment for given storeKey
   $scope.processPayment = (storeKey=$routeParams.storeKey) ->
+    return if $scope.processingRequest
+    $scope.processingRequest = true
     resultAction = (result) ->
       $window.location.href = result.StartPaymentURL
 
@@ -60,9 +85,12 @@ cartCtrl = @prepTickets.controller "cartCtrl", ($scope, $routeParams, $location,
         $scope.StoreObj = store
         ServerCartService.process(store.Key, store.PaymentProviders[0]?.ProviderType).then(
           resultAction
-          (err) -> $scope.error.log err
+          (err) => 
+            $scope.processingRequest = false
+            $scope.error.log err
         )
       (err) ->
+        $scope.processingRequest = false
         $scope.error.log err
     )
     null

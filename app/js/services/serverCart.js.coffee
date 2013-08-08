@@ -40,16 +40,24 @@ ServerCartService = @prepTickets.factory('ServerCartService', ($q, $rootScope, $
 
 
   upload: (cart) ->
-    _storeKey = cart.StoreKey
-    _paymentType = cart.PaymentType
-    _clientCart = cart
-    @sendNextItem()
+    def = $q.defer()
+
+    if cart
+      _storeKey = cart.StoreKey
+      _paymentType = cart.PaymentType
+      _clientCart = cart
+
+      @sendNextItem(def)
+    else
+      def.reject("No cart found")
+
+    def.promise
+
 
   finish: ->
     $rootScope.$broadcast("ServerCart:Uploaded")
     true
-  sendNextItem: ->
-    return false unless _clientCart?
+  sendNextItem: (def) ->
     nextItem = null
     for key, item of _clientCart?.Items
       if not item.uploaded
@@ -60,12 +68,12 @@ ServerCartService = @prepTickets.factory('ServerCartService', ($q, $rootScope, $
         (success) =>
           if success
             _clientCart.Items[nextItem.Key].uploaded = true
-            @sendNextItem()
+            @sendNextItem(def)
         (err) ->
-          $rootScope.error.log err
+          def.reject(err)
       )
     else
-      return @finish()
+      return def.resolve(@finish())
 
     null
       

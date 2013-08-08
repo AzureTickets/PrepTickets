@@ -45,7 +45,7 @@
       <a href="" ng-href="#/school/{{CartObj.StoreKey}}" class="btn btn-info span2">
         <i class="icon-reply"></i> Continue Shopping
       </a>
-      <a href="" class="btn btn-primary btn-large span2" ng-click="checkout()" ng-show="CartObj">
+      <a href="" class="btn btn-primary btn-large span2" ng-click="checkout()" ng-disabled="processingRequest" ng-show="CartObj">
         <i class="icon-shopping-cart icon-large"></i> Checkout
       </a>
     </div>

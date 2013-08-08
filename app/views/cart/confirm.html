@@ -16,7 +16,7 @@
     <a href="" class="btn offset7 span2" confirm="Are you sure you want to cancel your order?" ng-click="cancelOrder()">
       <i class="icon-remove-sign"></i> Cancel Order
     </a>
-    <a href="" class="btn btn-primary btn-large span2" ng-click="processPayment()">
+    <a href="" class="btn btn-primary btn-large span2" ng-disabled="processingRequest" ng-click="processPayment()">
       <i class="icon-money icon-large"></i> Purchase
     </a>
   </div>

@@ -3,8 +3,8 @@ cartProcessedCtrl = @prepTickets.controller "cartProcessedCtrl", ($scope, $route
   $scope.loadOrder = ->
     OrderService.getLatest().then(
       (order) ->
-        ServerCartService.clearCart(order.StoreKey)
         $scope.OrderObj = order
+        console.log "Order: ", order
       (err) ->
         $scope.error.log err
     )
@@ -28,6 +28,7 @@ cartProcessedCtrl = @prepTickets.controller "cartProcessedCtrl", ($scope, $route
 
     if $scope.ServerCart.State >= BWL.Models.CartStateEnum.Paid
       $scope.cart.clear($routeParams.storeKey)
+      ServerCartService.clearCart($routeParams.storeKey)
 
 
 cartProcessedCtrl.$inject = ["$scope", "$routeParams", "ServerCartService", "OrderService"]
