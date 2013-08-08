@@ -18,11 +18,9 @@ routeFilters =
           redirect = false
           currentPath = $location.path()
 
-          for pathReg in [
-                          /^\/orders/g,                   # any /orders url
+          for pathReg in [/^\/orders/g,                   # any /orders url
                           /^\/profile/g,                  # any /profile url
-                          /^\/cart\/[\w\-\d]+\/(.+)/g     # any /cart/uuid/(something) url. This will allow you to just view original cart, nothing else
-                         ]
+                          /^\/cart\/[\w\-\d]+\/(.+)/g]    # any /cart/uuid/(something) url. This will allow you to just view original cart, nothing else
             redirect = true if pathReg.test(currentPath)
 
           if redirect
@@ -33,7 +31,7 @@ routeFilters =
 
         else
           def.resolve(true)
-            
+
       (err) ->
         def.reject(err)
     )
