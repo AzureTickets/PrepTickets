@@ -28,7 +28,6 @@ cartCtrl = @prepTickets.controller "cartCtrl", ($scope, $routeParams, $location,
         (result) ->
           #do nothing
         (err) ->
-          console.log "Hit error: #{err}"
           if err is BWL.t("DataAccess.Error", msg:"Cart is currently is a Done state.")
             #TODO: LOG THIS TO THE SERVER, THIS ERROR SHOULD NEVER HAPPEN
             console.warn "Oh no: #{err}" if console?

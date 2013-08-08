@@ -1,18 +1,22 @@
 cartProcessedCtrl = @prepTickets.controller "cartProcessedCtrl", ($scope, $routeParams, ServerCartService, OrderService) ->
   $scope.storeKey = $routeParams.storeKey
   $scope.loadOrder = ->
-    OrderService.getLatest().then(
-      (order) ->
-        $scope.OrderObj = order
-        console.log "Order: ", order
-      (err) ->
-        $scope.error.log err
+    $scope.loadServerCart().then(
+      (cart) ->
+        if cart?.Order?
+          OrderService.get(cart.Order.StoreKey, cart.Order.Key).then(
+            (order) ->
+              $scope.OrderObj = order
+            (err) ->
+              $scope.error.log err
+          )
     )
   $scope.loadServerCart = ->
     ServerCartService.initCart($routeParams.storeKey).then(
       (cart) ->
         $scope.ServerCart = cart
         $scope.checkStatus()
+        cart
       (err) ->
         $scope.error.log err
     )
