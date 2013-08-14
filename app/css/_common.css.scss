@@ -39,3 +39,31 @@ h2.huge{
 .table td.text-right{
   text-align: right;
 }
+
+
+//Alignment
+@media (max-width: $max-width) {
+  .text-xs-center{
+    text-align: center !important;
+  }
+  .text-xs-left{
+    text-align: left !important;
+  }
+}
+
+
+//Borders
+@media (min-width: $screen-small) {
+  .border-right{
+    padding-right:14px;
+    border-right:1px solid $pt-super-light-gray;
+  }
+}
+@media (max-width: $max-width) {
+  .border-xs-bottom{
+    border-bottom:1px solid $pt-super-light-gray; 
+  }  
+}
+.border-bottom{
+  border-bottom:1px solid $pt-super-light-gray; 
+}

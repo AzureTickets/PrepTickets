@@ -1,0 +1,11 @@
+// Buttons
+.btn-blue {
+  @include button-variant($pt-dark-blue, $pt-blue, $pt-dark-blue);
+}
+
+.btn-indent{
+  margin-left:15px;
+}
+.btn-bottom-buffer{
+  margin-bottom:15px;
+}

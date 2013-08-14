@@ -1,14 +1,176 @@
 body{
+  background:$pt-light-gray;
   & > header{
-    padding-top:10px
+    background:$pt-dark-gray;
+    .logo{text-align: center;}
+    .navbar {
+      margin-bottom: 0;      
+
+      &.main-navbar {
+        background:$pt-dark-gray;
+        li{
+          &.active{
+            a{
+              color:#eee;
+              background: #444;
+            }
+          }
+          a{
+            color:#fff;
+            border-right:1px solid #444949;
+            &:after {  
+              content:"";
+              display:block;
+              position:absolute;
+              z-index:3;
+              top:0px;
+              right:0px;
+              bottom:0px;
+              border-right:1px solid #1b201f;
+            }  
+          }
+          // &:last-child a{
+          //   border:none;
+          //   &:after{border:none}
+          // }
+        }
+        .shopping-cart{
+          margin-right:-15px;
+          li a {
+            border-left:4px solid #13974b;
+            background:#2ecc71;
+            color:#13974b;
+            border-right:none;
+            margin-right: -15px;
+            @media (max-width: $max-width) {
+              margin-right: 0px;
+              border-left:none;
+            }
+            &:hover{
+              border-left-color: lighten(#2ecc71, 20%);
+            }
+            &:after{
+              border:none;
+            }
+          }
+        } 
+      }
+    }
+  }
+  .navbar-secondary{
+    background:#e6e7e6;
+  }
+  .breadcrumb{
+    padding:0;
+    margin-bottom: 0;
+    background:transparent;
   }
   & > #main{
-    margin:15px auto;
+    margin:0 auto;
+    background:#fff;
   }
   & > footer{
-    color:#999;
-    background:#f0f0f0;
-    padding:15px 0;
+    color:$pt-dark-gray;
+    background:#fff;
+    padding:5px 0 0;
+    .blue-bar{
+      position: relative;
+      background:$pt-light-blue;
+      padding:15px 10px 10px;
+      font-weight: 200;
+
+      &:after {
+        top: 0;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        
+        border-top-color: #fff;
+        border-width: 10px;
+        left: 50%;
+        margin-left: -10px;
+      }
+      p{
+        font-size:2.1em;
+        color:$pt-dark-blue;
+        margin-bottom: 0;
+      }
+      .btn{
+        font-size:1.5em;
+        font-weight: 200;
+        background:$pt-light-blue;
+        text-transform: uppercase;
+      }
+    }
+    .school-admin{
+      h3{color:$pt-dark-blue;}
+      p{
+        color:$pt-dark-blue;
+      }
+      .btn{
+        background: white;
+        font-weight: 200;
+        text-transform: uppercase;
+        border-color:$pt-light-blue;
+        color:$pt-light-blue;
+        &:hover{
+          border-color:$pt-blue;
+          color:$pt-blue;
+        }
+      }
+    }
+    .testimonials{
+      padding-top:20px;
+      color:$pt-light-orange;
+
+      h3{
+        margin-top:13px;
+      }
+      .quote{
+        padding:15px 50px 0; 
+        position: relative;
+        
+        p{
+          line-height: 1.6em;
+          font-size:1.0em;
+          color: $pt-light-orange;
+          margin-bottom: 0;
+        }
+        small{
+          display:block;
+          text-align: right;
+        }
+        &:last-child{
+          margin-bottom:15px;
+        }
+        &:before, &:after{
+          position: absolute;
+          font-family: FontAwesome;
+          font-weight: normal;
+          font-style: normal;
+          text-decoration: inherit;
+          -webkit-font-smoothing: antialiased;
+          font-size:1.7em;
+          color:lighten($pt-light-orange, 50%);
+          padding-top:4px;
+        }
+        &:before {
+          content: "\f10d";
+          top:7px;
+          left:18px;
+          padding-right: 6px;
+        }
+        &:after{
+          content: "\f10e";
+          right:18px;
+          bottom: -8px;
+
+        }
+      }
+    }
     p{
       font-size:1em;
     }
@@ -16,11 +178,21 @@ body{
       font-size:1.7em;
     }
 
-    .links, .copyright{
-      font-size:0.9em;
+    .links, .copyright, .owner{
+      font-size:0.85em;
+      color:$pt-light-gray;
+    }
+    .links{
+      padding-top:5px;
+      a{
+        color:$pt-light-gray;
+      }
+    }
+    .owner{
+      text-align: right;
+      padding-top:10px;
     }
     .copyright{
-      margin-top:20px;
     }
   }
 }

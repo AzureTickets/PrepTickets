@@ -20,14 +20,37 @@
   <!--[if lte IE 7]>
     <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
   <![endif]-->
-  <header class="dont-print">
+  <header class="hidden-print">
     <div class="container">
       <div class="row">
-        <div class="span4">
-          <img src="/img/PrepTicketsLogo.png" alt="Prep Tickets" style="width:50%;"/>
+        <div class="col-xs-12 col-sm-2 hidden-xs logo">
+          <img src="/img/PrepTicketsLogo.png" class="img-responsive" alt="Prep Tickets" />
+        </div>
+        <div class="col-xs-12 col-sm-10">
+          <div ng-include="'views/common/nav.html'"></div>
+          <div class="navbar navbar-static-top navbar-secondary hidden-xs">
+            <ul class="col-sm-7 nav navbar-nav breadcrumb">
+              <li><a ng-href="#/"><i class="icon-home icon-large"></i></a></li>
+            </ul>
+            <ul class="nav navbar-nav pull-right col-sm-5" ng-init="getProfile()">
+              <li><a href="" ng-hide="DomainProfile.DomainProfileId > 0" ng-href="#/signin">Sign In</a></li>
+              <li ng-show="DomainProfile.DomainProfileId > 0" style="display:none;"><a ng-href="#/profile">Welcome {{DomainProfile.Contact.FirstName}}</a></li>
+              <li class="dropdown" ng-show="DomainProfile.DomainProfileId > 0" style="display:none;" ng-class="{active:(selectedCtrl == 'profileCtrl' || selectedCtrl == 'orderCtrl')}">
+                <a href="" class="dropdown-toggle">My Account</a>
+                <ul class="dropdown-menu">
+                  <li ng-class="{active:(selectedCtrl == 'profileCtrl')}">
+                    <a href="" ng-href="#/profile">My Profile</a>
+                  </li>
+                  <li ng-class="{active:(selectedCtrl == 'orderCtrl')}">
+                    <a href="" ng-href="#/orders">My Orders</a>
+                  </li>                
+                </ul>
+              </li>
+              <li ng-show="DomainProfile.DomainProfileId > 0" style="display:none;"><a href="" ng-click="signout()">Sign Out</a></li>
+            </ul>
+          </div>
         </div>
       </div>
-      <div ng-include="'views/common/nav.html'"></div>
     </div>
   </header>
   
@@ -38,49 +61,80 @@
     </div>
   </div>
   
-  <footer class="dont-print">
-    <div class="container">
-      <div class="row">
-        <div class="span4">
-          <h4>About us</h4>
-          <p>
-            PrepTickets has a genuine enthusiasm for high school events of all kinds. Our vision is to preserve the pleasures and dreams our young people have of participating in school sports and other activities
-          </p>
-        </div>
-        <div class="span4">
-          <div class="row">
-            <h4 class="span4">Get our FREE PrepTickets <br/><small>Mobile App</small></h4>
-            <div class="span1"><img src="/img/footer_phones.png" alt="phones" /></div>
-            <div class="span3">
-              <a href="#">Android</a> |
-              <a href="#">iPhone</a> |
-              <a href="#">Windows Phone</a>
-            </div>
+  <footer class="hidden-print">
+    <div class="blue-bar">
+      <div class="container">
+        <div class="row">
+          <div class="col col-xs-12 col-7 col-sm-7 col-lg-7 text-right text-xs-center">
+            <p>Schools are free to signup!</p>
           </div>
-        </div>
-        <div class="span4">
-          <h4>Contact us</h4>
-          <p>
-            PrepTickets, LLC <br/>
-            1949 Willamette Falls Drive Suite D <br/>
-            West Linn, Oregon 97068 <br/>
-            Phone: 888-691-8313 <br/>
-            Email Us: contact@preptickets.com
-          </p>
-        </div>
-      </div>
-      <div>
-        <div class="copyright text-center">&copy; <%= Date.today.year %> PrepTickets.com</div>
-        <div class="links text-center">
-          <a href="#">Home</a> |
-          <a href="#">About Us</a> |
-          <a href="#">Contact Us</a> |
-          <a href="#">Privacy Policy</a> |
-          <a href="#">Terms</a> |
-          <a href="#">Refund Policy</a>
+          <div class="col col-xs-12 col-5 col-sm-5 col-lg-5 text-xs-center">
+            <a href="" class="btn btn-blue">&gt; Learn More</a>
+          </div>
         </div>
       </div>
     </div>
+    <div class="container">
+      <div class="row border-bottom">
+        <div class="col col-7 col-sm-7 col-lg-7 border-right border-xs-bottom school-admin">
+          <h3>School Administrators</h3>
+          <p>
+            Selling tickets to your school events has never been easier. Register with PrepTickets, list your events and improve revenue accountability by accepting credit card purchases 24x7.
+          </p>
+          <img src="/img/PrepTicketsLogo.png" class="img-responsive pull-right" alt="Prep Tickets" style="width:170px;" />
+          <p>All PrepTickets services are provided at no cost to your school.</p>
+          <p>Learn more about our Skool Aid program</p>
+          <div class="row">
+            <div class="col-xs-12 text-xs-center">
+              <a class="btn btn-blue btn-indent btn-bottom-buffer">&gt; Sign up your school today</a>
+            </div>
+          </div>
+        </div>
+        <div class="col col-5 col-sm-5 col-lg-5 testimonials">
+          <div class="row">
+            <div class="col col-xs-3 text-right">
+              <img src="/img/testimonial_head.png" alt="Testimonial Head">
+            </div>
+            <div class="col col-xs-9">
+              <h3>Testimonials</h3>
+            </div>
+            <div class="col-xs-12">
+              <div class="quote">
+                <p> 
+                  Before prepTickets, I would have to spend up to 6 hrs a month doing ticket administration tasks. I’ve found a better way now, thanks prepTickets!
+                </p>
+                <small>by Frank Johns</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-xs-12 col-sm-7">
+          <div class="links">
+            <a href="#">Home</a> |
+            <a href="#">About Us</a> |
+            <a href="#">Contact Us</a> |
+            <a href="#">Privacy Policy</a> |
+            <a href="#">Terms</a> |
+            <a href="#">Refund Policy</a>
+          </div>
+          <div class="copyright">&copy; <%= Date.today.year %> PrepTickets.com</div>
+        </div>
+        <div class="col col-xs-12 col-sm-5 owner text-xs-left">
+          PrepTickets™ is property of Horizon Productions
+        </div>
+      </div>
+      <div class="row color-strip">
+        <div class="col-xs-2" style="background:#"></div>
+        <div class="col-xs-2" style="background:#"></div>
+        <div class="col-xs-2" style="background:#"></div>
+        <div class="col-xs-2" style="background:#"></div>
+        <div class="col-xs-2" style="background:#"></div>
+        <div class="col-xs-2" style="background:#"></div>
+      </div>
+    </div>
+
   </footer>
   <%= javascript_link_tag 'main.js' %>
   <!-- last built on <%= Time.now %> -->

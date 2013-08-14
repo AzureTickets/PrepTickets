@@ -1,31 +1,24 @@
-<div class="navbar">
-  <div class="navbar-inner">
-    <a class="btn btn-navbar" ng-click="navCollapsed = !navCollapsed">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </a>
-    <ul collapse="navCollapsed" class="nav nav-collapse collapse">
-      <li ng-class="{active:(selectedCtrl == 'storeCtrl')}"><a href="#">Home</a></li>
-      <li ng-show="store.getCurrentStoreKey()" style="display:none;" ng-class="{active:(selectedCtrl == 'cartCtrl')}">
-        <a href="#" ng-href="#/cart/{{store.getCurrentStoreKey()}}">My Cart ({{cart.count(store.getCurrentStoreKey())}})</a>
-      </li>
-    </ul>
-    <ul collapse="navCollapsed" class="nav nav-collapse collapse pull-right" ng-init="getProfile()">
-      <li><a href="" ng-hide="DomainProfile.DomainProfileId > 0" ng-href="#/signin">Sign In</a></li>
-      <li ng-show="DomainProfile.DomainProfileId > 0" style="display:none;"><a ng-href="#/profile">Welcome {{DomainProfile.Contact.FirstName}}</a></li>
-      <li class="dropdown" ng-show="DomainProfile.DomainProfileId > 0" style="display:none;" ng-class="{active:(selectedCtrl == 'profileCtrl' || selectedCtrl == 'orderCtrl')}">
-        <a href="" class="dropdown-toggle">My Account</a>
-        <ul class="dropdown-menu">
-          <li ng-class="{active:(selectedCtrl == 'profileCtrl')}">
-            <a href="" ng-href="#/profile">My Profile</a>
-          </li>
-          <li ng-class="{active:(selectedCtrl == 'orderCtrl')}">
-            <a href="" ng-href="#/orders">My Orders</a>
-          </li>                
-        </ul>
-      </li>
-      <li ng-show="DomainProfile.DomainProfileId > 0" style="display:none;"><a href="" ng-click="signout()">Sign Out</a></li>
-    </ul>
-  </div>
+<div class="navbar navbar-static-top main-navbar">
+  <a class="btn btn-navbar navbar-toggle" ng-click="navCollapsed = !navCollapsed">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </a>
+  <a href="" class="navbar-brand visible-xs">PrepTickets</a>
+  <ul collapse="navCollapsed" class="nav navbar-nav nav-collapse collapse">
+    <li ng-class="{active:(selectedCtrl == 'storeCtrl')}"><a href="#">Find School</a></li>
+  </ul>
+  <ul class="nav navbar-nav pull-right col-xs-12 shopping-cart" ng-show="store.getCurrentStoreKey()" style="display:none;">
+    <li>
+      <a class="" ng-href="#/cart/{{store.getCurrentStoreKey()}}">
+        <i class="icon-shopping-cart icon-large"></i>
+        <ng-pluralize count="cart.count(store.getCurrentStoreKey())"
+                         when="{'0': 'No items in cart',
+                                'one': '1 item in cart',
+                                'other': '{} items in cart'}">
+        </ng-pluralize>
+      </a>
+    </li>
+  </ul>
+  
 </div>

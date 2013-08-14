@@ -1,0 +1,29 @@
+$pt-super-light-gray:#d9d9d9;
+$pt-light-gray:#7a7a7a;
+$pt-gray:#525252;
+$pt-dark-gray:#2b2b2b;
+
+$pt-light-green:#69dd9a;
+$pt-green:#2ecc71;
+$pt-dark-green:#1e8549;
+
+$pt-light-purple:#c39cd3;
+$pt-purple:#a469bd;
+$pt-dark-purple:#82449c;
+
+$pt-light-red:#f8968b;
+$pt-red:#f4503e;
+$pt-dark-red:#d4200c;
+
+$pt-light-blue:#47cbff;
+$pt-blue:#00acee;
+$pt-dark-blue:#0075a3;
+
+$pt-light-orange:#d35400;
+$pt-orange:#f4503e;
+$pt-dark-orange:#faa226;
+
+$border-radius-base: 0;
+
+@import "bootstrap/variables";
+$max-width: ($screen-small - 1);
