@@ -65,10 +65,14 @@ body{
     margin-bottom: 0;
     background:transparent;
   }
+  
+
   & > #main{
     margin:0 auto;
     background:#fff;
   }
+
+
   & > footer{
     color:$pt-dark-gray;
     background:#fff;
@@ -194,5 +198,8 @@ body{
     }
     .copyright{
     }
+  }
+  .color-strip{
+    div{height:9px;}
   }
 }
