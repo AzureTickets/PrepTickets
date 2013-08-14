@@ -9,6 +9,19 @@ class SprocketsBuilder
       env.logger = app.logger
     end
 
+    sprockets.context_class.class_eval do
+      def asset_path(path, options = {})
+
+        case options[:type].to_sym
+        when :font
+          "/font/#{path}"
+        else
+          logger.debug "NOTE::: looking up #{path} with #{options}"
+          "/#{options[:type]}/#{path}"
+        end
+      end
+    end
+
     unless app.development?
       # sprockets.css_compressor = :yui
       sprockets.js_compressor = Uglifier.new(mangle: false)
