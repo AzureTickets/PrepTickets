@@ -45,7 +45,7 @@ body{
               color:#13974b;
               border-right:none;
               margin-right: -15px;
-              @media (max-width: $max-width) {
+              @media (max-width: $screen-phone-max) {
                 margin-right: 0px;
                 border-left:none;
               }

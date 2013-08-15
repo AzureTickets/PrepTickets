@@ -1,0 +1,41 @@
+.stores{
+  form{
+    float:left;
+    width:100%;
+    padding:160px 0;
+    background:url(../img/search_bg.jpg);
+  }
+  .search{
+    background:$pt-gray;
+    padding:10px 20px;
+    h4{
+      color:#fff;
+      margin:0;
+      font-weight: 300;
+      font-size:2.3em;
+      padding-left:15px
+    }
+    .input-group{
+      margin: 10px auto;
+      border-left: 4px solid $pt-green;
+      input, a.btn{
+        border-radius: 0;
+      }
+      a.btn{
+        font-size:3em;
+        border-color:$pt-green;
+        font-weight: 500;
+      }
+      input{
+        height: 77px;
+        font-size:2.3em;
+        line-height: 1.2em;
+        border-color:white;
+      }
+    }
+    p{
+      margin:0 0 0 20px;
+      font-size:1.2em;
+    }
+  }
+}

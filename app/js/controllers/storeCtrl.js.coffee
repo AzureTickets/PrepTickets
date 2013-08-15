@@ -1,4 +1,4 @@
-storeCtrl = @prepTickets.controller("storeCtrl", ($scope, $location, $routeParams) ->  
+storeCtrl = @prepTickets.controller("storeCtrl", ($scope, $location, $routeParams, SmoothScroll) ->  
   $scope.greeting = 'Hola!'
   $scope.Searching = false
   $scope.$on 'initStore', 
@@ -12,8 +12,8 @@ storeCtrl = @prepTickets.controller("storeCtrl", ($scope, $location, $routeParam
       ev?.stopPropagation?()
   
 
-  $scope.search = (query=$scope.query)->
-    if(query.length >= 3)
+  $scope.search = (query=$scope.query, autoscroll=true)->
+    if(query?.length >= 3)
       $scope.Searching = true
       $scope.FoundNothing = false
       $scope.store.searchStores(query).then(
@@ -21,11 +21,14 @@ storeCtrl = @prepTickets.controller("storeCtrl", ($scope, $location, $routeParam
           $scope.Stores = stores
           $scope.FoundNothing = true if stores.length == 0
           $scope.Searching = false
+          if autoscroll
+            SmoothScroll.scrollTo("results", 100)
         (err) ->
           $scope.error.log err
       )
     else
       $scope.Stores = []
+
 
   $scope.goToStore = (obj) ->
     $scope.store.cacheTheKey(obj.key)
@@ -53,4 +56,4 @@ storeCtrl = @prepTickets.controller("storeCtrl", ($scope, $location, $routeParam
     )
 )
 
-storeCtrl.$inject = ["$scope", "$location", "$routeParams"]
+storeCtrl.$inject = ["$scope", "$location", "$routeParams", "SmoothScroll"]

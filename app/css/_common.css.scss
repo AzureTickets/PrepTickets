@@ -1,17 +1,19 @@
-@media screen and (max-width: 768px) {
-    h1,h2,h3,h4,h5 {
-        font-size:1.7em;
-    }
-}
- 
+// Really Small SCreen
 @media screen and (max-width: 568px) {
     h1,h2,h3,h4,h5 {
         font-size:1.6em;
     }
 }
 
+//xs Screen
+@media screen and (max-width: $screen-phone-max) {
+    h1,h2,h3,h4,h5 {
+        font-size:1.7em;
+    }
+}
 
-@media (min-width: 768px) {
+// sm screen
+@media screen and (min-width: $screen-tablet) {
   input[type="text"].huge{
     font-size:3.2em;
     height:1em;
@@ -26,23 +28,12 @@ h2.huge{
   font-size:3.2em;
 }
 
-@media (max-width: 767px) {
-  .table {
-    display: block;
-  }
-}
-
 .providers .provider i{
   margin-right: 5px;
 }
 
-.table td.text-right{
-  text-align: right;
-}
-
-
 //Alignment
-@media (max-width: $max-width) {
+@media (max-width: $screen-phone-max) {
   .text-xs-center{
     text-align: center !important;
   }
@@ -59,7 +50,7 @@ h2.huge{
     border-right:1px solid $pt-super-light-gray;
   }
 }
-@media (max-width: $max-width) {
+@media (max-width: $screen-phone-max) {
   .border-xs-bottom{
     border-bottom:1px solid $pt-super-light-gray; 
   }  

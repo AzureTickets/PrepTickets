@@ -1,25 +1,37 @@
 <div class="stores">
-  <h2 class="text-center huge">School Lookup</h2>
-  <form action="" class="form-horizontal row" name="searchForm">
-    <div class="offset2 span8">
-      <div class="row well">
-        <div class="span6">
-          <input type="text" class="span6 huge" name="query" autocomplete="off" ng-model='selectedStore' typeahead="store.Name for store in search($viewValue)">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 search-area">
+      <form action="" class="form-horizontal" name="searchForm" ng-submit="search()">
+        <div class="col-sm-offset-2 col-sm-8">
+          <div class="search">
+            <h4>Search all your school's events today!</h4>
+            <div class="input-group">
+              <input type="text" class="form-control input-lg" name="query" autocomplete="off" ng-model='$parent.query'
+              placeholder="Start your search here" on-keypress="search(query, false)" >
+              <div class="input-group-btn">
+                <a href="" class="btn btn-green btn-lg" ng-click="search()">&gt; Search</a>
+              </div>
+            </div>
+            <p class="text-muted">Search by school name, city, or ZIP code</p>
+          </div>
         </div>
-        <a href="" class="btn btn-primary btn-huge span1" ng-click="search()"><i class="icon-search"></i> Search</a>
-      </div>
+      </form>
     </div>
-  </form>
+  </div>
   <loader hide-on="!Searching">Loading...</loader>
-  <div class="alert alert-info" ng-show="FoundNothing">No schools found</div>
-  <ul id="schoolList" class="stores list thumbnails">
-    <li class="store span4" ng-repeat="store in Stores">
-      <div class="thumbnail" id="{{store.Key}}">
-        <a href="" ng-click="goToStore({URI:store.URI, key:store.StoreKey})">
-          <img ng-src="" alt="">
-          <h4 class="text-center">{{store.Name}}</h4>
-        </a>
-      </div>
-    </li>
-  </ul>
+  <div class="row">
+    <div class="col-xs-12" ng-show="FoundNothing" scroll-if="Stores.length == 0">
+      <div class="alert alert-info ">No schools found</div>
+    </div>
+    <ul id="results" class="stores list thumbnails" scroll-if="Stores.length > 0">
+      <li class="store span4" ng-repeat="store in Stores">
+        <div class="thumbnail" id="{{store.Key}}">
+          <a href="" ng-click="goToStore({URI:store.URI, key:store.StoreKey})">
+            <img ng-src="" alt="">
+            <h4 class="text-center">{{store.Name}}</h4>
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
 </div>

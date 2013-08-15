@@ -2,6 +2,9 @@
 .btn-blue {
   @include button-variant($pt-dark-blue, $pt-blue, $pt-dark-blue);
 }
+.btn-green {
+  @include button-variant($pt-dark-green, $pt-green, $pt-dark-green); 
+}
 
 .btn-indent{
   margin-left:15px;
