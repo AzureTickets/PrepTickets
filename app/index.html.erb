@@ -28,11 +28,11 @@
         </div>
         <div class="col-xs-12 col-sm-10">
           <div ng-include="'views/common/nav.html'"></div>
-          <div class="navbar navbar-static-top navbar-secondary hidden-xs">
-            <ul class="col-sm-7 nav navbar-nav breadcrumb">
+          <div class="navbar navbar-secondary hidden-xs">
+            <ul class="nav navbar-nav breadcrumb">
               <li><a ng-href="#/"><i class="icon-home icon-large"></i></a></li>
             </ul>
-            <ul class="nav navbar-nav pull-right col-sm-5" ng-init="getProfile()">
+            <ul class="nav navbar-nav pull-right" ng-init="getProfile()">
               <li><a href="" ng-hide="DomainProfile.DomainProfileId > 0" ng-href="#/signin">Sign In</a></li>
               <li ng-show="DomainProfile.DomainProfileId > 0" style="display:none;"><a ng-href="#/profile">Welcome {{DomainProfile.Contact.FirstName}}</a></li>
               <li class="dropdown" ng-show="DomainProfile.DomainProfileId > 0" style="display:none;" ng-class="{active:(selectedCtrl == 'profileCtrl' || selectedCtrl == 'orderCtrl')}">
@@ -98,6 +98,8 @@
             <div class="col col-xs-9">
               <h3>Testimonials</h3>
             </div>
+          </div>
+          <div class="row">
             <div class="col-xs-12">
               <div class="quote">
                 <p> 
