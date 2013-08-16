@@ -1,29 +1,50 @@
 <loader hide-on="StoreObj.Key">Please wait while fetch the school information</loader>
 <div class="store" ng-init="loadStore()" ng-show="StoreObj.Key" style="display:none;">
-  {{StoreObj.Name}}
+  <div class="row blocks row-unpadded">
+    <div class="block col-sm-4 hidden-xs target-block block-point-right blue-bg dark-blue-font">
+      <i class="icon icon-building"></i>
+      <span>School</span>
+    </div>
+    <div class="block col-sm-4 col-xs-12 no-overflow">
+      <div class="col-borderless">
+        <img ng-src="/img/default_store.jpg" fallback-src="/img/default_store.jpg" alt="{{store.Name}} Image" class="img-responsive">
+      </div>
+    </div>
+    <div class="block block-title col-sm-4 col-xs-12">
+      <h4>{{StoreObj.Name}}</h4>
+      <location-address>{{StoreObj.Address | address}}</location-address>
+    </div>
+  </div>
 
-  <h3>Events</h3>
-  <ul class="events thumbnails">
-    <li class="event span4" ng-repeat="event in StoreObj.Events">
-      <div class="thumbnail">
+  <div id="events">
+    <div class="event col-sm-4 col-xs-12" ng-repeat="event in StoreObj.Events">
+      <div class="col-borderless image">
         <a href="" ng-href="#/school/{{StoreObj.URI}}/event/{{event.CustomURI.URI}}">
-          <h4 class="text-center">{{event.Name}}</h4>
+          <img ng-src="/img/default_event.jpg" fallback-src="/img/default_store.jpg" alt="{{event.Name}}" class="img-responsive">
+          <img src="/img/ticket-stub.png" class="ticket-stub" >
         </a>
-        <p>
-          <b>Time: </b>
-          {{event.StartTime | datetime:"short"}}
-        </p>
-        <p>
-          <b>Location: </b>
-          {{event.Places[0].Address | address}}
-        </p>
-        <p class="description" ng-bind-html-unsafe="event.Description"></p>
-        <div class="text-center">
-          <a href="" class="btn btn-primary btn-large" ng-href="#/school/{{StoreObj.URI}}/event/{{event.CustomURI.URI}}">
-            <i class="icon-ticket"></i> Buy
-          </a>
+      </div>
+      <a href="" ng-href="#/school/{{StoreObj.URI}}/event/{{event.CustomURI.URI}}" class="border-bottom">
+        <h4 class="text-center">{{event.Name}}</h4>
+      </a>
+      <div class="row">
+        <div class="col-xs-2 border-right text-center text-upcase">
+          {{event.StartTime | datetime:"day"}}
+          <br/>
+          {{event.StartTime | datetime:"month3"}}
+          <br/>
+          {{event.StartTime | datetime:"year"}}
+        </div>
+        <div class="col-xs-10">
+          <p class="description" ng-bind-html-unsafe="event.Description"></p>
         </div>
       </div>
-    </li>
-  </ul>
+      
+      <div class="text-center">
+        <a href="" class="btn btn-green btn-large btn-clean text-upcase btn-bottom-buffer" ng-href="#/school/{{StoreObj.URI}}/event/{{event.CustomURI.URI}}">
+           &gt; Buy
+        </a>
+      </div>
+    </div>
+  </div>
 </div>

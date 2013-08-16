@@ -9,7 +9,7 @@
   <%= stylesheet_link_tag "print.css", media: :print %>
   <!--[if lte IE 8]>
     <script type="text/javascript">
-      window.myCustomTags = [ 'flashmessages', 'loader', 'eventdate', 'qrcode', 'ticketpaging' ];
+      window.myCustomTags = [ 'flashmessages', 'loader', 'eventdate', 'qrcode', 'ticketpaging', 'location-address' ];
     </script>
     <% Application::IE_REQUIRED_FILES.each do |file| %>
     <script src="/<%= file %>" type="text/javascript"></script>
@@ -39,9 +39,13 @@
   </header>
   
   <div id="main" class="container">
-    <flashmessages></flashmessages>
-    <div ng-view="">
-      <!-- Content should all load within here -->
+    <div class="row">
+      <div class="col-xs-12">
+        <flashmessages></flashmessages>
+        <div ng-view="">
+          <!-- Content should all load within here -->
+        </div>
+      </div>
     </div>
   </div>
   

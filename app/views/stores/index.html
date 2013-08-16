@@ -23,15 +23,23 @@
     <div class="col-xs-12" ng-show="FoundNothing" scroll-if="Stores.length == 0">
       <div class="alert alert-info ">No schools found</div>
     </div>
-    <ul id="results" class="stores list thumbnails" scroll-if="Stores.length > 0">
-      <li class="store span4" ng-repeat="store in Stores">
-        <div class="thumbnail" id="{{store.Key}}">
-          <a href="" ng-click="goToStore({URI:store.URI, key:store.StoreKey})">
-            <img ng-src="" alt="">
-            <h4 class="text-center">{{store.Name}}</h4>
-          </a>
-        </div>
-      </li>
-    </ul>
   </div>
+  <div id="results" class="store-list" scroll-if="Stores.length > 0">
+    <div class="store col-sm-4 col-xs-12" ng-repeat="store in Stores">
+      <div id="{{store.Key}}">
+        <div class="main-image">
+          <img ng-src="/img/default_store.jpg" fallback-src="/img/default_store.jpg" alt="{{store.Name}} Image" class="img-responsive">
+        </div>
+        <h4 class="text-center">{{store.Name}}</h4>
+        <div class="row location">
+          <div class="col-xs-3 map-marker"><i class="icon-map-marker icon-large"></i></div>
+          <div class="col-xs-9"><address>{{store.Locations}}</address></div>
+        </div>
+        <a href="" ng-click="goToStore({URI:store.URI, key:store.StoreKey})" class="btn btn-blue btn-clean">
+          &gt; View School
+        </a>
+      </div>
+    </div>
+  </div>
+
 </div>

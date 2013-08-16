@@ -3,6 +3,7 @@
     float:left;
     width:100%;
     padding:160px 0;
+    margin-bottom:5px;
     background:url(../img/search_bg.jpg);
   }
   .search{
@@ -36,6 +37,41 @@
     p{
       margin:0 0 0 20px;
       font-size:1.2em;
+    }
+  }
+}
+.store-list{
+  .blank{
+    padding:50px;
+    background:$pt-dark-gray;
+  }
+  .store{
+    color:$pt-light-gray;
+    text-align: center;
+    .main-image{
+      border-bottom:4px solid $pt-blue;
+      text-align: center;
+      margin-left: -15px;
+      margin-right: -15.1px;
+    }
+    h4{
+      font-size: 2.6em;
+      padding-bottom:10px;
+    }
+  }
+}
+.store{
+  .event{
+    .image{
+      text-align: center;
+      position: relative;
+      .ticket-stub{
+        position: absolute;
+        bottom: -1px;
+        left:0;
+        max-width:100%;
+        height:auto;
+      }
     }
   }
 }
