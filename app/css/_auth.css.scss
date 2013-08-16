@@ -1,0 +1,41 @@
+#signin{
+  padding-top:60px;
+  @media (max-width: $screen-phone-max) { 
+    padding-top:0;      
+  }
+  a.provider{
+    margin-right:5px;
+    &:hover{
+      text-decoration: none;
+    }
+  }
+  .or{
+    text-align: center;
+    padding-top:10%;
+  }
+  h3{
+    color:$pt-light-gray;
+  }
+  .signin-options{
+    margin-bottom:20px;
+    padding-bottom:20px;
+  }
+  .create{
+    margin-bottom:20px;
+    .btn{
+      color:$pt-red
+    }
+  }
+}
+#signup{
+  .signup-options{
+    margin-bottom:20px;
+    padding-bottom:20px;
+  }
+  .signin-option{
+    margin-bottom:20px;
+    .btn{
+      color:$pt-red
+    }
+  }
+}

@@ -13,6 +13,10 @@
 } 
 
 // Buttons
+.btn{
+  text-transform: uppercase;
+  font-weight: 300;
+}
 .btn-blue {
   @include button-variant(white, $pt-blue, $pt-blue);
 }

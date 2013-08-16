@@ -1,5 +1,6 @@
 authCtrl = @prepTickets.controller("authCtrl", ($scope, $location, UrlSaverService) ->
   $scope.authProviders = []
+  $scope.signingUp = false
   $scope.passwordLength = BWL.t("Signup.Password.Length", defaultValue:"6")
 
   $scope.loadAuthProviders = ->
@@ -19,7 +20,8 @@ authCtrl = @prepTickets.controller("authCtrl", ($scope, $location, UrlSaverServi
       else "user"
 
     "icon-#{icon}"
-
+  $scope.providerImgUrl = (provider) ->
+    "/img/social/#{provider.toString().toLowerCase()}.png"
 
   $scope.signup = ->
     if $scope.signupForm.$valid

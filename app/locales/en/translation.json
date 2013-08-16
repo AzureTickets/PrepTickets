@@ -14,11 +14,19 @@
   },
   "Validation":{
     "Required"   : "*",
+    "RequiredText": "Required", 
     "ValidEmail" : "Must be a valid email address",
     "MinLength"  : "Must be at least __length__ characters long"
   },
   "Signin":{
-    "Title"    : "Signin",
+    "Social" : {
+      "Title"  : "Social Sign In",
+      "Description" : "Choose your social sign in"
+    },
+    "Account": {
+      "Title"    : "Signin",
+      "Description" : "Sign in with prepTickets account"
+    },
     "Required" : "You must sign in or sign up before you can continue"
   },
   "Signup":{
