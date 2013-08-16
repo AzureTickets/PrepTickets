@@ -32,22 +32,6 @@
             <ul class="nav navbar-nav breadcrumb">
               <li><a ng-href="#/"><i class="icon-home icon-large"></i></a></li>
             </ul>
-            <ul class="nav navbar-nav pull-right" ng-init="getProfile()">
-              <li><a href="" ng-hide="DomainProfile.DomainProfileId > 0" ng-href="#/signin">Sign In</a></li>
-              <li ng-show="DomainProfile.DomainProfileId > 0" style="display:none;"><a ng-href="#/profile">Welcome {{DomainProfile.Contact.FirstName}}</a></li>
-              <li class="dropdown" ng-show="DomainProfile.DomainProfileId > 0" style="display:none;" ng-class="{active:(selectedCtrl == 'profileCtrl' || selectedCtrl == 'orderCtrl')}">
-                <a href="" class="dropdown-toggle">My Account</a>
-                <ul class="dropdown-menu">
-                  <li ng-class="{active:(selectedCtrl == 'profileCtrl')}">
-                    <a href="" ng-href="#/profile">My Profile</a>
-                  </li>
-                  <li ng-class="{active:(selectedCtrl == 'orderCtrl')}">
-                    <a href="" ng-href="#/orders">My Orders</a>
-                  </li>                
-                </ul>
-              </li>
-              <li ng-show="DomainProfile.DomainProfileId > 0" style="display:none;"><a href="" ng-click="signout()">Sign Out</a></li>
-            </ul>
           </div>
         </div>
       </div>
