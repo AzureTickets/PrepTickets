@@ -1,4 +1,4 @@
-cartProcessedCtrl = @prepTickets.controller "cartProcessedCtrl", ($scope, $routeParams, ServerCartService, OrderService) ->
+cartProcessedCtrl = @prepTickets.controller "cartProcessedCtrl", ($scope, $routeParams, $location, ServerCartService, OrderService) ->
   $scope.storeKey = $routeParams.storeKey
   $scope.loadOrder = ->
     $scope.loadServerCart().then(
@@ -33,6 +33,9 @@ cartProcessedCtrl = @prepTickets.controller "cartProcessedCtrl", ($scope, $route
     if $scope.ServerCart.State >= BWL.Models.CartStateEnum.Paid
       $scope.cart.clear($routeParams.storeKey)
       ServerCartService.clearCart($routeParams.storeKey)
+    if $scope.DoneState
+      $scope.flash("Congratulations, your order was successful")
+      $location.path("/orders/#{$scope.ServerCart.Order.StoreKey}/#{$scope.ServerCart.Order.Key}")
 
 
-cartProcessedCtrl.$inject = ["$scope", "$routeParams", "ServerCartService", "OrderService"]
+cartProcessedCtrl.$inject = ["$scope", "$routeParams", "$location", "ServerCartService", "OrderService"]
