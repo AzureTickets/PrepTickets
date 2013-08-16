@@ -6,7 +6,7 @@
     order: "="
     ticket: "="
     ticketIdx: "=index"
-  template: '<div class="ticketNav pagination pagination-centered pagination-large dont-print" ng-show="ticket">
+  template: '<div class="ticketNav pagination pagination-centered pagination-large hidden-print" ng-show="ticket">
               <ul>
                 <li ng-class="{disabled:!hasPrevious()}">
                   <a href="" ng-click="goToPreviousTicket()">&larr; Previous Ticket</a>

@@ -16,6 +16,17 @@
 .btn{
   text-transform: uppercase;
   font-weight: 300;
+
+  @media (min-width: $screen-desktop) and (max-width: $screen-large-desktop) {
+    .visible-md{
+      display:inline !important;
+    }  
+  }
+  @media (min-width: $screen-large-desktop) {
+    .visible-lg{
+      display:inline !important;
+    }  
+  }
 }
 .btn-blue {
   @include button-variant(white, $pt-blue, $pt-blue);

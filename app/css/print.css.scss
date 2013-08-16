@@ -1,13 +1,1 @@
-@import "bootstrap/bootstrap.scss";
-
-.dont-print{
-  display:none;
-}
-
-.print-only{
-  display:auto;
-}
-
 .page-break { display: block; page-break-before: always; }
-
-@import "_ticket.css.scss";
