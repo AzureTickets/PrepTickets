@@ -1,55 +1,84 @@
-<div id="cart" ng-init="setupCart()">
+<div id="cart" ng-init="setupCart()" ng-show="CartObj">
   <checkout-process step="2"></checkout-process>
-  <h2>Cart for {{CartObj.StoreName}}</h2>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>
-          Event Name
-        </th>
-        <th>
-          Price
-        </th>
-        <th>Quantity</th>
-        <th>Total</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="item in CartObj.Items">
-        <td class="span9">
-          {{item.EventName}} - {{item.Name}}
-        </td>
-        <td class="span1">
-          {{item.Price | currency}}
-        </td>
-        <td class="span1">
-          <input type="number" ng-model="item.Quantity" min="0" required="true" class="input-mini">
-        </td>
-        <td class="span1">
-          {{item.Price * item.Quantity | currency}}
-        </td>
-        <td class="span1">
-          <a href="" class="" ng-click="removeItem(item.Key)" tooltip="Remove Item" confirm="Are you sure?">
-            <i class="icon-remove-sign icon-large text-error"></i>
-          </a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="row">
-    <div class="row">
-      <div class="offset4 span1"></div>
-      <a href="" class="btn span2" confirm="Are you sure you want to clear your cart?" ng-click="clearCart()">
+  <blocks>
+    <block type="target" color="green">
+      <i class="icon icon-ticket"></i>
+      <span>Tickets</span>
+    </block>
+    <block type="image">
+      <div class="col-borderless">
+        <img ng-src="/img/default_store.jpg" fallback-src="/img/default_store.jpg" alt="{{StoreObj.Name}}" class="img-responsive">
+      </div>
+    </block>
+    <block type="title">
+      <h4><i class="icon-building"></i> {{StoreObj.Name}}</h4>
+    </block>
+  </blocks>
+  <div class="row row-unpadded">
+    <div class="col-sm-12">
+      <h2>Please Verify your order</h2>
+      <table class="table table-hover table-borderless">
+        <thead>
+          <tr>
+            <th>
+              Event
+            </th>
+            <th>Ticket Type</th>
+            <th>
+              Price
+            </th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th>Remove</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in CartObj.Items">
+            <td class="col-xs-4">
+              {{item.EventName}}
+            </td>
+            <td class="col-xs-4">
+              {{item.Name}}
+            </td>
+            <td class="col-xs-1 center">
+              {{item.Price | currency}}
+            </td>
+            <td class="col-xs-1">
+              <input type="number" ng-model="item.Quantity" min="0" required="true" class="col-xs-11">
+            </td>
+            <td class="col-xs-1">
+              {{item.Price * item.Quantity | currency}}
+            </td>
+            <td class="col-xs-1 center">
+              <a href="" class="btn btn-red" ng-click="removeItem(item.Key)" tooltip="Remove Item" confirm="Are you sure?">
+                <i class="icon-remove-sign icon-large text-error"></i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3"></td>
+            <td class="light-gray-bg">Subtotal</td>
+            <td class="light-gray-bg">{{subtotal() | currency}}</td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+  
+  <div class="row row-unpadded">
+    <div class="col-xs-12 text-right">    
+      <a href="" class="btn btn-clear btn-default" confirm="Are you sure you want to clear your cart?" ng-click="clearCart()">
         <i class="icon-remove"></i> Clear Cart
       </a>
-      <a href="" ng-href="#/school/{{CartObj.StoreKey}}" class="btn btn-info span2">
+      <a href="" ng-href="#/school/{{CartObj.StoreKey}}" class="btn btn-blue btn-clean">
         <i class="icon-reply"></i> Continue Shopping
       </a>
-      <a href="" class="btn btn-primary btn-large span2" ng-click="checkout()" ng-disabled="processingRequest" ng-show="CartObj">
+      <a href="" class="btn btn-green btn-clean btn-large" ng-click="checkout()" ng-disabled="processingRequest" ng-show="CartObj">
         <i class="icon-shopping-cart icon-large"></i> <span ng-show="!auth.isSignedIn()">Signin &amp; </span>Checkout
       </a>
     </div>
-    
   </div>
 </div>

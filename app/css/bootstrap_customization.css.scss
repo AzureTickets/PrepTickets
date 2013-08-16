@@ -20,6 +20,10 @@
   @include button-variant(white, $pt-green, $pt-green); 
 }
 
+.btn-red {
+  @include button-variant(white, $pt-red, $pt-red); 
+}
+
 .btn-clean{
   font-weight:300; 
 }
@@ -57,7 +61,10 @@ table.table {
   thead tr th{ 
     font-size:1.4em;
     font-weight: 300;
-    background:$pt-super-light-gray
+    background:$pt-super-light-gray;
+    @media (max-width: $screen-phone-max) { 
+      font-size: 1.2em;
+    }
   }
 
   tr{
@@ -70,6 +77,10 @@ table.table {
       line-height: 2.1em;
       input{
         line-height: normal;
+      }
+      @media (max-width: $screen-phone-max) { 
+        font-size: 0.9em;
+        line-height: 1.7em;
       }
     }
   }

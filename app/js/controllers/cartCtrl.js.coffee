@@ -9,7 +9,13 @@ cartCtrl = @prepTickets.controller "cartCtrl", ($scope, $routeParams, $location,
 
   #Setups up cart for the given store
   $scope.setupCart = (storeKey=$routeParams.storeKey) ->
-    $scope.CartObj = $scope.cart.getCartObj(storeKey)
+    $scope.store.getStore(storeKey).then(
+      (store) ->
+        $scope.StoreObj = store
+        $scope.CartObj = $scope.cart.getCartObj(storeKey)
+      (err) ->
+        $scope.error.log err
+    )
   
   #clears given cart and redirects back to root url
   $scope.clearCart = (storeKey=$routeParams.storeKey) ->
@@ -108,6 +114,14 @@ cartCtrl = @prepTickets.controller "cartCtrl", ($scope, $routeParams, $location,
         $scope.error.log err
     )
     null
+
+  #Subtotal Calculation
+  $scope.subtotal = ->
+    total = 0
+    if $scope.CartObj?
+      for key, item of $scope.CartObj.Items 
+        total += item.Price * item.Quantity
+    total
 
 
 cartCtrl.$inject = ["$scope", "$routeParams", "$location", "$window", "ServerCartService", "UrlSaverService"]

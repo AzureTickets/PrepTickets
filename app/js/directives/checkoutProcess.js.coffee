@@ -14,6 +14,5 @@
                 </checkout-step>
               </div>'
   link: (scope, element, attrs) ->
-    console.log attrs.step
     scope.step = attrs.step
 )

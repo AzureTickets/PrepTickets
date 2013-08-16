@@ -27,7 +27,7 @@
 }
 @media (max-width: $screen-phone-max) { // xs screen
   .btn-huge{
-    font-size: 2.0em;
+    font-size: 1.8em;
   }
 }
 
@@ -42,6 +42,9 @@
   }
   .text-xs-left{
     text-align: left !important;
+  }
+  .text-xs-right{
+    text-align: right !important;
   }
 }
 
@@ -66,6 +69,13 @@
 }
 .dark-green-font{
   color: $pt-dark-green;
+}
+
+.gray-bg{
+  background: $pt-gray;
+}
+.light-gray-bg{
+  background: $pt-super-light-gray;
 }
 
 //blocks
@@ -132,12 +142,13 @@
     font-size:4em;
     right:35px;
     top:38%;
-    content:'\f054'
-  }
-}
-@media (min-width: $screen-tablet) and (max-width: $screen-desktop) {
-  .block-point-right:after{
-    font-size: 2.5em;
+    content:'\f054';
+    @media (min-width: $screen-tablet) and (max-width: $screen-desktop) {
+      font-size: 2.5em;
+    }
+    @media (max-width: $screen-phone-max){
+      content: '';
+    }
   }
 }
 
@@ -223,7 +234,7 @@
     border-top:20px solid darken($pt-dark-green, 9%);
     &.upcoming{
       background:$pt-light-gray;
-      border-color:lighter($pt-light-gray, 9%);
+      border-color:lighten($pt-light-gray, 9%);
       color:$pt-gray;
       .text{
         color:$pt-gray;

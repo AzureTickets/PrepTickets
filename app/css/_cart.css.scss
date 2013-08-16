@@ -1,0 +1,12 @@
+#cart{
+  table{
+    tr{
+      td{
+        @media (max-width: $screen-phone-max) { 
+          padding-left:2px; 
+          padding-right:2px; 
+        }
+      }
+    }
+  }
+}

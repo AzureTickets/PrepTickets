@@ -13,7 +13,5 @@
         start = parseFloat(3 - (scope.count % 3))
         start = 0 if start >= 3
         return if isNaN(start)
-        console.log "inserting from ", element
         for i in [start...0]
-          console.log "inserting", i
           element.after(tmpl)

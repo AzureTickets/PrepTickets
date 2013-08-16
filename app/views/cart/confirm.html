@@ -1,5 +1,19 @@
 <div ng-init="loadServerCart()" ng-show="ServerCart">
   <checkout-process step="3"></checkout-process>
+  <blocks>
+    <block type="target" color="green">
+      <i class="icon icon-ticket"></i>
+      <span>Tickets</span>
+    </block>
+    <block type="image">
+      <div class="col-borderless">
+        <img ng-src="/img/default_store.jpg" fallback-src="/img/default_store.jpg" alt="{{StoreObj.Name}}" class="img-responsive">
+      </div>
+    </block>
+    <block type="title">
+      <h4><i class="icon-building"></i> {{StoreObj.Name}}</h4>
+    </block>
+  </blocks>
   <h3>Please verify your order</h3>
   <table class="table table-hover">
     <tr ng-repeat="item in ServerCart.InventoryItems">

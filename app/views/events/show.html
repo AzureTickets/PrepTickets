@@ -1,7 +1,7 @@
 <div id="event" ng-init="loadEvent()" ng-show="EventObj">
   <checkout-process step="1"></checkout-process>
   <blocks>
-    <block type="target" color="green" class="hidden-xs">
+    <block type="target" color="green">
       <i class="icon icon-ticket"></i>
       <span>Event</span>
     </block>
@@ -42,7 +42,7 @@
               <td>{{item.Name}}</td>
               <td class="center">{{item.Price.ItemPrice | currency}}</td>
               <td class="center">
-                <input type="number" min='0' max="99" required="true" ng-model="CurrentCart.Items[item.Key].Quantity" class="span1"/>
+                <input type="number" min='0' max="99" required="true" ng-model="CurrentCart.Items[item.Key].Quantity" class="control-label"/>
               </td>
             </tr>
           </tbody>
