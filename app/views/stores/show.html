@@ -17,23 +17,23 @@
   </div>
 
   <div id="events">
-    <div class="event col-sm-4 col-xs-12" ng-repeat="event in StoreObj.Events">
+    <div class="event col-sm-4 col-xs-12 border-right" ng-repeat="event in StoreObj.Events">
       <div class="col-borderless image">
         <a href="" ng-href="#/school/{{StoreObj.URI}}/event/{{event.CustomURI.URI}}">
           <img ng-src="/img/default_event.jpg" fallback-src="/img/default_store.jpg" alt="{{event.Name}}" class="img-responsive">
           <img src="/img/ticket-stub.png" class="ticket-stub" >
         </a>
       </div>
-      <a href="" ng-href="#/school/{{StoreObj.URI}}/event/{{event.CustomURI.URI}}" class="border-bottom">
-        <h4 class="text-center">{{event.Name}}</h4>
-      </a>
+      <h4 class="text-center border-bottom">
+        <a href="" ng-href="#/school/{{StoreObj.URI}}/event/{{event.CustomURI.URI}}" class="">
+          {{event.Name}}
+        </a>
+      </h4>
       <div class="row">
-        <div class="col-xs-2 border-right text-center text-upcase">
-          {{event.StartTime | datetime:"day"}}
-          <br/>
-          {{event.StartTime | datetime:"month3"}}
-          <br/>
-          {{event.StartTime | datetime:"year"}}
+        <div class="col-xs-2 border-right border-xs-right text-center text-upcase date">
+          <div class="day">{{event.StartTime | datetime:"day"}}</div>
+          <div class="month">{{event.StartTime | datetime:"month3"}}</div>
+          <div class="year">{{event.StartTime | datetime:"year"}}</div>
         </div>
         <div class="col-xs-10">
           <p class="description" ng-bind-html-unsafe="event.Description"></p>

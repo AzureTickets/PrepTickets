@@ -8,7 +8,7 @@
       switch format
         when "long" then format = "dddd, MMMM Do YYYY, h:mm a"
         when "short" then format = "MMMM D YYYY, h:mm a"
-        when "day" then format = "D"
+        when "day" then format = "DD"
         when "month3" then format = "MMM"
         when "year" then format = "YYYY"
       moment.utc(dateTimeString).format(format)

@@ -71,16 +71,18 @@ h2.huge{
   }
   span{
     font-size: 2.5em;
+    font-weight: 900;
     text-transform: uppercase;
   }
 }
-.block-title{
-  text-align: center;
-  padding-top:5%;
-  h4{
-    font-size:2.7em;
-    padding-bottom:10px;
-    margin-bottom:15px;
+@media (min-width: $screen-tablet) and (max-width: $screen-desktop) {
+  .target-block{
+    .icon{
+      font-size: 7em;
+    }
+    span{
+      font-size:1.7em;
+    }
   }
 }
 .block-point-right{
@@ -98,6 +100,29 @@ h2.huge{
     content:'\f054'
   }
 }
+@media (min-width: $screen-tablet) and (max-width: $screen-desktop) {
+  .block-point-right:after{
+    font-size: 2.5em;
+  }
+}
+
+.block-title{
+  text-align: center;
+  padding-top:5%;
+  h4{
+    font-size:2.7em;
+    padding-bottom:10px;
+    margin-bottom:15px;
+  }
+}
+@media (min-width: $screen-tablet) and (max-width: $screen-desktop) {
+  .block-title{
+    h4{
+      font-size:1.7em;
+    }
+  }
+}
+
 
 //Location Address
 .location{
@@ -116,6 +141,12 @@ h2.huge{
 //Borders
 @media (min-width: $screen-small) {
   .border-right{
+    padding-right:14px;
+    border-right:1px solid $pt-super-light-gray;
+  }
+}
+@media (max-width: $screen-phone-max) { 
+  .border-xs-right{
     padding-right:14px;
     border-right:1px solid $pt-super-light-gray;
   }
