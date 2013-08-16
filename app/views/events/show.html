@@ -32,17 +32,17 @@
         <table class="table table-hover table-borderless">
           <thead>
             <tr>
-              <th>Ticket Name</th>
+              <th class="">Ticket Name</th>
               <th class="center">Cost</th>
               <th class="center">Quantity</th>
             </tr>  
           </thead>
           <tbody>
-            <tr class="items" ng-repeat="item in EventObj.Items">
-              <td>{{item.Name}}</td>
+            <tr class="items " ng-repeat="item in EventObj.Items">
+              <td class="col-xs-10">{{item.Name}}</td>
               <td class="center">{{item.Price.ItemPrice | currency}}</td>
               <td class="center">
-                <input type="number" min='0' max="99" required="true" ng-model="CurrentCart.Items[item.Key].Quantity" class="control-label"/>
+                <input type="number" min='0' max="99" required="true" ng-model="CurrentCart.Items[item.Key].Quantity" class="form-control"/>
               </td>
             </tr>
           </tbody>
