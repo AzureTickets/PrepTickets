@@ -1,4 +1,5 @@
 <div ng-init="loadServerCart()" ng-show="ServerCart">
+  <checkout-process step="3"></checkout-process>
   <h3>Please verify your order</h3>
   <table class="table table-hover">
     <tr ng-repeat="item in ServerCart.InventoryItems">
