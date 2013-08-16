@@ -70,12 +70,19 @@ cartCtrl = @prepTickets.controller "cartCtrl", ($scope, $routeParams, $location,
   #Loads the server cart for given storeKey
   #@returns null
   $scope.loadServerCart = (storeKey=$routeParams.storeKey) ->
-    ServerCartService.initCart(storeKey).then(
-      (cart) ->
-        $scope.ServerCart = cart
+    $scope.store.getStore(storeKey).then(
+      (store) ->
+        $scope.StoreObj = store
+        ServerCartService.initCart(storeKey).then(
+          (cart) ->
+            $scope.ServerCart = cart
+          (err) ->
+            $scope.error.log err
+        )
       (err) ->
         $scope.error.log err
     )
+    
     null
 
   #Setups up URL for user to process payment for given storeKey

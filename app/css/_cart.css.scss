@@ -10,3 +10,34 @@
     }
   }
 }
+#server-cart{
+  h3{
+    color:$pt-gray;
+    padding-top: 10px;
+    font-weight: 300;
+    font-size:2em;
+  }
+  .cart-details{
+    background: $pt-super-light-gray;
+    padding-bottom:500px;
+    margin-bottom:-500px;
+    font-size:1.1em;
+    .purchaser{
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      border-bottom:1px solid $pt-gray;
+    }
+    .totals{
+      padding-bottom: 20px;
+      padding-top:20px;
+      font-size:1.3em;
+      b{
+        font-size:1.1em;
+        margin-left:45px;
+      }
+    }
+  }
+  .cancel{
+    padding: 10px 0;
+  }
+}
