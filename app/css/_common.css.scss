@@ -17,20 +17,18 @@
     }
 }
 
-// sm screen
-@media screen and (min-width: $screen-tablet) {
-  input[type="text"].huge{
-    font-size:3.2em;
-    height:1em;
-  }
-
-  .btn-huge{
-    font-size: 1.6em;
-  }
+.btn-huge{
+  font-size: 1.8em;
 }
-
-h2.huge{
-  font-size:3.2em;
+@media (min-width: $screen-small) {
+  .btn-huge{
+    font-size: 1.3em;
+  } 
+}
+@media (max-width: $screen-phone-max) { // xs screen
+  .btn-huge{
+    font-size: 2.0em;
+  }
 }
 
 .providers .provider i{
@@ -53,15 +51,49 @@ h2.huge{
 
 //Colors backgrounds
 .blue-bg{
-  background: $pt-blue
+  background: $pt-blue;
 }
 
 .dark-blue-font{
-  color: $pt-dark-blue
+  color: $pt-dark-blue;
 }
 
-//header blocks
-.target-block{
+.green-bg{
+  background: $pt-green;
+}
+.dark-green-font{
+  color: $pt-dark-green;
+}
+
+//blocks
+.blocks{
+  & > .block{
+    text-align: center;
+  }
+}
+@media (min-width: $screen-tablet) {
+  .blocks{
+    & > .block{
+      height:200px;
+    }
+  }
+}
+@media (min-width: $screen-desktop) {
+  .blocks{
+    & > .block{
+      height:271px;
+    }
+  }
+}
+@media (min-width: $screen-large-desktop) {
+  .blocks{
+    & > .block{
+      height:300px;
+    }
+  }
+}
+
+.block-target{
   text-align: center;
   padding-top:5%;
   .icon{
@@ -76,7 +108,7 @@ h2.huge{
   }
 }
 @media (min-width: $screen-tablet) and (max-width: $screen-desktop) {
-  .target-block{
+  .block-target{
     .icon{
       font-size: 7em;
     }
@@ -109,10 +141,22 @@ h2.huge{
 .block-title{
   text-align: center;
   padding-top:5%;
+  &.with-subtitle{
+    padding-top:4%;
+  }
+  h4, h5{
+    i{
+      color:$pt-super-light-gray;
+    }
+  }
   h4{
     font-size:2.7em;
-    padding-bottom:10px;
-    margin-bottom:15px;
+    padding-bottom:15px;
+    margin-bottom:20px;
+  }
+  h5{
+    font-size:2.5em;
+    padding-bottom:20px;
   }
 }
 @media (min-width: $screen-tablet) and (max-width: $screen-desktop) {
@@ -121,6 +165,10 @@ h2.huge{
       font-size:1.7em;
     }
   }
+}
+
+.block-image{
+  background:$pt-dark-gray;
 }
 
 

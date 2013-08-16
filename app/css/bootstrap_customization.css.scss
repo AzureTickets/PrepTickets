@@ -31,40 +31,46 @@
 }
 
 //Grid
-.row-unpadded{
-  margin-left:0 !important;
-  margin-right:0 !important;
+@media (min-width: $screen-small) {
+  .row-unpadded{
+    margin-left:0 !important;
+    margin-right:0 !important;
+  }
 }
 .col-borderless{
   margin-left:-15px;
   margin-right:-15.1px;
 }
-
-
-//blocks
-.blocks{
-  & > .block{
-    text-align: center;
-  }
+.col-unpadded{
+  padding-left:0;
+  padding-right:0;
 }
-@media (min-width: $screen-tablet) {
-  .blocks{
-    & > .block{
-      height:200px;
+
+//Tables
+table.table {
+  &.table-borderless{
+    tr{
+      th, td {border:none;}
     }
   }
-}
-@media (min-width: $screen-desktop) {
-  .blocks{
-    & > .block{
-      height:271px;
-    }
+
+  thead tr th{ 
+    font-size:1.4em;
+    font-weight: 300;
+    background:$pt-super-light-gray
   }
-}
-@media (min-width: $screen-large-desktop) {
-  .blocks{
-    & > .block{
-      height:300px;
+
+  tr{
+    th.center, td.center{
+      text-align: center;
+    }
+
+    td{
+      font-size: 1.2em;
+      line-height: 2.1em;
+      input{
+        line-height: normal;
+      }
     }
   }
 }

@@ -1,20 +1,20 @@
 <loader hide-on="StoreObj.Key">Please wait while fetch the school information</loader>
 <div class="store" ng-init="loadStore()" ng-show="StoreObj.Key" style="display:none;">
-  <div class="row blocks row-unpadded">
-    <div class="block col-sm-4 hidden-xs target-block block-point-right blue-bg dark-blue-font">
+  <blocks>
+    <block type="target" color="blue" class="hidden-xs">
       <i class="icon icon-building"></i>
       <span>School</span>
-    </div>
-    <div class="block col-sm-4 col-xs-12 no-overflow">
+    </block>
+    <block class="no-overflow">
       <div class="col-borderless">
-        <img ng-src="/img/default_store.jpg" fallback-src="/img/default_store.jpg" alt="{{store.Name}} Image" class="img-responsive">
+        <img ng-src="/img/default_store.jpg" fallback-src="/img/default_store.jpg" alt="{{StoreObj.Name}} Image" class="img-responsive">
       </div>
-    </div>
-    <div class="block block-title col-sm-4 col-xs-12">
+    </block>
+    <block type="title">
       <h4>{{StoreObj.Name}}</h4>
       <location-address>{{StoreObj.Address | address}}</location-address>
-    </div>
-  </div>
+    </block>
+  </blocks>
 
   <div id="events">
     <div class="event col-sm-4 col-xs-12 border-right" ng-repeat="event in StoreObj.Events">

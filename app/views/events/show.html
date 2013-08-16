@@ -1,31 +1,67 @@
 <div id="event" ng-init="loadEvent()" ng-show="EventObj">
-  {{StoreObj.Name}}: {{EventObj.Name}}
-  <div class="eventDetails">
-    <p>{{EventObj.Description}}</p>
-    <h3>Tickets</h3>
-    <form action="" name="eventForm" ng-submit="saveCart()">
-      <table class="table table-hover">
-        <tr>
-          <th class="span9">Ticket Name</th>
-          <th class="span1">Cost</th>
-          <th class="span1">Quantity</th>
-          <th class="span1">Total</th>
-        </tr>
-        <tr class="items" ng-repeat="item in EventObj.Items">
-          <td>{{item.Name}}</td>
-          <td>{{item.Price.ItemPrice | currency}}</td>
-          <td class="">
-            <input type="number" min='0' max="99" required="true" ng-model="CurrentCart.Items[item.Key].Quantity" class="span1"/>
-          </td>
-          <td>{{((item.Price.ItemPrice * CurrentCart.Items[item.Key].Quantity) || 0) | currency}}</td>
-        </tr>
-      </table>
-      <div class="row">
-        <a href="" class="offset9 span2 btn btn-success btn-large" ng-click="saveCart()" ng-disabled="eventForm.$invalid">
-          <i class="icon-shopping-cart"></i> Add to Cart
-        </a>
+  <blocks>
+    <block type="target" color="green" class="hidden-xs">
+      <i class="icon icon-ticket"></i>
+      <span>Event</span>
+    </block>
+    <block type="image">
+      <div class="col-borderless">
+        <img ng-src="/img/default_event.jpg" fallback-src="/img/default_event.jpg" alt="{{EventObj.Name}}" class="img-responsive">
       </div>
-    </form>
+    </block>
+    <block type="title" class="with-subtitle">
+      <h4><i class="icon-building"></i> {{StoreObj.Name}}</h4>
+      <h5><i class="icon-ticket"></i> {{EventObj.Name}}</h5>
+      <div class="row">
+        <div class="col-xs-2">&nbsp;</div>
+        <div class="col-xs-10 text-left">
+          <eventdate event="EventObj"></eventdate>
+        </div>
+      </div>
+    </block>
+  </blocks>
+  <div class="event-info">
+    <h4>Event Info:</h4>
+    <div class="information" ng-bind-html-unsafe="EventObj.Description">No information given</div>  
   </div>
-  <a href="" class="btn" ng-href="#/school/{{StoreObj.URI}}"><i class="icon-arrow-left"></i> Back to {{StoreObj.Name}}</a>
+  <div class="row row-unpadded">
+    <div class="col-xs-12 col-sm-8" id="tickets">
+      <h3>Choose which type of ticket you want to purchase</h3>
+      <form action="" name="eventForm" ng-submit="saveCart()">
+        <table class="table table-hover table-borderless">
+          <thead>
+            <tr>
+              <th>Ticket Name</th>
+              <th class="center">Cost</th>
+              <th class="center">Quantity</th>
+            </tr>  
+          </thead>
+          <tbody>
+            <tr class="items" ng-repeat="item in EventObj.Items">
+              <td>{{item.Name}}</td>
+              <td class="center">{{item.Price.ItemPrice | currency}}</td>
+              <td class="center">
+                <input type="number" min='0' max="99" required="true" ng-model="CurrentCart.Items[item.Key].Quantity" class="span1"/>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="text-xs-center text-right">
+          <a href="" class="btn btn-green btn-huge btn-clean  btn-bottom-buffer" ng-click="saveCart()" ng-disabled="eventForm.$invalid">
+            &gt; Add to Cart
+          </a>  
+        </div>
+      </form>
+    </div>
+    <div class="col-xs-12 col-sm-4 text-center col-unpadded" id="location">
+      <div id="map">
+        <img src="http://dev.virtualearth.net/REST/v1/Imagery/Map/Road/47.610,-122.127/14?mapSize=600,400&pushpin=47.610,-122.127;5;X&key=AgPzPnVZziQw-UBNbXDqhANfg5fFYmDtaErGsuW_-KSjP3fJvvyYp5s5wjr-yxnT" class="img-responsive" alt="Map to {{EventObj.Places[0].Address | address}}">
+      </div>
+      <div id="address">
+        <h4>{{EventObj.Places[0].Name}}</h4>
+        <location-address>{{EventObj.Places[0].Address | address}}</location-address>
+      </address>
+    </div>
+  </div>
 </div>

@@ -1,0 +1,10 @@
+#event{
+  .event-info{
+    background:$pt-super-light-gray;
+    padding:10px;
+  }
+  #location{
+    background:darken($pt-super-light-gray, 10%);
+    margin-left:0.0022%; //Fixes white border issue, might be fix in complete bootstrap 3
+  }
+}
