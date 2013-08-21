@@ -30,6 +30,8 @@ class SprocketsBuilder
     sprockets.append_path(root.join('js'))
     sprockets.append_path(root.join('css'))
     sprockets.append_path(root.join('lib'))
+
+    sprockets.cache = Sprockets::Cache::FileStore.new(app.project_root.join("tmp").to_s)
     Dir["#{root}/lib/*/"].map do |a|
       sprockets.append_path a.sub(/(\/)+$/,'')
     end

@@ -4,3 +4,4 @@ logs/*
 build/
 libpeerconnection.log
 doc/
+tmp/
