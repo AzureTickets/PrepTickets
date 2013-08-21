@@ -3,6 +3,10 @@
   text-transform: uppercase;
 }
 
+.fading-border{
+  background: url(../img/fading_border_col_3.png) 50% 100% no-repeat;
+}
+
 // Really Small SCreen
 @media screen and (max-width: 568px) {
     h1,h2,h3,h4,h5 {
