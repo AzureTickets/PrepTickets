@@ -3,8 +3,11 @@
   text-transform: uppercase;
 }
 
-.fading-border{
+.fading-border-bottom{
   background: url(../img/fading_border_col_3.png) 50% 100% no-repeat;
+}
+.fading-border-right{
+  background: url(../img/fading_border_vertical.png) 100% 50% no-repeat; 
 }
 
 // Really Small SCreen
@@ -80,6 +83,17 @@
 }
 .light-gray-bg{
   background: $pt-super-light-gray;
+}
+
+//Font colors
+.text-blue{
+  color:$pt-blue;
+}
+.text-green{
+  color:$pt-green;
+}
+.text-red{
+  color:$pt-red;
 }
 
 //blocks

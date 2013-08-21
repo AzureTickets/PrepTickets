@@ -24,7 +24,7 @@
       <div class="alert alert-info ">No schools found</div>
     </div>
   </div>
-  <div id="results" class="store-list" scroll-if="Stores.length > 0">
+  <div id="results" class="store-list row row-unpadded" scroll-if="Stores.length > 0">
     <div class="store col-sm-4 col-xs-12" ng-repeat="store in Stores">
       <div id="{{store.Key}}">
         <div class="main-image">
@@ -32,7 +32,7 @@
             <img ng-src="/img/default_store.jpg" fallback-src="/img/default_store.jpg" alt="{{store.Name}} Image" class="img-responsive">
           </a>  
         </div>
-        <h4 class="text-center fading-border">{{store.Name}}</h4>
+        <h4 class="text-center fading-border-bottom">{{store.Name}}</h4>
         <div class="row location">
           <div class="col-xs-3 map-marker"><i class="icon-map-marker icon-large"></i></div>
           <div class="col-xs-9"><address>{{store.Locations}}</address></div>
@@ -41,6 +41,21 @@
           &gt; View School
         </a>
       </div>
+    </div>
+  </div>
+
+  <div class="preptickets-info row row-unpadded">
+    <div class="col-sm-4 fading-border-right">
+      <h3 class="text-blue">Fast Ticketing</h3>
+      <p>Tired of standing in long lines to purchase tickets? Use PrepTickets to purchase online and get in events faster. Our service conveniently allows you to purchase tickets 24x7 with any internet connected device.  You can print paper tickets or easily distribute eTickets to any Smartphone.</p>
+    </div>
+    <div class="col-sm-4 fading-border-right">
+      <h3 class="text-green">Social Sharing</h3>
+      <p>Now you can be connected to your school events like never before. Notify your friends, receive event updates or buy and share tickets.  PrepTickets makes it easy to share with your social networks by directly connecting you to Facebook, Twitter and more. </p>
+    </div>
+    <div class="col-sm-4">
+      <h3 class="text-red">Easy Payment</h3>
+      <p>PrepTickets accepts most major credit and debit cards for all purchases. PrepTickets uses a secure payment processing service provided by Authorize.net. This service provides the infrastructure and security necessary for fast, reliable and secure transmission of your payments.</p>
     </div>
   </div>
 
