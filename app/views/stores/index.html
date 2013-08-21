@@ -28,7 +28,9 @@
     <div class="store col-sm-4 col-xs-12" ng-repeat="store in Stores">
       <div id="{{store.Key}}">
         <div class="main-image">
-          <img ng-src="/img/default_store.jpg" fallback-src="/img/default_store.jpg" alt="{{store.Name}} Image" class="img-responsive">
+          <a href="" ng-click="goToStore({URI:store.URI, key:store.StoreKey})">
+            <img ng-src="/img/default_store.jpg" fallback-src="/img/default_store.jpg" alt="{{store.Name}} Image" class="img-responsive">
+          </a>  
         </div>
         <h4 class="text-center">{{store.Name}}</h4>
         <div class="row location">
