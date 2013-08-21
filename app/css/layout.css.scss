@@ -73,17 +73,19 @@ body{
   }
   .navbar-secondary{
     background:#e6e7e6;
+
+    .breadcrumb{
+      background:transparent;
+      margin: 6px 0;
+    }
   }
-  .breadcrumb{
-    padding:0;
-    margin-bottom: 0;
-    background:transparent;
-  }
+  
   
 
   & > #main{
     margin:0 auto;
     background:#fff;
+    padding-bottom:30px;
   }
 
 

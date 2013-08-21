@@ -6,6 +6,7 @@ profileCtrl = @prepTickets.controller "profileCtrl", ($scope, $location, Profile
       (profile) ->
         $scope.root.DomainProfile = profile
         angular.copy(profile.Contact, $scope.Contact)
+        $scope.breadcrumbs.addProfile(profile)
       (err) ->
         $scope.error.log err
     )

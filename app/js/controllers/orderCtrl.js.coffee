@@ -10,6 +10,7 @@ orderCtrl = @prepTickets.controller('orderCtrl', ($scope, $location, $routeParam
     OrderService.getAll().then(
       (orders) ->
         $scope.Orders = orders
+        $scope.breadcrumbs.addOrders()
       (err) ->
         $scope.error.log err
     )
@@ -21,6 +22,7 @@ orderCtrl = @prepTickets.controller('orderCtrl', ($scope, $location, $routeParam
           (order) ->
             $scope.Order = order if order.Key
             $scope.root.title = "Order ##{order.OrderId}"
+            $scope.breadcrumbs.addOrder(order)
           (err) ->
             $scope.error.log err
         )
@@ -40,6 +42,7 @@ orderCtrl = @prepTickets.controller('orderCtrl', ($scope, $location, $routeParam
           $scope.TicketIdx = result[0]
           $scope.Ticket = result[1]
           $scope.loadEventForTicket($scope.Ticket)
+          $scope.breadcrumbs.addTicket($scope.Order, $scope.Ticket, $scope.TicketIdx + 1)
           $scope.root.title = "Ticket ##{result[0] + 1} for Order ##{$scope.Order.OrderId}"
         (err) ->
           $scope.error.log err

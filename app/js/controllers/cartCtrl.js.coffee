@@ -13,6 +13,7 @@ cartCtrl = @prepTickets.controller "cartCtrl", ($scope, $routeParams, $location,
       (store) ->
         $scope.StoreObj = store
         $scope.CartObj = $scope.cart.getCartObj(storeKey)
+        $scope.breadcrumbs.addCart(store)
       (err) ->
         $scope.error.log err
     )
@@ -73,6 +74,7 @@ cartCtrl = @prepTickets.controller "cartCtrl", ($scope, $routeParams, $location,
     $scope.store.getStore(storeKey).then(
       (store) ->
         $scope.StoreObj = store
+        $scope.breadcrumbs.addCartCheckout(store)
         ServerCartService.initCart(storeKey).then(
           (cart) ->
             $scope.ServerCart = cart

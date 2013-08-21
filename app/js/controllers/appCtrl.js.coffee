@@ -1,4 +1,4 @@
-appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, $window, configService, errorService, flash, authService, storeService, CartService, $location, UrlSaverService, ModalService, ProfileService) ->
+appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, $window, configService, errorService, flash, authService, storeService, CartService, $location, UrlSaverService, ModalService, ProfileService, BreadcrumbService) ->
   $rootScope.errors = []
   $rootScope.navCollapsed = true
   $rootScope.title = ""
@@ -12,6 +12,7 @@ appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, $window,
   $rootScope.modal = ModalService
   $rootScope.flash = flash
   $rootScope.profile = ProfileService
+  $rootScope.breadcrumbs = BreadcrumbService
   $rootScope.root = $rootScope
 
   $rootScope.AccountProfile = {} #needed for email signin to work
@@ -27,6 +28,9 @@ appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, $window,
       rejection = rejection.message if rejection.message?
       rejection = rejection.Message if rejection.Message?
     errorService.log "Route Change Error: #{rejection}"
+
+  $rootScope.clearBreadcrumbs =  ->
+    $rootScope.breadcrumbs.clear()
 
   $rootScope.getProfile = ->
     $rootScope.auth.loadProfile().then(
@@ -92,4 +96,5 @@ appCtrl.$inject = ["$rootScope",
                    "$location",
                    "UrlSaverService",
                    "ModalService",
-                   "ProfileService"]
+                   "ProfileService",
+                   "BreadcrumbService"]

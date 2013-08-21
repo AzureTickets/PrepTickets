@@ -9,7 +9,7 @@
   <%= stylesheet_link_tag "print.css", media: :print %>
   <!--[if lte IE 8]>
     <script type="text/javascript">
-      window.myCustomTags = [ 'flashmessages', 'loader', 'eventdate', 'qrcode', 'ticketpaging', 'location-address', 'blocks', 'block', 'checkout-process' , 'checkout-step' ];
+      window.myCustomTags = [ 'flashmessages', 'loader', 'eventdate', 'qrcode', 'ticketpaging', 'location-address', 'blocks', 'block', 'checkout-process' , 'checkout-step', 'breadcrumbs' ];
     </script>
     <% Application::IE_REQUIRED_FILES.each do |file| %>
     <script src="/<%= file %>" type="text/javascript"></script>
@@ -29,9 +29,7 @@
         <div class="col-xs-12 col-sm-10">
           <div ng-include="'views/common/nav.html'"></div>
           <div class="navbar navbar-secondary hidden-xs">
-            <ul class="nav navbar-nav breadcrumb">
-              <li><a ng-href="#/"><i class="icon-home icon-large"></i></a></li>
-            </ul>
+            <breadcrumbs></breadcrumbs>
           </div>
         </div>
       </div>

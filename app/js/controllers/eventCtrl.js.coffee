@@ -15,6 +15,7 @@ eventCtrl = @prepTickets.controller("eventCtrl", ($scope, $filter, $location, $r
 
   $scope.setupEventObj = (eventUri=$routeParams.eventURI) ->
     $scope.EventObj = $filter('findByEventURI')($scope.StoreObj.Events, eventUri)
+    $scope.breadcrumbs.addEvent($scope.StoreObj, $scope.EventObj)
     $scope.root.title = "#{$scope.EventObj.Name} @ #{$scope.StoreObj.Name}"
     $scope.buildCart()
 

@@ -2,6 +2,7 @@ authCtrl = @prepTickets.controller("authCtrl", ($scope, $location, UrlSaverServi
   $scope.authProviders = []
   $scope.signingUp = false
   $scope.passwordLength = BWL.t("Signup.Password.Length", defaultValue:"6")
+  $scope.breadcrumbs.addSignin()
 
   $scope.loadAuthProviders = ->
     omitAccounts = (providers) ->
