@@ -4,7 +4,7 @@
     imgSrc: "@"
   controller: ["$scope", "$element", "$attrs", (scope, element, attr) ->
     loadElement = angular.element(document.createElement('img'))
-    loadImage = -> console.log "Loading..."; element.attr('src', loadElement.attr('src'))
+    loadImage = -> element.attr('src', loadElement.attr('src'))
 
     loadElement.bind('error', ->
       scope.$apply( -> 
