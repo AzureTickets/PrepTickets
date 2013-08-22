@@ -3,11 +3,15 @@
   text-transform: uppercase;
 }
 
+
+
 .fading-border-bottom{
   background: url(../img/fading_border_col_3.png) 50% 100% no-repeat;
 }
-.fading-border-right{
-  background: url(../img/fading_border_vertical.png) 100% 50% no-repeat; 
+@media (min-width: $screen-tablet) {
+  .fading-border-right{
+    background: url(../img/fading_border_vertical.png) 100% 50% no-repeat; 
+  }
 }
 
 // Really Small SCreen
