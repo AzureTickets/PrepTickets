@@ -2,9 +2,4 @@
   <div ng-repeat="Ticket in Order.InventoryItems" class="visible-print" ng-class="{'page-break':$index != 0}">
     <ng-include src="'views/tickets/show.print.html'" data="{{TicketIdx = $index}}"/>
   </div>
-  <div class="row visible-md visible-lg row-unpadded">
-    <div class="col-sm-12 text-right">
-      <a href="" class="btn btn-success hidden-print btn-large" ng-click="printTicket()"><i class="icon-print icon-large"></i> Print All Tickets</a>
-    </div>
-  </div>
 </div>

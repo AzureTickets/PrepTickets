@@ -38,6 +38,9 @@
 .btn-red {
   @include button-variant(white, $pt-red, $pt-red); 
 }
+.btn-orange{
+  @include button-variant(white, $pt-orange, $pt-orange);  
+}
 
 .btn-clean{
   font-weight:300; 

@@ -4,20 +4,25 @@
     <div class="col-sm-4 order-details">
       <h3>Order Details</h3>
         <div class="row">
-          <div class="col-xs-4"><b>OrderId</b></div>
-          <div class="col-xs-8">{{Order.OrderId}}</div>
+          <div class="col-xs-6 order-header">OrderId</div>
+          <div class="col-xs-6 order-data">{{Order.OrderId}}</div>
         </div>
         <div class="row">
-          <div class="col-xs-4"><b>Date of Order</b></div>
-          <div class="col-xs-8">{{Order.Placed | datetime}}</div>
+          <div class="col-xs-6 order-header">Date of Order</div>
+          <div class="col-xs-6 order-data">{{Order.Placed | datetime:"short"}}</div>
         </div>
         <div class="row">
-          <div class="col-xs-4"><b>Number of items</b></div>
-          <div class="col-xs-8">{{Order.InventoryItems.length}}</div>
+          <div class="col-xs-6 order-header">Number of items</div>
+          <div class="col-xs-6 order-data">{{Order.InventoryItems.length}}</div>
         </div>
         <div class="row">
-          <div class="col-xs-4"><b>Total</b></div>
-          <div class="col-xs-8">{{Order.Total.ItemPrice | currency}}</div>
+          <div class="col-xs-6 order-header">Payment Type</div>
+          <div class="col-xs-6 order-data">{{Order.Transactions[0].ProviderType}}</div>
+        </div>
+        <div class="divider fading-border-bottom"></div>
+        <div class="row total">
+          <div class="col-xs-6 order-header">Total</div>
+          <div class="col-xs-6 order-data">{{Order.Total.ItemPrice | currency}}</div>
         </div>
     </div>
     <div class="col-sm-8">
@@ -29,23 +34,26 @@
             <th></th>
           </tr>
         </thead>
-        <tr ng-repeat="ticket in Order.InventoryItems">
-          <td class="col-xs-8">
-            {{ticket.EventName}} - {{ticket.ItemInfoName}}
-          </td>
-          <td class="col-xs-4">
-            <a href="" class="btn btn-info" ng-href='#/orders/{{Order.StoreKey}}/{{Order.Key}}/{{ticket.Key}}'><i class="icon-eye-open"></i> View <span class="visible-md visible-lg">&amp; Print</span> Ticket</a>
-          </td>
-        </tr>
+        <tbody>
+          <tr ng-repeat="ticket in Order.InventoryItems">
+            <td class="col-xs-8">
+              {{ticket.EventName}} - {{ticket.ItemInfoName}}
+            </td>
+            <td class="col-xs-4">
+              <a href="" class="btn btn-red" ng-href='#/orders/{{Order.StoreKey}}/{{Order.Key}}/{{ticket.Key}}'>&gt; View <span class="visible-md visible-lg">&amp; Print</span> Ticket</a>
+            </td>
+          </tr>
+        </tbody>
       </table>
+      <div class="row visible-md visible-lg row-unpadded hidden-print">
+        <div class="col-sm-12 text-center">
+          <a href="" class="btn btn-orange btn-huge" ng-click="printTicket()">&gt; Print All Tickets</a>
+          - or -
+          <a href="" class="btn btn-orange btn-huge">&gt; Print Receipt</a>
+        </div>
+      </div>
     </div>
+    
   </div>
   <ng-include src="'views/tickets/index.print.html'"></ng-include>
-  <div class="row">
-    <div class="col-xs-12 text-right text-xs-center">
-      
-      <a href="" class="btn hidden-print" ng-href="#/orders"><i class="icon-arrow-left"></i> Back to orders</a>    
-    </div>
-  </div>
-  
 </div>
