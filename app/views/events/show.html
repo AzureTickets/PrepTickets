@@ -11,9 +11,15 @@
       </div>
     </block>
     <block type="title" class="with-subtitle">
-      <h4 class="fading-border-bottom"><i class="icon-building"></i> {{StoreObj.Name}}</h4>
-      <h5><i class="icon-ticket"></i> {{EventObj.Name}}</h5>
-      <div class="row">
+      <div class="row fading-border-bottom title">
+        <div class="col-xs-2"><i class="icon-building"></i></div>
+        <div class="col-xs-10"><h4>{{StoreObj.Name}}</h4></div>
+      </div>
+      <div class="row subtitle">
+        <div class="col-xs-2"><i class="icon-ticket"></i></div>
+        <div class="col-xs-10"><h5>{{EventObj.Name}}</h5></div>
+      </div>
+      <div class="row eventdate">
         <div class="col-xs-2">&nbsp;</div>
         <div class="col-xs-10 text-left">
           <eventdate event="EventObj"></eventdate>
