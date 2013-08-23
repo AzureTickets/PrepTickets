@@ -7,7 +7,7 @@
     </block>
     <block class="no-overflow">
       <div class="col-borderless">
-        <img ng-src="/img/default_store.jpg" fallback-src="/img/default_store.jpg" alt="{{StoreObj.Name}} Image" class="img-responsive">
+        <store-img store="StoreObj"></store-img>
       </div>
     </block>
     <block type="title">
@@ -23,7 +23,7 @@
     <div class="event col-sm-4 col-xs-12 border-right" ng-repeat="event in StoreObj.Events">
       <div class="col-borderless image">
         <a href="" ng-href="#/school/{{StoreObj.URI}}/event/{{event.CustomURI.URI}}">
-          <img ng-src="/img/default_event.jpg" fallback-src="/img/default_store.jpg" alt="{{event.Name}}" class="img-responsive">
+          <event-img event="event"></event-img>
           <img src="/img/ticket-stub.png" class="ticket-stub" >
         </a>
       </div>
