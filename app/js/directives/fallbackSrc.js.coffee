@@ -5,7 +5,7 @@
 
     loadElement.bind('error', ->
       scope.$apply( -> 
-        console.log "Error loading image: ", element.src
+        console.warn "Error loading image: ", element.src if console?
         element.attr("src", attr.fallbackSrc) if attr.fallbackSrc?
       )
     )
