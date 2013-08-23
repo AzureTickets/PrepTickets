@@ -1,9 +1,9 @@
-<loader hide-on="StoreObj.Key">Please wait while fetch the school information</loader>
+<loader hide-on="StoreObj.Key">{{"Store.LoadingText" | t:"Please wait while fetch the school information"}}</loader>
 <div class="store" ng-init="loadStore()" ng-show="StoreObj.Key" style="display:none;">
   <blocks>
     <block type="target" color="blue" class="hidden-xs">
       <i class="icon icon-building"></i>
-      <span>School</span>
+      <span>{{"Store.Title"| t:"School"}}</span>
     </block>
     <block class="no-overflow">
       <div class="col-borderless">
@@ -45,7 +45,7 @@
       
       <div class="text-center">
         <a href="" class="btn btn-green btn-large btn-clean text-upcase btn-bottom-buffer" ng-href="#/school/{{StoreObj.URI}}/event/{{event.CustomURI.URI}}">
-           &gt; Buy
+           {{"Store.Button.Buy" | t:"Buy"}}
         </a>
       </div>
     </div>

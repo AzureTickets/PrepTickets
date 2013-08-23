@@ -1,36 +1,36 @@
-<loader hide-on="Order">Loading order details</loader>
+<loader hide-on="Order">{{"Order.Loading" | t:"Loading your order details"}}</loader>
 <div id="order" ng-init="loadOrder()" ng-show="Order" style="display:none;">
   <div class="row hidden-print row-unpadded">
     <div class="col-sm-4 order-details">
-      <h3>Order Details</h3>
+      <h3>{{"Order.Details.Header" | t:"Order Details"}}</h3>
         <div class="row">
-          <div class="col-xs-6 order-header">OrderId</div>
+          <div class="col-xs-6 order-header">{{"Order.Details.OrderNumber" | t:"Order ID"}}</div>
           <div class="col-xs-6 order-data">{{Order.OrderId}}</div>
         </div>
         <div class="row">
-          <div class="col-xs-6 order-header">Date of Order</div>
+          <div class="col-xs-6 order-header">{{"Order.Details.DateOfOrder" | t:"Date of Order"}}</div>
           <div class="col-xs-6 order-data">{{Order.Placed | datetime:"short"}}</div>
         </div>
         <div class="row">
-          <div class="col-xs-6 order-header">Number of items</div>
+          <div class="col-xs-6 order-header">{{"Order.Details.NumberOfItems" | t:"Number of Items"}}</div>
           <div class="col-xs-6 order-data">{{Order.InventoryItems.length}}</div>
         </div>
         <div class="row">
-          <div class="col-xs-6 order-header">Payment Type</div>
+          <div class="col-xs-6 order-header">{{"Order.Details.PaymentType" | t:"Payment Type"}}</div>
           <div class="col-xs-6 order-data">{{Order.Transactions[0].ProviderType}}</div>
         </div>
         <div class="divider fading-border-bottom"></div>
         <div class="row total">
-          <div class="col-xs-6 order-header">Total</div>
+          <div class="col-xs-6 order-header">{{"Order.Details.Total" | t:"Total"}}</div>
           <div class="col-xs-6 order-data">{{Order.Total.ItemPrice | currency}}</div>
         </div>
     </div>
     <div class="col-sm-8">
-      <h3>Tickets</h3>
+      <h3>{{"Order.Tickets.Header" | t:"Tickets"}}</h3>
       <table class="table table-hover">
         <thead>
           <tr>
-            <th>Name</th>
+            <th>{{"Order.Tickets.Table.Header.Name" | t:"Name"}}</th>
             <th></th>
           </tr>
         </thead>
@@ -40,20 +40,25 @@
               {{ticket.EventName}} - {{ticket.ItemInfoName}}
             </td>
             <td class="col-xs-4">
-              <a href="" class="btn btn-red" ng-href='#/orders/{{Order.StoreKey}}/{{Order.Key}}/{{ticket.Key}}'>&gt; View <span class="visible-desktop">&amp; Print</span> Ticket</a>
+              <a href="" class="btn btn-red" ng-href='#/orders/{{Order.StoreKey}}/{{Order.Key}}/{{ticket.Key}}'>
+                {{"Order.Tickets.Button.ViewAndPrintTicket.View" | t:"View"}} 
+                <span class="visible-desktop">
+                  {{"Order.Tickets.Button.ViewAndPrintTicket.AndPrint" | t:"& Print"}}
+                </span> 
+                {{"Order.Tickets.Button.ViewAndPrintTicket.Ticket" | t:"Ticket"}}
+              </a>
             </td>
           </tr>
         </tbody>
       </table>
       <div class="row visible-md visible-lg row-unpadded hidden-print">
         <div class="col-sm-12 text-center">
-          <a href="" class="btn btn-orange btn-huge" ng-click="printTicket()">&gt; Print All Tickets</a>
-          - or -
-          <a href="" class="btn btn-orange btn-huge">&gt; Print Receipt</a>
+          <a href="" class="btn btn-orange btn-huge" ng-click="printTicket()">{{"Order.Tickets.Button.PrintAllTickets" | t:"Print All Tickets"}}</a>
+          {{"Order.Tickets.Or" | t:"- or -"}}
+          <a href="" class="btn btn-orange btn-huge">{{"Order.Tickets.Button.PrintReceipt" | t:"Print Receipt"}}</a>
         </div>
       </div>
     </div>
-    
   </div>
   <ng-include src="'views/tickets/index.print.html'"></ng-include>
 </div>

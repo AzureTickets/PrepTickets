@@ -3,7 +3,7 @@
   <blocks>
     <block type="target" color="green">
       <i class="icon icon-ticket"></i>
-      <span>Tickets</span>
+      <span>{{"Cart.HeaderTitle" | t:"Tickets"}}</span>
     </block>
     <block type="image">
       <div class="col-borderless">
@@ -19,19 +19,15 @@
   </blocks>
   <div class="row row-unpadded">
     <div class="col-sm-12">
-      <h2>Please Verify your order</h2>
+      <h2>{{"Cart.VerifyCartText" | t:"Please Verify your order"}}</h2>
       <table class="table table-hover table-borderless">
         <thead>
           <tr>
-            <th>
-              Event
-            </th>
-            <th>Ticket Type</th>
-            <th>
-              Price
-            </th>
-            <th>Quantity</th>
-            <th>Total</th>
+            <th>{{"Cart.Table.Header.Event" | t:"Event"}}</th>
+            <th>{{"Cart.Table.Header.TicketType" | t:"Ticket Type"}}</th>
+            <th>{{"Cart.Table.Header.Price" | t:"Price"}}</th>
+            <th>{{"Cart.Table.Header.Quantity" | t:"Quantity"}}</th>
+            <th>{{"Cart.Table.Header.Total" | t:"Total"}}</th>
             <th></th>
           </tr>
         </thead>
@@ -62,7 +58,7 @@
         <tfoot>
           <tr>
             <td colspan="3"></td>
-            <td class="light-gray-bg">Subtotal</td>
+            <td class="light-gray-bg">{{"Cart.Table.Subtotal" | t:"Subtotal"}}</td>
             <td class="light-gray-bg">{{subtotal() | currency}}</td>
             <td></td>
           </tr>
@@ -74,13 +70,16 @@
   <div class="row row-unpadded">
     <div class="col-xs-12 text-right">    
       <a href="" class="btn btn-clear btn-default" confirm="Are you sure you want to clear your cart?" ng-click="clearCart()">
-        <i class="icon-remove"></i> Clear Cart
+        <i class="icon-remove"></i> 
+        {{"Cart.Button.ClearCart" | t:"Clear Cart"}}
       </a>
       <a href="" ng-href="#/school/{{CartObj.StoreKey}}" class="btn btn-blue btn-clean">
-        <i class="icon-reply"></i> Continue Shopping
+        <i class="icon-reply"></i> {{"Cart.Button.ContinueShopping" | t:"Continue Shopping"}} 
       </a>
       <a href="" class="btn btn-green btn-clean btn-large" ng-click="checkout()" ng-disabled="processingRequest" ng-show="CartObj">
-        <i class="icon-shopping-cart icon-large"></i> <span ng-show="!auth.isSignedIn()">Signin &amp; </span>Checkout
+        <i class="icon-shopping-cart icon-large"></i> 
+        <span ng-show="!auth.isSignedIn()">{{"Cart.Button.SigninCheckout" | t:"Signin &"}}</span>
+        {{"Cart.Button.Checkout" | t:"Checkout"}}
       </a>
     </div>
   </div>

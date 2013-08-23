@@ -6,11 +6,11 @@
     <block class="col-sm-push-4">
       <qrcode ticket="Ticket"></qrcode>
       <div class="visible-desktop hidden-print text-center">
-        <a href="" class="btn btn-red" ng-click="printTicket()"><i class="icon-print icon-large"></i> Print Ticket</a>
+        <a href="" class="btn btn-red" ng-click="printTicket()"><i class="icon-print icon-large"></i> {{"Ticket.Button.PrintTicket" | t:"Print Ticket"}}</a>
       </div>
     </block>
     <block class="col-sm-pull-4 ticket-details">
-      <p class="text-muted">Ticket #{{TicketIdx + 1}}</p>
+      <p class="text-muted">{{"Ticket.TicketNumber" | t:({number:(TicketIdx + 1),defaultValue:"Ticket #" + (TicketIdx + 1)})}}</p>
       <h3>{{StoreObj.Name}}</h3>
       <h4>{{Ticket.EventName}}</h4>
       <h5>{{Ticket.ItemInfoName}} - {{Ticket.ItemInfoPrice.ItemPrice | currency}}</h5>

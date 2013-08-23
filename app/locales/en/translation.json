@@ -36,6 +36,150 @@
     },
     "Complete" : "Signup Complete, please check your email to verify your account"
   },
+
+  "Store": {
+    "LoadingText": "Please wait while fetch the school information",
+    "Title": "School",
+    "Button": {
+      "Buy": "Buy"
+    },
+    "Search": {
+      "Headline": "Search all your school's events today!",
+      "Button": "Search",
+      "Placeholder": "Start your search here",
+      "Hint": "Search by school name, city, or ZIP code",
+      "SearchingText": "Searching for '__query__'...",
+      "NoResults":"No schools found",
+      "Result":{
+        "Button": {
+          "ViewStore": "View School"
+        }
+      }
+    },
+    "SalesText":{
+      "Column1":{
+        "Title":"Fast Ticketing",
+        "Content": "Tired of standing in long lines to purchase tickets? Use PrepTickets to purchase online and get in events faster. Our service conveniently allows you to purchase tickets 24x7 with any internet connected device.  You can print paper tickets or easily distribute eTickets to any Smartphone."
+      },
+      "Column2":{
+        "Title":"Social Sharing",
+        "Content": "Now you can be connected to your school events like never before. Notify your friends, receive event updates or buy and share tickets.  PrepTickets makes it easy to share with your social networks by directly connecting you to Facebook, Twitter and more. "
+      },
+      "Column3":{
+        "Title":"Easy Payment",
+        "Content": "PrepTickets accepts most major credit and debit cards for all purchases. PrepTickets uses a secure payment processing service provided by Authorize.net. This service provides the infrastructure and security necessary for fast, reliable and secure transmission of your payments."
+      }
+    }
+  },
+
+  "Event":{
+    "Title":"Event",
+    "InfoTitle": "Event Info:",
+    "ChooseTicketTitle": "Choose which type of ticket you want to purchase",
+    "Table":{
+      "Header":{
+        "TicketName": "Ticket Name",
+        "Price": "Cost",
+        "Quantity": "Quantity"
+      }
+    },
+    "Button": {
+      "AddToCart": "Add to Cart"
+    }
+  },
+
+  "Cart": {
+    "HeaderTitle": "Tickets",
+    "VerifyCartText": "Please Verify your order",
+    "VerifyPurchaseText": "Please Verify your order",
+    "Table": {
+      "Header":{
+        "Event": "Event",
+        "TicketType": "Ticket Type",
+        "Price": "Price",
+        "Quantity": "Quantity",
+        "Total": "Total"
+      },
+      "Subtotal": "Subtotal"
+    },
+    "Button":{
+      "ClearCart": "Clear Cart",
+      "ContinueShopping": "Continue Shopping",
+      "SigninCheckout": "Signin & ",
+      "Checkout": "Checkout",
+      "CompletePurchase": "Complete Purchase",
+      "CancelPurchase": "-or- cancel purchase"
+    },
+    "Purchaser":{
+      "Headline":"Purchaser",
+      "Total": "Total"
+    },
+    "FetchingServerChart":"Please wait while fetch your order information",
+    "Status":{
+      "Open":{
+        "Title":"Looks like your order did NOT finish successfully",
+        "Content":" -- Content Needed -- "
+      },
+      "Error":{
+        "Title":"There seems to be an error with your payment processing",
+        "Content":" -- Content Needed -- "
+      },
+      "Canceled":{
+        "Title":"Looks like your order was canceled",
+        "Content":" -- Content Needed -- "
+      },
+      "Error":{
+        "Unprocessed":"It seems that your cart is empty",
+        "Content":" -- Content Needed -- "
+      }
+    }
+  },
+  "Order": {
+    "Index":{
+      "Loading": "Please wait while we fetch your orders",
+      "Header":"Your Orders",
+      "OrderNumber": "Order #:__number__",
+      "PlacedOn": "Placed On",
+      "Total": "Total:"
+    },
+    "Loading": "Loading your order details",
+    "Details":{
+      "Header":"Order Details",
+      "OrderNumber": "Order ID",
+      "DateOfOrder": "Date of Order",
+      "NumberOfItems": "Number of Items",
+      "PaymentType": "Payment Type",
+      "Total": "Total"
+    },
+    "Tickets":{
+      "Header":"Tickets",
+      "Table":{
+        "Header":{
+          "Name": "Name"
+        }
+      },
+      "Or": "- or -",
+      "Button":{
+        "ViewAndPrintTicket":{
+          "View": "View",
+          "AndPrint": "& Print",
+          "Ticket": "Ticket"
+        },
+        "PrintAllTickets":"Print All Tickets",
+        "PrintReceipt": "Print Receipt"
+      }
+    }
+  },
+  "Ticket": {
+    "Loading":"Please wait while we load your ticket",
+    "TicketNumber": "Ticket #__number__",
+    "Button":{
+      "PrintTicket": "Print Ticket",
+      "BackToOrder": "back to your order",
+      "PreviousTicket": "Previous Ticket",
+      "NextTicket": "Next Ticket"
+    }
+  },
   "Common": {
     "Loading" : "Please Wait..."
   }

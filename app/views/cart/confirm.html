@@ -3,7 +3,7 @@
   <blocks>
     <block type="target" color="green">
       <i class="icon icon-ticket"></i>
-      <span>Tickets</span>
+      <span>{{"Cart.HeaderTitle" | t:"Tickets"}}</span>
     </block>
     <block type="image">
       <div class="col-borderless">
@@ -21,23 +21,23 @@
     <div class="col-sm-4 cart-details">
       <div class="row purchaser">
         <div class="col-xs-12">
-          <h3>Purchaser</h3>
+          <h3>{{"Cart.Purchaser.Headline" | t:"Purchaser"}}</h3>
           <p>{{DomainProfile.Contact.FullName}}</p>
         </div>
       </div>
       <div class="row totals">
-        <div class="col-xs-6"><b>Total</b></div>
+        <div class="col-xs-6"><b>{{"Cart.Purchaser.Total" | t:"Total"}}</b></div>
         <div class="col-xs-6">{{ServerCart.Total.ItemPrice|currency}}</div>
       </div>
     </div>
     <div class="col-sm-8 summery" >
-      <h3>Please verify your order</h3>
+      <h3>{{"Cart.VerifyPurchaseText" | t:"Please verify your order"}}</h3>
       <table class="table table-hover table-borderless">
         <thead>
           <tr>
-            <th>Event</th>
-            <th>Ticket Type</th>
-            <th>Price</th>
+            <th>{{"Cart.Table.Header.Event" | t:"Event"}}</th>
+            <th>{{"Cart.Table.Header.TicketType" | t:"Ticket Type"}}</th>
+            <th>{{"Cart.Table.Header.Price" | t:"Price"}}</th>
           </tr>
         </thead>
         <tbody>
@@ -58,16 +58,15 @@
         <div class="col-sm-6 pull-right text-center">
           <div>
             <a href="" class="btn btn-green btn-huge" ng-disabled="processingRequest" ng-click="processPayment()">
-              &gt; Complete Purchase
+              {{"Cart.Button.CompletePurchase" | t:"Complete Purchase"}}
             </a>    
           </div>
           <div class="cancel">
             <a href="" class="" confirm="Are you sure you want to cancel your order?" ng-click="cancelOrder()">
-              -or- cancel purchase
+              {{"Cart.Button.CancelPurchase" | t:"-or- cancel purchase"}}
             </a>
           </div>
         </div>
-        
       </div>
     </div>
   </div>

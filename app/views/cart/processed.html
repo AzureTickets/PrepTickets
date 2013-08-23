@@ -1,84 +1,29 @@
 <loader hide-on="ServerCart">
-  Please wait while fetch your order information
+  {{"Cart.FetchingServerChart" | t:"Please wait while fetch your order information"}}
 </loader>
 
 <div ng-init="loadServerCart()" ng-show="!DoneState">
   <div class="row row-unpadded">
     <div class="col-xs-12">
       <div id="done" ng-show="DoneState">
-        <h2>Thank you for your order!</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, quisquam, deserunt officia eum fugiat eaque cum dolorem consectetur odit molestias cupiditate reiciendis tempora dignissimos ad eos aperiam harum laudantium repellendus!</p>
-        <loader hide-on="OrderObj">
-          Please wait while fetch your order details
-        </loader>
-        <div id="order" ng-init="loadOrder()" ng-show="OrderObj" style="display:none;">
-          <h4>Order Details</h4>
-          <div class="row">
-            <div class="col-xs-6">
-              <div class="row">
-                <div class="col-xs-3"><b>OrderId</b></div>
-                <div class="col-xs-3">{{OrderObj.OrderId}}</div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-6">
-              <div class="row">
-                <div class="col-xs-3"><b>Date of Order</b></div>
-                <div class="col-xs-3">{{OrderObj.Placed | datetime}}</div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-6">
-              <div class="row">
-                <div class="col-xs-3"><b>Number of items</b></div>
-                <div class="col-xs-3">{{OrderObj.InventoryItems.length}}</div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-6">
-              <div class="row">
-                <div class="col-xs-3"><b>Total</b></div>
-                <div class="col-xs-3">{{OrderObj.Total.ItemPrice | currency}}</div>
-              </div>
-            </div>
-          </div>
-          <div class="row" ng-repeat="ticket in OrderObj.InventoryItems">
-            <div class="col-xs-8">
-              {{ticket.EventName}} - {{ticket.ItemInfoName}}
-            </div>
-            <div class="col-xs-4">
-              {{ticket.ItemInfoPrice.ItemPrice | currency}}
-            </div>
-          </div>
-          <div class="text-center">
-            <a href="" class="btn btn-primary btn.large" ng-href="#/orders/{{OrderObj.StoreKey}}/{{OrderObj.Key}}"><i class="icon-ticket icon-large"></i> View tickets</a>
-          </div>
-        </div>
+        We're redirecting you to your order or click <a href="" class="btn btn-red btn-huge" ng-href="#/orders/{{OrderObj.StoreKey}}/{{OrderObj.Key}}">View Order</a>
+      </div>
+      <div id="open" ng-show="OpenState">
+        <h2>{{"Cart.Status.Open.Title" | t:"Looks like your order did NOT finish successfully" }}</h2>
+        <p>{{"Cart.Status.Open.Content" | t:"Please go to your cart and try again" }}</p>
       </div>
       <div id="error" ng-show="ErrorState">
-        <h2>There seems to be an error with your payment processing</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis, sit et animi corporis est minima quibusdam odit ut veritatis. Deleniti repellendus iste tempora soluta tempore sapiente porro autem incidunt recusandae.</p>
+        <h2>{{"Cart.Status.Error.Title" | t:"There was an error processing your order" }}</h2>
+        <p>{{"Cart.Status.Error.Content" | t:"Please try again" }}</p>
       </div>
       <div id="canceled" ng-show="CanceledState">
-        <h2>Your order has been canceled</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis, sit et animi corporis est minima quibusdam odit ut veritatis. Deleniti repellendus iste tempora soluta tempore sapiente porro autem incidunt recusandae.</p>
-      </div>
-
-      <div id="open" ng-show="OpenState">
-        <h2>Looks like your order <b>did not</b> finish successfully</h2>
-        <p>Please feel free to <a href="" ng-href="#/cart/{{storeKey}}/confirm">try again</a></p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis, sit et animi corporis est minima quibusdam odit ut veritatis. Deleniti repellendus iste tempora soluta tempore sapiente porro autem incidunt recusandae.</p>
+        <h2>{{"Cart.Status.Canceled.Title" | t:"Looks like your order was canceled" }}</h2>
+        <p>{{"Cart.Status.Canceled.Content" | t:"Have a nice day" }}</p>
       </div>
 
       <div id="unprocessed" ng-show="UnprocessedState">
-        <h2>I'm not sure how you got here because you don't have an order to process</h2>
-        <p>
-          Please feel free to go back to the <a href="" ng-href="#/">homepage</a>
-        </p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis, sit et animi corporis est minima quibusdam odit ut veritatis. Deleniti repellendus iste tempora soluta tempore sapiente porro autem incidunt recusandae.</p>
+        <h2>{{"Cart.Status.Unprocessed.Title" | t:"It seems that your cart is empty" }}</h2>
+        <p>{{"Cart.Status.Unprocessed.Content" | t:"" }}</p>
       </div>
     </div>
   </div>

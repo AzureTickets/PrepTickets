@@ -4,24 +4,24 @@
       <form action="" class="form-horizontal" name="searchForm" ng-submit="search()">
         <div class="col-sm-offset-2 col-sm-8">
           <div class="search">
-            <h4>Search all your school's events today!</h4>
+            <h4>{{"Store.Search.Headline" | t:"Search all your school's events today!"}}</h4>
             <div class="input-group">
               <input type="text" class="form-control input-lg" name="query" autocomplete="off" ng-model='$parent.query'
-              placeholder="Start your search here" on-keypress="search(query, false)" >
+              placeholder='{{"Store.Search.Placeholder" | t:"Start your search here"}}' on-keypress="search(query, false)" >
               <div class="input-group-btn">
-                <a href="" class="btn btn-green btn-lg" ng-click="search()">&gt; Search</a>
+                <a href="" class="btn btn-green btn-lg" ng-click="search()">&gt; {{"Store.Search.Button" | t:"Search"}}</a>
               </div>
             </div>
-            <p class="text-muted">Search by school name, city, or ZIP code</p>
+            <p class="text-muted">{{"Store.Search.Hint" | t:"Search by school name, city, or ZIP code"}}</p>
           </div>
         </div>
       </form>
     </div>
   </div>
-  <loader hide-on="!Searching">Loading...</loader>
+  <loader hide-on="!Searching">{{"Store.Search.SearchingText" | t:({query:query, defaultValue:"Loading..."})}}</loader>
   <div class="row">
     <div class="col-xs-12" ng-show="FoundNothing" scroll-if="Stores.length == 0">
-      <div class="alert alert-info ">No schools found</div>
+      <div class="alert alert-info ">{{"Store.Search.NoResult" | t:"No Schools Found"}}</div>
     </div>
   </div>
   <div id="results" class="store-list row row-unpadded" scroll-if="Stores.length > 0">
@@ -38,7 +38,7 @@
           <div class="col-xs-9"><address>{{store.Locations}}</address></div>
         </div>
         <a href="" ng-click="goToStore({URI:store.URI, key:store.StoreKey})" class="btn btn-blue btn-clean">
-          &gt; View School
+          {{"Store.Search.Result.Button.ViewStore" | t:"View School"}}
         </a>
       </div>
     </div>
@@ -46,17 +46,16 @@
 
   <div class="preptickets-info row row-unpadded">
     <div class="col-sm-4 fading-border-right">
-      <h3 class="text-blue">Fast Ticketing</h3>
-      <p>Tired of standing in long lines to purchase tickets? Use PrepTickets to purchase online and get in events faster. Our service conveniently allows you to purchase tickets 24x7 with any internet connected device.  You can print paper tickets or easily distribute eTickets to any Smartphone.</p>
+      <h3 class="text-blue">{{"Store.SalesText.Column1.Title" | t:"Fast Ticketing"}}</h3>
+      <p>{{"Store.SalesText.Column1.Content" | t:""}}</p>
     </div>
     <div class="col-sm-4 fading-border-right">
-      <h3 class="text-green">Social Sharing</h3>
-      <p>Now you can be connected to your school events like never before. Notify your friends, receive event updates or buy and share tickets.  PrepTickets makes it easy to share with your social networks by directly connecting you to Facebook, Twitter and more. </p>
+      <h3 class="text-green">{{"Store.SalesText.Column2.Title" | t:"Social Sharing"}}</h3>
+      <p>{{"Store.SalesText.Column2.Content" | t:""}}</p>
     </div>
     <div class="col-sm-4">
-      <h3 class="text-red">Easy Payment</h3>
-      <p>PrepTickets accepts most major credit and debit cards for all purchases. PrepTickets uses a secure payment processing service provided by Authorize.net. This service provides the infrastructure and security necessary for fast, reliable and secure transmission of your payments.</p>
+      <h3 class="text-red">{{"Store.SalesText.Column3.Title" | t:"Easy Payment"}}</h3>
+      <p>{{"Store.SalesText.Column3.Content" | t:""}}</p>
     </div>
   </div>
-
 </div>

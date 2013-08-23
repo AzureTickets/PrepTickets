@@ -9,13 +9,13 @@
   template: '<div class="ticketNav hidden-print" ng-show="ticket">
               <ul class="pagination">
                 <li ng-class="{disabled:!hasPrevious()}">
-                  <a href="" ng-click="goToPreviousTicket()">&larr; Previous Ticket</a>
+                  <a href="" ng-click="goToPreviousTicket()">&larr; {{"Ticket.Button.PreviousTicket" | t:"Previous Ticket"}}</a>
                 </li>
                 <li ng-repeat="orderTicket in order.InventoryItems" ng-class="{active:$index==ticketIdx}">
                   <a href="" ng-href="#/orders/{{order.StoreKey}}/{{order.Key}}/{{orderTicket.Key}}">{{$index+1}}</a>
                 </li>
                 <li ng-class="{disabled:!hasNext()}">
-                  <a href="" ng-click="goToNextTicket()">Next Ticket &rarr;</a>
+                  <a href="" ng-click="goToNextTicket()">{{"Ticket.Button.NextTicket" | t:"Next Ticket"}} &rarr;</a>
                 </li>
               </ul>
              </div>'
