@@ -11,6 +11,7 @@
   }
 }
 
+//Borders
 .fading-border-bottom{
   background: url(../img/fading_border_col_3.png) 50% 100% no-repeat;
 }
@@ -237,6 +238,10 @@
 
 
 //Location Address
+#map{
+  position: relative;
+  height:280px;
+}
 .location{
   text-align: left;
   margin-bottom:10px;

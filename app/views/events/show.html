@@ -63,7 +63,7 @@
     </div>
     <div class="col-xs-12 col-sm-4 text-center col-unpadded background-extender" id="location">
       <div id="map">
-        <img src="http://dev.virtualearth.net/REST/v1/Imagery/Map/Road/47.610,-122.127/14?mapSize=600,400&pushpin=47.610,-122.127;5;X&key=AgPzPnVZziQw-UBNbXDqhANfg5fFYmDtaErGsuW_-KSjP3fJvvyYp5s5wjr-yxnT" class="img-responsive" alt="Map to {{EventObj.Places[0].Address | address}}">
+        <map places="EventObj.Places"></map>
       </div>
       <div id="address">
         <h4>{{EventObj.Places[0].Name}}</h4>
