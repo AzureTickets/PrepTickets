@@ -3,7 +3,13 @@
   text-transform: uppercase;
 }
 
-
+//Background Extender
+.background-extender{
+  @media (min-width: $screen-tablet) {
+    padding-bottom: 500px;
+    margin-bottom: -500px;
+  }
+}
 
 .fading-border-bottom{
   background: url(../img/fading_border_col_3.png) 50% 100% no-repeat;
