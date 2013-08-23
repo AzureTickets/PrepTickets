@@ -22,7 +22,10 @@ class SprocketsBuilder
       end
     end
 
-    unless app.development?
+    if app.development?
+      #Cache the css/js
+      sprockets.cache = Sprockets::Cache::FileStore.new(app.project_root.join("tmp").to_s)
+    else
       # sprockets.css_compressor = :yui
       sprockets.js_compressor = Uglifier.new(mangle: false)
     end
@@ -31,7 +34,6 @@ class SprocketsBuilder
     sprockets.append_path(root.join('css'))
     sprockets.append_path(root.join('lib'))
 
-    sprockets.cache = Sprockets::Cache::FileStore.new(app.project_root.join("tmp").to_s)
     Dir["#{root}/lib/*/"].map do |a|
       sprockets.append_path a.sub(/(\/)+$/,'')
     end
