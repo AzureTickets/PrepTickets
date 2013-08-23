@@ -33,6 +33,18 @@ authCtrl = @prepTickets.controller("authCtrl", ($scope, $location, UrlSaverServi
         (err) ->
           $scope.flash("error", err).now()
       )
+  $scope.forgotPasswordBreadcrumb = ->
+    $scope.breadcrumbs.addForgotPassword();
+  $scope.forgotPassword = ->
+    if $scope.forgotPasswordForm.$valid
+      $scope.auth.forgotPassword($scope.AccountProfile).then(
+        (success) ->
+          console.log success
+          $scope.flash(BWL.t("ForgotPassword.Message.Completed", defaultValue:"Please check your email for the reset password link"))
+          $location.path("/signin")
+        (err) ->
+          $scope.flash("error", err).now()
+      )
 )
 
 authCtrl.$inject = ['$scope', "$location", "UrlSaverService"]

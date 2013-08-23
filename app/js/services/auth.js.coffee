@@ -81,6 +81,19 @@ authService = @prepTickets.factory 'authService', (configService, $q, $rootScope
       )
 
       def.promise
+
+    forgotPassword: (account)->
+      def = $q.defer()
+
+      BWL.Services.Account.ResetPassword(account,
+        ->
+          $rootScope.$apply(def.resolve)
+        (err, resp) ->
+          $rootScope.$apply -> def.reject(resp.Message)
+          
+      )
+
+      def.promise
     
     loadAuthProviders : (cbk, errCbk) ->
       def = $q.defer()

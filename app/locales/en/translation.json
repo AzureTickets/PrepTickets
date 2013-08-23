@@ -36,6 +36,16 @@
     },
     "Complete" : "Signup Complete, please check your email to verify your account"
   },
+  "ForgotPassword":{
+    "Title": "Forgot Password",
+    "Description": "Fill in your email and we'll email you a password reset link",
+    "Message":{
+      "Complete": "Please check your email for the reset password link"
+    },
+    "Button":{
+      "Submit": "Submit"
+    }
+  },
 
   "Store": {
     "LoadingText": "Please wait while fetch the school information",
