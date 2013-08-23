@@ -10,7 +10,15 @@
       }
     }
   }
-} 
+}
+
+// Visiblity
+.visible-desktop{
+  display:block !important;
+  @media (max-width: $screen-tablet-max) {
+    display:none !important;
+  }
+}
 
 // Buttons
 .btn{

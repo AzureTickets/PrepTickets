@@ -1,10 +1,10 @@
 @prepTickets.directive('qrcode', ["ProfileService", (ProfileService) ->
   restrict: 'E' 
   replace: true
-  scope: 
+  scope:
     ticket: "="
   template: ' <div class="qrcode">
-                <img ng-src="{{qrcodeUrl()}}" alt="QR Code for {{ticket.EventName}}">
+                <img ng-src="{{qrcodeUrl()}}" alt="QR Code for {{ticket.EventName}}" class="img-responsive">
               </div>'
   link: (scope) ->
     scope.qrcodeUrl = ->

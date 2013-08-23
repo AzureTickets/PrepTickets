@@ -42,7 +42,8 @@ routeFilters =
 @prepTickets = angular.module('prepTickets', 
   ['ngCookies', 
   'ui.bootstrap.tpls',
-  'ui.bootstrap'])
+  'ui.bootstrap',
+  'ngSanitize'])
 .config(["$routeProvider", ($routeProvider) ->
   $routeProvider
     .when '/',

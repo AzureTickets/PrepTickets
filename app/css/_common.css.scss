@@ -104,25 +104,13 @@
 .blocks{
   & > .block{
     text-align: center;
-  }
-}
-@media (min-width: $screen-tablet) {
-  .blocks{
-    & > .block{
+    @media (min-width: $screen-tablet) {
       height:150px;
     }
-  }
-}
-@media (min-width: $screen-desktop) {
-  .blocks{
-    & > .block{
+    @media (min-width: $screen-desktop) {
       height:196px;
     }
-  }
-}
-@media (min-width: $screen-large-desktop) {
-  .blocks{
-    & > .block{
+    @media (min-width: $screen-large-desktop) {
       height:238px;
     }
   }
@@ -238,7 +226,7 @@
 
 
 .block-image{
-  background:$pt-dark-gray;
+  
 }
 
 

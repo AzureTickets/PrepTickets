@@ -1,8 +1,69 @@
+#view-ticket{
+  .buttons{
+    margin-top:20px;
+  }
+  .pagination{
+    margin:0;
+  }
+}
 #ticket{
-  border-radius: 5px;
-  border: 1px solid #777;
   padding: 15px;
-  margin-bottom:10px;
+  margin: 10px 0;
+
+  @media print{
+    .qrcode{
+      float:left;
+      width:35%
+    }
+    .ticket-details{
+      float:left;
+      width:60%;
+      padding-top:60px;
+    }
+  }
+  .blocks{
+    overflow:hidden;
+    .block{
+      padding-top:0;
+
+      &.ticket-details{
+        text-align: left;
+      }
+
+      .eventDetails{
+        color:$pt-light-gray;
+
+        .eventdate,.eventtime{
+          display:inline;
+        }
+      }
+
+      p, h1, h2, h3, h4, h5{
+        margin:0;
+      }
+      h3{
+        color:$pt-light-gray;
+      }
+      h5{
+        padding:10px 0;
+      }
+      
+      @media (min-width: $screen-tablet) {
+        height:212px;
+      }
+      @media (min-width: $screen-desktop) {
+        height:254px;
+      }
+      @media (min-width: $screen-large-desktop) {
+        height:294px;
+      }
+    }
+
+  }
+  .outline{
+    border-radius: 5px;
+    border: 1px solid #777;
+  }
   .qrcode{
     margin-bottom: 20px;
     text-align: center;
@@ -10,13 +71,4 @@
 }
 .ticket_msg {
   text-align: center;
-}
-@media (max-width: 568px){
-  .ticketNav ul{
-    padding:0;
-    overflow: visible;
-  }
-  .pagination-large ul > li > a{
-    font-size:1em;
-  }
 }
