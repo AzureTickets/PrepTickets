@@ -5,11 +5,13 @@
   "DataAccess": {
     "Error"         : "Server Error: __msg__",
     "401"           : "System has detected a problem with your session and was forced to reset it.",
+    "503"           : "We're unable to connect to the server to retrieve any information, please try again later",
     "NoConnection"  : "No internet connection found, please make sure you are online and try again.",
     "ServerMessage" : {
       "NoConnection" : "0 CONNECTION ERROR",
       "OK"           : "OK",
-      "401"          : "UNAUTHORIZED 401 SECURITY ERROR"
+      "401"          : "UNAUTHORIZED 401 SECURITY ERROR",
+      "503"          : "503 CONNECTION ERROR"
     }
   },
   "Validation":{

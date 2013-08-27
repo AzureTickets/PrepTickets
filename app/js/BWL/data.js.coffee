@@ -59,6 +59,10 @@ class @BWL.Data
       if msg is BWL.t('DataAccess.ServerMessage.NoConnection')
         msg = BWL.t("DataAccess.NoConnection")
         BWL.UI.Alert msg
+
+      if msg is BWL.t("DataAccess.ServerMessage.503")
+        msg = BWL.t("DataAccess.503")
+        BWL.UI.Alert msg
       
       errorCallback?(BWL.t('DataAccess.Error', msg: msg), resp, msg);
 
