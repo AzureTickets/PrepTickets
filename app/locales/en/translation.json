@@ -49,6 +49,7 @@
 
   "Store": {
     "LoadingText": "Please wait while fetch the school information",
+    "NoMoreResults": "No more Results",
     "Title": "School",
     "Button": {
       "Buy": "Buy"
