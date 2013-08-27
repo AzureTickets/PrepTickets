@@ -57,6 +57,9 @@
 }
 .store-list{
   overflow:hidden;
+  @media (min-width: $screen-sm) {
+    margin-bottom: 10px;
+  }
   
   .store{
     color:$pt-light-gray;
@@ -65,7 +68,7 @@
 
     &.blank{
       @include user-select(none);
-      padding:100px 20px;
+      padding:100px 10px;
       background:#454545;
       color:#393939;
       i{
@@ -73,7 +76,7 @@
       }
       p{
         margin-top: 15px;
-        font-size:1.3em;
+        font-size:1.4em;
         font-weight: 700;
       }
     }

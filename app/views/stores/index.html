@@ -26,7 +26,7 @@
   </div>
   <div id="results" scroll-if="">
     <div class="store-list row row-unpadded" ng-repeat="stores in GroupedStores">
-      <div class="store col-sm-4 col-xs-12" ng-switch="store.blank" ng-class="{blank:store.blank, 'background-extender':store.blank}" ng-repeat="store in stores" >
+      <div class="store col-sm-4 col-xs-12" ng-switch="store.blank" ng-class="{blank:store.blank, 'background-extender':store.blank, 'hidden-xs':store.blank}" ng-repeat="store in stores" >
         <div ng-switch-when="true">
           <i class="icon-map-marker"></i>
           <p>{{"Store.NoMoreResults" | t:"No more Results"}}</p>
