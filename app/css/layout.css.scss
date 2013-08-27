@@ -9,11 +9,25 @@ body{
       &.main-navbar {
         background:$pt-dark-gray;
         border-color:$pt-dark-gray;
+        .dropdown-menu{
+          background:$pt-dark-gray;
+          border-color:$pt-dark-gray;
+        }
         li{
           &.active{
             a{
               color:#eee;
               background: #444;
+            }
+            li{
+              a{
+                background:$pt-dark-gray;
+                border-color:$pt-dark-gray;
+              }
+              &.active a{
+                color:#eee;
+                background: #444;
+              }
             }
           }
           a{
