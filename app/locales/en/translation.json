@@ -190,6 +190,29 @@
       "NextTicket": "Next Ticket"
     }
   },
+  "Page" :{
+    "NotFound": "404: Unable to find the page you requested",
+    "aboutUs": {
+      "Title": "About Us",
+      "Content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, fuga adipisci vero voluptatem consequatur praesentium magnam blanditiis accusantium maiores obcaecati deleniti qui veritatis saepe tenetur impedit voluptate officiis repudiandae dicta?"
+    },
+    "contactUs": {
+      "Title": "Contact Us",
+      "Content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, fuga adipisci vero voluptatem consequatur praesentium magnam blanditiis accusantium maiores obcaecati deleniti qui veritatis saepe tenetur impedit voluptate officiis repudiandae dicta?"
+    },
+    "privacyPolicy": {
+      "Title": "Privacy Policy",
+      "Content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, fuga adipisci vero voluptatem consequatur praesentium magnam blanditiis accusantium maiores obcaecati deleniti qui veritatis saepe tenetur impedit voluptate officiis repudiandae dicta?"
+    },
+    "terms": {
+      "Title": "Terms",
+      "Content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, fuga adipisci vero voluptatem consequatur praesentium magnam blanditiis accusantium maiores obcaecati deleniti qui veritatis saepe tenetur impedit voluptate officiis repudiandae dicta?"
+    },
+    "refundPolicy": {
+      "Title": "Refund Policy",
+      "Content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, fuga adipisci vero voluptatem consequatur praesentium magnam blanditiis accusantium maiores obcaecati deleniti qui veritatis saepe tenetur impedit voluptate officiis repudiandae dicta?"
+    }
+  },
   "Common": {
     "Loading" : "Please Wait..."
   }

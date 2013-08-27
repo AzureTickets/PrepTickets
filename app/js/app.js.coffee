@@ -121,6 +121,11 @@ routeFilters =
       templateUrl: 'views/profile/password.html'
       controller: 'profileCtrl'
       resolve: routeFilters
+    .when '/page/:target',
+      title: ''
+      templateUrl: 'views/pages/show.html'
+      controller: 'pageCtrl'
+      resolve: routeFilters
     .otherwise
       redirectTo: '/'
 ])
