@@ -309,11 +309,12 @@
       }
     }
     &.block-point-right:after{
-      font-size:2em;
+      font-size:24px;
       right:15px;
       top:21%;
       @media (min-width: $screen-tablet) and (max-width: $screen-desktop){
-        font-size:1.4em;
+        font-size:18px;
+        top:24%;
       }
     }
 
