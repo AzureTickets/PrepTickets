@@ -23,6 +23,8 @@
           zoom: 14
           enableSearchLogo: false
           showScalebar: false
+          disableMouseInput: false
+          disableZooming: true
           showMapTypeSelector: false
         ) unless scope.map
         
