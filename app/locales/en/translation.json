@@ -14,13 +14,35 @@
       "503"          : "503 CONNECTION ERROR"
     }
   },
-  "Validation":{
+  "Validation": {
     "Required"   : "*",
     "RequiredText": "Required", 
     "ValidEmail" : "Must be a valid email address",
     "MinLength"  : "Must be at least __length__ characters long"
   },
-  "Signin":{
+  "Header": {
+    "Nav": {
+      "FindStore" : "Find School",
+      "SignIn"    : "Sign In",
+      "SignOut"   : "Sign Out",
+      "Greetings" : "Welcome __name__",
+      "MyAccount" : "My Account",
+      "MyProfile" : "My Profile",
+      "MyOrders"  : "My Orders"
+    }
+  },
+  "Footer":{
+    "Tagline":{
+      "Content": "Schools are free to signup!",
+      "Button": "Learn More"
+    },
+    "SchoolAdmin":{
+      "Title": "School Administrators",
+      "ContentHTML": "<p>Selling tickets to your school events has never been easier. Register with PrepTickets, list your events and improve revenue accountability by accepting credit card purchases 24x7.</p><img src=\"/img/PrepTicketsLogo.png\" class=\"img-responsive pull-right\" alt=\"Prep Tickets\" style=\"width:170px;\" /><p>All PrepTickets services are provided at no cost to your school.</p><p>Learn more about our Skool Aid program</p>",
+      "Button": "Sign up your school today"
+    }
+  },
+  "Signin": {
     "Social" : {
       "Title"  : "Social Sign In",
       "Description" : "Choose your social sign in"

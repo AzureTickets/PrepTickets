@@ -10,7 +10,7 @@
   </div>
   <div class="navbar-collapse" ng-class="{collapse:navCollapsed, in:!navCollapsed}">
     <ul class="nav navbar-nav" >
-      <li ng-class="{active:(selectedCtrl == 'storeCtrl')}"><a href="#">Find School</a></li>
+      <li ng-class="{active:(selectedCtrl == 'storeCtrl')}"><a href="#">{{"Header.Nav.FindStore" | t:"Find School"}}</a></li>
     </ul>
     <ul class="nav navbar-nav shopping-cart" ng-show="store.getCurrentStoreKey()" style="display:none;">
       <li>
@@ -25,20 +25,20 @@
       </li>
     </ul>
     <ul class="nav navbar-nav pull-right" ng-init="getProfile()">
-      <li><a href="" ng-hide="DomainProfile.DomainProfileId > 0" ng-href="#/signin">Sign In</a></li>
-      <li ng-show="DomainProfile.DomainProfileId > 0" style="display:none;"><a ng-href="#/profile">Welcome {{DomainProfile.Contact.FirstName}}</a></li>
+      <li><a href="" ng-hide="DomainProfile.DomainProfileId > 0" ng-href="#/signin">{{"Header.Nav.SignIn" | t:"Sign In"}}</a></li>
+      <li ng-show="DomainProfile.DomainProfileId > 0" style="display:none;"><a ng-href="#/profile">{{"Header.Nav.Greetings" | t:({defaultValue:"Welcome " + DomainProfile.Contact.FirstName, name: DomainProfile.Contact.FirstName})}}</a></li>
       <li class="dropdown" ng-show="DomainProfile.DomainProfileId > 0" style="display:none;" ng-class="{active:(selectedCtrl == 'profileCtrl' || selectedCtrl == 'orderCtrl')}">
-        <a href="" class="dropdown-toggle">My Account</a>
+        <a href="" class="dropdown-toggle">{{"Header.Nav.MyAccount" | t:"My Account"}}</a>
         <ul class="dropdown-menu">
           <li ng-class="{active:(selectedCtrl == 'profileCtrl')}">
-            <a href="" ng-href="#/profile">My Profile</a>
+            <a href="" ng-href="#/profile">{{"Header.Nav.MyProfile" | t:"My Profile"}}</a>
           </li>
           <li ng-class="{active:(selectedCtrl == 'orderCtrl')}">
-            <a href="" ng-href="#/orders">My Orders</a>
+            <a href="" ng-href="#/orders">{{"Header.Nav.SignIn" | t:"My Orders"}}</a>
           </li>                
         </ul>
       </li>
-      <li ng-show="DomainProfile.DomainProfileId > 0" style="display:none;"><a href="" ng-click="signout()">Sign Out</a></li>
+      <li ng-show="DomainProfile.DomainProfileId > 0" style="display:none;"><a href="" ng-click="signout()">{{"Header.Nav.SignOut" | t:"Sign Out"}}</a></li>
     </ul>
   </div>
 </nav>

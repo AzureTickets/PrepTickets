@@ -59,10 +59,10 @@
       <div class="container">
         <div class="row">
           <div class="col col-xs-12 col-7 col-sm-7 col-lg-7 text-right text-xs-center">
-            <p>Schools are free to signup!</p>
+            <p>{{"Footer.Tagline.Content" | t:"Schools are free to signup!"}}</p>
           </div>
           <div class="col col-xs-12 col-5 col-sm-5 col-lg-5 text-xs-center">
-            <a href="" class="btn btn-blue">&gt; Learn More</a>
+            <a href="" class="btn btn-blue">{{"Footer.Tagline.Button" | t:"Learn More"}}</a>
           </div>
         </div>
       </div>
@@ -70,16 +70,11 @@
     <div class="container">
       <div class="row border-bottom">
         <div class="col col-7 col-sm-7 col-lg-7 border-right border-xs-bottom school-admin">
-          <h3>School Administrators</h3>
-          <p>
-            Selling tickets to your school events has never been easier. Register with PrepTickets, list your events and improve revenue accountability by accepting credit card purchases 24x7.
-          </p>
-          <img src="/img/PrepTicketsLogo.png" class="img-responsive pull-right" alt="Prep Tickets" style="width:170px;" />
-          <p>All PrepTickets services are provided at no cost to your school.</p>
-          <p>Learn more about our Skool Aid program</p>
+          <h3>{{"Footer.SchoolAdmin.Title" | t:"School Administrators"}}</h3>
+          <div ng-bind-html-unsafe="'Footer.SchoolAdmin.ContentHTML' | t:' '"></div>
           <div class="row">
             <div class="col-xs-12 text-xs-center">
-              <a class="btn btn-blue btn-indent btn-bottom-buffer">&gt; Sign up your school today</a>
+              <a class="btn btn-blue btn-indent btn-bottom-buffer">{{"Footer.SchoolAdmin.Button" | t:"Sign up your school today"}}</a>
             </div>
           </div>
         </div>
