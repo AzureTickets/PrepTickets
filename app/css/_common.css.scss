@@ -171,12 +171,12 @@
     font-style: normal;
     text-decoration: inherit;
     -webkit-font-smoothing: antialiased;
-    font-size:4em;
+    font-size:58px;
     right:35px;
     top:38%;
     content:'\f054';
     @media (min-width: $screen-tablet) and (max-width: $screen-large-desktop) {
-      font-size: 2.5em;
+      font-size: 35px;
     }
     @media (max-width: $screen-phone-max){
       content: '';
