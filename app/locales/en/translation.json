@@ -40,6 +40,11 @@
       "Title": "School Administrators",
       "ContentHTML": "<p>Selling tickets to your school events has never been easier. Register with PrepTickets, list your events and improve revenue accountability by accepting credit card purchases 24x7.</p><img src=\"/img/PrepTicketsLogo.png\" class=\"img-responsive pull-right\" alt=\"Prep Tickets\" style=\"width:170px;\" /><p>All PrepTickets services are provided at no cost to your school.</p><p>Learn more about our Skool Aid program</p>",
       "Button": "Sign up your school today"
+    },
+    "Testimonial":{
+      "Title"       : "Testimonials",
+      "Content"     : "Before prepTickets, I would have to spend up to 6 hrs a month doing ticket administration tasks. I’ve found a better way now, thanks prepTickets!",
+      "Author"      : "Frank S. Johns"
     }
   },
   "Signin": {
