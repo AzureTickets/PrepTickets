@@ -1,3 +1,10 @@
+//PRINT
+@media print {
+  .page-break {
+    display: block;
+    page-break-before: always; }
+}
+
 //TEXT
 .text-upcase{
   text-transform: uppercase;
