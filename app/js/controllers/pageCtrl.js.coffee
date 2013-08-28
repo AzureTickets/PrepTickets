@@ -11,6 +11,7 @@ pageCtrl = @prepTickets.controller('pageCtrl', ($scope, $rootScope, $location, $
       $location.path("/")
     else
       $rootScope.title =  BWL.t("Page.#{camelCase($routeParams.target)}.Title", defaultValue: "Unknown")
+      $scope.breadcrumbs.addPage($rootScope.title)
       $scope.content =  BWL.t("Page.#{camelCase($routeParams.target)}.Content", defaultValue: "")
 )
 pageCtrl.$inject = ["$scope", "$rootScope", "$location", "$routeParams"]

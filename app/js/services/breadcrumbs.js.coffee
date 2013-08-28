@@ -36,6 +36,9 @@ BreadcrumbService = @prepTickets.factory('BreadcrumbService', ($cookieStore) ->
   addForgotPassword: ->
     @addSignin()
     @add("Forgot Password")
+  addPage: (title) ->
+    @clear()
+    @add(title)
   clear: ->
     _breadcrumbs = []
   crumbs: -> 
