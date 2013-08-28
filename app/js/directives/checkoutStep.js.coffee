@@ -7,8 +7,8 @@
     target: "@"
   template: ' <div class="process-step col-sm-4" ng-class="{active:currentStep(), passed:passStep(), upcoming:futureStep(), \'hidden-xs\':!currentStep(), \'block-point-right\':current != 3}">
                 <div class="info">
-                  <span ng-show="nextStep()">Next Step</span>
-                  <span ng-show="currentStep()">Step {{target}} of 3</span>
+                  <span ng-show="nextStep()">{{"CheckoutProcess.NextStep" | t:"Next Step"}}</span>
+                  <span ng-show="currentStep()">{{"CheckoutProcess.StepCount" | t:({defaultValue:"Step " + target + " of 3", number: target, total: 3})}}</span>
                 </div>
                 <span class="badge">{{target}}</span>
                 <span ng-transclude class="text"></span>

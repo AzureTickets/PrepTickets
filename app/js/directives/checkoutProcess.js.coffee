@@ -4,13 +4,13 @@
   scope: {}
   template: ' <div class="row row-unpadded checkout-process">
                 <checkout-step current="{{step}}" target="1">
-                  Choose Ticket Type
+                  {{"CheckoutProcess.Step1" | t:"Choose Ticket Type"}}
                 </checkout-step>
                 <checkout-step current="{{step}}" target="2">
-                  Confirm Order
+                  {{"CheckoutProcess.Step2" | t:"Confirm Order"}}
                 </checkout-step>
                 <checkout-step current="{{step}}" target="3">
-                  Checkout
+                  {{"CheckoutProcess.Step3" | t:"Checkout"}}
                 </checkout-step>
               </div>'
   link: (scope, element, attrs) ->
