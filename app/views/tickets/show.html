@@ -1,6 +1,6 @@
 <loader hide-on="Ticket">{{"Ticket.Loading" | t:"Please wait while we load your ticket"}}</loader>
 <div id="view-ticket">
-  <ng-include src="'views/tickets/show.print.html'" ng-init="loadTicket()" ng-show="Ticket"></ng-include>
+  <div ng-include="'views/tickets/show.print.html'" ng-init="loadTicket()" ng-show="Ticket"></div>
   <div class="row hidden-print buttons">
     <div class="col-xs-12 col-sm-4 text-center">
       <a href="" ng-href="#/orders/{{Order.StoreKey}}/{{Order.Key}}" class="btn btn-default">
