@@ -1,6 +1,6 @@
 <loader hide-on="Order">{{"Order.Loading" | t:"Loading your order details"}}</loader>
 <div id="order" ng-init="loadOrder()" ng-show="Order" style="display:none;">
-  <div class="row hidden-print row-unpadded">
+  <div class="row row-unpadded" ng-class="{'visible-print':ReceiptPrint, 'hidden-print':!ReceiptPrint}">
     <div class="col-sm-4 order-details">
       <h3>{{"Order.Details.Header" | t:"Order Details"}}</h3>
         <div class="row">
@@ -25,7 +25,7 @@
           <div class="col-xs-6 order-data">{{Order.Total.ItemPrice | currency}}</div>
         </div>
     </div>
-    <div class="col-sm-8">
+    <div class="col-sm-8 hidden-print">
       <h3>{{"Order.Tickets.Header" | t:"Tickets"}}</h3>
       <table class="table table-hover">
         <thead>
@@ -40,7 +40,7 @@
               {{ticket.EventName}} - {{ticket.ItemInfoName}}
             </td>
             <td class="col-xs-4">
-              <a href="" class="btn btn-red" ng-href='#/orders/{{Order.StoreKey}}/{{Order.Key}}/{{ticket.Key}}'>
+              <a href="" class="btn btn-red hidden-print" ng-href='#/orders/{{Order.StoreKey}}/{{Order.Key}}/{{ticket.Key}}'>
                 {{"Order.Tickets.Button.ViewAndPrintTicket.View" | t:"View"}} 
                 <span class="visible-desktop">
                   {{"Order.Tickets.Button.ViewAndPrintTicket.AndPrint" | t:"& Print"}}
@@ -55,10 +55,11 @@
         <div class="col-sm-12 text-center">
           <a href="" class="btn btn-orange btn-huge" ng-click="printTicket()">{{"Order.Tickets.Button.PrintAllTickets" | t:"Print All Tickets"}}</a>
           {{"Order.Tickets.Or" | t:"- or -"}}
-          <a href="" class="btn btn-orange btn-huge">{{"Order.Tickets.Button.PrintReceipt" | t:"Print Receipt"}}</a>
+          <a href="" class="btn btn-orange btn-huge" ng-click="printReceipt()">{{"Order.Tickets.Button.PrintReceipt" | t:"Print Receipt"}}</a>
         </div>
       </div>
     </div>
   </div>
-  <ng-include src="'views/tickets/index.print.html'"></ng-include>
+  <ng-include src="'views/tickets/index.print.html'" ng-hide="ReceiptPrint"></ng-include>
+  <ng-include src="'views/orders/receipt.print.html'" ng-show="ReceiptPrint"></ng-include>
 </div>

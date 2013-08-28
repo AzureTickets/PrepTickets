@@ -1,4 +1,5 @@
-orderCtrl = @prepTickets.controller('orderCtrl', ($scope, $location, $routeParams, $q, $window, OrderService) ->
+orderCtrl = @prepTickets.controller('orderCtrl', ($scope, $location, $routeParams, $q, $window, $timeout, OrderService) ->
+  $scope.ReceiptPrint = false
   findTicket = (key) ->
     return [-1, {}] unless $scope.Order?.Key
     for ticket, idx in $scope.Order.InventoryItems
@@ -73,5 +74,14 @@ orderCtrl = @prepTickets.controller('orderCtrl', ($scope, $location, $routeParam
   $scope.printTicket = ->
     $window.print()
 
+  $scope.printReceipt = ->
+    $scope.ReceiptPrint = true
+    $timeout 
+      ->
+        $window.print()
+        $scope.ReceiptPrint = false
+      100
+
+
 )
-orderCtrl.$inject = ["$scope", "$location", "$routeParams", "$q", "$window", "OrderService"]
+orderCtrl.$inject = ["$scope", "$location", "$routeParams", "$q", "$window", "$timeout", "OrderService"]
