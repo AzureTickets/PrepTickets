@@ -17,7 +17,7 @@
       </div>
     </block>
   </blocks>
-  <div class="row row-unpadded no-overflow">
+  <div class="row row-unpadded background-extended">
     <div class="col-sm-4 cart-details">
       <div class="row purchaser">
         <div class="col-xs-12">
@@ -56,9 +56,14 @@
           <!-- Credit Card Icons -->
         </div>
         <div class="col-sm-6 pull-right text-center">
+          <label class="iagree">
+            <input type="checkbox" name="iagree" ng-model="iAgree" required="true">
+            I agree to the 
+            <a href="" ng-href="#/page/terms" target="preticket-terms">terms</a> 
+          </label>    
           <div>
-            <a href="" class="btn btn-green btn-huge" ng-disabled="processingRequest" ng-click="processPayment()">
-              {{"Cart.Button.CompletePurchase" | t:"Complete Purchase"}}
+            <a href="" class="btn btn-green btn-huge" ng-disabled="processingRequest || !iAgree" ng-click="processPayment()">
+              {{PurchaseButtonText}}
             </a>    
           </div>
           <div class="cancel">

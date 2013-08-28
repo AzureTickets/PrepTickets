@@ -1,6 +1,9 @@
 #Cart Controller
 cartCtrl = @prepTickets.controller "cartCtrl", ($scope, $routeParams, $location, $window, ServerCartService, UrlSaverService) ->
   $scope.processingRequest = false
+  $scope.hastAgreed = false
+  $scope.iAgree = false
+  $scope.PurchaseButtonText = BWL.t("Cart.Button.CompletePurchase", defaultValue:"Complete Purchase")
 
   #Watches for the server to be uploaded and redirects when it fires.
   $scope.$on "ServerCart:Uploaded", ->
@@ -91,6 +94,9 @@ cartCtrl = @prepTickets.controller "cartCtrl", ($scope, $routeParams, $location,
   $scope.processPayment = (storeKey=$routeParams.storeKey) ->
     return if $scope.processingRequest
     $scope.processingRequest = true
+    $scope.PurchaseButtonText = "Processing..."
+
+
     resultAction = (result) ->
       $window.location.href = result.StartPaymentURL
 
@@ -100,14 +106,18 @@ cartCtrl = @prepTickets.controller "cartCtrl", ($scope, $routeParams, $location,
         ServerCartService.process(store.Key, store.PaymentProviders[0]?.ProviderType).then(
           resultAction
           (err) => 
-            $scope.processingRequest = false
+            $scope.paymentFailed()
             $scope.error.log err
         )
       (err) ->
-        $scope.processingRequest = false
+        $scope.paymentFailed()
         $scope.error.log err
     )
     null
+
+  $scope.paymentFailed = ->
+    $scope.processingRequest = false
+    $scope.PurchaseButtonText = BWL.t("Cart.Button.CompletePurchase", defaultValue:"Complete Purchase")
 
   #Cancels an Order (server side cart) for a given store
   $scope.cancelOrder = (storeKey=$routeParams.storeKey) ->
