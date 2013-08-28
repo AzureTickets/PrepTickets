@@ -10,6 +10,11 @@
     }
   }
 }
+.payment-icons{
+  @media (max-width: $screen-sm - 1) {
+    padding:15px 5px;
+  }
+}
 #server-cart{
   h3{
     color:$pt-gray;

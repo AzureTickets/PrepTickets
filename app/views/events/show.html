@@ -53,12 +53,17 @@
             </tr>
           </tbody>
         </table>
-
-        <div class="text-xs-center text-right">
-          <a href="" class="btn btn-green btn-huge btn-clean  btn-bottom-buffer" ng-click="saveCart()" ng-disabled="eventForm.$invalid">
-            {{"Event.Button.AddToCart"| t:"Add to Cart"}}
-          </a>  
+        <div class="row">
+          <div class="col-sm-6 text-xs-center">
+            <payment-icons payment-provider="{{StoreObj.PaymentProviders[0].ProviderType}}"></payment-icons>
+          </div>
+          <div class="col-sm-6 text-xs-center text-right">
+            <a href="" class="btn btn-green btn-huge btn-clean  btn-bottom-buffer" ng-click="saveCart()" ng-disabled="eventForm.$invalid">
+              {{"Event.Button.AddToCart"| t:"Add to Cart"}}
+            </a>  
+          </div>  
         </div>
+        
       </form>
     </div>
     <div class="col-xs-12 col-sm-4 text-center col-unpadded background-extender" id="location">

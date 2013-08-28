@@ -68,7 +68,10 @@
   </div>
   
   <div class="row row-unpadded">
-    <div class="col-xs-12 text-right">    
+    <div class="col-sm-6 text-xs-center">
+      <payment-icons payment-provider="{{StoreObj.PaymentProviders[0].ProviderType}}"></payment-icons>
+    </div>
+    <div class="col-xs-12 col-sm-6 text-right text-xs-center">    
       <a href="" class="btn btn-clear btn-default" confirm="Are you sure you want to clear your cart?" ng-click="clearCart()">
         <i class="icon-remove"></i> 
         {{"Cart.Button.ClearCart" | t:"Clear Cart"}}
