@@ -76,11 +76,12 @@ orderCtrl = @prepTickets.controller('orderCtrl', ($scope, $location, $routeParam
 
   $scope.printReceipt = ->
     $scope.ReceiptPrint = true
-    $timeout 
-      ->
+    $timeout(
+      ()->
         $window.print()
         $scope.ReceiptPrint = false
       100
+    )
 
 
 )
