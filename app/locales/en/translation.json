@@ -55,26 +55,39 @@
     }
   },
   "Signin": {
+    "Required" : "You must sign in or sign up before you can continue",
     "Social" : {
       "Title"  : "Social Sign In",
-      "Description" : "Choose your social sign in"
+      "Description" : "Choose your social sign in",
+      "Loading": "Loading the social sign in options"
     },
     "Account": {
       "Title"    : "Signin",
-      "Description" : "Sign in with prepTickets account"
+      "Description" : "Sign in with prepTickets account",
+      "Button": {
+        "Signin": "Signin",
+        "ForgotPassowrd": "Forgot password?"
+      }
     },
-    "Required" : "You must sign in or sign up before you can continue"
+    "SignupButton": "or create a prepTickets account"
   },
   "Signup":{
-    "Title"    : "Signup",
+    "Title"       : "Signup",
+    "Description" : "Sign up for a PrepTickets Account",
     "Password" : {
       "MinLength": "6"
     },
-    "Complete" : "Signup Complete, please check your email to verify your account"
+    "Message":{
+      "Complete" : "Signup Complete, please check your email to verify your account"
+    },
+    "SigninButton": "Or Sign in"
   },
   "ForgotPassword":{
     "Title": "Forgot Password",
     "Description": "Fill in your email and we'll email you a password reset link",
+    "Button":{
+      "Signup": "Signup"
+    },
     "Message":{
       "Complete": "Please check your email for the reset password link"
     },

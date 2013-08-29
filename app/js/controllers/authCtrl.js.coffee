@@ -28,10 +28,10 @@ authCtrl = @prepTickets.controller("authCtrl", ($scope, $location, UrlSaverServi
     if $scope.signupForm.$valid
       $scope.auth.register($scope.NewAccount).then(
         (success) ->
-          $scope.flash(BWL.t("Signup.Complete", defaultValue:"Signup Complete, please check your email to verify your account"))
+          $scope.flash(BWL.t("Signup.Message.Complete", defaultValue:"Signup Complete, please check your email to verify your account"))
           $location.path(UrlSaverService.loadLocal())
         (err) ->
-          $scope.flash("error", err).now()
+          $scope.flash("danger", err).now()
       )
   $scope.forgotPasswordBreadcrumb = ->
     $scope.breadcrumbs.addForgotPassword();
@@ -43,7 +43,7 @@ authCtrl = @prepTickets.controller("authCtrl", ($scope, $location, UrlSaverServi
           $scope.flash(BWL.t("ForgotPassword.Message.Completed", defaultValue:"Please check your email for the reset password link"))
           $location.path("/signin")
         (err) ->
-          $scope.flash("error", err).now()
+          $scope.flash("danger", err).now()
       )
 )
 

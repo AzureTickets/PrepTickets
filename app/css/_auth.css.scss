@@ -1,7 +1,20 @@
-#signin{
+#signin, #signup{
   padding-top:60px;
   @media (max-width: $screen-phone-max) { 
     padding-top:0;      
+  }
+
+  h3{
+    color:$pt-light-gray;
+  }
+  .or{
+    text-align: center;
+    padding:10% 0;
+    background: url(/img/fading_border_vertical.png) 50% 50% no-repeat;
+    span{
+      padding:5px 0;
+      background:#fff;
+    }
   }
   a.provider{
     margin-right:5px;
@@ -9,17 +22,14 @@
       text-decoration: none;
     }
   }
-  .or{
-    text-align: center;
-    padding-top:10%;
-  }
-  h3{
-    color:$pt-light-gray;
-  }
-  .signin-options{
+  .options{
     margin-bottom:20px;
     padding-bottom:20px;
   }
+}
+#signin{
+  
+  
   .create{
     margin-bottom:20px;
     .btn{

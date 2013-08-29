@@ -101,6 +101,11 @@ routeFilters =
       templateUrl: 'views/auth/signin.html'
       controller: 'authCtrl'
       resolve: routeFilters
+    .when '/signup',
+      title: 'Sign up'
+      templateUrl: 'views/auth/signup.html'
+      controller: 'authCtrl'
+      resolve: routeFilters
     .when '/forgot-password',
       title: "Forgot Password"
       templateUrl: 'views/auth/forgotPassword.html'
