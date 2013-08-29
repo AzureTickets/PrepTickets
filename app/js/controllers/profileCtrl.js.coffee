@@ -1,6 +1,8 @@
 profileCtrl = @prepTickets.controller "profileCtrl", ($scope, $location, ProfileService) ->
   $scope.Contact = {}
   $scope.processingRequest = false
+  $scope.GenderEnum = BWL.Models.GenderEnum;
+  $scope.passwordLength = BWL.t("Signup.Password.Length", defaultValue:"6")
   $scope.loadProfile = ->
     $scope.auth.loadProfile().then(
       (profile) ->
@@ -17,7 +19,7 @@ profileCtrl = @prepTickets.controller "profileCtrl", ($scope, $location, Profile
       ProfileService.saveContact($scope.Contact).then(
         (result) ->
           $scope.processingRequest = false
-          $scope.flash("Your profile has been updated")
+          $scope.flash(BWL.t("Profile.Edit.Message.Success", defaultValue:"Your profile has been updated"))
           $scope.auth.loadProfile(true)
           $location.path("/profile")
         (err) ->
@@ -34,7 +36,7 @@ profileCtrl = @prepTickets.controller "profileCtrl", ($scope, $location, Profile
       ProfileService.savePassword($scope.Contact.NewPassword).then(
         (success) ->
           $scope.processingRequest = false
-          $scope.flash("You've successfully changed your password")
+          $scope.flash(BWL.t("Profile.ChangePass.Message.Success", defaultValue:"You've successfully changed your password"))
           $location.path("/profile")
         (err) -> 
           $scope.processingRequest = false

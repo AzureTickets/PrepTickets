@@ -1,32 +1,39 @@
 <loader hide-on="DomainProfile">Loading your profile</loader>
-<div id="profile" ng-init="loadProfile()" ng-show="DomainProfile" style="display:none;">
-  <h3>Edit your Profile:</h3>
-  <form action="" name="profileForm" class="form-horizontal">
-    <div class="control-group">
-      <label class="control-label" for="FirstName">First Name</label>
-      <div class="controls">
-        <input type="text" id="FirstName" name="FirstName" placeholder="FirstName" ng-model="Contact.FirstName" required>
-        <span class="help-inline" ng-show="profileForm.FirstName.$error.required">*</span>
+<div id="profile" ng-init="loadProfile()" ng-show="DomainProfile" class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <h3>{{'Profile.Edit.Title' | t:'Edit your profile'}}</h3>
+    <form action="" name="profileForm" class="form-horizontal">
+      <div class="form-group">
+        <label for="FirstName">{{'Profile.Fields.FirstName' | t:'First Name'}}</label>
+        <input type="text" id="FirstName" name="FirstName" ng-model="Contact.FirstName" required class="form-control">
+        <span class="help-inline" ng-show="profileForm.FirstName.$error.required">{{"Validation.Required" | t:'*'}}</span>
       </div>
-    </div>
-    <div class="control-group">
-      <label class="control-label" for="LastName">Last Name</label>
-      <div class="controls">
-        <input type="text" id="LastName" name="LastName" placeholder="LastName" ng-model="Contact.LastName" required>
-        <span class="help-inline" ng-show="profileForm.LastName.$error.required">*</span>
+      <div class="form-group">
+        <label for="LastName">{{'Profile.Fields.LastName' | t:'Last Name'}}</label>
+        <input type="text" id="LastName" name="LastName" ng-model="Contact.LastName" required class="form-control"> 
+        <span class="help-inline" ng-show="profileForm.LastName.$error.required">{{"Validation.Required" | t:'*'}}</span>
       </div>
-    </div>
-    <div class="control-group">
-      <label class="control-label" for="EmailAddress">Email Address</label>
-      <div class="controls">
-        <input type="email" id="EmailAddress" name="EmailAddress" placeholder="EmailAddress" ng-model="Contact.EmailAddress">
-        <span class="help-inline" ng-show="profileForm.EmailAddress.$error.email">Not a valid email address</span>
-        <span class="help-inline" ng-show="profileForm.EmailAddress.$error.required">*</span>
+      <div class="form-group">
+        <label for="EmailAddress">{{'Profile.Fields.EmailAddress' | t:'Email Address'}}</label>
+        <input type="email" id="EmailAddress" name="EmailAddress" ng-model="Contact.EmailAddress" class="form-control" required>
+        <span class="help-inline" ng-show="profileForm.EmailAddress.$error.email">{{"Validation.ValidEmail" | t:'Not a valid email address'}}</span>
+        <span class="help-inline" ng-show="profileForm.EmailAddress.$error.required">{{"Validation.Required" | t:'*'}}</span>
       </div>
-    </div>
-    <div class="form-actions">
-      <a href="" class="btn btn-primary" ng-click="saveProfile()" ng-disabled="profileForm.$invalid || processingRequest"><i class="icon-save"></i> Save</a>
-      <a href="" class="btn" ng-href="#/profile"><i class="icon-remove-circle"></i> Cancel</a>
-    </div>
-  </form>
+      <div class="form-group">
+        <label for="DateOfBirth">{{'Profile.Fields.DateOfBirth' | t:'Birthday'}}</label>
+        <input type="text" id="DateOfBirth" name="DateOfBirth" ng-model="Contact.DateOfBirth" class="form-control" required>
+        <span class="help-inline" ng-show="profileForm.DateOfBirth.$error.required">{{"Validation.Required" | t:'*'}}</span>
+        <div class="help-inline">Format: "yyyy-mm-dd", example: "1980-03-25"</div>
+      </div>
+      <div class="form-group">
+        <label for="Gender">{{'Profile.Fields.Gender' | t:'Gender'}}</label>
+        <select id="Gender" name="Gender" ng-model="Contact.Gender" class="form-control" required ng-options="value as key for (key , value) in GenderEnum"></select>
+        <span class="help-inline" ng-show="profileForm.Gender.$error.required">{{"Validation.Required" | t:'*'}}</span>
+      </div>
+      <div class="form-actions">
+        <a href="" class="btn btn-primary" ng-click="saveProfile()" ng-disabled="profileForm.$invalid || processingRequest"><i class="icon-save"></i> {{'Profile.Edit.Button.Save' | t:'Save'}}</a>
+        <a href="" class="btn" ng-href="#/profile"><i class="icon-remove-circle"></i> {{'Profile.Edit.Button.Cancel' | t:'Cancel'}}</a>
+      </div>
+    </form>
+  </div>
 </div>

@@ -4,7 +4,7 @@ window.moment = ender.moment
 #Route filters
 routeFilters =
   rememberUrl : ['$location', 'UrlSaverService', ($location, UrlSaverService) ->
-    unless $location.$$path is '/signin'
+    unless $location.$$path is '/signin' or $location.$$path is '/signup'
       UrlSaverService.save($location.path())
     true
   ]

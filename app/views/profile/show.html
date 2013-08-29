@@ -1,28 +1,28 @@
 <loader hide-on="DomainProfile">Loading your profile</loader>
-<div id="profile" ng-init="loadProfile()" ng-show="DomainProfile" style="display:none;">
-  <h3>This is your profile:</h3>
-  <table class="table table-hover">
-    <tbody>
-      <tr>
-        <td class="span3 text-right">First Name</td>
-        <td class="span9">{{DomainProfile.Contact.FirstName}}</td>
-      </tr>
-      <tr>
-        <td class="text-right">Last Name</td>
-        <td class="">{{DomainProfile.Contact.LastName}}</td>
-      </tr>
-      <tr ng-hide="profile.signedInViaOAuth()">
-        <td class="text-right">Email</td>
-        <td class="">{{DomainProfile.Contact.EmailAddress || "Unknown"}}</td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="alert alert-info alert-block" ng-show="profile.signedInViaOAuth()">
-    <h3>Social Sign On User</h3>
-    <p>You used {{DomainProfile.AccessToken.ProviderType}} to sign on, this means that if you want to change any of your profile details, you must do it using {{DomainProfile.AccessToken.ProviderType}}'s systems</p>
+<div id="profile" ng-init="loadProfile()" ng-show="DomainProfile" class="row">
+  <div class="col-sm-10 col-sm-offset-1">
+    <h3>This is your profile</h3>
+    <dl class="dl-horizontal">
+      <dt>{{'Profile.Fields.FirstName' | t:'First Name'}}</dt>
+      <dd>{{DomainProfile.Contact.FirstName}}</dd>
+      <dt>{{'Profile.Fields.LastName' | t:'Last Name'}}</dt>
+      <dd>{{DomainProfile.Contact.LastName}}</dd>
+      <dt ng-hide="profile.signedInViaOAuth()">{{'Profile.Fields.EmailAddress' | t:'Email Address'}}</dt>
+      <dd ng-hide="profile.signedInViaOAuth()">{{DomainProfile.Contact.EmailAddress}}</dd>
+      <dt>{{'Profile.Fields.DateOfBirth' | t:'Date of Birth'}}</dt>
+      <dd>{{DomainProfile.Contact.DateOfBirth || 'Unknown'}}</dd>
+      <dt>{{'Profile.Fields.Gender' | t:'Gender'}}</dt>
+      <dd>{{DomainProfile.Contact.Gender | gender }}</dd>
+    </dl>
+    <div class="alert alert-info alert-block" ng-show="profile.signedInViaOAuth()">
+      <h4>
+        {{'Profile.SocialSignin.Title' | t:({provider:DomainProfile.AccessToken.ProviderType, defaultValue:"You've signed in via a Social Network"})}}
+      </h4>
+      <div ng-bind-html-unsafe="'Profile.SocialSignin.ContentHTML' | t:({provider:DomainProfile.AccessToken.ProviderType})"></div>
+    </div>
+    <div class="">
+      <a href="" class="btn btn-primary" ng-href="#/profile/edit" ng-hide="profile.signedInViaOAuth()"><i class="icon-pencil"></i> Edit Profile</a>
+      <a href="" class="btn btn-info" ng-href="#/profile/change-password" ng-hide="profile.signedInViaOAuth()"><i class="icon-asterisk"></i> Change Password</a>
+    </div>  
   </div>
-  <div class="">
-    <a href="" class="btn btn-primary" ng-href="#/profile/edit" ng-hide="profile.signedInViaOAuth()"><i class="icon-pencil"></i> Edit Profile</a>
-    <a href="" class="btn btn-info" ng-href="#/profile/change-password" ng-hide="profile.signedInViaOAuth()"><i class="icon-asterisk"></i> Change Password</a>
-  </div>  
 </div>
