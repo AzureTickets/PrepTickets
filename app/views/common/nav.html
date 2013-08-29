@@ -25,7 +25,14 @@
       </li>
     </ul>
     <ul class="nav navbar-nav pull-right" ng-init="getProfile()">
-      <li><a href="" ng-hide="DomainProfile.DomainProfileId > 0" ng-href="#/signin">{{"Header.Nav.SignIn" | t:"Sign In"}}</a></li>
+      <li><a href="" ng-hide="DomainProfile.DomainProfileId > 0" ng-href="#/signin">
+        {{"Header.Nav.SignIn" | t:"Sign In"}}</a>
+      </li>
+      <li>
+        <a href="" ng-hide="DomainProfile.DomainProfileId > 0" ng-href="#/signup">
+          {{"Header.Nav.SignUp" | t:"Sign up"}}
+        </a>
+      </li>
       <li ng-show="DomainProfile.DomainProfileId > 0" style="display:none;"><a ng-href="#/profile">{{"Header.Nav.Greetings" | t:({defaultValue:"Welcome " + DomainProfile.Contact.FirstName, name: DomainProfile.Contact.FirstName})}}</a></li>
       <li class="dropdown" ng-show="DomainProfile.DomainProfileId > 0" style="display:none;" ng-class="{active:(selectedCtrl == 'profileCtrl' || selectedCtrl == 'orderCtrl')}">
         <a href="" class="dropdown-toggle">{{"Header.Nav.MyAccount" | t:"My Account"}}</a>

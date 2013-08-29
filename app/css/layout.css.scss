@@ -9,11 +9,28 @@ body{
       &.main-navbar {
         background:$pt-dark-gray;
         border-color:$pt-dark-gray;
+        .navbar-collapse{
+          padding-left:0;
+          padding-right:0;
+        }
         .dropdown-menu{
           background:$pt-dark-gray;
           border-color:$pt-dark-gray;
         }
         li{
+          &:last-child a{
+            border-right:1px solid #444949;
+            &:after {  
+              content:"";
+              display:block;
+              position:absolute;
+              z-index:3;
+              top:0px;
+              right:0px;
+              bottom:0px;
+              border-left:1px solid #1b201f;
+            }  
+          }
           &.active{
             a{
               color:#eee;
@@ -32,16 +49,16 @@ body{
           }
           a{
             color:#fff;
-            border-right:1px solid #444949;
-            &:after {  
+            border-left:1px solid #444949;
+            &:before {  
               content:"";
               display:block;
               position:absolute;
               z-index:3;
               top:0px;
-              right:0px;
+              left:0px;
               bottom:0px;
-              border-right:1px solid #1b201f;
+              border-left:1px solid #1b201f;
             }  
           }
           // &:last-child a{
@@ -58,7 +75,10 @@ body{
               background:#2ecc71;
               color:#13974b;
               border-right:none;
-              margin-right: -15px;
+              &:before{
+                border:none;
+              }
+              
               @media (max-width: $screen-phone-max) {
                 margin-right: 0px;
                 border-left:none;

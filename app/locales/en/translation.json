@@ -28,6 +28,7 @@
     "Nav": {
       "FindStore" : "Find School",
       "SignIn"    : "Sign In",
+      "SignUp"    : "Sign Up",
       "SignOut"   : "Sign Out",
       "Greetings" : "Welcome __name__",
       "MyAccount" : "My Account",
