@@ -58,22 +58,22 @@
   "Signin": {
     "Required" : "You must sign in or sign up before you can continue",
     "Social" : {
-      "Title"  : "Social Sign In",
+      "Title"  : "Social Sign in",
       "Description" : "Choose your social sign in",
       "Loading": "Loading the social sign in options"
     },
     "Account": {
-      "Title"    : "Signin",
+      "Title"    : "Sign in",
       "Description" : "Sign in with prepTickets account",
       "Button": {
-        "Signin": "Signin",
+        "Signin": "Sign in",
         "ForgotPassowrd": "Forgot password?"
       }
     },
     "SignupButton": "or create a prepTickets account"
   },
   "Signup":{
-    "Title"       : "Signup",
+    "Title"       : "Sign up",
     "Description" : "Sign up for a PrepTickets Account",
     "Password" : {
       "MinLength": "6"
