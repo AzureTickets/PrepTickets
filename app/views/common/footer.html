@@ -6,7 +6,7 @@
           <p>{{"Footer.Tagline.Content" | t:"Schools are free to signup!"}}</p>
         </div>
         <div class="col col-xs-12 col-5 col-sm-5 col-lg-5 text-xs-center">
-          <a href="" class="btn btn-blue">{{"Footer.Tagline.Button" | t:"Learn More"}}</a>
+          <a href="" ng-href="#/page/school-signup" class="btn btn-blue">{{"Footer.Tagline.Button" | t:"Learn More"}}</a>
         </div>
       </div>
     </div>
@@ -18,7 +18,7 @@
         <div ng-bind-html-unsafe="'Footer.SchoolAdmin.ContentHTML' | t:' '"></div>
         <div class="row">
           <div class="col-xs-12 text-xs-center">
-            <a class="btn btn-blue btn-indent btn-bottom-buffer">{{"Footer.SchoolAdmin.Button" | t:"Sign up your school today"}}</a>
+            <a href="" ng-href="{{'System.SchoolAdmin.LoginURL' | t:'http://admin.preptickets.com/'}}" class="btn btn-blue btn-indent btn-bottom-buffer">{{"Footer.SchoolAdmin.Button" | t:"Sign up your school today"}}</a>
           </div>
         </div>
       </div>

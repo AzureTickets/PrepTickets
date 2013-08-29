@@ -1,7 +1,10 @@
 {
   "System":{
-    "Error": "'There was a system error: \"__msg__\", please refresh your browser and try again'",
-    "Year" :  "2013"
+    "Error" : "'There was a system error: \"__msg__\", please refresh your browser and try again'",
+    "Year"  :  "2013",
+    "SchoolAdmin": {
+      "LoginURL" : "http://admin.preptickets.com/"
+    } 
   },
   "DataAccess": {
     "Error"         : "Server Error: __msg__",
@@ -262,7 +265,11 @@
     },
     "refundPolicy": {
       "Title": "Refund Policy",
-      "Content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, fuga adipisci vero voluptatem consequatur praesentium magnam blanditiis accusantium maiores obcaecati deleniti qui veritatis saepe tenetur impedit voluptate officiis repudiandae dicta?"
+      "Content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, delectus, et maxime doloremque rem culpa quisquam dolorem recusandae quasi debitis tempore quaerat placeat reiciendis quam aliquid optio repudiandae sunt nisi?"
+    },
+    "schoolSignup": {
+      "Title": "Schools are free to signup",
+      "Content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, dolorem, dolor, voluptates aspernatur illum nemo explicabo tenetur laboriosam earum ipsam mollitia fugiat ratione adipisci veritatis sunt expedita amet officia quas!"
     }
   },
   "Common": {
