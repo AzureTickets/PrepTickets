@@ -1,3 +1,4 @@
 <div id="receipt" class="visible-print">
-  Thank you
+  <h3>{{'Order.Receipt.Footer.Title' | t:'Thank You'}}</h3>
+  <div ng-bind-html-unsafe="'Order.Receipt.Footer.ContentHTML' | t:'Thank you for your purchase!'"></div>
 </div>

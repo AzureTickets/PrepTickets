@@ -199,19 +199,30 @@
       "PaymentType": "Payment Type",
       "Total": "Total"
     },
+    "Receipt": {
+      "Title"     : "Receipt",
+      "Purchaser" : "Purchaser",
+      "Footer":{
+        "Title": "Thank You",
+        "ContentHTML": "Thank you for your purchase!"  
+      }
+      
+    },
     "Tickets":{
       "Header":"Tickets",
       "Table":{
         "Header":{
-          "Name": "Name"
+          "Event"      : "Event",
+          "TicketType" : "TicketType",
+          "Price"      : "Price"
         }
       },
       "Or": "- or -",
       "Button":{
         "ViewAndPrintTicket":{
-          "View": "View",
-          "AndPrint": "& Print",
-          "Ticket": "Ticket"
+          "View"     : "View",
+          "AndPrint" : "& Print",
+          "Ticket"   : "Ticket"
         },
         "PrintAllTickets":"Print All Tickets",
         "PrintReceipt": "Print Receipt"

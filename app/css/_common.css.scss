@@ -3,11 +3,26 @@
   .page-break {
     display: block;
     page-break-before: always; }
+
+  h1, h2, h3, h4, h5{
+    padding: 0 0 5px 0 !important;
+    margin:0 0 5px 0 !important;
+  }
+  h2{
+    margin-bottom: 10px !important;
+  }
 }
 
 //TEXT
 .text-upcase{
   text-transform: uppercase;
+}
+
+//TABLE
+table.table{
+  td.currency, th.currency{
+    text-align: right;
+  }
 }
 
 //Background Extender

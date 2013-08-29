@@ -80,7 +80,6 @@ orderCtrl = @prepTickets.controller('orderCtrl', ($scope, $location, $routeParam
       ()->
         $window.print()
         $scope.ReceiptPrint = false
-      100
     )
 
 
