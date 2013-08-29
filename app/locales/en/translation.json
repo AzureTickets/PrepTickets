@@ -46,6 +46,9 @@
       "Title"       : "Testimonials",
       "Content"     : "Before prepTickets, I would have to spend up to 6 hrs a month doing ticket administration tasks. I’ve found a better way now, thanks prepTickets!",
       "Author"      : "Frank S. Johns"
+    },
+    "Bottom":{
+      "PropertyOfHTML" : "PrepTickets™ is property of Horizon Productions"
     }
   },
   "Signin": {
