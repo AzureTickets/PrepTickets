@@ -1,12 +1,12 @@
 {
-  "System":{
+  "System" : {
     "Error" : "'There was a system error: \"__msg__\", please refresh your browser and try again'",
     "Year"  :  "2013",
-    "SchoolAdmin": {
+    "SchoolAdmin" : {
       "LoginURL" : "http://admin.preptickets.com/"
     } 
   },
-  "DataAccess": {
+  "DataAccess" : {
     "Error"         : "Server Error: __msg__",
     "401"           : "System has detected a problem with your session and was forced to reset it.",
     "503"           : "We're unable to connect to the server to retrieve any information, please try again later",
@@ -18,14 +18,15 @@
       "503"          : "503 CONNECTION ERROR"
     }
   },
-  "Validation": {
-    "Required"   : "*",
-    "RequiredText": "Required", 
-    "ValidEmail" : "Must be a valid email address",
-    "MinLength"  : "Must be at least __charLength__ characters long"
+  "Validation" : {
+    "Required"         : "*",
+    "RequiredText"     : "Required",
+    "ValidEmail"       : "Must be a valid email address",
+    "MinLength"        : "Must be at least __charLength__ characters long",
+    "PasswordMismatch" : "Password doesn't match"
   },
-  "Header": {
-    "Nav": {
+  "Header" : {
+    "Nav" : {
       "FindStore" : "Find School",
       "SignIn"    : "Sign In",
       "SignUp"    : "Sign Up",
@@ -36,257 +37,291 @@
       "MyOrders"  : "My Orders"
     }
   },
-  "Footer":{
-    "Tagline":{
-      "Content": "Schools are free to signup!",
-      "Button": "Learn More"
+  "Footer" : {
+    "Tagline" : {
+      "Content" : "Schools are free to signup!",
+      "Button"  : "Learn More"
     },
-    "SchoolAdmin":{
-      "Title": "School Administrators",
-      "ContentHTML": "<p>Selling tickets to your school events has never been easier. Register with PrepTickets, list your events and improve revenue accountability by accepting credit card purchases 24x7.</p><img src=\"/img/PrepTicketsLogo.png\" class=\"img-responsive pull-right\" alt=\"Prep Tickets\" style=\"width:170px;\" /><p>All PrepTickets services are provided at no cost to your school.</p><p>Learn more about our Skool Aid program</p>",
-      "Button": "Sign up your school today"
+    "SchoolAdmin" : {
+      "Title"       : "School Administrators",
+      "ContentHTML" : "<p>Selling tickets to your school events has never been easier. Register with PrepTickets, list your events and improve revenue accountability by accepting credit card purchases 24x7.</p><img src=\"/img/PrepTicketsLogo.png\" class=\"img-responsive pull-right\" alt=\"Prep Tickets\" style=\"width:170px;\" /><p>All PrepTickets services are provided at no cost to your school.</p><p>Learn more about our Skool Aid program</p>",
+      "Button"      : "Sign up your school today"
     },
-    "Testimonial":{
+    "Testimonial" : {
       "Title"       : "Testimonials",
       "Content"     : "Before prepTickets, I would have to spend up to 6 hrs a month doing ticket administration tasks. I’ve found a better way now, thanks prepTickets!",
       "Author"      : "Frank S. Johns"
     },
-    "Bottom":{
+    "Bottom" : {
       "PropertyOfHTML" : "PrepTickets™ is property of Horizon Productions"
     }
   },
-  "Signin": {
+  "Signin" : {
     "Required" : "You must sign in or sign up before you can continue",
     "Social" : {
       "Title"  : "Social Sign in",
       "Description" : "Choose your social sign in",
-      "Loading": "Loading the social sign in options"
+      "Loading" : "Loading the social sign in options"
     },
-    "Account": {
+    "Account" : {
       "Title"    : "Sign in",
       "Description" : "Sign in with prepTickets account",
-      "Button": {
-        "Signin": "Sign in",
-        "ForgotPassowrd": "Forgot password?"
+      "Button" : {
+        "Signin" : "Sign in",
+        "ForgotPassowrd" : "Forgot password?"
       }
     },
-    "SignupButton": "or create a prepTickets account"
+    "SignupButton" : "or create a prepTickets account"
   },
-  "Signup":{
+  "Signup" : {
     "Title"       : "Sign up",
     "Description" : "Sign up for a PrepTickets Account",
     "Password" : {
-      "MinLength": "6"
+      "MinLength" : "6"
     },
-    "Message":{
+    "Message" : {
       "Complete" : "Signup Complete, please check your email to verify your account"
     },
-    "SigninButton": "Or Sign in"
+    "SigninButton" : "Or Sign in"
   },
-  "ForgotPassword":{
-    "Title": "Forgot Password",
-    "Description": "Fill in your email and we'll email you a password reset link",
-    "Button":{
-      "Signup": "Signup"
+  "ForgotPassword" : {
+    "Title"       : "Forgot Password",
+    "Description" : "Fill in your email and we'll email you a password reset link",
+    "Button" : {
+      "Signup" : "Signup"
     },
-    "Message":{
-      "Complete": "Please check your email for the reset password link"
+    "Message" : {
+      "Complete" : "Please check your email for the reset password link"
     },
-    "Button":{
-      "Submit": "Submit"
+    "Button" : {
+      "Submit" : "Submit"
     }
   },
 
-  "Store": {
-    "LoadingText": "Please wait while fetch the school information",
-    "NoMoreResults": "No more Results",
-    "Title": "School",
-    "Button": {
-      "Buy": "Buy"
+  "Store" : {
+    "LoadingText"   : "Please wait while fetch the school information",
+    "NoMoreResults" : "No more Results",
+    "Title"         : "School",
+    "Button" : {
+      "Buy" : "Buy"
     },
-    "Search": {
-      "Headline": "Search all your school's events today!",
-      "Button": "Search",
-      "Placeholder": "Start your search here",
-      "Hint": "Search by school name, city, or ZIP code",
-      "SearchingText": "Searching for '__query__'...",
-      "NoResults":"No schools found",
-      "Result":{
-        "Button": {
-          "ViewStore": "View School"
+    "Search" : {
+      "Headline"      : "Search all your school's events today!",
+      "Button"        : "Search",
+      "Placeholder"   : "Start your search here",
+      "Hint"          : "Search by school name, city, or ZIP code",
+      "SearchingText" : "Searching for '__query__'...",
+      "NoResults"     : "No schools found",
+      "Result" : {
+        "Button" : {
+          "ViewStore" : "View School"
         }
       }
     },
-    "SalesText":{
-      "Column1":{
-        "Title":"Fast Ticketing",
-        "Content": "Tired of standing in long lines to purchase tickets? Use PrepTickets to purchase online and get in events faster. Our service conveniently allows you to purchase tickets 24x7 with any internet connected device.  You can print paper tickets or easily distribute eTickets to any Smartphone."
+    "SalesText" : {
+      "Column1" : {
+        "Title"   : "Fast Ticketing",
+        "Content" : "Tired of standing in long lines to purchase tickets? Use PrepTickets to purchase online and get in events faster. Our service conveniently allows you to purchase tickets 24x7 with any internet connected device.  You can print paper tickets or easily distribute eTickets to any Smartphone."
       },
-      "Column2":{
-        "Title":"Social Sharing",
-        "Content": "Now you can be connected to your school events like never before. Notify your friends, receive event updates or buy and share tickets.  PrepTickets makes it easy to share with your social networks by directly connecting you to Facebook, Twitter and more. "
+      "Column2" : {
+        "Title"   : "Social Sharing",
+        "Content" : "Now you can be connected to your school events like never before. Notify your friends, receive event updates or buy and share tickets.  PrepTickets makes it easy to share with your social networks by directly connecting you to Facebook, Twitter and more. "
       },
-      "Column3":{
-        "Title":"Easy Payment",
-        "Content": "PrepTickets accepts most major credit and debit cards for all purchases. PrepTickets uses a secure payment processing service provided by Authorize.net. This service provides the infrastructure and security necessary for fast, reliable and secure transmission of your payments."
+      "Column3" : {
+        "Title"   : "Easy Payment",
+        "Content" : "PrepTickets accepts most major credit and debit cards for all purchases. PrepTickets uses a secure payment processing service provided by Authorize.net. This service provides the infrastructure and security necessary for fast, reliable and secure transmission of your payments."
       }
     }
   },
 
-  "Event":{
-    "Title":"Event",
-    "InfoTitle": "Event Info:",
-    "ChooseTicketTitle": "Choose which type of ticket you want to purchase",
-    "Table":{
-      "Header":{
-        "TicketName": "Ticket Name",
-        "Price": "Cost",
-        "Quantity": "Quantity"
+  "Event" : {
+    "Title"             : "Event",
+    "InfoTitle"         : "Event Info:",
+    "ChooseTicketTitle" : "Choose which type of ticket you want to purchase",
+    "Table" : {
+      "Header" : {
+        "TicketName" : "Ticket Name",
+        "Price"      : "Cost",
+        "Quantity"   : "Quantity"
       }
     },
-    "Button": {
-      "AddToCart": "Add to Cart"
+    "Button" : {
+      "AddToCart" : "Add to Cart"
     }
   },
 
-  "Cart": {
-    "HeaderTitle": "Tickets",
-    "VerifyCartText": "Please Verify your order",
-    "VerifyPurchaseText": "Please Verify your order",
-    "Table": {
-      "Header":{
-        "Event": "Event",
-        "TicketType": "Ticket Type",
-        "Price": "Price",
-        "Quantity": "Quantity",
-        "Total": "Total"
+  "Cart" : {
+    "HeaderTitle"        : "Tickets",
+    "VerifyCartText"     : "Please Verify your order",
+    "VerifyPurchaseText" : "Please Verify your order",
+    "Table" : {
+      "Header" : {
+        "Event"      : "Event",
+        "TicketType" : "Ticket Type",
+        "Price"      : "Price",
+        "Quantity"   : "Quantity",
+        "Total"      : "Total"
       },
-      "Subtotal": "Subtotal"
+      "Subtotal" : "Subtotal"
     },
-    "Button":{
-      "ClearCart": "Clear Cart",
-      "ContinueShopping": "Continue Shopping",
-      "SigninCheckout": "Signin & ",
-      "Checkout": "Checkout",
-      "CompletePurchase": "Complete Purchase",
-      "CancelPurchase": "-or- cancel purchase"
+    "Button" : {
+      "ClearCart"        : "Clear Cart",
+      "ContinueShopping" : "Continue Shopping",
+      "SigninCheckout"   : "Signin & ",
+      "Checkout"         : "Checkout",
+      "CompletePurchase" : "Complete Purchase",
+      "CancelPurchase"   : "-or- cancel purchase"
     },
-    "Purchaser":{
-      "Headline":"Purchaser",
-      "Total": "Total"
+    "Purchaser" : {
+      "Headline" : "Purchaser",
+      "Total"    : "Total"
     },
-    "FetchingServerChart":"Please wait while fetch your order information",
-    "Status":{
-      "Open":{
-        "Title":"Looks like your order did NOT finish successfully",
-        "Content":" -- Content Needed -- "
+    "FetchingServerChart" : "Please wait while fetch your order information",
+    "Status" : {
+      "Open" : {
+        "Title"   : "Looks like your order did NOT finish successfully",
+        "Content" : " -- Content Needed -- "
       },
-      "Error":{
-        "Title":"There seems to be an error with your payment processing",
-        "Content":" -- Content Needed -- "
+      "Error" : {
+        "Title"   : "There seems to be an error with your payment processing",
+        "Content" : " -- Content Needed -- "
       },
-      "Canceled":{
-        "Title":"Looks like your order was canceled",
-        "Content":" -- Content Needed -- "
+      "Canceled" : {
+        "Title"   : "Looks like your order was canceled",
+        "Content" : " -- Content Needed -- "
       },
-      "Error":{
-        "Unprocessed":"It seems that your cart is empty",
-        "Content":" -- Content Needed -- "
+      "Error" : {
+        "Unprocessed" : "It seems that your cart is empty",
+        "Content"     : " -- Content Needed -- "
       }
     }
   },
-  "CheckoutProcess":{
-    "Step1": "Choose Ticket Type",
-    "Step2": "Confirm Order",
-    "Step3": "Checkout",
-    "NextStep": "Next Step",
-    "StepCount": "Step __number__ of __total__"
+  "CheckoutProcess" : {
+    "Step1"     : "Choose Ticket Type",
+    "Step2"     : "Confirm Order",
+    "Step3"     : "Checkout",
+    "NextStep"  : "Next Step",
+    "StepCount" : "Step __number__ of __total__"
   },
-  "Order": {
-    "Index":{
-      "Loading": "Please wait while we fetch your orders",
-      "Header":"Your Orders",
-      "OrderNumber": "Order #:__number__",
-      "PlacedOn": "Placed On",
-      "Total": "Total:"
+  "Order" : {
+    "Index" : {
+      "Loading"     : "Please wait while we fetch your orders",
+      "Header"      : "Your Orders",
+      "OrderNumber" : "Order #:__number__",
+      "PlacedOn"    : "Placed On",
+      "Total"       : "Total:"
     },
-    "Loading": "Loading your order details",
-    "Details":{
-      "Header":"Order Details",
-      "OrderNumber": "Order ID",
-      "DateOfOrder": "Date of Order",
-      "NumberOfItems": "Number of Items",
-      "PaymentType": "Payment Type",
-      "Total": "Total"
+    "Loading" : "Loading your order details",
+    "Details" : {
+      "Header"        : "Order Details",
+      "OrderNumber"   : "Order ID",
+      "DateOfOrder"   : "Date of Order",
+      "NumberOfItems" : "Number of Items",
+      "PaymentType"   : "Payment Type",
+      "Total"         : "Total"
     },
-    "Receipt": {
+    "Receipt" : {
       "Title"     : "Receipt",
       "Purchaser" : "Purchaser",
-      "Footer":{
-        "Title": "Thank You",
-        "ContentHTML": "Thank you for your purchase!"  
+      "Footer" : {
+        "Title"       : "Thank You",
+        "ContentHTML" : "Thank you for your purchase!"
       }
       
     },
-    "Tickets":{
-      "Header":"Tickets",
-      "Table":{
-        "Header":{
+    "Tickets" : {
+      "Header" : "Tickets",
+      "Table"  : {
+        "Header" : {
           "Event"      : "Event",
           "TicketType" : "TicketType",
           "Price"      : "Price"
         }
       },
-      "Or": "- or -",
-      "Button":{
-        "ViewAndPrintTicket":{
+      "Or" : "- or -",
+      "Button" : {
+        "ViewAndPrintTicket" : {
           "View"     : "View",
           "AndPrint" : "& Print",
           "Ticket"   : "Ticket"
         },
-        "PrintAllTickets":"Print All Tickets",
-        "PrintReceipt": "Print Receipt"
+        "PrintAllTickets" : "Print All Tickets",
+        "PrintReceipt"    : "Print Receipt"
       }
     }
   },
-  "Ticket": {
+  "Ticket" : {
     "Loading":"Please wait while we load your ticket",
-    "TicketNumber": "Ticket #__number__",
-    "Button":{
-      "PrintTicket": "Print Ticket",
-      "BackToOrder": "back to your order",
-      "PreviousTicket": "Previous Ticket",
-      "NextTicket": "Next Ticket"
+    "TicketNumber" : "Ticket #__number__",
+    "Button" : {
+      "PrintTicket" : "Print Ticket",
+      "BackToOrder" : "back to your order",
+      "PreviousTicket" : "Previous Ticket",
+      "NextTicket" : "Next Ticket"
+    }
+  },
+  "Profile" : {
+    "Loading" : "Loading your profile",
+    "Title"   : "This is your profile",
+    "Fields" : {
+      "FirstName"    : "First Name",
+      "LastName"     : "Last Name",
+      "EmailAddress" : "EmailAddress",
+      "DateOfBirth"  : "Birthday",
+      "Gender"       : "Gender"
+    },
+    "SocialSignin" : {
+      "Title"       : "You've signed in via __provider__",
+      "ContentHTML" : "You used __provider__ to sign in, this means that if you want to change any of your profile details, you must change your __provider__ profile."
+    },
+    "Edit" : {
+      "Title"  : "Edit your profile",
+      "Button" : {
+        "Save"   : "Save",
+        "Cancel" : "Cancel"
+      },
+      "Message" : {
+        "Success" : "Your profile has been updated"
+      }
+    },
+    "ChangePassword" : {
+      "Title"                : "Change your Password",
+      "NewPassword"          : "New Password",
+      "ConfirmationPassword" : "Repeat New Password",
+      "Button" : {
+        "Save"   : "Save",
+        "Cancel" : "Cancel"
+      },
+      "Message" : {
+        "Successful" : "You've successfully changed your password"
+      }
     }
   },
   "Page" :{
-    "NotFound": "404: Unable to find the page you requested",
-    "aboutUs": {
-      "Title": "About Us",
-      "Content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, fuga adipisci vero voluptatem consequatur praesentium magnam blanditiis accusantium maiores obcaecati deleniti qui veritatis saepe tenetur impedit voluptate officiis repudiandae dicta?"
+    "NotFound" : "404: Unable to find the page you requested",
+    "aboutUs" : {
+      "Title"   : "About Us",
+      "Content" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, fuga adipisci vero voluptatem consequatur praesentium magnam blanditiis accusantium maiores obcaecati deleniti qui veritatis saepe tenetur impedit voluptate officiis repudiandae dicta?"
     },
-    "contactUs": {
-      "Title": "Contact Us",
-      "Content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, fuga adipisci vero voluptatem consequatur praesentium magnam blanditiis accusantium maiores obcaecati deleniti qui veritatis saepe tenetur impedit voluptate officiis repudiandae dicta?"
+    "contactUs" : {
+      "Title"   : "Contact Us",
+      "Content" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, fuga adipisci vero voluptatem consequatur praesentium magnam blanditiis accusantium maiores obcaecati deleniti qui veritatis saepe tenetur impedit voluptate officiis repudiandae dicta?"
     },
-    "privacyPolicy": {
-      "Title": "Privacy Policy",
-      "Content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, fuga adipisci vero voluptatem consequatur praesentium magnam blanditiis accusantium maiores obcaecati deleniti qui veritatis saepe tenetur impedit voluptate officiis repudiandae dicta?"
+    "privacyPolicy" : {
+      "Title"   : "Privacy Policy",
+      "Content" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, fuga adipisci vero voluptatem consequatur praesentium magnam blanditiis accusantium maiores obcaecati deleniti qui veritatis saepe tenetur impedit voluptate officiis repudiandae dicta?"
     },
-    "terms": {
-      "Title": "Terms",
-      "Content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, fuga adipisci vero voluptatem consequatur praesentium magnam blanditiis accusantium maiores obcaecati deleniti qui veritatis saepe tenetur impedit voluptate officiis repudiandae dicta?"
+    "terms" : {
+      "Title"   : "Terms",
+      "Content" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, fuga adipisci vero voluptatem consequatur praesentium magnam blanditiis accusantium maiores obcaecati deleniti qui veritatis saepe tenetur impedit voluptate officiis repudiandae dicta?"
     },
-    "refundPolicy": {
-      "Title": "Refund Policy",
-      "Content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, delectus, et maxime doloremque rem culpa quisquam dolorem recusandae quasi debitis tempore quaerat placeat reiciendis quam aliquid optio repudiandae sunt nisi?"
+    "refundPolicy" : {
+      "Title"   : "Refund Policy",
+      "Content" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, delectus, et maxime doloremque rem culpa quisquam dolorem recusandae quasi debitis tempore quaerat placeat reiciendis quam aliquid optio repudiandae sunt nisi?"
     },
-    "schoolSignup": {
-      "Title": "Schools are free to signup",
-      "Content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, dolorem, dolor, voluptates aspernatur illum nemo explicabo tenetur laboriosam earum ipsam mollitia fugiat ratione adipisci veritatis sunt expedita amet officia quas!"
+    "schoolSignup" : {
+      "Title"   : "Schools are free to signup",
+      "Content" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, dolorem, dolor, voluptates aspernatur illum nemo explicabo tenetur laboriosam earum ipsam mollitia fugiat ratione adipisci veritatis sunt expedita amet officia quas!"
     }
-  },
-  "Common": {
-    "Loading" : "Please Wait..."
   }
 }
