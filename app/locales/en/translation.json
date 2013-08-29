@@ -22,7 +22,7 @@
     "Required"   : "*",
     "RequiredText": "Required", 
     "ValidEmail" : "Must be a valid email address",
-    "MinLength"  : "Must be at least __length__ characters long"
+    "MinLength"  : "Must be at least __charLength__ characters long"
   },
   "Header": {
     "Nav": {
