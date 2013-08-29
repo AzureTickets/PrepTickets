@@ -2,9 +2,10 @@
   form{
     float:left;
     width:100%;
-    padding:160px 0;
+    padding:156px 0;
     margin-bottom:5px;
-    background:url(../img/search_bg.jpg);
+    background:url(../img/search_bg.jpg) 50% 50%;
+    background-size: 100% auto;
   }
   .search{
     background:$pt-gray;
@@ -47,6 +48,9 @@
         font-size:1.9em;
         line-height: 1.3em;
         border-color:white;
+        @media (max-width: $screen-phone-max) { 
+          font-size:1.7em;
+        }
       }
     }
     p{
