@@ -1,4 +1,4 @@
-eventCtrl = @prepTickets.controller("eventCtrl", ($scope, $filter, $location, $routeParams, storeService) ->
+eventCtrl = @prepTickets.controller("eventCtrl", ($scope, $filter, $location, $routeParams, storeService, TicketService) ->
   $scope.EventObj = null
   $scope.loadEvent = ->
     unless $scope.StoreObj
@@ -23,6 +23,9 @@ eventCtrl = @prepTickets.controller("eventCtrl", ($scope, $filter, $location, $r
   $scope.buildCart = ->
     $scope.CurrentCart = $scope.cart.buildTempCart($scope.StoreObj, $scope.EventObj)
     
+  $scope.getTickets = (event)->
+    TicketService.getTickets(event)
+
   $scope.saveCart = ->
     if $scope.eventForm.$valid
       $scope.cart.addCart($scope.CurrentCart)
@@ -32,4 +35,4 @@ eventCtrl = @prepTickets.controller("eventCtrl", ($scope, $filter, $location, $r
     $scope.cart.quantityFor(obj.StoreKey, obj.Key, obj.Type)
 )
 
-eventCtrl.$inject = ["$scope", "$filter", "$location", "$routeParams", "storeService"]
+eventCtrl.$inject = ["$scope", "$filter", "$location", "$routeParams", "storeService", "TicketService"]

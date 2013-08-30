@@ -1,4 +1,4 @@
-CartService = @prepTickets.factory('CartService', (storeService, $cookieStore, configService, ServerCartService) ->
+CartService = @prepTickets.factory('CartService', (storeService, $cookieStore, configService, ServerCartService, TicketService) ->
   _cart = {}
   
   getCartObj: (storeKey)->
@@ -15,7 +15,7 @@ CartService = @prepTickets.factory('CartService', (storeService, $cookieStore, c
       Items: {}
 
     if event
-      for item in event.Items
+      for item in TicketService.getTickets(event)
         cart.Items[item.Key] =
           Quantity: 0
           EventKey: event.Key
@@ -87,4 +87,4 @@ CartService = @prepTickets.factory('CartService', (storeService, $cookieStore, c
     
 )
 
-CartService.$inject = ["storeService", "$cookieStore", "configService", "ServerCartService"]
+CartService.$inject = ["storeService", "$cookieStore", "configService", "ServerCartService" , "TicketService"]

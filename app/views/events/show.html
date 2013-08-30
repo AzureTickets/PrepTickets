@@ -44,7 +44,7 @@
             </tr>  
           </thead>
           <tbody>
-            <tr class="items " ng-repeat="item in EventObj.Items">
+            <tr class="items " ng-repeat="item in getTickets(EventObj)">
               <td class="">{{item.Name}}</td>
               <td class="center">{{item.Price.ItemPrice | currency}}</td>
               <td class="center">
