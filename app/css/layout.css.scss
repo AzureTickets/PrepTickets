@@ -1,55 +1,46 @@
 body{
   background:$pt-light-gray;
   & > header{
-    background:$pt-dark-gray;
+    background:$pt-black;
     .logo{text-align: center;}
     .navbar {
       margin-bottom: 0;      
 
       &.main-navbar {
-        background:$pt-dark-gray;
-        border-color:$pt-dark-gray;
+        background:transparent;
+        // border-color:$pt-dark-gray;
+        border:none;
+        .navbar-nav{
+          border:none;
+          @media (max-width: $screen-phone-max) { 
+            margin:0;
+          } 
+        }
+        
         .navbar-collapse{
           padding-left:0;
           padding-right:0;
+          @media (max-width: $screen-phone-max) { 
+            margin:0; 
+          } 
         }
         .dropdown-menu{
           background:$pt-dark-gray;
-          border-color:$pt-dark-gray;
+          // border-color:$pt-dark-gray;
         }
         li{
-          &:last-child a{
-            border-right:1px solid #444949;
-            &:after {  
-              content:"";
-              display:block;
-              position:absolute;
-              z-index:3;
-              top:0px;
-              right:0px;
-              bottom:0px;
-              border-left:1px solid #1b201f;
-            }  
-          }
-          &.active{
-            a{
-              color:#eee;
-              background: #444;
-            }
-            li{
-              a{
-                background:$pt-dark-gray;
-                border-color:$pt-dark-gray;
-              }
-              &.active a{
-                color:#eee;
-                background: #444;
-              }
-            }
-          }
           a{
             color:#fff;
-            border-left:1px solid #444949;
+            // border-left:1px solid #444949;
+            padding-top:38px;
+            padding-bottom:38px;
+            @media (max-width: $screen-phone-max) { 
+              padding-top:5px;
+              padding-bottom:5px;
+            } 
+            &:hover{
+              color: $pt-super-light-gray;
+            }
             &:before {  
               content:"";
               display:block;
@@ -58,16 +49,45 @@ body{
               top:0px;
               left:0px;
               bottom:0px;
-              border-left:1px solid #1b201f;
+              // border-left:1px solid #1b201f;
             }  
           }
-          // &:last-child a{
-          //   border:none;
-          //   &:after{border:none}
-          // }
+          &:last-child a{
+            // border-right:1px solid #444949;
+            &:after {  
+              content:"";
+              display:block;
+              position:absolute;
+              z-index:3;
+              top:0px;
+              right:0px;
+              bottom:0px;
+              // border-left:1px solid #1b201f;
+            }  
+          }
+          &.active{
+            a{
+              color:$pt-black;
+              &:hover{
+                color:lighten($pt-black, 25%);
+              }
+            }
+            li{
+              a{
+                background:$pt-dark-gray;
+                // border-color:$pt-dark-gray;
+                color:#eee;
+                background: #444;
+              }
+              &.active a{
+                color:#eee;
+                background: #444;
+              }
+            }
+          }
+          
         }
         .shopping-cart{
-          margin-right:-1px;
           float:right;
           li {
             a {
@@ -75,13 +95,27 @@ body{
               background:#2ecc71;
               color:#13974b;
               border-right:none;
+              text-align:center;
+              padding-top:8px;
+              padding-bottom:7px;
               &:before{
                 border:none;
+              }
+              i{
+                font-size:4.2em;
+                display:block;
               }
               
               @media (max-width: $screen-phone-max) {
                 margin-right: 0px;
                 border-left:none;
+                padding-top:5px;
+                padding-bottom:5px;
+                text-align: left;
+                i{
+                  font-size:1em;
+                  display:inline;
+                }
               }
               &:hover{
                 border-left-color: lighten(#2ecc71, 20%);
@@ -91,17 +125,13 @@ body{
               }
             }
           }
-        }
-        @media (max-width: $screen-phone-max) { 
-          .shopping-cart{
+          @media (max-width: $screen-phone-max) { 
             float:none;
-            margin-left: -15px;
-            margin-right: -15px;
             li{
               width:100%;
             }
-          }
-        } 
+          } 
+        }
       }
     }
   }

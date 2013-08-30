@@ -9,22 +9,8 @@
     <a href="" ng-click="navCollapsed = !navCollapsed" class="navbar-brand visible-xs">PrepTickets</a>  
   </div>
   <div class="navbar-collapse" ng-class="{collapse:navCollapsed, in:!navCollapsed}">
-    <ul class="nav navbar-nav" >
+    <ul class="nav navbar-nav" ng-init="getProfile()">
       <li ng-class="{active:(selectedCtrl == 'storeCtrl')}"><a href="#">{{"Header.Nav.FindStore" | t:"Find School"}}</a></li>
-    </ul>
-    <ul class="nav navbar-nav shopping-cart" ng-show="store.getCurrentStoreKey()" style="display:none;">
-      <li>
-        <a class="" ng-href="#/cart/{{store.getCurrentStoreKey()}}">
-          <i class="icon-shopping-cart icon-large"></i>
-          <ng-pluralize count="cart.count(store.getCurrentStoreKey())"
-                           when="{'0': 'No items in cart',
-                                  'one': '1 item in cart',
-                                  'other': '{} items in cart'}">
-          </ng-pluralize>
-        </a>
-      </li>
-    </ul>
-    <ul class="nav navbar-nav pull-right" ng-init="getProfile()">
       <li><a href="" ng-hide="DomainProfile.DomainProfileId > 0" ng-href="#/login">
         {{"Header.Nav.LogIn" | t:"Login"}}</a>
       </li>
@@ -33,7 +19,11 @@
           {{"Header.Nav.SignUp" | t:"Sign up"}}
         </a>
       </li>
-      <li ng-show="DomainProfile.DomainProfileId > 0" style="display:none;"><a ng-href="#/profile">{{"Header.Nav.Greetings" | t:({defaultValue:"Welcome " + DomainProfile.Contact.FirstName, name: DomainProfile.Contact.FirstName})}}</a></li>
+      <li ng-show="DomainProfile.DomainProfileId > 0" style="display:none;">
+        <a ng-href="#/profile">
+          {{"Header.Nav.Greetings" | t:({defaultValue:"Welcome " + DomainProfile.Contact.FirstName, name: DomainProfile.Contact.FirstName})}}
+        </a>
+      </li>
       <li class="dropdown" ng-show="DomainProfile.DomainProfileId > 0" style="display:none;" ng-class="{active:(selectedCtrl == 'profileCtrl' || selectedCtrl == 'orderCtrl')}">
         <a href="" class="dropdown-toggle">{{"Header.Nav.MyAccount" | t:"My Account"}}</a>
         <ul class="dropdown-menu">
@@ -45,7 +35,21 @@
           </li>                
         </ul>
       </li>
-      <li ng-show="DomainProfile.DomainProfileId > 0" style="display:none;"><a href="" ng-click="logout()">{{"Header.Nav.Logout" | t:"Logout"}}</a></li>
+      <li ng-show="DomainProfile.DomainProfileId > 0" style="display:none;">
+        <a href="" ng-click="logout()">{{"Header.Nav.Logout" | t:"Logout"}}</a>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav shopping-cart" ng-show="store.getCurrentStoreKey()" style="display:none;">
+      <li>
+        <a class="" ng-href="#/cart/{{store.getCurrentStoreKey()}}">
+          <i class="icon-shopping-cart"></i>
+          <ng-pluralize count="cart.count(store.getCurrentStoreKey())"
+                           when="{'0': 'No items in cart',
+                                  'one': '1 item in cart',
+                                  'other': '{} items in cart'}">
+          </ng-pluralize>
+        </a>
+      </li>
     </ul>
   </div>
 </nav>
