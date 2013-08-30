@@ -144,6 +144,19 @@ cartCtrl = @prepTickets.controller "cartCtrl", ($scope, $routeParams, $location,
       for key, item of $scope.CartObj.Items 
         total += item.Price * item.Quantity
     total
-
+  $scope.calculateFee = ->
+    total = 0
+    if $scope.CartObj?
+      for key, item of $scope.CartObj.Items 
+        total += item.Quantity * $scope.CartObj.FeeAmount
+    total
+  $scope.calculateShipping = ->
+    total = 0
+    if $scope.CartObj?.ShippingAmount
+      for key, item of $scope.CartObj.Items 
+        total += item.Quantity * $scope.CartObj.ShippingAmount
+    total
+  $scope.total = ->
+    $scope.subtotal() + $scope.calculateFee() + $scope.calculateShipping()
 
 cartCtrl.$inject = ["$scope", "$routeParams", "$location", "$window", "ServerCartService", "UrlSaverService"]

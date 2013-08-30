@@ -4,6 +4,29 @@ CartService = @prepTickets.factory('CartService', (storeService, $cookieStore, c
   getCartObj: (storeKey)->
     @load(storeKey)
 
+  buildTempCart: (store, event) ->
+    return unless store
+    cart = 
+      StoreKey: store.Key
+      StoreName: store.Name
+      PaymentType: store.PaymentProviders[0]?.ProviderType
+      FeeAmount: store.PerItemFee?.Amount || 0
+      ShippingAmount: 0 #TODO: Need to figure out how this works
+      Items: {}
+
+    if event
+      for item in event.Items
+        cart.Items[item.Key] =
+          Quantity: 0
+          EventKey: event.Key
+          EventName: event.Name
+          Key: item.Key
+          Type: item.Type
+          Name: item.Name
+          Price: item.Price.ItemPrice
+    
+    cart
+
   addCart: (cart) ->
     if _cart.StoreKey isnt cart.StoreKey
       @replaceCart(cart)
@@ -31,7 +54,7 @@ CartService = @prepTickets.factory('CartService', (storeService, $cookieStore, c
       else
         _cart.Items[key] = item
 
-  dropQuantityZeroItems: (cart) ->
+  dropQuantityZeroItems: (cart=_cart) ->
     for key, item of cart.Items
       delete cart.Items[key] if item.Quantity == 0
     cart

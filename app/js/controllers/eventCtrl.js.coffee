@@ -21,24 +21,7 @@ eventCtrl = @prepTickets.controller("eventCtrl", ($scope, $filter, $location, $r
 
   #TODO: This might need to be inside the cart service
   $scope.buildCart = ->
-    return $scope.CurrentCart if $scope.CurrentCart?
-    $scope.CurrentCart = 
-      StoreKey: $scope.StoreObj.Key
-      StoreName: $scope.StoreObj.Name
-      PaymentType: $scope.StoreObj.PaymentProviders[0]?.ProviderType
-      Items: {}
-
-    for item in $scope.EventObj.Items
-      $scope.CurrentCart.Items[item.Key] =
-        Quantity: 0
-        EventKey: $scope.EventObj.Key
-        EventName: $scope.EventObj.Name
-        Key: item.Key
-        Type: item.Type
-        Name: item.Name
-        Price: item.Price.ItemPrice
-
-    $scope.CurrentCart
+    $scope.CurrentCart = $scope.cart.buildTempCart($scope.StoreObj, $scope.EventObj)
     
   $scope.saveCart = ->
     if $scope.eventForm.$valid

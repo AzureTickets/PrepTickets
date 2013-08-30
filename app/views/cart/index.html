@@ -58,8 +58,26 @@
         <tfoot>
           <tr>
             <td colspan="3"></td>
-            <td class="light-gray-bg">{{"Cart.Table.Subtotal" | t:"Subtotal"}}</td>
+            <td class="light-gray-bg">{{"Cart.Table.Footer.Subtotal" | t:"Subtotal"}}</td>
             <td class="light-gray-bg">{{subtotal() | currency}}</td>
+            <td></td>
+          </tr>
+          <tr ng-show="CartObj.FeeAmount > 0">
+            <td colspan="3"></td>
+            <td class="light-gray-bg">{{"Cart.Table.Footer.Fee" | t:"Fee"}}</td>
+            <td class="light-gray-bg">{{calculateFee() | currency}}</td>
+            <td></td>
+          </tr>
+          <tr ng-show="CartObj.ShippingAmount > 0">
+            <td colspan="3"></td>
+            <td class="light-gray-bg">{{"Cart.Table.Footer.Shipping" | t:"Shipping"}}</td>
+            <td class="light-gray-bg">{{calculateShipping() | currency}}</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td colspan="3"></td>
+            <td class="light-gray-bg">{{"Cart.Table.Footer.Total" | t:"Total"}}</td>
+            <td class="light-gray-bg">{{total() | currency}}</td>
             <td></td>
           </tr>
         </tfoot>

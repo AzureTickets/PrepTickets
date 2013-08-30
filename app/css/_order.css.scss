@@ -35,4 +35,16 @@
       }
     }
   }
+  table{
+    tfoot{
+      tr{
+        td{
+          border:none !important;
+        }
+      }
+    }
+    td.total{
+      font-weight: 900;
+    }
+  }
 }

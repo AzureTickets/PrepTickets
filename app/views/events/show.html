@@ -53,6 +53,11 @@
             </tr>
           </tbody>
         </table>
+        <div class="row" ng-show="CurrentCart.FeeAmount > 0">
+          <div class="col-xs-12 text-right fee">
+            {{"Cart.PerItemFee" | t:({fee:(CurrentCart.FeeAmount | currency), defaultValue: (CurrentCart.FeeAmount | currency)})}}
+          </div>
+        </div>
         <div class="row">
           <div class="col-sm-6 text-xs-center">
             <payment-icons payment-provider="{{StoreObj.PaymentProviders[0].ProviderType}}"></payment-icons>

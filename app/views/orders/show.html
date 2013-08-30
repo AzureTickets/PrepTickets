@@ -27,6 +27,18 @@
           <div class="col-xs-6 order-data">{{Order.Transactions[0].ProviderType}}</div>
         </div>
         <div class="divider fading-border-bottom"></div>
+        <div class="row subtotal">
+          <div class="col-xs-6 order-header">{{"Order.Details.Subtotal" | t:"Subtotal"}}</div>
+          <div class="col-xs-6 order-data">{{Order.SubTotal.ItemPrice | currency}}</div>
+        </div>
+        <div class="row fee" ng-show="Order.Fees.ItemPrice > 0">
+          <div class="col-xs-6 order-header">{{"Order.Details.Fee" | t:"Fee"}}</div>
+          <div class="col-xs-6 order-data">{{Order.Fees.ItemPrice | currency}}</div>
+        </div>
+        <div class="row shipping" ng-show="Order.Shipping.ItemPrice > 0">
+          <div class="col-xs-6 order-header">{{"Order.Details.Shipping" | t:"Shipping"}}</div>
+          <div class="col-xs-6 order-data">{{Order.Shipping.ItemPrice | currency}}</div>
+        </div>
         <div class="row total">
           <div class="col-xs-6 order-header">{{"Order.Details.Total" | t:"Total"}}</div>
           <div class="col-xs-6 order-data">{{Order.Total.ItemPrice | currency}}</div>
@@ -65,7 +77,22 @@
         </tbody>
         <tfoot>
           <tr class="visible-print">
-            <td colspan="2" class="text-right">Total:</td>
+            <td colspan="2" class="text-right">{{"Order.Details.Subtotal" | t:"Subtotal"}}</td>
+            <td class="currency">{{Order.SubTotal.ItemPrice | currency}}</td>
+            <td class="hidden-print"></td>
+          </tr>
+          <tr class="visible-print"  ng-show="Order.Fees.ItemPrice > 0">
+            <td colspan="2" class="text-right">{{"Order.Details.Fee" | t:"Fee"}}</td>
+            <td class="currency">{{Order.Fees.ItemPrice | currency}}</td>
+            <td class="hidden-print"></td>
+          </tr>
+          <tr class="visible-print" ng-show="Order.Shipping.ItemPrice > 0">
+            <td colspan="2" class="text-right">{{"Order.Details.Shipping" | t:"Shipping"}}</td>
+            <td class="currency">{{Order.Shipping.ItemPrice | currency}}</td>
+            <td class="hidden-print"></td>
+          </tr>
+          <tr class="visible-print">
+            <td colspan="2" class="text-right">{{"Order.Details.Total" | t:"Total"}}</td>
             <td class="currency">{{Order.Total.ItemPrice | currency}}</td>
             <td class="hidden-print"></td>
           </tr>

@@ -157,6 +157,7 @@
     "HeaderTitle"        : "Tickets",
     "VerifyCartText"     : "Please Verify your order",
     "VerifyPurchaseText" : "Please Verify your order",
+    "PerItemFee"         : "Fee: __fee__ per ticket",
     "Table" : {
       "Header" : {
         "Event"      : "Event",
@@ -165,7 +166,12 @@
         "Quantity"   : "Quantity",
         "Total"      : "Total"
       },
-      "Subtotal" : "Subtotal"
+      "Footer": {
+        "Subtotal" : "Subtotal",
+        "Fee"      : "Fee",
+        "Shipping" : "Shipping",
+        "Total"    : "Total"
+      }
     },
     "Button" : {
       "ClearCart"        : "Clear Cart",
@@ -177,6 +183,9 @@
     },
     "Purchaser" : {
       "Headline" : "Purchaser",
+      "Subtotal" : "Subtotal",
+      "Fee"      : "Fee",
+      "Shipping" : "Shipping",
       "Total"    : "Total"
     },
     "FetchingServerChart" : "Please wait while fetch your order information",
@@ -221,6 +230,9 @@
       "DateOfOrder"   : "Date of Order",
       "NumberOfItems" : "Number of Items",
       "PaymentType"   : "Payment Type",
+      "Subtotal"      : "Subtotal",
+      "Fee"           : "Fee",
+      "Shipping"      : "Shipping",
       "Total"         : "Total"
     },
     "Receipt" : {

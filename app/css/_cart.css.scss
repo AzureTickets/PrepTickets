@@ -9,6 +9,9 @@
       }
     }
   }
+  .fee{
+    font-style:italic;
+  }
 }
 .payment-icons{
   @media (max-width: $screen-sm - 1) {
@@ -30,8 +33,6 @@
   }
   .cart-details{
     background: $pt-super-light-gray;
-    padding-bottom:500px;
-    margin-bottom:-500px;
     font-size:1.1em;
     .purchaser{
       padding-bottom: 20px;
@@ -44,7 +45,6 @@
       font-size:1.3em;
       b{
         font-size:1.1em;
-        margin-left:45px;
       }
     }
     .iagree{
