@@ -2,11 +2,11 @@
   <div class="row border-bottom row-unpadded options">
     <div class="col-xs-12 col-sm-4 col-sm-offset-1 social" ng-init="loadAuthProviders()">
       <div class="providers" >
-        <h3>{{'Signin.Social.Title' | t:'Social Sign In'}}</h3>
-        <p class="lead">{{'Signin.Social.Description' | t:'Choose your social sign in'}}</p>
-        <loader hide-on="authProviders">{{'Signin.Social.Loading' | t:'Loading the social sign in options'}}</loader>
+        <h3>{{'Login.Social.Title' | t:'Social Login'}}</h3>
+        <p class="lead">{{'Login.Social.Description' | t:'Choose your social login'}}</p>
+        <loader hide-on="authProviders">{{'Login.Social.Loading' | t:'Loading the social login options'}}</loader>
         <div class="providers-list text-xs-center" ng-show="authProviders">
-          <a ng-repeat="provider in authProviders" href="" class="provider" ng-click="signin(provider)" style="background:url(); min-height:30px;" >
+          <a ng-repeat="provider in authProviders" href="" class="provider" ng-click="login(provider)" style="background:url(); min-height:30px;" >
             <img img-src="/img/social/{{provider | lowercase}}.png" fallback-src="/img/social/default.png"  alt="{{provider}}" title="{{provider}}">
           </a>
         </div>
@@ -41,10 +41,10 @@
       </form>
     </div>
   </div>
-  <div class="row signin-option">
+  <div class="row login-option">
     <div class="col-xs-12 text-center">
-      <a href="" class="btn btn-default btn-huge" ng-href="#/signin">
-        {{'Signup.SigninButton' | t:'or sign in'}}
+      <a href="" class="btn btn-default btn-huge" ng-href="#/login">
+        {{'Signup.LoginButton' | t:'or login'}}
       </a>
     </div>
   </div>

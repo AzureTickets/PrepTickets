@@ -1,8 +1,7 @@
 authCtrl = @prepTickets.controller("authCtrl", ($scope, $location, UrlSaverService) ->
   $scope.authProviders = []
-  $scope.signingUp = false
   $scope.passwordLength = BWL.t("Signup.Password.Length", defaultValue:"6")
-  $scope.breadcrumbs.addSignin()
+  $scope.breadcrumbs.addLogin()
 
   $scope.loadAuthProviders = ->
     omitAccounts = (providers) ->
@@ -41,7 +40,7 @@ authCtrl = @prepTickets.controller("authCtrl", ($scope, $location, UrlSaverServi
         (success) ->
           console.log success
           $scope.flash(BWL.t("ForgotPassword.Message.Completed", defaultValue:"Please check your email for the reset password link"))
-          $location.path("/signin")
+          $location.path("/login")
         (err) ->
           $scope.flash("danger", err).now()
       )

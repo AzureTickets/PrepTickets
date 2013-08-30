@@ -16,9 +16,9 @@
     </dl>
     <div class="alert alert-info alert-block" ng-show="profile.signedInViaOAuth()">
       <h4>
-        {{'Profile.SocialSignin.Title' | t:({provider:DomainProfile.AccessToken.ProviderType, defaultValue:"You've signed in via a Social Network"})}}
+        {{'Profile.SocialLogin.Title' | t:({provider:DomainProfile.AccessToken.ProviderType, defaultValue:"You've signed in via a Social Network"})}}
       </h4>
-      <div ng-bind-html-unsafe="'Profile.SocialSignin.ContentHTML' | t:({provider:DomainProfile.AccessToken.ProviderType})"></div>
+      <div ng-bind-html-unsafe="'Profile.SocialLogin.ContentHTML' | t:({provider:DomainProfile.AccessToken.ProviderType})"></div>
     </div>
     <div class="">
       <a href="" class="btn btn-primary" ng-href="#/profile/edit" ng-hide="profile.signedInViaOAuth()"><i class="icon-pencil"></i> Edit Profile</a>

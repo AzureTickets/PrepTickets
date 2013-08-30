@@ -1,4 +1,4 @@
-#signin, #signup{
+#login, #signup{
   padding-top:60px;
   @media (max-width: $screen-phone-max) { 
     padding-top:0;      
@@ -27,7 +27,7 @@
     padding-bottom:20px;
   }
 }
-#signin{
+#login{
   
   
   .create{
@@ -42,7 +42,7 @@
     margin-bottom:20px;
     padding-bottom:20px;
   }
-  .signin-option{
+  .login-option{
     margin-bottom:20px;
     .btn{
       color:$pt-red

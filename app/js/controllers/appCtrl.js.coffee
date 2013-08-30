@@ -15,7 +15,7 @@ appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, $window,
   $rootScope.breadcrumbs = BreadcrumbService
   $rootScope.root = $rootScope
 
-  $rootScope.AccountProfile = {} #needed for email signin to work
+  $rootScope.AccountProfile = {} #needed for email login to work
 
   $rootScope.$on 'flash:message', (_, messages, done) ->
     $rootScope.messages = messages
@@ -27,7 +27,7 @@ appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, $window,
       rejection = "Page you were looking for is not found" if rejection.status? && rejection.status == 404
       rejection = rejection.message if rejection.message?
       rejection = rejection.Message if rejection.Message?
-    errorService.log "Route Change Error: #{rejection}"
+    errorService.log "#{rejection}"
 
   $rootScope.clearBreadcrumbs =  ->
     $rootScope.breadcrumbs.clear()
@@ -40,20 +40,20 @@ appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, $window,
         errorService.log(err)
     )
 
-  $rootScope.signout = ->
+  $rootScope.logout = ->
     $rootScope.auth.signoff().then(
       (result) ->
         $rootScope.profile.clear()
         $rootScope.DomainProfile = {}
-        flash('Successfully signed out')
+        flash(BWL.t("System.Message.Logout", defaultValue: 'Successfully logged out')).now()
         $location.path("/")
       (err) ->
         $rootScope.error.log err
     )
-  $rootScope.signin = (provider) ->
+  $rootScope.login = (provider) ->
     if provider?
       # login by provider
-      $rootScope.auth.signinByProvider(provider, UrlSaverService.load()).then(
+      $rootScope.auth.loginByProvider(provider, UrlSaverService.load()).then(
         (result) ->
           $rootScope.getProfile()
         (err) ->
@@ -61,7 +61,7 @@ appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, $window,
       )
     else
       # login by account
-      $rootScope.auth.signin(
+      $rootScope.auth.login(
         Email : $rootScope.AccountProfile.Email,
         PasswordHash : BWL.Plugins.MD5($rootScope.AccountProfile.Password)
       ).then(

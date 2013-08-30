@@ -23,7 +23,7 @@ profileService = @prepTickets.factory 'ProfileService', ($rootScope, $q, configS
   clear: ->
     _profile = {}
 
-  isSignedIn: ->
+  isLoggedIn: ->
     _profile.ProfileRole >= BWL.Models.DomainProfileRoleEnum.Authenticated
 
   accessToken: ->

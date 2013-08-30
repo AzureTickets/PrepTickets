@@ -81,7 +81,7 @@
       </a>
       <a href="" class="btn btn-green btn-clean btn-large" ng-click="checkout()" ng-disabled="processingRequest" ng-show="CartObj">
         <i class="icon-shopping-cart icon-large"></i> 
-        <span ng-show="!auth.isSignedIn()">{{"Cart.Button.SigninCheckout" | t:"Signin &"}}</span>
+        <span ng-show="!auth.isLoggedIn()">{{"Cart.Button.LoginCheckout" | t:"Login &"}}</span>
         {{"Cart.Button.Checkout" | t:"Checkout"}}
       </a>
     </div>

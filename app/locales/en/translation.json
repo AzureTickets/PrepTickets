@@ -4,7 +4,10 @@
     "Year"  :  "2013",
     "SchoolAdmin" : {
       "LoginURL" : "http://admin.preptickets.com/"
-    } 
+    },
+    "Message" : {
+      "Logout" : "Successfully logged out"
+    }
   },
   "DataAccess" : {
     "Error"         : "Server Error: __msg__",
@@ -28,9 +31,9 @@
   "Header" : {
     "Nav" : {
       "FindStore" : "Find School",
-      "SignIn"    : "Sign In",
+      "LogIn"    : "Login",
       "SignUp"    : "Sign Up",
-      "SignOut"   : "Sign Out",
+      "Logout"   : "Logout",
       "Greetings" : "Welcome __name__",
       "MyAccount" : "My Account",
       "MyProfile" : "My Profile",
@@ -56,18 +59,18 @@
       "PropertyOfHTML" : "PrepTickets™ is property of Horizon Productions"
     }
   },
-  "Signin" : {
-    "Required" : "You must sign in or sign up before you can continue",
+  "Login" : {
+    "Required" : "You must login or sign up before you can continue",
     "Social" : {
-      "Title"  : "Social Sign in",
-      "Description" : "Choose your social sign in",
-      "Loading" : "Loading the social sign in options"
+      "Title"  : "Social Login",
+      "Description" : "Choose your social login",
+      "Loading" : "Loading the social login options"
     },
     "Account" : {
-      "Title"    : "Sign in",
-      "Description" : "Sign in with prepTickets account",
+      "Title"    : "Login",
+      "Description" : "Login with prepTickets account",
       "Button" : {
-        "Signin" : "Sign in",
+        "Login" : "Login",
         "ForgotPassowrd" : "Forgot password?"
       }
     },
@@ -82,7 +85,7 @@
     "Message" : {
       "Complete" : "Signup Complete, please check your email to verify your account"
     },
-    "SigninButton" : "Or Sign in"
+    "LoginButton" : "Or Login"
   },
   "ForgotPassword" : {
     "Title"       : "Forgot Password",
@@ -167,7 +170,7 @@
     "Button" : {
       "ClearCart"        : "Clear Cart",
       "ContinueShopping" : "Continue Shopping",
-      "SigninCheckout"   : "Signin & ",
+      "LoginCheckout"   : "Login & ",
       "Checkout"         : "Checkout",
       "CompletePurchase" : "Complete Purchase",
       "CancelPurchase"   : "-or- cancel purchase"
@@ -270,9 +273,9 @@
       "DateOfBirth"  : "Birthday",
       "Gender"       : "Gender"
     },
-    "SocialSignin" : {
-      "Title"       : "You've signed in via __provider__",
-      "ContentHTML" : "You used __provider__ to sign in, this means that if you want to change any of your profile details, you must change your __provider__ profile."
+    "SocialLogin" : {
+      "Title"       : "You've logged in via __provider__",
+      "ContentHTML" : "You used __provider__ to login, this means that if you want to change any of your profile details, you must change your __provider__ profile."
     },
     "Edit" : {
       "Title"  : "Edit your profile",

@@ -2,8 +2,8 @@
 authService = @prepTickets.factory 'authService', (configService, $q, $rootScope, modelService, $cookieStore, $window, UrlSaverService, ProfileService) ->
     _domainProfile = {}
     
-    isSignedIn: ->
-      ProfileService.isSignedIn()
+    isLoggedIn: ->
+      ProfileService.isLoggedIn()
     
     loadProfile : (force = false) ->
       ProfileService.get(force).then(
@@ -12,7 +12,7 @@ authService = @prepTickets.factory 'authService', (configService, $q, $rootScope
         (err) -> $rootScope.error.log err
       )
     
-    signinByProvider : (provider, returnURL = $window.location.href) ->
+    loginByProvider : (provider, returnURL = $window.location.href) ->
       def = $q.defer()
 
       BWL.Services.Account.GetProfile(
@@ -57,7 +57,7 @@ authService = @prepTickets.factory 'authService', (configService, $q, $rootScope
 
       def.promise
     
-    signin : (account) ->
+    login : (account) ->
       def = $q.defer()
 
       BWL.Services.Account.Logon(account, 

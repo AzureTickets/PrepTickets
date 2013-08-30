@@ -1,0 +1,49 @@
+<div id="login">
+  <div class="row options border-bottom row-unpadded">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-1 social" ng-init="loadAuthProviders()">
+      <div class="providers" >
+        <h3>{{'Login.Social.Title' | t:'Social Login'}}</h3>
+        <p class="lead">{{'Login.Social.Description' | t:'Choose your social login'}}</p>
+        <loader hide-on="authProviders">{{'Login.Social.Loading' | t:'Loading the social login options'}}</loader>
+        <div class="providers-list text-xs-center" ng-show="authProviders">
+          <a ng-repeat="provider in authProviders" href="" class="provider" ng-click="login(provider)" style="background:url(); min-height:30px;" >
+            <img img-src="/img/social/{{provider | lowercase}}.png" fallback-src="/img/social/default.png"  alt="{{provider}}" title="{{provider}}">
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-1 or hidden-xs">
+      <span>or</span>
+    </div>
+    <div class="col-xs-12 col-sm-4 account">
+      <h3>{{'Login.Account.Title' | t:'Login'}}</h3>
+      <p class="lead">{{'Login.Account.Description' | t:"Login with prepTickets account"}}</p>
+      <form name="loginForm" ng-submit="login()">
+        <div class="form-group">
+          <input class="form-control" type="email" required="true" name="email" placeholder="email" ng-model="AccountProfile.Email">      
+          <span class="help-inline" ng-show="loginForm.email.$error.email">{{"Validation.ValidEmail" | t:"Must be a valid email address"}}</span>
+          <span class="help-inline" ng-show="loginForm.email.$dirty && loginForm.email.$error.required">{{"Validation.RequiredText" | t:"Required"}}</span>
+        </div>
+        <div class="form-group">
+          <input class="form-control" type="password" placeholder="password" name="password" required="true" ng-model="AccountProfile.Password">
+          <span class="help-inline" ng-show="loginForm.password.$error.minlength">{{("Validation.MinLength"| t:{length:passwordLength, defaultValue:"Must be at least " + passwordLength +" characters long "})}}</span>
+          <span class="help-inline" ng-show="loginForm.password.$dirty && loginForm.password.$error.required">{{"Validation.RequiredText" | t:"Required"}}</span>
+        </div>
+        <div class="form-group text-right text-xs-center">
+          <div class="forgotPassword pull-left">
+            <a href="" ng-href="#/forgot-password" class="">{{'Login.Button.ForgotPassword' | t:'Forgot password?'}}</a>
+          </div>
+          <button class="btn btn-green btn-clean btn-huge" ng-disabled="loginForm.$invalid" >
+            {{'Login.Account.Button.Login' | t:'Login'}}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row create">
+    <div class="col-xs-12 text-center">
+      <a href="" class="btn btn-default btn-huge" ng-href="#/signup">{{'Login.SignupButton' | t:'or create a prepTickets account'}}</a>
+    </div>
+  </div>
+</div>
+

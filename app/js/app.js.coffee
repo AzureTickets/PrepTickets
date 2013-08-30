@@ -4,17 +4,17 @@ window.moment = ender.moment
 #Route filters
 routeFilters =
   rememberUrl : ['$location', 'UrlSaverService', ($location, UrlSaverService) ->
-    unless $location.$$path is '/signin' or $location.$$path is '/signup'
+    unless $location.$$path is '/login' or $location.$$path is '/signup'
       UrlSaverService.save($location.path())
     true
   ]
-  requireSignin : ['$q', '$rootScope', '$location', 'ProfileService', 'UrlSaverService', ($q, $rootScope, $location, ProfileService, UrlSaverService) ->
+  requireLogin : ['$q', '$rootScope', '$location', 'ProfileService', 'UrlSaverService', ($q, $rootScope, $location, ProfileService, UrlSaverService) ->
     def = $q.defer()
 
     ProfileService.get().then(
       (profile) ->
         $rootScope.DomainProfile = profile
-        unless ProfileService.isSignedIn()
+        unless ProfileService.isLoggedIn()
           redirect = false
           currentPath = $location.path()
 
@@ -24,8 +24,8 @@ routeFilters =
             redirect = true if pathReg.test(currentPath)
 
           if redirect
-            $rootScope.flash('error', BWL.t("Signin.Required"))
-            $location.path('/signin')
+            $rootScope.flash('error', BWL.t("Login.Required"))
+            $location.path('/login')
           else
             def.resolve(true)
 
@@ -96,9 +96,9 @@ routeFilters =
       templateUrl: 'views/tickets/show.html'
       controller: 'orderCtrl'
       resolve: routeFilters
-    .when '/signin',
-      title: 'Sign in'
-      templateUrl: 'views/auth/signin.html'
+    .when '/login',
+      title: 'Login'
+      templateUrl: 'views/auth/login.html'
       controller: 'authCtrl'
       resolve: routeFilters
     .when '/signup',

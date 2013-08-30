@@ -16,6 +16,7 @@ cartCtrl = @prepTickets.controller "cartCtrl", ($scope, $routeParams, $location,
       (store) ->
         $scope.StoreObj = store
         $scope.CartObj = $scope.cart.getCartObj(storeKey)
+        console.log $scope.CartObj, $scope.StoreObj
         $scope.breadcrumbs.addCart(store)
       (err) ->
         $scope.error.log err
@@ -33,7 +34,7 @@ cartCtrl = @prepTickets.controller "cartCtrl", ($scope, $routeParams, $location,
     return if $scope.processingRequest
     $scope.processingRequest = true
     $scope.cart.replaceCart($scope.CartObj)
-    if $scope.auth.isSignedIn()
+    if $scope.auth.isLoggedIn()
       $scope.cart.sendToServer().then( #once completed, it will fire ServerCart:Uploaded event
         (result) ->
           #do nothing
@@ -54,16 +55,18 @@ cartCtrl = @prepTickets.controller "cartCtrl", ($scope, $routeParams, $location,
             $scope.error.log err
       )
     else
-      $scope.flash(BWL.t("Signin.Required", defaultValue: "You must sign in or sign up before you can continue"))
+      $scope.flash(BWL.t("Login.Required", defaultValue: "You must login or sign up before you can continue"))
       UrlSaverService.save("cart/#{$routeParams.storeKey}/instantCheckout")
       $scope.processingRequest = false
-      $location.path("signin")
+      $location.path("login")
 
   #Does the same as setupCart and Checkout.
   #Mainly used when a user signs in to checkout
   $scope.instantCheckout = ->
-    $scope.setupCart()
-    $scope.cart.sendToServer() #once completed, it will fire ServerCart:Uploaded event
+    $scope.setupCart().then(
+      -> $scope.cart.sendToServer() #once completed, it will fire ServerCart:Uploaded event
+    )
+    
 
   #Removes an item from cart
   #@param {string} key Key of the item in the cart
