@@ -16,7 +16,6 @@ cartCtrl = @prepTickets.controller "cartCtrl", ($scope, $routeParams, $location,
       (store) ->
         $scope.StoreObj = store
         $scope.CartObj = $scope.cart.getCartObj(storeKey)
-        console.log $scope.CartObj, $scope.StoreObj
         $scope.breadcrumbs.addCart(store)
       (err) ->
         $scope.error.log err

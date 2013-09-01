@@ -43,7 +43,6 @@
 
               
               url = "http://dev.virtualearth.net/REST/v1/Locations?#{buildURLFromObject(mapAttr)}&jsonp=map_callback"
-              # console.log mapAttr, mapAttrString, url
 
               $window.map_callback = (data) =>
                 if data.statusCode is 200
