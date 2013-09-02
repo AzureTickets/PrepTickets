@@ -34,7 +34,6 @@
       "LogIn"    : "Login",
       "SignUp"    : "Sign Up",
       "Logout"   : "Logout",
-      "Greetings" : "Welcome __name__",
       "MyAccount" : "My Account",
       "MyProfile" : "My Profile",
       "MyOrders"  : "My Orders"

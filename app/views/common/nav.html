@@ -16,16 +16,6 @@
           {{"Header.Nav.SignUp" | t:"Sign up"}}
         </a>
       </li>
-      <li ng-hide="DomainProfile.DomainProfileId > 0">
-        <a href="" ng-href="#/login">
-          {{"Header.Nav.LogIn" | t:"Login"}}
-        </a>
-      </li>
-      <li ng-show="DomainProfile.DomainProfileId > 0" style="display:none;">
-        <a ng-href="#/profile">
-          {{"Header.Nav.Greetings" | t:({defaultValue:"Welcome " + DomainProfile.Contact.FirstName, name: DomainProfile.Contact.FirstName})}}
-        </a>
-      </li>
       <li class="dropdown" ng-show="DomainProfile.DomainProfileId > 0" style="display:none;" ng-class="{active:(selectedCtrl == 'profileCtrl' || selectedCtrl == 'orderCtrl')}">
         <a href="" class="dropdown-toggle">{{"Header.Nav.MyAccount" | t:"My Account"}}</a>
         <ul class="dropdown-menu">
@@ -36,6 +26,11 @@
             <a href="" ng-href="#/orders">{{"Header.Nav.MyOrders" | t:"My Orders"}}</a>
           </li>                
         </ul>
+      </li>
+      <li ng-hide="DomainProfile.DomainProfileId > 0">
+        <a href="" ng-href="#/login">
+          {{"Header.Nav.LogIn" | t:"Login"}}
+        </a>
       </li>
       <li ng-show="DomainProfile.DomainProfileId > 0" style="display:none;">
         <a href="" ng-click="logout()">{{"Header.Nav.Logout" | t:"Logout"}}</a>
