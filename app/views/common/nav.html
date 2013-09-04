@@ -29,11 +29,11 @@
       </li>
       <li ng-hide="DomainProfile.DomainProfileId > 0">
         <a href="" ng-href="#/login">
-          {{"Header.Nav.LogIn" | t:"Login"}}
+          {{"Header.Nav.LogIn" | t:"Log In"}}
         </a>
       </li>
       <li ng-show="DomainProfile.DomainProfileId > 0" style="display:none;">
-        <a href="" ng-click="logout()">{{"Header.Nav.Logout" | t:"Logout"}}</a>
+        <a href="" ng-click="logout()">{{"Header.Nav.Logout" | t:"Log Out"}}</a>
       </li>
     </ul>
     <ul class="nav navbar-nav shopping-cart" ng-show="store.getCurrentStoreKey()" style="display:none;">
