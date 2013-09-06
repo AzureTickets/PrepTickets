@@ -7,6 +7,7 @@
     "angular": "~1.0.7",
     "angular-bootstrap": "~0.4.0",
     "easyXDM": "~2.4.17",
-    "html5shiv": "~3.6.2"
+    "html5shiv": "~3.6.2",
+    "respond": "~1.3.0"
   }
 }
