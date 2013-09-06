@@ -61,7 +61,7 @@ authService = @prepTickets.factory 'authService', (configService, $q, $rootScope
       def = $q.defer()
 
       BWL.Services.Account.Logon(account, 
-        ->
+        (result) ->
           $rootScope.$apply(def.resolve)
         (err, resp) ->
           $rootScope.$apply(->

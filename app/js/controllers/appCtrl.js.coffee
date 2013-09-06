@@ -68,7 +68,7 @@ appCtrl = @prepTickets.controller('appCtrl', ($rootScope, $cookieStore, $window,
         (result) ->
           $rootScope.getProfile().then(
             (profile) ->
-              flash('Successfully signed in')
+              flash('Successfully signed in') if auth.isLoggedIn()
               $rootScope.AccountProfile = {}
               if UrlSaverService.localUrl()
                 $location.path(UrlSaverService.loadLocal())
