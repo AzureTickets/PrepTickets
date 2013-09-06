@@ -6,7 +6,7 @@
         <p class="lead">{{'Login.Social.Description' | t:'Choose your social login'}}</p>
         <loader hide-on="authProviders">{{'Login.Social.Loading' | t:'Loading the social login options'}}</loader>
         <div class="providers-list text-xs-center" ng-show="authProviders">
-          <a ng-repeat="provider in authProviders" href="" class="provider" ng-click="login(provider)" style="background:url(); min-height:30px;" >
+          <a ng-repeat="provider in authProviders" href="" class="provider" ng-click="login(provider)"  >
             <img img-src="/img/social/{{provider | lowercase}}.png" fallback-src="/img/social/default.png"  alt="{{provider}}" title="{{provider}}">
           </a>
         </div>
@@ -33,14 +33,14 @@
           <div class="forgotPassword pull-left">
             <a href="" ng-href="#/forgot-password" class="">{{'Login.Button.ForgotPassword' | t:'Forgot password?'}}</a>
           </div>
-          <button class="btn btn-green btn-clean btn-huge" ng-disabled="loginForm.$invalid" >
+          <button class="btn btn-green btn-clean" ng-disabled="loginForm.$invalid" >
             {{'Login.Account.Button.Login' | t:'Login'}}
           </button>
         </div>
       </form>
     </div>
   </div>
-  <div class="row create">
+  <div class="row additional-options">
     <div class="col-xs-12 text-center">
       <a href="" class="btn btn-default btn-huge" ng-href="#/signup">{{'Login.SignupButton' | t:'or create a prepTickets account'}}</a>
     </div>

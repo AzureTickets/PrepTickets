@@ -18,22 +18,35 @@
   }
   a.provider{
     margin-right:5px;
+    min-height:30px;
     &:hover{
       text-decoration: none;
+    }
+    img{
+      margin-bottom:10px;
     }
   }
   .options{
     margin-bottom:20px;
     padding-bottom:20px;
   }
+  .additional-options{
+    margin-bottom:20px;
+    .btn{
+      color:$pt-red;
+      white-space: normal;
+      @media (max-width: $screen-phone-max) { 
+        font-size:1.1em;
+      }
+    }
+  }
 }
 #login{
-  
-  
   .create{
     margin-bottom:20px;
     .btn{
-      color:$pt-red
+      color:$pt-red;
+      white-space: normal;
     }
   }
 }
@@ -42,10 +55,11 @@
     margin-bottom:20px;
     padding-bottom:20px;
   }
-  .login-option{
+  .additional-option{
     margin-bottom:20px;
     .btn{
-      color:$pt-red
+      color:$pt-red;
+      white-space: normal;
     }
   }
 }
