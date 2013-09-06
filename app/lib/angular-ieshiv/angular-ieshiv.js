@@ -31,10 +31,16 @@
         var dirname = tokens.slice(1).join('-');
 
         // this is finite list and it seemed senseless to create a custom method
-        result.push(ns + ":" + dirname);
-        result.push(ns + "-" + dirname);
-        result.push("x-" + ns + "-" + dirname);
-        result.push("data-" + ns + "-" + dirname);
+        if(dirname){
+            result.push(ns + ":" + dirname);
+            result.push(ns + "-" + dirname);
+            result.push("x-" + ns + "-" + dirname);
+            result.push("data-" + ns + "-" + dirname);
+        }else{
+            result.push(ns);
+            result.push("x-" + ns);
+            result.push("data-" + ns);
+        }
         return result;
     };
 
@@ -42,8 +48,9 @@
         var customElements = toCustomElements(tags[i]);
         for (var j = 0, clen = customElements.length; j < clen; j++) {
             var customElement = customElements[j];
+            // console.log("Dealing with: ", customElement);
             document.createElement(customElement);
         }
     }
 
-})(window); 
+})(window);
