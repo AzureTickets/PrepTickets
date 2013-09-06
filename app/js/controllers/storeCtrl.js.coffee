@@ -36,16 +36,13 @@ storeCtrl = @prepTickets.controller("storeCtrl", ($scope, $location, $routeParam
     $location.path("school#{obj.URI}")
 
   $scope.loadStore = ->
-    if (storeKey = $scope.store.getCachedKey())?
-      $scope.$emit('initStore', storeKey)
-    else
-      $scope.store.getStoreKeyByURI("#{$routeParams.storeURI}").then(
-        (storeKey) ->
-          $scope.store.cacheTheKey(storeKey)
-          $scope.$emit('initStore', storeKey)
-        (err) ->
-          $scope.error.log(err)
-      )
+    $scope.store.getStoreKeyByURI("#{$routeParams.storeURI}").then(
+      (storeKey) ->
+        $scope.store.cacheTheKey(storeKey)
+        $scope.$emit('initStore', storeKey)
+      (err) ->
+        $scope.error.log(err)
+    )
 
   $scope.initStore = (storeKey) ->
     $scope.store.getStore(storeKey).then(
