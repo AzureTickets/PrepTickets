@@ -41,6 +41,9 @@ body{
             &:hover{
               color: $pt-super-light-gray;
             }
+            &:focus{
+              color: $pt-gray;
+            }
             &:before {  
               content:"";
               display:block;
@@ -53,16 +56,8 @@ body{
             }  
           }
           &:last-child a{
-            // border-right:1px solid #444949;
             &:after {  
               content:"";
-              display:block;
-              position:absolute;
-              z-index:3;
-              top:0px;
-              right:0px;
-              bottom:0px;
-              // border-left:1px solid #1b201f;
             }  
           }
           &.active{
@@ -72,12 +67,11 @@ body{
                 color:lighten($pt-black, 25%);
               }
             }
-            li{
+            ul li{
               a{
                 background:$pt-dark-gray;
-                // border-color:$pt-dark-gray;
                 color:#eee;
-                background: #444;
+                background: $pt-black;
               }
               &.active a{
                 color:#eee;
@@ -85,7 +79,34 @@ body{
               }
             }
           }
-          
+          &.open {
+            a{
+              color:$pt-dark-gray;
+              &:hover, &:focus{
+                color:$pt-dark-gray;
+              } 
+            }
+            .dropdown-menu {
+              background:$pt-black;
+              li {
+                a{
+                  color:#FFF;
+                  @media (min-width: $screen-tablet) { 
+                    padding-top:5px;
+                    padding-bottom: 5px;
+                  }
+                  &:hover{
+                    color:$pt-dark-gray;
+                    background:$pt-super-light-gray;
+                  }
+                }
+                &.active > a{
+                  color:$pt-black;
+                  background:$pt-super-light-gray; 
+                }
+              }
+            }
+          }
         }
         .shopping-cart{
           float:right;
