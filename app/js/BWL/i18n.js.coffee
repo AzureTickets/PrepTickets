@@ -2,5 +2,5 @@
 
 console?.warn "Can't use BWL.i18n without BWL module loaded" unless BWL?
 
-i18n.init()
+i18n.init({ fallbackLng: 'en' })
 @BWL.t = @BWL.translate = i18n.translate
