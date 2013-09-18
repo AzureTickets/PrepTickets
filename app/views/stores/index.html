@@ -6,8 +6,12 @@
           <div class="search">
             <h4>{{"Store.Search.Headline" | t:"Search all your school's events today!"}}</h4>
             <div class="input-group">
-              <input type="text" class="form-control input-lg" name="query" autocomplete="off" ng-model='$parent.query'
-              placeholder='{{"Store.Search.Placeholder" | t:"Start your search here"}}' on-keypress="search(query, false)" >
+              <input type="text" class="form-control input-lg" name="query" autocomplete="off" ng-model='selectedSchool'
+              placeholder='{{"Store.Search.Placeholder" | t:"Start your search here"}}' 
+              typeahead="school as school.Name for school in search($viewValue, false) | limitTo:20" 
+              typeahead-editable="false"
+              typeahead-min-length="3"
+              typeahead-on-select="typeaheadSelect()" >
               <div class="input-group-btn">
                 <a href="" class="btn btn-green btn-lg" ng-click="search()">&gt; {{"Store.Search.Button" | t:"Search"}}</a>
               </div>
