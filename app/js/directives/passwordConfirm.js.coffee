@@ -1,5 +1,6 @@
 @prepTickets.directive('passwordConfirm', ->
   require: 'ngModel'
+  scope: {}
   link: (scope, elem, attrs, ctrl) ->
     firstPasswordField = $("##{attrs.passwordConfirm}")[0]
     check = =>

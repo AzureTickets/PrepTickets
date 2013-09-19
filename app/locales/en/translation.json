@@ -26,7 +26,8 @@
     "RequiredText"     : "Required",
     "ValidEmail"       : "Must be a valid email address",
     "MinLength"        : "Must be at least __charLength__ characters long",
-    "PasswordMismatch" : "Password doesn't match"
+    "PasswordMismatch" : "Password doesn't match",
+    "EmailMismatch"    : "Email doesn't match"
   },
   "Header" : {
     "Nav" : {
