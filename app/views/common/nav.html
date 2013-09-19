@@ -11,6 +11,20 @@
   <div class="navbar-collapse" ng-class="{collapse:navCollapsed, in:!navCollapsed}">
     <ul class="nav navbar-nav" ng-init="getProfile()">
       <li ng-class="{active:(selectedCtrl == 'storeCtrl')}"><a href="#">{{"Header.Nav.FindStore" | t:"Find School"}}</a></li>
+    </ul>
+    <ul class="nav navbar-nav shopping-cart" ng-show="store.getCurrentStoreKey()" style="display:none;">
+      <li>
+        <a class="" ng-href="#/cart/{{store.getCurrentStoreKey()}}">
+          <i class="icon-shopping-cart"></i>
+          <ng-pluralize count="cart.count(store.getCurrentStoreKey())"
+                           when="{'0': 'No items in cart',
+                                  'one': '1 item in cart',
+                                  'other': '{} items in cart'}">
+          </ng-pluralize>
+        </a>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav pull-right" ng-init="getProfile()">
       <li ng-hide="DomainProfile.DomainProfileId > 0">
         <a href="" ng-href="#/signup">
           {{"Header.Nav.SignUp" | t:"Sign up"}}
@@ -36,17 +50,6 @@
         <a href="" ng-click="logout()">{{"Header.Nav.Logout" | t:"Log Out"}}</a>
       </li>
     </ul>
-    <ul class="nav navbar-nav shopping-cart" ng-show="store.getCurrentStoreKey()" style="display:none;">
-      <li>
-        <a class="" ng-href="#/cart/{{store.getCurrentStoreKey()}}">
-          <i class="icon-shopping-cart"></i>
-          <ng-pluralize count="cart.count(store.getCurrentStoreKey())"
-                           when="{'0': 'No items in cart',
-                                  'one': '1 item in cart',
-                                  'other': '{} items in cart'}">
-          </ng-pluralize>
-        </a>
-      </li>
-    </ul>
+    
   </div>
 </nav>
