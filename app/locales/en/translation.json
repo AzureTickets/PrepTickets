@@ -87,7 +87,10 @@
     "Message" : {
       "Complete" : "Signup Complete, please check your email to verify your account"
     },
-    "LoginButton" : "Or Log In"
+    "Button": {
+      "Signup" : "Sign Up",
+      "Login"  : "Or Log In"
+    }
   },
   "ForgotPassword" : {
     "Title"       : "Forgot Password",
