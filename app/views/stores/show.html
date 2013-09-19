@@ -39,14 +39,13 @@
           <div class="year">{{event.StartTime | datetime:"year"}}</div>
         </div>
         <div class="col-xs-10">
-          <p class="description" ng-bind-html-unsafe="event.Brief"></p>
+          <p class="description" >{{event.Brief | characters:200}}</p>
+          <div class="text-center">
+            <a href="" class="btn btn-green btn-large btn-clean text-upcase btn-bottom-buffer" ng-href="#/school/{{StoreObj.URI}}/event/{{event.CustomURI.URI}}">
+               {{"Store.Button.Buy" | t:"Buy"}}
+            </a>
+          </div>
         </div>
-      </div>
-      
-      <div class="text-center">
-        <a href="" class="btn btn-green btn-large btn-clean text-upcase btn-bottom-buffer" ng-href="#/school/{{StoreObj.URI}}/event/{{event.CustomURI.URI}}">
-           {{"Store.Button.Buy" | t:"Buy"}}
-        </a>
       </div>
     </div>
   </div>
