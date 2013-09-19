@@ -34,7 +34,7 @@
           <span class="help-inline" ng-show="signupForm.email.$dirty && signupForm.email.$error.required">*</span>
         </div>
         <div class="form-group" >
-          <input type="text" class="form-control" name="email_confirm" placeholder="re-enter email" password-confirm="email" ng-model="emailRepeate" required="true">
+          <input type="text" class="form-control" name="email_confirm" placeholder="re-enter email" password-confirm="email" ng-model="NewAccount.EmailRepeat" required="true">
           <span class="help-inline" ng-show="signupForm.email_confirm.$dirty && signupForm.email_confirm.$error.required">*</span>
           <span class="help-inline" ng-show="signupForm.email_confirm.$dirty && signupForm.email_confirm.$error.passwordmatch">
             {{"Validation.EmailMismatch" | t:"Email doesn't match"}}
@@ -46,11 +46,17 @@
           <span class="help-inline" ng-show="signupForm.password.$dirty && signupForm.password.$error.required">*</span>
         </div>
         <div class="form-group" >
-          <input type="password" class="form-control" placeholder="re-enter password" name="password_confirm" password-confirm="password" ng-model="passwordRepeate" required>
+          <input type="password" class="form-control" placeholder="re-enter password" name="password_confirm" password-confirm="password" ng-model="NewAccount.PasswordRepeat" required>
           <span class="help-inline" ng-show="signupForm.password_confirm.$dirty && signupForm.password_confirm.$error.passwordmatch">
             {{"Validation.PasswordMismatch" | t:"Password doesn't match"}}
           </span>
           <span class="help-inline" ng-show="signupForm.password_confirm.$dirty && signupForm.password_confirm.$error.required">*</span>
+        </div>
+        <div class="signup-complete alert alert-success" ng-show="signupComplete">
+          {{"Signup.Message.Complete" | t:"Signup Complete, please check your email to verify your account"}}
+        </div>
+        <div class="error-message alert alert-danger" ng-show="errorMessage">
+          {{errorMessage}}
         </div>
         <button class="btn btn-primary" ng-disabled="signupForm.$invalid">{{'Signup.Button.Signup' | t:'Sign up'}}</button>
       </form>

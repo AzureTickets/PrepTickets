@@ -1,5 +1,7 @@
 authCtrl = @prepTickets.controller("authCtrl", ($scope, $location, UrlSaverService) ->
   $scope.authProviders = []
+  $scope.signupComplete = false
+  $scope.errorMessage = false
   $scope.passwordLength = BWL.t("Signup.Password.Length", defaultValue:"6")
   $scope.breadcrumbs.addLogin()
 
@@ -24,13 +26,16 @@ authCtrl = @prepTickets.controller("authCtrl", ($scope, $location, UrlSaverServi
     "/img/social/#{provider.toString().toLowerCase()}.png"
 
   $scope.signup = ->
+    $scope.signupComplete = false
+    $scope.errorMessage = false
     if $scope.signupForm.$valid
       $scope.auth.register($scope.NewAccount).then(
         (success) ->
-          $scope.flash(BWL.t("Signup.Message.Complete", defaultValue:"Signup Complete, please check your email to verify your account"))
-          $location.path(UrlSaverService.loadLocal())
+          $scope.signupComplete = true
+          $scope.NewAccount = {}
+          $scope.clearForm($scope.signupForm)
         (err) ->
-          $scope.flash("danger", err).now()
+          $scope.errorMessage = err
       )
   $scope.forgotPasswordBreadcrumb = ->
     $scope.breadcrumbs.addForgotPassword();
@@ -43,6 +48,14 @@ authCtrl = @prepTickets.controller("authCtrl", ($scope, $location, UrlSaverServi
         (err) ->
           $scope.flash("danger", err).now()
       )
+  $scope.clearForm = (form) ->
+    elements = angular.element($(".ng-dirty")).val("")
+    form.$dirty = false
+    form.$pristine = true
+    for name, field of form
+      field.$pristine = true
+      field.$dirty = false
+    elements.removeClass("ng-dirty").removeClass("ng-invalid").removeClass("ng-invalid-required").addClass("ng-pristine")
 )
 
 authCtrl.$inject = ['$scope', "$location", "UrlSaverService"]
