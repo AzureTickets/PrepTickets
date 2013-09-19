@@ -59,6 +59,7 @@
     }
   },
   "Login" : {
+    "Welcome"  : "Welcome Ticket Buyers",
     "Required" : "You must log in or sign up before you can continue",
     "Social" : {
       "Title"  : "Social Log in",
@@ -78,6 +79,7 @@
   "Signup" : {
     "Title"       : "Sign up",
     "Description" : "Sign up for a PrepTickets Account",
+    "Welcome"  : "Welcome Ticket Buyers",
     "Password" : {
       "MinLength" : "6"
     },
